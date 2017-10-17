@@ -14,7 +14,8 @@
 \def \GroupMemberThree{			Mark Sprouse}
 \def \CapstoneProjectName{		AR Sandbox for Construction Planning}
 \def \CapstoneSponsorCompany{	Civil \& Construction Engineering}
-\def \CapstoneSponsorPerson{		Joseph Louis}
+\def \CapstoneSponsorPerson{		Dr. Joseph Louis}
+\title{Group 44 Problem Statement}
 
 % 2. Uncomment the appropriate line below so that the document type works
 \def \DocType{		Problem Statement
@@ -36,7 +37,7 @@
 \begin{titlepage}
     \pagenumbering{gobble}
     \begin{singlespace}
-    	\includegraphics[height=4cm]{coe_v_spot1}
+    	%\includegraphics[height=4cm]{coe_v_spot1}
         \hfill 
         % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
         %\includegraphics[height=4cm]{CompanyLogo}   
@@ -84,7 +85,7 @@
 
 % 8. now you write!
 \section{Problem Description}
-The problem we are trying to solve is creating a more innovative and interactive method of visualizing construction and highway planning.
+Over the course of this project, our goal is to create a more innovative and interactive method of visualizing construction and highway planning.
 Currently, highway and construction planning uses a static drawing or three dimensional design which is iteratively reworked until sufficient.
 Indeed, it can be argued that creating an augmented reality interface would allow for better collaboration and a more tactile experience when planning for construction, road building, or any other form of civil engineering.
 This would allow for instant feedback and an easier way to visualize planning data for all phases of construction and design.
@@ -97,24 +98,32 @@ Especially when recovering after a disaster it is important to plan ahead. Likew
 This sandbox project would allow for interactive physical simulations that users can manipulate with their own hands.
 
 \section{Proposed Solution}
-We aim to create an interactive and collaborative device, therefore our project has elements of both hardware and software.
-Our solution is a sandbox with an integrated depth sensor and display projector; a novel piece of software that would project 3D graphics onto the sand; and a pointing device that can be used to interact with the software interface independent of the physical sandbox itself.
+We aim to create a self contained, interactive, and collaborative device, therefore our project has elements of both hardware and software.
+Our solution is a sandbox with an integrated depth sensor and display projector; a novel piece of software that would project 3D graphics onto the sand; and, optionally, a pointing device that can be used to interact with the software interface independent of the physical sandbox itself.
 \par
 For our project we will most likely be using off the shelf parts.
-The depth sensor for example, will probably have to be a Microsoft Kinect.
+The depth sensor for example, will probably take the form of a Microsoft Kinect.
 The display projector will be used to overlay the graphics and user interface over the sand.
-The software used for the 3D graphics will be a game engine, probably something free such as Unity or the Unreal Engine.
+The software used for the 3D graphics will be a game engine, specifically something free such as Unity or the Unreal Engine.
+The benefit of using one of the aforementioned engines is that critical portions of the program such as interfacing with the depth sensor are handled by prebuilt plugins.
 The pointing device used to interact with the software could be either a custom piece of hardware or something off the shelf such as a Wii Remote.
 
 \section{Performance Metrics}
 The performance metrics for our project will primarily consist of a working prototype or proof of concept augmented reality sandbox.
-The deliverables in this case will consist both of the software program used for construction and road planning, as well as the hardware pointer device used to interact with the software.
-This will depend on successfully implementing the 3D graphics engine, either Unity or the Unreal Engine, with our own software interface.
-Along with the software, we will need to utilize hardware such as a Microsoft Kinect, or some sort of depth sensor, and a Wii Remote or other kind of pointing device.
+This entails creating both the software program used for construction and road planning, as well as the sandbox itself.
+This will depend on successfully implementing a 3D graphics engine, either Unity or the Unreal Engine, with our own software interface.
+The software should be capable of projecting a computer generated image on the sandbox that aligns with the physical geometry within a single projected pixel.
+At the very least, the software should display the path of a single road on the sandbox, along with a dynamic cut and fill table for that road that changes as the topography of the sandbox is modified.
+Digital information should begin updating in less than a second so as to allow quick, organic user interaction.
+In previous implementations, the projection would update only a small part of the sandbox at a time as the user sculpts the sand. 
+This is an acceptable and actually preferable solution as it decreases any perceived delay.
+Along with the software, we will need to utilize hardware such as a Microsoft Kinect, or some sort of depth sensor, as well as a projector in order to display imagery on the sand.
 \par
-Lastly, if the scope of this project turns out to be more than our team can handle, we may end up implementing only the software application and drop the user interface pointing device from our requirements.
-The most important part of the project will most likely be the construction and roadway planning software application.
-We will be able to discuss this further with our client if it turns out that we need to narrow the scope of our project.
+Lastly, if we manage to complete the aforementioned requirements before the project deadline, we will attempt to implement some of the following optional features.
+The first feature is a pointing device that can be used to interact with the sandbox.
+This device can take the form of either a custom piece of hardware or something off the shelf such as a Wii Remote.
+Alternatively, we could implement a suite of additional design tools for the sandbox such as cut and fill analysis for a user-inputted road segment, or for solving other civil engineering problems such as stopping sight distance.
+
 
 
 \end{document}
