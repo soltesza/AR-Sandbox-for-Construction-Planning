@@ -68,10 +68,9 @@
         \begin{abstract}
         % 6. Fill in your abstract    
         	Current techniques for building roads, bridges, and other civil engineering projects utilize two dimensional blueprints and three dimensional computer aided design.
-			However, these modern methods of highway and construction planning can be improved upon using more interactive and collaborative interfaces.
-			Therefore, our project consists of creating an augmented reality sandbox.
-			This sandbox would consist of a depth sensor and display projector, a novel software solution utilizing a game engine to project 3D graphics on the sand, and some sort of handheld mouse or pointer device to interact with elements of the user interface.
-			The use of a sandbox in particular will allow for more tactile user interaction with construction or road data.
+			However, these modern methods can be improved upon by using more interactive and collaborative interfaces.
+			Our project consists of creating an augmented reality sandbox, which will consist of a depth sensor and display projector, a novel software solution utilizing a game engine to project 3D graphics on the sand.
+			The use of the sandbox, in particular, will allow for more tactile user interaction with construction or road data.
         \end{abstract}     
     \end{singlespace}
 \end{titlepage}
@@ -85,39 +84,38 @@
 
 % 8. now you write!
 \section{Problem Description}
-Over the course of this project, our goal is to create a more innovative and interactive method of visualizing construction and highway planning.
+The goal of this project is to create a more innovative and interactive method of visualizing construction and highway planning.
 Currently, highway and construction planning uses a static drawing or three dimensional design which is iteratively reworked until sufficient.
+Creating an augmented reality interface will allow for better collaboration and a more tactile experience when planning for construction, road building, or many other forms of civil engineering.
 For our project, we drew inspiration from the UC Davis AR sandbox, the prototype of which was built by the UC Davis Department of Geology. More information about this earlier project can be found at https://arsandbox.ucdavis.edu/.
-Indeed, it can be argued that creating an augmented reality interface would allow for better collaboration and a more tactile experience when planning for construction, road building, or any other form of civil engineering.
-This would allow for instant feedback and an easier way to visualize planning data for all phases of construction and design.
+The sandbox will allow for near real-time feedback and an easier way to visualize the planning data for all phases of construction and design.
 \par
-Collaboration among members of a design committee or among different groups, such as state transportation agencies, construction contractors, design agencies, and even the public at large would be greatly enhanced by this augmented reality interface.
-It would ultimately allow those who are not usually involved in the design or planning process to take part and give valid input into a project that may affect them.
+Collaboration among members of a design committee or different groups (such as state transportation agencies, construction contractors, design agencies, or the public at large) will be greatly enhanced by this augmented reality interface.
+It will ultimately allow those who are not usually involved in the design or planning process to take part and give valid input into a project that may affect them.
 \par
-This project can be ultimately expanded to include other real world  problems such as earthwork planning and disaster recovery.
-Especially when recovering after a disaster it is important to plan ahead. Likewise, before an earthworks project can go forward, it must be planned out and simulated.
-This sandbox project would allow for interactive physical simulations that users can manipulate with their own hands.
+Eventually, this project can be expanded to include additional real world  problems, such as earthwork planning and disaster recovery.
+Especially when recovering after a disaster, it is important to plan ahead. Likewise, before an earthworks project can go forward, it must be planned out and simulated.
+This sandbox project will allow for interactive physical simulations that users can manipulate with their own hands.
 
 \section{Proposed Solution}
-We aim to create a self contained, interactive, and collaborative device, therefore our project has elements of both hardware and software.
-Our solution is a sandbox with an integrated depth sensor and display projector; a novel piece of software that would project 3D graphics onto the sand; and, optionally, a pointing device that can be used to interact with the software interface independent of the physical sandbox itself.
+We aim to create a self contained, interactive, and collaborative device; therefore, our project has elements of both hardware and software.
+Our solution is a sandbox with an integrated depth sensor, display projector, and software that will project 3D graphics onto the sand.
 \par
 For our project we will most likely be using off the shelf parts.
 The depth sensor for example, will probably take the form of a Microsoft Kinect.
-The display projector will be used to overlay the graphics and user interface over the sand.
-The software used for the 3D graphics will be a game engine, specifically something free such as Unity or the Unreal Engine.
-The benefit of using one of the aforementioned engines is that critical portions of the program such as interfacing with the depth sensor are handled by prebuilt plugins.
-The pointing device used to interact with the software could be either a custom piece of hardware or something off the shelf such as a Wii Remote.
+The display projector will be used to overlay the graphics and user interface onto the sand.
+The software used for the 3D graphics will be a game engine (specifically something free such as Unity or the Unreal Engine).
+The benefit of using a game engine is that critical portions of the program, such as interfacing with the depth sensor, are handled by prebuilt plugins.
 
 \section{Performance Metrics}
-The performance metrics for our project will primarily consist of a working prototype or proof of concept augmented reality sandbox.
-This entails creating both the software program used for construction and road planning, as well as the sandbox itself.
-This will depend on successfully implementing a 3D graphics engine, either Unity or the Unreal Engine, with our own software interface.
-The software should be capable of projecting a computer generated image on the sandbox that aligns with the physical geometry within a single projected pixel.
+The performance metrics for our project will primarily consist of a working prototype, or proof of concept, augmented reality sandbox.
+This entails creating both the sandbox itself and a software program to apply information relevent to construction and road planning. 
+Successfully implementing a 3D graphics engine, either Unity or the Unreal Engine, with our own software interface is required.
+The software should be capable of projecting a computer generated image on the sandbox that aligns with the physical geometry (within a single projected pixel).
 At the very least, the software should display the path of a single road on the sandbox, along with a dynamic cut and fill table for that road that changes as the topography of the sandbox is modified.
 Digital information should begin updating in less than a second so as to allow quick, organic user interaction.
-In previous implementations, the projection would update only a small part of the sandbox at a time as the user sculpts the sand. 
-This is an acceptable and actually preferable solution as it decreases any perceived delay.
+In previous implementations, the projection would update only a small part of the sandbox at a time, as the user sculpts the sand. 
+This is an acceptable, and actually preferable, solution as it decreases any perceived delay.
 Along with the software, we will need to utilize hardware such as a Microsoft Kinect, or some sort of depth sensor, as well as a projector in order to display imagery on the sand.
 \par
 Lastly, if we manage to complete the aforementioned requirements before the project deadline, we will attempt to implement some of the following optional features.
