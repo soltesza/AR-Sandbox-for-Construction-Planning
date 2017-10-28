@@ -1,0 +1,263 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{setspace}
+\usepackage{pgfgantt}
+\usepackage{geometry}
+\geometry{textheight=9.5in, textwidth=7in}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{		Team Sandy}
+\def \CapstoneTeamNumber{		44}
+\def \GroupMemberOne{			Andrew Soltesz}
+\def \GroupMemberTwo{			Mark Sprouse}
+\def \GroupMemberThree{			Raja Petroff}
+\def \CapstoneProjectName{		AR Sandbox for Construction Planning}
+\def \CapstoneSponsorCompany{	Oregon State University}
+\def \CapstoneSponsorPerson{		Dr. Joseph Louis}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{		%Problem Statement
+				Requirements Document
+				%Technology Review
+				%Design Document
+				%Progress Report
+				}
+			
+\newcommand{\NameSigPair}[1]{\par
+\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+\par\vspace{-12pt} \textit{\tiny\noindent
+\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+    \pagenumbering{gobble}
+    \begin{singlespace}
+    	\includegraphics[height=4cm]{coe_v_spot1}
+        \hfill 
+        % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+        %\includegraphics[height=4cm]{CompanyLogo}   
+        \par\vspace{.2in}
+        \centering
+        \scshape{
+            \huge CS Capstone \DocType \par
+            {\large\today}\par
+            \vspace{.5in}
+            \textbf{\Huge\CapstoneProjectName}\par
+            \vfill
+            {\large Prepared for}\par
+            \Huge \CapstoneSponsorCompany\par
+            \vspace{5pt}
+            {\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+            {\large Prepared by }\par
+            Group\CapstoneTeamNumber\par
+            % 5. comment out the line below this one if you do not wish to name your team
+            \CapstoneTeamName\par 
+            \vspace{5pt}
+            {\Large
+                \NameSigPair{\GroupMemberOne}\par
+                \NameSigPair{\GroupMemberTwo}\par
+                \NameSigPair{\GroupMemberThree}\par
+            }
+            \vspace{20pt}
+        }
+        %\begin{abstract}
+        % 6. Fill in your abstract    
+        %	This document is written using one sentence per line.
+        %	This allows you to have sensible diffs when you use \LaTeX with version control, as well as giving a quick visual test to see if sentences are too short/long.
+        %	If you have questions, ``The Not So Short Guide to LaTeX'' is a great resource (\url{https://tobi.oetiker.ch/lshort/lshort.pdf})
+        %\end{abstract}     
+    \end{singlespace}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+% 7. uncomment this (if applicable). Consider adding a page break.
+%\listoffigures
+%\listoftables
+\clearpage
+
+% 8. now you write!
+%rank by necessity:
+%Essential: lack of these features is unacceptable to the client
+%conditional: would enhance product but absence would not make it unacceptable to the client
+%optional: stretch goals
+
+%\section{Functionality}
+%What is the software supposed to do?
+
+%\section{External Interfaces}
+%How does the software interact with people, the system's hardware, other hardware, and software?
+
+%\section{Performance}
+%What is the speed, availability, response time, recovery time of the various software functions?
+
+%\section{Attributes}
+%What are the portability, correctness, maintainability, security, etc. considerations? 
+
+%\section{Design Constraints}
+%Are there any required standards in effect, implementation language, policies for database integrity, resource limits, operating environments, etc.?
+
+%see section 5 of IEEE std 830-1998 for description of sections
+\section{Introduction}
+\subsection{Purpose}
+The purpose of the requirements document is to outline what our product, the AR sandbox, will do and what is required for it to function.
+\par The intended audience of the requirements document is the client, our instructors, and any future students or engineers that wish to implement our product.
+\subsection{Scope}
+The product to be produced is an interactive augmented reality sandbox. Specifically, this sandbox will be referred to as the AR Sandbox. The software for the AR Sandbox will be used to specify road alignment and create a cut and fill table.
+\par The objective of the software is to make it easier for construction and civil engineers to collaborate and plan out highway and earthwork construction. Another relevant benefit is that students will be able to better visualize construction and civil engineering concepts.
+\subsection{Definitions, Acronyms, and Abbreviations}
+\begin{itemize}
+\item AR Sandbox: Augmented reality sandbox. This is the overall final product of our project. It is a sandbox with a projector that displays graphics on the sand, such as roadways and ground topology.
+\item Augmented reality: A way of mixing computer images with the user’s vision. This refers to the graphics displayed over the sand. When a user manipulates the sand, the graphics displayed will change.
+\end{itemize}
+\subsection{References}
+Original UC Davis AR Sandbox: https://arsandbox.ucdavis.edu/
+\subsection{Overview}
+The rest of the requirements document describes what our product is and what it is supposed to do. It describes the functionality and necessary constraints, such as the hardware required. It also describes performance metrics, design constraints, and lastly, stretch goals, which we will fulfill if given enough time after the original requirements are fulfilled. 
+\section{Overall Description} 
+\subsection{Product Perspective}
+The augmented reality sandbox is a self contained system. The majority of user interaction occurs on the surface of the sand itself. 
+Certain parameters can also be adjusted externally on a computer terminal.
+The software will interface with a depth sensor that will be used to capture height data from the sandbox, as well as a projector that will project data onto the sand.
+
+\subsection{Product Functions}
+The software will have the following functionality:
+\begin{itemize}
+\item A GUI that is projected onto the sand
+\item A visual representation of the topography of the sandbox in the form of contour lines and color-coded height values
+\item The ability to project additional details onto the sandbox such as roads
+\item Cut and fill data for a predefined road segment that is projected onto the topography
+\item An easy to understand user interface
+\end{itemize}
+
+\subsection{User Characteristics}
+The user of this software is assumed to be someone with a background in civil engineering, or a student currently pursuing a degree in civil engineering.
+The user is expected to have little to no experience interfacing with a program such as this, as the concept of an augmented reality sandbox is still quite novel.
+The user should however have general software experience and be able to navigate a simple user interface.
+
+\subsection{Constraints}
+Development of this application should not be subject to any additional constraints, due to the self contained nature of the system, as well as the lack of safety, security, or reliability concerns.
+
+\subsection{Assumptions and Dependencies}
+Our development schedule relies on the fact that we will be able to use an off the shelf depth sensor with a prebuilt plugin to interface with our program. If there is an issue either with hardware compatibility or the plugin itself, we will need to modify our development timeline.
+
+\subsection{Apportioning of Requirements}
+The following chart outlines the schedule that this project will follow:\\\\
+\begin{ganttchart}{1}{30}
+\gantttitle{AR Sandbox Weeks 1-30}{30} \\
+\gantttitlelist{1,...,30}{1} \\
+\ganttbar{Problem Statement}{2}{3} \\
+\ganttlinkedbar{Requirements Document}{4}{5} \ganttnewline
+\ganttmilestone{Begin Development}{10} \ganttnewline
+\ganttbar{Depth Sensor Integration}{11}{13} \ganttnewline
+\ganttbar{Mesh generation}{11}{13} \ganttnewline
+\ganttbar{Shader Creation}{11}{15} \ganttnewline
+\ganttbar{Component Integration}{16}{20} \ganttnewline
+\ganttbar{UI Development}{21}{22} \ganttnewline
+\ganttmilestone{End Development}{22} \ganttnewline
+\ganttbar{Add Additional Features}{23}{30} \ganttnewline
+\ganttlink{elem2}{elem3}
+\ganttlink[link type=f-f]{elem3}{elem4}
+\ganttlink[link type=f-f]{elem4}{elem5}
+\ganttlink[link type=f-s]{elem5}{elem6}
+\ganttlink[link type=f-s]{elem6}{elem7}
+\ganttlink{elem7}{elem8}
+\ganttlink{elem8}{elem9}
+\end{ganttchart}
+
+\section{Specific Requirements}
+\subsection{External Interface Requirements}
+\subsubsection{User Interfaces}
+\paragraph{Sandbox}
+The primary interface the user will use, the sandbox will be a box containing sand which can be manipulated by the user in order to alter the landscape being projected.
+\paragraph{Computer Terminal}
+The alternate interface for the user, the computer terminal interface will show what is being projected onto the sandbox as well as option and display mode settings.
+%\subsubsection{Hardware Interfaces}
+\subsubsection{Software Interfaces}
+\paragraph{Unity}
+The system shall be using the game engine Unity in order to capture the input from our depth sensor and render the proper images that will be projected onto the surface of the sand.  
+%\begin{itemize}
+%\item Unity Gaming Engine
+%\item Unity
+%\item Specification Number
+%\item Version Number
+%\item Source
+%\end{itemize}
+%\subsubsection{Communication Interfaces}
+
+\subsection{Functional Requirements}
+\subsubsection{Depth Mode (Default)}
+
+\paragraph{User observes sandbox}
+The different heights at different points in the sand shall be represented with different color shades projected on them.  The more red the color, the higher the point.  The more blue, the lower.
+
+\paragraph{User pushes the sand around, changing the landscape in the box}
+The colors on the sand shall adjust in accordance to the new height of the sand in the areas that have been changed. 
+
+
+\paragraph{User moves mouse on computer terminal near interactive object/button}
+The object shall appear or highlight itself in order to convey their interactivity with the mouse.  This include the tool-bars in the UI allowing the user to change modes or adjust settings.
+
+\paragraph{User changes the current display mode}
+The current display information shall go away and the information that corresponds to the display mode selected shall be projected.
+
+\subsubsection{Cut \& Fill Mode}
+
+\paragraph{User observes sandbox}
+
+
+\paragraph{User pushes the sand around, changing the landscape in the box}
+The colors along the road shall adjust to the new height of the sand along the road.  Any numerical information displayed shall update to the new values.
+
+\paragraph{User moves mouse on computer terminal near object or button}
+The object shall appear or highlight itself in order to convey their interactivity with the mouse.  This include the tool-bars in the UI allowing the user to change modes or adjust settings.
+
+\paragraph{User changes the current display mode}
+The current display information shall go away and the information that corresponds to the display mode selected shall be projected.
+
+
+\subsection{Performance Requirements}
+\subsubsection{Static Requirements}
+\paragraph{Terminals}
+The system will only handle a single sandbox, projector, and depth-sensor at a time.
+\paragraph{Max-Users}
+The system can handle as many users as can fit around the box and, thus, interact with the system.
+\subsubsection{Dynamic Requirements}
+\paragraph{Updating Display}
+95\% of user interactions shall be properly displayed within 2 seconds of input.
+
+\subsection{Design Constraints}
+\subsubsection{Hardware Constraints}
+\paragraph{Processing Power}
+The responsiveness and speed at which the depth map is calculated and displayed is dependent upon the computer built into the AR Sandbox. 
+\paragraph{Depth Sensor Accuracy}
+The precision of the depth map is dependent upon the accuracy of the Microsoft Kinect depth sensor.
+
+\subsection{Software System Attributes}
+\subsubsection{Maintainability}
+\paragraph{Modularity}
+The code shall be designed as a modular interface. This will allow anyone to extend the functionality of the software in the future.
+\paragraph{Interfaces}
+The software shall consist of a fully documented API. This will allow for easier maintainability and creation of new features.
+
+\subsubsection{Portability}
+\paragraph{Host-Dependent}
+The software shall be designed to run on the Microsoft Windows operating system.
+\paragraph{Code-Dependent}
+The software shall be written in C++, a programming language supported on many different platforms.
+
+\subsection{Other Requirements}
+\subsubsection{Stretch Goals}
+\paragraph{Stopping Sight Analytics Mode}
+An additional display mode, this would display the analytics of the road and the sand's terrain's effect on the stopping sight of vehicles on the road.  The color of the road shall shift closer and closer to red as the stopping sight on the road becomes lower and shall remain return back to the default color as the stopping distance reaches regular levels.
+\paragraph{Informational Side Column/Tool-bar}
+A side column built into the the side of the box, this area would be void of sand and be reserved for projecting data and information that is supposed to the read by the user.  All information pertaining to the current display mode shall be displayed here as well as the UI's tool-bar when moused over.
+\paragraph{Physical Mouse Pointer}
+In addition to having the mouse on the computer terminal, a physical remote could be held by the box and the system would treat it like the mouse pointer.  This allows the user to perform all computer terminal functionalities from the sandbox itself.
+
+
+\end{document}
