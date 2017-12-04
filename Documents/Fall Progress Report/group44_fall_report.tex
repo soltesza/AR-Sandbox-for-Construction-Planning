@@ -1,0 +1,186 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{float}
+\usepackage{setspace}
+
+\usepackage[colorinlistoftodos]{todonotes}%Take out when complete, allows intext comments during work
+
+\usepackage{geometry}
+\geometry{textheight=9.5in, textwidth=7in}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{		Team Sandy}
+\def \CapstoneTeamNumber{		44}
+\def \GroupMemberOne{			Raja Petroff			}
+\def \GroupMemberTwo{			Andrew Soltesz			}
+\def \GroupMemberThree{			Mark Sprouse}
+\def \CapstoneProjectName{		AR Sandbox for Construction Planning}
+\def \CapstoneSponsorCompany{	Oregon State University}
+\def \CapstoneSponsorPerson{		Dr. Joseph Louis}
+\title{Progress Report}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{		%Problem Statement
+				%Requirements Document
+				%Technology Review
+				%Design Document
+				Progress Report
+				}
+			
+\newcommand{\NameSigPair}[1]{\par
+\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+\par\vspace{-12pt} \textit{\tiny\noindent
+\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+    \pagenumbering{gobble}
+    \begin{singlespace}
+    	\includegraphics[height=4cm]{coe_v_spot1}
+        \hfill 
+        % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+        %\includegraphics[height=4cm]{CompanyLogo}   
+        \par\vspace{.2in}
+        \centering
+        \scshape{
+            \huge CS Capstone \DocType \par
+            {\large\today}\par
+            \vspace{.5in}
+            \textbf{\Huge\CapstoneProjectName}\par
+            \vfill
+            {\large Prepared for}\par
+            \Huge \CapstoneSponsorCompany\par
+            \vspace{5pt}
+            {\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+            {\large Prepared by }\par
+            Group\CapstoneTeamNumber\par
+            % 5. comment out the line below this one if you do not wish to name your team
+            %\CapstoneTeamName\par 
+            \vspace{5pt}
+            {\Large
+                \NameSigPair{\GroupMemberOne}\par
+                \NameSigPair{\GroupMemberTwo}\par
+                \NameSigPair{\GroupMemberThree}\par
+            }
+            \vspace{20pt}
+        }
+        \begin{abstract}
+        % 6. Fill in your abstract
+        This document covers the progress made on the Augmented Reality Sandbox capstone project fall term of the 2017-2018 school year. Specifically, this document recaps the scope of the project, discusses the current state of the project, discusses problems encountered thus far, breaks down the progress on a week-by-week basis, and reflects on what went well over the course of the term and what needs to change in the future.
+        \end{abstract}     
+    \end{singlespace}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+% 7. uncomment this (if applicable). Consider adding a page break.
+%\listoffigures
+%\listoftables
+\clearpage
+
+% 8. now you write!
+\section{Project Recap} %Raja
+The purpose of this project is to create an augmented reality sandbox for construction planning.
+This AR sandbox will radically redefine the way that highway and construction planning is done by greatly enhancing the collaborative design and planning among construction contractors, engineers, and state agencies.
+It will also give construction engineering students a hands on approach when learning about concepts, such as the cut and fill of a road, which are involved in highway planning.
+
+\par Our goal is to have a working AR sandbox with a road editing feature.
+This will allow engineers to manipulate both the terrain, represented by the sand, and the layout of a highway or roadway, represented by a graphic projected onto the sand.
+The AR sandbox will also calculate the cut and fill of the road automatically, giving engineers a rough estimate of the amount of material that will need to be moved in order to build a road.
+
+\section{Current Position} %Andrew
+Currently, we have established the problem our project is attempting to solve, agreed on a set of requirements for our project with our client, and drafted a plan for completing the project, both in terms of general completion times, and in terms of the actual composition of our system. This plan will however most likely change throughout next term as the intricacies of the system are designed. We tentatively plan to begin development over winter break, and start in earnest at the beginning of Winter term. Currently, we plan on being done with a majority of the project by the end of winter term, and will use spring term to polish our system and complete small tweaks.
+
+\section{Encountered Problems} %Mark
+All in all, things went smoothly over this term.
+Of the problems that we encountered, the majority were issues that were unfortunate, yet unavoidable.
+These included various issues which made it difficult to meet up as a group.
+In week 7, there was no class held which made our regular post-class meeting impractical.
+During week 8, Mark was flooded with work for other classes and had a MECOP event to attend, making him unavailable for the duration of the week.
+Finally, week 9 was the week of Thanksgiving which resulted in no time to meet as a group.
+
+
+Beyond troubles in scheduling our meet-ups, the only issues that were encountered were underestimating the work required/involvement of various assignments.
+Namely the requirements document, we were caught off guard by how much content was going into it.
+In the end, we went into more detail than necessary, but that ended up benefiting us when it came to creating the design document.
+
+\section{Week-by-week accomplishments}
+%Mark weeks 1-4
+%Andrew weeks 5-7
+%Raja weeks 8-10
+\begin{itemize}
+\item Week 1
+	\begin{itemize}
+	\item Decided which project we would like to work on this class
+    \item Created hypothetical professional biography to get thinking about future
+	\end{itemize}
+\item Week 2
+	\begin{itemize}
+	\item Met up as a group and exchanged contact information
+    \item Scheduled a meeting time with Joseph (our client) and Junki (our TA) for the first time
+	\end{itemize}
+\item Week 3
+	\begin{itemize}
+	\item Met with Junki and Joseph for the first time
+    \item Peer-reviewed our problem statements
+    \item Got Joseph's feedback on the problem statement
+	\end{itemize}
+\item Week 4
+	\begin{itemize}
+	\item Completed the Problem Statement
+    \item Began discussion on SRS and scheduled meeting to work on it
+	\end{itemize}
+\item Week 5
+	\begin{itemize}
+	\item Continued work on SRS
+    \item Met with Joseph to discuss the requirements document
+    \item Turned in a rough draft of the requirements document
+	\end{itemize}
+\item Week 6
+	\begin{itemize}
+	\item Met again with Joseph to review requirements document
+    \item Got final approval for the requirements document
+    \item Turned in requirements document
+	\end{itemize}
+\item Week 7
+	\begin{itemize}
+	\item Began thinking of potential topics for the tech review
+    \item Divided tech review topics among team members
+	\end{itemize}
+\item Week 8
+	\begin{itemize}
+	\item Did peer review of tech review in class
+    \item Finished and turned in rough draft of tech review
+	\end{itemize}
+\item Week 9
+	\begin{itemize}
+	\item Completed and submitted final draft of tech review.
+	\end{itemize}
+\item Week 10
+	\begin{itemize}
+	\item Completed and submitted preliminary design document.
+    \item Went over design document with client and he gave us some revisions to work on.
+	\end{itemize}
+\end{itemize}
+
+\section{Retrospective}
+
+\begin{center}
+\begin{tabular}{| p{0.3\linewidth}| p{0.3\linewidth}|p{0.3\linewidth}|}
+\hline
+ Positives & Deltas & Actions \\ \hline 
+ Got work done in timely manner & Increased communication on what people are working on day-to day & Create a shared Work-log \\ \hline
+ Worked efficiently & Increased utilization of github & Have more frequent and descriptive commits \\ \hline  
+ Assigning work and following through & Use pull-requests on github & Create branches when working off the codebase and pull-request to integrate \\ \hline
+ Pulled our own weight & & \\ \hline
+ Client Communication/Meeting Scheduling & & \\ \hline
+\end{tabular}
+\end{center}
+
+%\appendix
+
+\end{document}
