@@ -8,7 +8,6 @@ public class UpdateTerrain : MonoBehaviour {
 	public float scale = 10;		// size of the resulting mesh
 	public float magnitude = 1;		// maximum height of the resulting mesh
 
-	// Use this for initialization
 
 	void Start () {
 		Mesh mesh = new Mesh ();

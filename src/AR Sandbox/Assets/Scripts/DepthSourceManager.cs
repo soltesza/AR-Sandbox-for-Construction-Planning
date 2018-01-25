@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//included in Kinect for Unity Pro plugin example projects
+
+using UnityEngine;
 using System.Collections;
 using Windows.Kinect;
 
