@@ -40,7 +40,7 @@
 \begin{titlepage}
     \pagenumbering{gobble}
     \begin{singlespace}
-    	\includegraphics[height=4cm]{coe_v_spot1}
+    	%\includegraphics[height=4cm]{coe_v_spot1}
         \hfill 
         % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
         %\includegraphics[height=4cm]{CompanyLogo}   
@@ -98,8 +98,8 @@ This document expands on the features defined in the Software Requirements Docum
 
 \subsection{Glossary}
 \begin{itemize}
-\item AR Sandbox: Augmented reality sandbox. A physical sandbox with a depth sensor and projector that displays graphics on the sand, such as roadways and ground topology.
-\item Augmented Reality: A way of mixing computer images with the user's vision. This refers to the graphics displayed over the sand. When a user manipulates the sand, the graphics displayed on the sand will change.
+\item Augmented Reality Sandbox (AR Sandbox): A physical sandbox with a depth sensor and projector that displays graphics on the sand, such as roadways and ground topology.
+\item Augmented Reality: A term referring to any technology that superimposes computer generated imagery on the real world. In this case, the term refers to the graphics projected onto the sand. When a user manipulates the sand, the graphics displayed on the sand will change.
 \item Projection: The image cast on the sand's surface by the projector
 \item Depth Sensor: A digital imaging device which uses a grayscale image to represent the distance from the sensor to the nearest surface.
 \item SSD: Software Specification Document
@@ -117,7 +117,12 @@ This document expands on the features defined in the Software Requirements Docum
 
 The AR Sandbox for Construction Planning is an augmented reality sandbox with additional functionality built in for civil engineering applications.
 At any point, the sandbox will be set to one of four different modes.
-These modes and how they behave are outline below.
+These modes and how they behave are outlined in this section, after the system components are discussed.
+
+\vfill
+
+\subsection{System Components}
+\par Figure 1 shows the different hardware and software components of the AR sandbox and how they interact. This diagram serves as a general overview of the entire system, with each component being explored in greater detail later in the document.
 
 \begin{figure}[H] 
 	\centering
@@ -131,7 +136,8 @@ These modes and how they behave are outline below.
 % As opposed to the low-level list of stimuli and reactions
 %-----------------------------------------------
 
-\subsection{Calibration Mode}
+\subsection{System Modes}
+\subsubsection{Calibration Mode}
 Calibration mode is used to calibrate the depth sensor and projector, mainly for use during the initial set\-up process for the sandbox. A summary of features is listed below:
 
 \begin{itemize}
@@ -149,7 +155,7 @@ The computer terminal is used to move this outline around until it lines up with
 The current display information shall be replaced with the information that corresponds to the display mode selected.
 \end{itemize}
 
-\subsection{Depth Mode}
+\subsubsection{Depth Mode}
 While in Depth Mode, the program will visually represent the height of the sand using color and contour lines. Below is an overview of Depth Mode's features:
 
 \begin{itemize}
@@ -159,14 +165,9 @@ The different heights at different points along the surface of the sand shall be
 \item \textbf{User physically manipulates the sand, changing the landscape in the box}
 The visual representation projected on the sand shall adjust in accordance to the new height of the sand in the areas that have been altered. 
 
-\item \textbf{User moves mouse on computer terminal near interactive object/UI element}
-The object shall appear or highlight itself in order to convey their interactivity with the mouse.
-
-\item \textbf{User changes the current display mode}
-The current display information shall be replaced with the information that corresponds to the display mode selected.
 \end{itemize}
 
-\subsection{Design Mode}
+\subsubsection{Design Mode}
 Design mode is used to control the shape of the road segment that is projected onto the terrain. A summary of features is listed below:
 
 \begin{itemize}
@@ -176,15 +177,12 @@ A segment of road is displayed.
 \item \textbf{User uses the computer terminal to edit the path of the road}
 The user shall be able to adjust the position and curvature of the road.
 The user shall be able to place additional manipulation points along the road which can be used to further refine the path of the road.
-A reset button shall be present to revert the road back to its previous path.
+A edit/reset button shall be present to revert the road back to its previous path.
 The User shall be able to undo unwanted changes.
 
-\item \textbf{User changes the current display mode}
-Handles along the road shall disappear and the road segment shall no longer be editable.
-The new road segment shall be used in whatever display mode is selected.
 \end{itemize}
 
-\subsection{Cut \& Fill Mode}
+\subsubsection{Cut \& Fill Mode}
 Cut and Fill mode is used to visualize the volumes of material that must be added or removed in order to achieve the desired road path. A summary of this mode's features is outlined below:
 
 \begin{itemize}
@@ -194,11 +192,6 @@ A road shall be displayed traversing the surface of the sand.  Along this road, 
 \item \textbf{User physically manipulates the sand, changing the landscape in the box}
 The representation along the road and the additional information described above shall adjust in accordance to the new height of the sand.
 
-\item \textbf{User moves mouse on computer terminal near object or button}
-The object shall appear or highlight itself in order to convey their interactivity with the mouse.
-
-\item \textbf{User changes the current display mode}
-The current display information shall be replaced with the information that corresponds to the display mode selected.
 \end{itemize}
 %---------------------------------
 % May want to reorganize these sections.  Just need to cover all bases, how we organize is up to us.
@@ -208,22 +201,28 @@ The current display information shall be replaced with the information that corr
 %Provide a model for our solution
 %What is going to make up the system described above?
 The purpose of this section is to provide the model of our AR Sandbox System.  
-The Architectural Design section demonstrates how this system is comprised of various components which interact with one another; these relationships and interactions are explained and displayed with diagrams and figures. 
-The Decomposition Description goes into further detail about each of these components and how they are implemented.
-Lastly, the Design Rationale provides reasoning behind some of the design choices presented prior.
+The Architectural Design subsection demonstrates how this system is comprised of various components which interact with one another; these relationships and interactions are explained and displayed with diagrams and figures. 
+The Decomposition Description subsection goes into further detail about each of these components and how they are implemented.
+Lastly, the Design Rationale subsection provides reasoning behind some of the design choices presented previously.
 
 \subsection{Architectural Design}
+\par Figure 2 gives an overview of the software architecture and shows how the different components, such as the heightmap and vertex/fragment shader takes the input from the depth sensor and renders it into a terrain mesh.
+
+
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=6in]{SysArch}
-    \caption{System Architecture}
     \label{fig:sysarchitecture}
 \end{figure}
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=2in]{SysArchKey}
+    \caption{System Architecture}
+\end{figure}
 
-
-\subsection{Decomposition Description}
+%\subsection{Decomposition Description}
 %Talk about the nodes described in Arch. Design. 
 \subsubsection{Depth Sensor API} %Mark
 
@@ -263,12 +262,12 @@ The first is responsible for coloring the terrain mesh in order to visually repr
 The second is used to color road segments to represent cut and fill data. 
 The visual appearance of these shaders will change depending on the current display mode.
 
-\subsubsection{UI} %Raja
+\subsubsection{User Interface} %Raja
 The user interface allows the user to manipulate the design of the road or change the display mode.
 The user will interface with the software via a standard computer terminal with a mouse and keyboard.
 The user can also manipulate the sand which will change the topography outputted by the software.
 
-\subsubsection{Render}  %Andrew
+\subsubsection{Renderer}  %Andrew
 The rendering subsystem is handled by the Unity engine, and is accessed indirectly through shaders and Unity's UI system.
 
 \subsection{Design Rationale}
@@ -282,6 +281,8 @@ The decision to separate different display modes into distinct modules allows fo
 
 
 \subsection{Architectural Design}
+Figure 3 shows the physical design of our AR sandbox.
+The sandbox is a mobile box filled with sand and has an arm with a projector and depth sensor connected to an adjacent computer terminal. The components related to the physical architecture of the sandbox are described below.
 
 \begin{figure}[H]
 	\centering
@@ -289,11 +290,6 @@ The decision to separate different display modes into distinct modules allows fo
     \caption{Physical Architecture}
     \label{fig:physicalarchitecture}
 \end{figure}
-
-\subsection{Decomposition Description}
-%Talk about the nodes described in Arch. Design. 
-%\subsubsection{Physical Sandbox}
-%\todo[inline]{What are the dimensions of our sandbox going to be?  How much sand do we want?}
 
 \subsubsection{Depth Sensor}
 
