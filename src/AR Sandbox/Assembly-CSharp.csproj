@@ -51,16 +51,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Kinect examples\Scripts\BodySourceManager.cs" />
-     <Compile Include="Assets\Kinect examples\Scripts\BodySourceView.cs" />
-     <Compile Include="Assets\Kinect examples\Scripts\ColorSourceManager.cs" />
-     <Compile Include="Assets\Kinect examples\Scripts\ColorSourceView.cs" />
-     <Compile Include="Assets\Kinect examples\Scripts\DepthSourceView.cs" />
-     <Compile Include="Assets\Kinect examples\Scripts\DisableOnStart.cs" />
-     <Compile Include="Assets\Kinect examples\Scripts\InfraredSourceManager.cs" />
-     <Compile Include="Assets\Kinect examples\Scripts\InfraredSourceView.cs" />
-     <Compile Include="Assets\Kinect examples\Scripts\MultiSourceManager.cs" />
-     <Compile Include="Assets\Scripts\DepthSourceManager.cs" />
      <Compile Include="Assets\Scripts\FPSDisplay.cs" />
      <Compile Include="Assets\Scripts\UpdateTerrain.cs" />
      <None Include="Assets\Shaders\TerrainShader.shader" />
@@ -148,10 +138,6 @@
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/Andrew/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{AA280155-D46E-CA6A-36E6-AAD64A1F03F2}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

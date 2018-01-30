@@ -1,21 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Windows.Kinect;
 
 public class UpdateTerrain : MonoBehaviour {
-	public GameObject DepthSourceManager;
 	public Texture2D heightmap;
 	public float scale = 10;		// Size of the resulting mesh
 	public float magnitude = 1;		// Maximum height of the resulting mesh
 
-	private DepthSourceManager dsm;
-    private CoordinateMapper mapper;
-    private KinectSensor sensor;
 	private Mesh mesh;
 	private float spacing;		// The distance between vertices in the mesh
-
-    private const int downsampleSize = 4;   // The amount to downsample the raw depth sensor data
 
     // Create a new mesh by generating a set of vertices and triangles
     void CreateMesh(int width, int height) {
@@ -53,14 +46,10 @@ public class UpdateTerrain : MonoBehaviour {
 
 	//update the terrain mesh with height data from Kinect sensor
 	void UpdateMesh() {
-        if (sensor == null)
-            return;
-
 		Color[] pixels;
-
 		pixels = heightmap.GetPixels ();			// Get array of pixels from heightmap
 
-		// Initialize vertex and triangle arrays
+		// Initialize vertex array
 		Vector3[] vertices = new Vector3[pixels.Length];
 
 		// Populate vertex array
@@ -79,26 +68,9 @@ public class UpdateTerrain : MonoBehaviour {
 		spacing = scale / heightmap.height;
 
 		mesh = new Mesh ();		// Initialize mesh
-
 		GetComponent<MeshFilter> ().mesh = mesh;
-		if (DepthSourceManager != null) {
-			dsm = DepthSourceManager.GetComponent<DepthSourceManager> ();
-		}
 
-		//CreateMesh (heightmap.width, heightmap.height);
-
-        sensor = KinectSensor.GetDefault();
-        if(sensor != null) {
-            var frameDesc = sensor.DepthFrameSource.FrameDescription;
-            mapper = sensor.CoordinateMapper;
-
-            // Downsample to lower resolution
-            CreateMesh(frameDesc.Width / downsampleSize, frameDesc.Height / downsampleSize);
-
-            if (!sensor.IsOpen) {
-                sensor.Open();
-            }
-        }
+		CreateMesh (heightmap.width, heightmap.height);
 	}
 
 
@@ -106,19 +78,4 @@ public class UpdateTerrain : MonoBehaviour {
 		UpdateMesh ();
 	}
 
-
-    void OnApplicationQuit()
-    {
-        if (_Mapper != null) {
-            _Mapper = null;
-        }
-
-        if (sensor != null) {
-            if (sensor.IsOpen) {
-                sensor.Close();
-            }
-
-            sensor = null;
-        }
-    }
 }
