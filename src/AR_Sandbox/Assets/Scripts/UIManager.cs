@@ -38,16 +38,20 @@ public class UIManager : MonoBehaviour {
     public void Depth()
     {
         Debug.Log("Depth Mode Clicked");
+        ModeManager.dMode = DisplayMode.Depth;
     }
 
     public void Design()
     {
         Debug.Log("Design Mode Clicked");
+        ModeManager.dMode = DisplayMode.Design;
     }
 
     public void CutAndFill()
     {
         Debug.Log("Cut and Fill Mode Clicked");
+
+        ModeManager.dMode = DisplayMode.CutFill;
 
         if (CutAndFillPanel.gameObject.activeSelf)
             CutAndFillPanel.gameObject.SetActive(false);
@@ -58,6 +62,7 @@ public class UIManager : MonoBehaviour {
     public void Calibrate()
     {
         Debug.Log("Calibrate Mode Clicked");
+        ModeManager.dMode = DisplayMode.Calibrate;
     }
 
     public void Pause()
