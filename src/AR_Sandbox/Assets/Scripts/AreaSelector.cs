@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AreaSelector : MonoBehaviour {
-	//private Vector2 lowerLeftPos, lowerRightPos, upperLeftPos, upperRightPos;
-
 	public RectTransform lowerLeft, lowerRight, upperLeft, upperRight;
 
 	// Use this for initialization
@@ -12,13 +10,6 @@ public class AreaSelector : MonoBehaviour {
 		if (lowerLeft == null || lowerRight == null || upperLeft == null || upperRight == null) {
 			Debug.LogError ("AreaSelector: a corner handle has not been assigned!");
 		}
-
-		/*
-		lowerLeftPos = lowerLeft.anchoredPosition;
-		lowerRightPos = lowerRight.anchoredPosition;
-		upperLeftPos = upperLeft.anchoredPosition;
-		upperRightPos = upperRight.anchoredPosition;
-		*/
 	}
 	
 	public void DragLowerLeft() {
