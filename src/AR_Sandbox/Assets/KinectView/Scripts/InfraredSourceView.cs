@@ -8,7 +8,7 @@ public class InfraredSourceView : MonoBehaviour
     
     void Start () 
     {
-        gameObject.renderer.material.SetTextureScale("_MainTex", new Vector2(-1, 1));
+        gameObject.GetComponent<Renderer>().material.SetTextureScale("_MainTex", new Vector2(-1, 1));
     }
     
     void Update()
@@ -24,6 +24,6 @@ public class InfraredSourceView : MonoBehaviour
             return;
         }
     
-        gameObject.renderer.material.mainTexture = _InfraredManager.GetInfraredTexture();
+        gameObject.GetComponent<Renderer>().material.mainTexture = _InfraredManager.GetInfraredTexture();
     }
 }

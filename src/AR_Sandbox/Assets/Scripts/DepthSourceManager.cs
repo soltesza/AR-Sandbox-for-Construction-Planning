@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿//Included in Microsoft's Kinect for Unity plugin example scene
+
+using UnityEngine;
 using System.Collections;
 using Windows.Kinect;
 

@@ -9,7 +9,7 @@ public class ColorSourceView : MonoBehaviour
     
     void Start ()
     {
-        gameObject.renderer.material.SetTextureScale("_MainTex", new Vector2(-1, 1));
+        gameObject.GetComponent<Renderer>().material.SetTextureScale("_MainTex", new Vector2(-1, 1));
     }
     
     void Update()
@@ -25,6 +25,6 @@ public class ColorSourceView : MonoBehaviour
             return;
         }
         
-        gameObject.renderer.material.mainTexture = _ColorManager.GetColorTexture();
+        gameObject.GetComponent<Renderer>().material.mainTexture = _ColorManager.GetColorTexture();
     }
 }
