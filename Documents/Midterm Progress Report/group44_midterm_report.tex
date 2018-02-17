@@ -1,0 +1,369 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{float}
+\usepackage{setspace}
+
+% Used for code listings
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=[Sharp]C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\usepackage[colorinlistoftodos]{todonotes}%Take out when complete, allows intext comments during work
+
+\usepackage{geometry}
+\geometry{textheight=9.5in, textwidth=7in}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{		Team Sandy}
+\def \CapstoneTeamNumber{		44}
+\def \GroupMemberOne{			Raja Petroff			}
+\def \GroupMemberTwo{			Andrew Soltesz			}
+\def \GroupMemberThree{			Mark Sprouse}
+\def \CapstoneProjectName{		AR Sandbox for Construction Planning}
+\def \CapstoneSponsorCompany{	Oregon State University}
+\def \CapstoneSponsorPerson{		Dr. Joseph Louis}
+\title{Progress Report 2}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{		%Problem Statement
+				%Requirements Document
+				%Technology Review
+				%Design Document
+				Progress Report
+				}
+			
+\newcommand{\NameSigPair}[1]{\par
+\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+\par\vspace{-12pt} \textit{\tiny\noindent
+\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+    \pagenumbering{gobble}
+    \begin{singlespace}
+    	\includegraphics[height=4cm]{coe_v_spot1}
+        \hfill 
+        % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+        %\includegraphics[height=4cm]{CompanyLogo}   
+        \par\vspace{.2in}
+        \centering
+        \scshape{
+            \huge CS Capstone \DocType \par
+            {\large\today}\par
+            \vspace{.5in}
+            \textbf{\Huge\CapstoneProjectName}\par
+            \vfill
+            {\large Prepared for}\par
+            \Huge \CapstoneSponsorCompany\par
+            \vspace{5pt}
+            {\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+            {\large Prepared by }\par
+            Group\CapstoneTeamNumber\par
+            % 5. comment out the line below this one if you do not wish to name your team
+            %\CapstoneTeamName\par 
+            \vspace{5pt}
+            {\Large
+                \NameSigPair{\GroupMemberOne}\par
+                \NameSigPair{\GroupMemberTwo}\par
+                \NameSigPair{\GroupMemberThree}\par
+            }
+            \vspace{20pt}
+        }
+        \begin{abstract}
+        % 6. Fill in your abstract
+                This document covers the progress made on the Augmented Reality Sandbox for Construction Planning capstone project.
+                Specifically, this document covers the first six weeks of winter term of the 2017-2018 school year.
+                Included in this document is a recap of the scope of the project, a discussion of the current state of the project, problems encountered thus far, future tasks we still need to accomplish, and a conclusion reflecting on how much we've completed and where we plan on going from here.
+        \end{abstract}     
+    \end{singlespace}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+% 7. uncomment this (if applicable). Consider adding a page break.
+%\listoffigures
+%\listoftables
+\clearpage
+
+% 8. now you write!
+\section{Project Recap}
+The purpose of this project is to create an interactive augmented reality (AR) sandbox for construction planning.
+This will enable engineers to collaborate, plan, communicate, and learn about these civil concepts in a convenient manner.
+It will also give construction engineering students a hands on approach when learning about important concepts, such as the cut and fill of a road, which are involved in highway planning.
+\par Our goal is to have a working AR sandbox with a road editing feature.
+This will allow engineers to manipulate both the terrain, represented by the sand, and the layout of a highway or roadway, represented by a graphic projected onto the sand.
+The AR sandbox will also calculate the cut and fill of the road automatically and represent it with different colors. This will give engineers a rough approximation of the amount of earth that will need to be moved in order to create a level roadway.
+
+
+\section{Raja}
+
+\subsection{Current Position}
+
+\subsubsection{Depth Visualization}
+Depth visualization is a way of interpreting the height or depth of a landscape or feature.
+It can be used to model or visualize the terrain of a geographic area. For our project, the feature being visualized is the height or depth of sand in a sandbox.
+Currently, we have a color map which allows for an easy and convenient way to represent the altitude or elevation of our terrain.
+The color map works by using different colors to represent the height.
+Specifically, blue is used to represent low areas near sea level, while green is used to represent midland areas, and red used to represent areas of high elevation.
+
+\subsubsection{Cut and Fill Visualization}
+Cut and fill is used to indicate portions of existing terrain that need to be removed or filled in to create the proposed grade along the centerline of a new roadway.
+Visualizing the cut and fill helps engineers determine the amount of earth needed to be moved to create a roadway.
+Right now, we have an interface window that will eventually be used to display the cut and fill information.
+However, the cut and fill logic, such as calculating the amount of earth that needs to be cut or filled, is not yet implemented.
+
+\subsubsection{User Interface}
+The user will be able to change the mode of the software through the user interface.
+Our interface is a regular mouse and keyboard interface that we created using the built in Unity tools.
+As of right now, the user interface can be considered complete.
+The main menu and buttons are created and can track the state the software is in.
+For example, pressing the depth mode button will switch the software into depth mode.
+However, some of the modes are not yet complete, so for now some of the buttons write a message to the Unity debug console which lets us know that the button works.
+
+\subsection{Future Tasks}
+
+\subsubsection{Depth Visualization}
+Depth visualization is complete, save for the contour lines as mentioned in our design document.
+We plan on implementing the contour lines soon.
+We will probably use an edge detection function that generates a two-dimensional texture that we can then overlay on top of the terrain mesh.
+However, due to time constraints, if this proves more difficult than anticipated we will simply stick with our existing color map to visualize depth.
+
+\subsubsection{Cut and Fill Visualization}
+Most of the cut and fill functionality still needs to be implemented.
+For example, the cut and fill information will be put into a table and displayed on a floating panel.
+This information will also be used to visualize the cut and fill on the terrain mesh.
+This will be done by shading areas that need to be filled with a blue color and shading areas that need to be cut with a red color.
+
+\subsubsection{User Interface}
+The user interface is complete, for the most part.
+We have a menu, buttons and can track the state the software is in.
+Our client, Dr. Joseph Louis, expressed that he wanted the interface to look nice.
+We plan on redesigning the interface so that it looks better.
+However, right now the user interface works, and we need to focus on implementing the rest of the software's features.
+
+\subsection{Encountered Problems}
+
+\subsubsection{Depth Visualization}
+We are working on integrating contour lines into our depth visualization to make a topographic map that is displayed over the sand.
+Right now, while we can generate the contour map, applying it to our terrain mesh has been difficult.
+However, we may be able to solve this problem by somehow blending it with the heightmap.
+
+\subsubsection{Cut and Fill Visualization}
+Much of our development has been bottlenecked by hardware problems or other parts of the software that needed to be implemented first.
+Because of this, most of the cut and fill visualization still needs to be implemented.
+
+\subsubsection{User Interface}
+We've had relatively few problems with the user interface.
+For our purposes, it's finished and functional, but we will need to redesign it later it so that it looks nice.
+
+\subsection{Relevant/Interesting Information}
+The logic for the user interface is implemented using a management script written in C\#.
+This UI manager listens for an event such as the user clicking the mouse or pressing a hotkey.
+It then executes a function such as changing the mode.
+\\
+\begin{lstlisting}[caption=Above is a code snippet from the UI manager demonstrating how the UI works., label=lst:UI,captionpos=b]
+    void Update()
+    {
+        //If player presses escape and game is not paused. Pause game. 
+        //If game is paused and player presses escape, unpause.
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
+            Pause();
+        else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+            UnPause();
+    }
+    public void CutAndFill()
+    {
+        //Debug.Log("Cut and Fill Mode Clicked");
+        ModeManager.dMode = DisplayMode.CutFill;
+        if (CutAndFillPanel.gameObject.activeSelf)
+            CutAndFillPanel.gameObject.SetActive(false);
+        else
+            CutAndFillPanel.gameObject.SetActive(true);
+    }
+\end{lstlisting}
+
+By default, the main menu is hidden.
+Pressing the escape key toggles showing the main menu.
+The depth mode, design mode, calibrate mode, and cut and fill mode buttons change the state of the software, as well as write a debug message to the screen.
+In addition, the cut and fill button will toggle showing the cut and fill information panel.
+Lastly, the restart button can be used to reload the current scene in Unity, and the quit button exits the application.
+
+\par At a fundamental level, the UI helps track which mode the software is in.
+Different modes are contained in separate scripts which makes this project modular and extensible.
+
+
+\section{Andrew}
+
+\subsection{Current Position} 
+Currently, all components of the UI are present and can be interacted with. Menus have been implemented and can be opened, closed and dragged as appropriate. Visually, the UI is organized in a logical manner, however it may benefit from additional polish once we complete the beta version. A state machine is in place to handle different display modes, however at this point its only task is to keep track of which mode the system is currently in.
+
+The Unity project itself has been configured for our needs. Lighting has been removed, the background color has been changed to black, and the camera mode has been set to orthographic. Through Mark's efforts, Unity has been set up to interact correctly with Git, and a suitable gitignore has been created to handle Unity's copious metadata.
+
+Depth sensor integration is complete, meaning that the depth data from the Kinect sensor is visible within Unity as a colored three dimensional mesh. This is accomplished using Microsoft's Kinect SDK and Kinect for Unity plugin. I created an empty game object to hold a script that requests a frame of depth information from the Kinect. This script is referenced by another script, \texttt{UpdateTerrain}, which uses this depth data to modify the \texttt{y} position of the vertices that make up the terrain mesh. In Unity, a mesh is made up of an array of three dimensional vectors that define the mesh's vertices, and an array of integers that define triangles. Previously, the entire terrain mesh would be thrown away and re-created every time it was updated, which proved to be resource intensive and inefficient. Instead the current system only modifies the vertex array to reflect changes in the terrain height, leaving the triangle array intact. The triangle array is more resource intensive to generate, as three array elements are needed to specify a single triangle, of which the mesh has roughly 257,702, so removing this step caused our framerate to increase from roughly 12 or 13 frames per second to roughly 40 frames per second.
+
+\subsection{Future Tasks}
+The next step towards a full release will be to integrate calibration mode, which will allow the user to align the projector's output with the input from the depth sensor. This mode will also give the user the option to adjust the bounds of the sandbox, and adjust the minimum and maximum sand heights.
+
+Another change will be to reduce the amount of sensor noise in the mesh. Currently, noise seems to come in two flavors: low-magnitude white noise that makes the mesh appear to ripple, and high-magnitude single pixel spikes that happen occasionally. Reducing noise could be accomplished by averaging the pixels in the depth map to remove high magnitude spikes, and implementing a minimum threshold of of height change below which the height would remain unchanged in order to reduce low magnitude noise. Another possible concern is caused by sharp edges and undercuts; the Kinect sensor displays such areas as having a height of zero, since it isn't able to determine the actual height of the area. This may not be an issue with the sandbox since the sand should provide a relatively continuous surface, but it still has the potential to cause hangups in the future.
+
+Independent from the depth visualization component of the project, another major task will be to implement user-editable bezier curves to represent road segments. The first hurdle will be to draw a procedural curve to the screen, then to give the user the ability to edit its parameters. The resulting curve will be used to calculate the amount of earth needing to be added/removed in order to create the specified road. This data will then need to be graphically represented on the curve. This will most likely be accomplished with a shader that colors the curve based on a one dimensional texture containing the cut/fill information for the road. Overall, the most challenging part of this portion of the system will be allowing the user to edit the curve, since they will only be able to see a top down view of it, but will need to be able to make changes in three dimensions.
+
+\subsection{Encountered Problems} 
+One major problem I encountered over the course of the term is the implementation of the depth sensor. Our client wanted to try an Intel RealSense camera, after I had already begun implementing the Microsoft Kinect interface. This required me to remove the components relating to the Kinect that I had already added to the Unity project in order to make way for the RealSense components. The camera took two weeks to arrive, and upon arrival I tested its capabilities with Intel's RealSense viewer, a program packaged with the SDK. The camera was unable to capture depth information from anything more than a meter away, meaning that it wouldn't work for our project. I then had to re-integrate the Kinect into the project. 
+
+\subsection{Relevant/Interesting Information}
+Below is the code that initially generates the terrain mesh. The function's arguments are the number of vertices to generate in the x and y directions. \texttt{vertices} is a globally defined array of three dimensional vectors, and \texttt{triangles} is a globally defined array of integers. \texttt{mesh} is a globally defined object of type Mesh. After initializing both arrays, the function first initializes values for the vertex array. This is done using a nested for loop, with the index of each loop representing a spatial dimension. Since we currently don't have any height data, the height of each vertex is set to zero. Following this, the triangle array is populated. A triangle is defined using the indices of three vertices that will make up the points of the triangle. Each iteration of the for loop defines two triangles, hence the six assignments. When defining triangles, the order in which the points are defined matters and dictates the triangle's orientation. To this end, the points are assigned counter-clockwise. Once both arrays have been populated, the mesh's vertex and triangle arrays are assigned and the mesh's normals are re-calculated.
+
+\begin{lstlisting}
+void CreateMesh(int x, int y) {
+    // Initialize vertex and triangle arrays
+    vertices = new Vector3[x * y];
+	triangles = new int[(y - 1) * (x - 1) * 6];
+
+	// Populate vertex array
+	for (int i = 0; i < y; i++) {
+		for (int j = 0; j < x; j++) {
+			vertices [j + x * i] = new Vector3 (j * spacing, 0, i * spacing);
+		}
+	}
+
+	int idx = 0; // index for triangle array
+
+	// Populate triangle array
+	for (int i = 0; i < y - 1; i++) {
+		for (int j = 0; j < x - 1; j++) {
+
+			triangles [idx++] = j + x * i; 				// '
+			triangles [idx++] = j + x * (1 + i);		// :
+			triangles [idx++] = 1 + j + x * i;	 		// :'
+
+			triangles [idx++] = j + x * (1 + i);		// .
+			triangles [idx++] = 1 + j + x * (1 + i); 	// ..
+			triangles [idx++] = 1 + j + x * i; 			// .:
+		}
+	}
+
+	mesh.vertices = vertices;
+	mesh.triangles = triangles;
+	mesh.RecalculateNormals();
+}
+\end{lstlisting}
+
+The following function updates the existing mesh based on height data from the Kinect sensor. This function is called every frame, although in future versions this may be optimized to only be called every 30th of a second. \texttt{sensor} is a an object of type KinectSensor and is used to query information about the Kinect. In this case, we are requesting the dimensions of the depth image. The order of the vertex array matters, since triangles are defined based on the indices of specific vertices. Therefore, it is important to update the height value of each vertex in the same order that it was assigned initially. The height data is obtained from the frame of height data in the form of an unsigned short, which then must be normalized so that the resulting terrain mesh has a controllable maximum height. Currently this is accomplished with an arbitrary value which depends on the minimum distance between the sensor and the terrain surface. The vertex is updated with the corresponding height value. Finally, the mesh is updated with the new vertex array.
+
+\begin{lstlisting}
+void UpdateMesh(ushort[] heightData) {
+	var frameDesc = sensor.DepthFrameSource.FrameDescription;
+
+	// Populate vertex array
+	for (int i = 0; i < frameDesc.Height/downsampleSize; i++) {
+		for (int j = 0; j < frameDesc.Width/downsampleSize; j++) {
+			ushort y = heightData [j * downsampleSize + frameDesc.Width * i * downsampleSize];		// Get Y value from Kinect height data
+			float yNorm = (float)y / maxDist; 														// Normalize height	
+			vertices [j + frameDesc.Width/downsampleSize * i] = new Vector3 (j * spacing, yNorm * magnitude, i * spacing);
+		}
+	}
+
+	mesh.vertices = vertices;
+	mesh.RecalculateNormals();
+}
+\end{lstlisting}
+
+\section{Mark}
+\subsection{Current Position} 
+At this point, we have the software of a basic AR Sandbox complete.  The system is able to visualize what its depth sensor is detecting and display the height as different colors/shades.  In addition, we have the majority of the UI and function interfaces complete.  We have a state machine, in the background, which keeps track of what function mode the system is in (which can be changed through our menu).
+Our client, Dr. Louis, is still working on putting together the physical sandbox, but we have gotten the depth sensor and projector ahead of time as they are the pieces that our software is directly interfacing with.  With the software, projector, and depth sensor we are able to create a makeshift sandbox in order to test.
+
+
+\subsection{Future Tasks}
+%Integrate the Cut and fill analytics
+%Give calibration mode actual substance and have box functions depend on settings
+%Implement a Bezier curve to represent the road
+%Alter the UI so that it looks good when displayed onto the sand
+We have a skeleton of our system in place, now all that is left to do is flush it out.  The first step is to alter to behavior of the box depending on what display mode it is in.  As it stands, it keeps track of the mode but does nothing with that information.  Before that, those behaviors are going to have to actually be programmed.  Each of these behaviors/modes and what needs to be done in their regard are described below.  
+
+\subsubsection{Design Mode}
+The Design Mode needs to allow for the user to edit a road which traverses the length of the sandbox.  In order to do this, we need to create a Bezier curve with several nodes along its path that can be dragged by the user to new positions.  This road will then have to be saved and loaded when switching to Cut \& Fill mode.
+\subsubsection{Cut \& Fill Mode}
+Cut \& Fill mode is going to use the aforementioned road and perform Cut \& Fill operations on it.  The results of these calculations will then populate a small pop-up window and be displayed (with alternate coloring) along the road in the box.  These Cut \& Fill calculations are used in Civil Engineering and we will consult with Dr. Louis  in order to ensure these calculations are done correctly.
+\subsubsection{Calibration Mode}
+The Calibration Mode will be used to adjust the boundaries of the depth sensor's vision and where the projector is displaying.  To accomplish this, we need to create a draggable node in each corner of the screen which will set the area where we will take in information.  This allows the system to be used with sandboxes of different sizes and shapes.
+\\\\
+In addition to this functionality which needs to be implemented, our User-Interface could use a little polish in order to make it look better and more user friendly.  As it stands, we are waiting to make these adjustments until we see the interface projected onto the sand (as opposed to our screens).
+
+\subsection{Encountered Problems} 
+The two most prominent problems that we encountered during our development time were the depth sensor integration and the projector that we ordered.  There are also a sizable issue with integrating version control with Unity which took a solid afternoon to fix.
+
+Regarding the depth sensor, Dr. Louis wanted to try out using an Intel Realsense Camera (one of the depth sensors that I looked into in my tech review).  As a result, we were forced to halt our work on integrating the Kinect sensor into the system so that we could try integrating this alternate sensor.  This put a block into our work until the RealSense Camera was shipped to us.  Our solution was to different pieces of the project in the meantime.  This work involved the User-Interface as well as the interfaces between different pieces of our software system-- basically anything that didn't require input from a depth sensor to integrate.  Once the sensor arrived it was integrated and subsequently found to be insufficient for the needs of our project.  Following this, we moved back to using the Kinect as we had originally designed.  This didn't end up causing a halt in work-flow (as we had other things to work on), but it did require us to shift gears unexpectedly and change the order with which we wanted to implement pieces of the project.
+
+The projector that we chose for our project also resulted in some problems.  Similar to the depth sensor, we were forced to wait for a period while the projector was shipped to us.  Once it arrived, we discovered an oversight in our analysis of potential projectors last term: we had neglected to take the projectors throw distance/throw ratio into account.  Because of this, the projector that we ordered had too long of an image length.  This meant that the projector needed to be placed very far away from its screen in order to create an image of satisfactory size.  Nobody on the team had thought to check this aspect of the projector, but, in the end, it was my responsibility to pick out a projector for the project (in the tech reviews) and my fault.  In order to fix this, we returned the projector (which was ordered through amazon) and I found another projector which would suite our needs AND have adequate throw ratios.  Luckily, during the early stages of working on our system, we did not require the depth sensor and projector together for testing purposes; the display on our computer monitors were sufficient.
+
+The final noteworthy issue that we encountered during our first 6 weeks of winter term was getting our version control to work properly.  Git, our chosen version control, keeps track of files that it detects have changed while someone works and then gives them the list so that the user can choose what changes should be "saved".  Because we are using Unity for development (as opposed to edits specific files), a very large amount of files (logs and such) got changed just by opening the program.  This resulted in our change reports looking incredibly messy and it being exceptionally difficult to figure out what files actually needed to be saved and pushed to our repository.  Not to mention it was impossible for different branches to merge cleanly as so many superfluous files had been changes along the way.  In order to fix this, I had to go into the Unity project's setting and alter a few things while changing our repository's .gitignore file.  In addition, a large amount of git tweaking and adjustments were required in order to get these changes properly saved to our repository (as I needed to open Unity to make these changes, but opening Unity in the first place was what changed so many of the files git was trying to track).  Once these changes were successfully in our GitHub Repo, we needed to merge them into the ongoing work that Andrew and Raja had been working on.  This resulted in additional time working through git to get everything working with proper version control overseeing the work.
+
+\subsection{Relevant/Interesting Information}
+Below is the code for our display mode infrastructure.  It creates a new enum type to keep track of the current display mode, ensuring that the system can only ever be in one of these four states.  Below that is some code which ensures that there only ever exists one ModeManager within the game.  Having multiple of these could cause numerous failures across the board.  Below that is the structure for creating alternate system behavior when in different display modes. Depending on the current state, the corresponding systems are called (at the moment, there is only commented message sent to the terminal for debugging purposes).
+\begin{lstlisting}[caption=Code for the system's mode manager., label=lst:UI,captionpos=b]
+  public enum DisplayMode : short {Depth, CutFill, Design, Calibrate};
+
+  public class ModeManager : MonoBehaviour {
+
+      public static ModeManager instance = null;
+      public static DisplayMode dMode = DisplayMode.Depth;
+
+      void Awake () {
+          //Ensures that this object is a singleton
+          if (instance == null)
+              instance = this;
+          else if (instance != this)
+              Destroy(gameObject);
+      }
+      
+      void Update () {
+          switch (dMode)
+          {
+              case DisplayMode.Depth:     //What should occur while in Depth Mode?
+                 // Debug.Log("I am in Depth mode");
+                  break;
+              case DisplayMode.CutFill:   //What should occur while in CutFill Mode?
+                   // Debug.Log("I am in CutFill mode");
+                  break;
+              case DisplayMode.Calibrate: //What should occur while in Calibrate Mode?
+                   // Debug.Log("I am in Calibrate mode");
+                  break;
+              case DisplayMode.Design:    //What should occur while in Design Mode?
+                   // Debug.Log("I am in Design mode");
+                  break;
+          }
+      }
+  }
+\end{lstlisting}
+
+\section{Conclusion}
+In conclusion, we are well on our way to completing this project.  We have the software of a basic AR Sandbox complete with the infrastructure for the additional features ready.  We had some trouble with our hardware choices and version control, but both of those have been resolved and are not expected to be of any further issue.  With the infrastructure of our system's additional features ready, all we have to do is flesh them out with their complete functionality.  With each of our modes we know exactly what we need to accomplish and how we plan to accomplish it.  All in all, we are on track to complete our AR Sandbox for Construction Planning system.
+
+
+\end{document}
