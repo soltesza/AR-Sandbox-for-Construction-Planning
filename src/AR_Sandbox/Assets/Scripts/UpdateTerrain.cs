@@ -31,20 +31,18 @@ public class UpdateTerrain : MonoBehaviour {
 				return;
 			}
 
+			mesh = new Mesh ();		// Initialize mesh
+			GetComponent<MeshFilter> ().mesh = mesh;
+
 			FrameDescription frameDesc = sensor.DepthFrameSource.FrameDescription;
 
 			spacing = scale / heightmap.height;
-
-			mesh = new Mesh ();		// Initialize mesh
-			GetComponent<MeshFilter> ().mesh = mesh;
 
 			CreateMesh (frameDesc.Width / downsampleSize, frameDesc.Height / downsampleSize);
 
 			if (!sensor.IsOpen) {
 				sensor.Open ();
 			}
-		} else {
-			Debug.Log ("UpdateTerrain: No Kinect sensor detected!");
 		}
 	}
 
@@ -100,7 +98,9 @@ public class UpdateTerrain : MonoBehaviour {
 	}
 
 	void Update() {
-		UpdateMesh (manager.GetData());
+		if (sensor != null) {
+			UpdateMesh (manager.GetData ());
+		}
 	}
 
 	void OnApplicationQuit() {
