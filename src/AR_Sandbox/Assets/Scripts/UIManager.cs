@@ -17,21 +17,23 @@ public class UIManager : MonoBehaviour {
     [SerializeField]
     Transform CutAndFillPanel; //Will assign our panel to this variable so we can enable/disable it
 
-    bool isPaused; //Used to determine paused state
+    [SerializeField]
+    Transform DesignPanel; //Will assign our panel to this variable so we can enable/disable it
 
     void Start()
     {
         UIPanel.gameObject.SetActive(false); //make sure our pause menu is disabled when scene starts
         CutAndFillPanel.gameObject.SetActive(false);
-        isPaused = false; //make sure isPaused is always false when our scene opens
+        DesignPanel.gameObject.SetActive(false);
     }
 
     void Update()
     {
-        //If player presses escape and game is not paused. Pause game. If game is paused and player presses escape, unpause.
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
+        //If player presses escape and game is not paused. Pause game.
+        //If game is paused and player presses escape, unpause.
+        if (Input.GetKeyDown(KeyCode.Escape) && !UIPanel.gameObject.activeSelf)
             Pause();
-        else if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+        else if (Input.GetKeyDown(KeyCode.Escape) && UIPanel.gameObject.activeSelf)
             UnPause();
     }
 
@@ -44,7 +46,10 @@ public class UIManager : MonoBehaviour {
     public void Design()
     {
         Debug.Log("Design Mode Clicked");
+
         ModeManager.dMode = DisplayMode.Design;
+
+        DesignPanel.gameObject.SetActive(!DesignPanel.gameObject.activeSelf);
     }
 
     public void CutAndFill()
@@ -53,10 +58,7 @@ public class UIManager : MonoBehaviour {
 
         ModeManager.dMode = DisplayMode.CutFill;
 
-        if (CutAndFillPanel.gameObject.activeSelf)
-            CutAndFillPanel.gameObject.SetActive(false);
-        else
-            CutAndFillPanel.gameObject.SetActive(true);
+        CutAndFillPanel.gameObject.SetActive(!CutAndFillPanel.gameObject.activeSelf);
     }
 
     public void Calibrate()
@@ -67,13 +69,11 @@ public class UIManager : MonoBehaviour {
 
     public void Pause()
     {
-        isPaused = true;
         UIPanel.gameObject.SetActive(true); //turn on the pause menu
     }
 
     public void UnPause()
     {
-        isPaused = false;
         UIPanel.gameObject.SetActive(false); //turn off pause menu
     }
 
