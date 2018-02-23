@@ -11,6 +11,7 @@ public class ModeManager : MonoBehaviour {
 
     public static ModeManager instance = null;
     public static DisplayMode dMode = DisplayMode.Depth;
+	private GameObject terrainGen;
 
 	void Awake () {
         //Ensures that this object is a singleton
@@ -19,24 +20,49 @@ public class ModeManager : MonoBehaviour {
         else if (instance != this)
             Destroy(gameObject);
 	}
-	
+
+	void Start()
+	{
+		terrainGen = GameObject.Find ("Terrain");
+		terrainGen.SetActive (false);
+	}
+
 	
 	void Update () {
 		switch (dMode)
         {
             case DisplayMode.Depth:     //What should occur while in Depth Mode?
-               // Debug.Log("I am in Depth mode");
+			    //Debug.Log("I am in Depth mode");
+				enableTerrain();
                 break;
             case DisplayMode.CutFill:   //What should occur while in CutFill Mode?
                  // Debug.Log("I am in CutFill mode");
+				disableTerrain();
                 break;
             case DisplayMode.Calibrate: //What should occur while in Calibrate Mode?
-                 // Debug.Log("I am in Calibrate mode");
-                break;
+                // Debug.Log("I am in Calibrate mode");
+				disableTerrain();    
+				break;
             case DisplayMode.Design:    //What should occur while in Design Mode?
-                 // Debug.Log("I am in Design mode");
+                // Debug.Log("I am in Design mode");
+				disableTerrain();
                 break;
 
         }
 	}
+
+	//IF the terrain generator is disabled, enable it
+	void enableTerrain()
+	{
+		if (!terrainGen.activeSelf)
+			terrainGen.SetActive(true);
+	}
+
+	//IF the terrain generator is enabled, disable it
+	void disableTerrain()
+	{
+		if (terrainGen.activeSelf)
+			terrainGen.SetActive(false);
+	}
+
 }
