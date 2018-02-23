@@ -41,6 +41,9 @@ public class UIManager : MonoBehaviour {
     {
         Debug.Log("Depth Mode Clicked");
         ModeManager.dMode = DisplayMode.Depth;
+		//Make sure windows from alternate modes don't display
+		CutAndFillPanel.gameObject.SetActive(false);
+		DesignPanel.gameObject.SetActive(false);
     }
 
     public void Design()
@@ -50,6 +53,7 @@ public class UIManager : MonoBehaviour {
         ModeManager.dMode = DisplayMode.Design;
 
         DesignPanel.gameObject.SetActive(!DesignPanel.gameObject.activeSelf);
+		CutAndFillPanel.gameObject.SetActive(false);
     }
 
     public void CutAndFill()
@@ -59,12 +63,17 @@ public class UIManager : MonoBehaviour {
         ModeManager.dMode = DisplayMode.CutFill;
 
         CutAndFillPanel.gameObject.SetActive(!CutAndFillPanel.gameObject.activeSelf);
+		DesignPanel.gameObject.SetActive(false);
     }
 
     public void Calibrate()
     {
         Debug.Log("Calibrate Mode Clicked");
         ModeManager.dMode = DisplayMode.Calibrate;
+
+		//Make sure windows from alternate modes don't display
+		CutAndFillPanel.gameObject.SetActive(false);
+		DesignPanel.gameObject.SetActive(false);
     }
 
     public void Pause()
