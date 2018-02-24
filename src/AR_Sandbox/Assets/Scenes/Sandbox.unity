@@ -2704,6 +2704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIPanel: {fileID: 1046543723}
   CutAndFillPanel: {fileID: 1942142133}
+  DesignPanel: {fileID: 1841756878}
 --- !u!4 &2048563949
 Transform:
   m_ObjectHideFlags: 0
@@ -2751,6 +2752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e823684e830e848ad3e24eaaa1d9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIPanel: {fileID: 1841756878}
 --- !u!114 &2048563953
 MonoBehaviour:
   m_ObjectHideFlags: 0
