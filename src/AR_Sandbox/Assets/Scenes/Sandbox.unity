@@ -146,7 +146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 264, y: -23}
+  m_AnchoredPosition: {x: 214.6, y: -24}
   m_SizeDelta: {x: 24.82, y: 24.820007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &23366841
@@ -2061,8 +2061,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heightmap: {fileID: 2800000, guid: dc7c6fbb12176ee49a96ffd2339cafd2, type: 3}
-  depthSourceManager: {fileID: 0}
-  scale: 10
+  depthSourceManager: {fileID: 1150790900}
+  scale: 15
   magnitude: 1
 --- !u!1 &1619157551
 GameObject:
@@ -2324,7 +2324,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1841756878
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2665,7 +2665,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1970518231}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.23, y: 9.04, z: 5.04}
+  m_LocalPosition: {x: 4.54, y: 9.04, z: 3.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2704,7 +2704,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UIPanel: {fileID: 1046543723}
   CutAndFillPanel: {fileID: 1942142133}
-  DesignPanel: {fileID: 1841756878}
 --- !u!4 &2048563949
 Transform:
   m_ObjectHideFlags: 0
@@ -2752,7 +2751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e823684e830e848ad3e24eaaa1d9cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UIPanel: {fileID: 1841756878}
 --- !u!114 &2048563953
 MonoBehaviour:
   m_ObjectHideFlags: 0
