@@ -17,9 +17,11 @@ public class UpdateTerrain : MonoBehaviour {
 	private CoordinateMapper mapper;
 	private DepthSourceManager manager;
 
-	private const int downsampleSize = 4;
+	private const int downsampleSize = 2;
 	private const float maxDist = 3000;
 
+	//for debugging purposes
+	private const bool useSensor = false;
 
 	void Start () {
 		sensor = KinectSensor.GetDefault ();
@@ -36,7 +38,7 @@ public class UpdateTerrain : MonoBehaviour {
 
 			FrameDescription frameDesc = sensor.DepthFrameSource.FrameDescription;
 
-			spacing = scale / heightmap.height;
+			spacing = scale / frameDesc.Height;
 
 			CreateMesh (frameDesc.Width / downsampleSize, frameDesc.Height / downsampleSize);
 
@@ -84,15 +86,24 @@ public class UpdateTerrain : MonoBehaviour {
 	void UpdateMesh(ushort[] heightData) {
 		var frameDesc = sensor.DepthFrameSource.FrameDescription;
 
-		// Populate vertex array
-		for (int i = 0; i < frameDesc.Height/downsampleSize; i++) {
-			for (int j = 0; j < frameDesc.Width/downsampleSize; j++) {
-				ushort y = heightData [j * downsampleSize + frameDesc.Width * i * downsampleSize];		// Get Y value from Kinect height data
-				float yNorm = (float)y / maxDist; 														// Normalize height	
-				vertices [j + frameDesc.Width/downsampleSize * i] = new Vector3 (j * spacing, yNorm * magnitude, i * spacing);
+		if (useSensor) {
+			// Populate vertex array using sensor data
+			for (int i = 0; i < frameDesc.Height / downsampleSize; i++) {
+				for (int j = 0; j < frameDesc.Width / downsampleSize; j++) {
+					ushort y = heightData [j * downsampleSize + frameDesc.Width * i * downsampleSize];		// Get Y value from Kinect height data
+					float yNorm = (float)y / maxDist; 														// Normalize height	
+					vertices [j + frameDesc.Width / downsampleSize * i] = new Vector3 (j * spacing, yNorm * magnitude, i * spacing);
+				}
+			}
+		} else {
+			// Populate vertex array using placeholder heightmap for debugging
+			for (int i = 0; i < frameDesc.Height / downsampleSize; i++) {
+				for (int j = 0; j < frameDesc.Width / downsampleSize; j++) {
+					float y = heightmap.GetPixel (i, j).r;	// Get Y value from heightmap
+					vertices [j + frameDesc.Width / downsampleSize * i] = new Vector3 (j * spacing, y * magnitude, i * spacing);
+				}
 			}
 		}
-
 		mesh.vertices = vertices;
 		mesh.RecalculateNormals();
 	}
