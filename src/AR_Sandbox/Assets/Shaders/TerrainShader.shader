@@ -18,6 +18,11 @@
 
 		Pass
 		{
+			Stencil {
+				Ref 1
+				Comp equal
+			}
+
 			CGPROGRAM
 
 			#pragma vertex vert             
