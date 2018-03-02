@@ -15,8 +15,8 @@ public class RoadManager : MonoBehaviour
     {
         // get terrain object mesh
         terrain = GameObject.Find("Terrain");
-        MeshFilter viewedModelFilter = (MeshFilter)terrain.GetComponent("MeshFilter");
-        viewedModel = viewedModelFilter.mesh;
+        //MeshFilter viewedModelFilter = (MeshFilter)terrain.GetComponent("MeshFilter");
+        //viewedModel = viewedModelFilter.mesh;
 
         // get terrain ground for raycasting
         Ground = terrain;
