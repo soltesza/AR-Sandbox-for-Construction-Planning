@@ -500,10 +500,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aef07b466dc2154ea85c278d29042b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 4
-  Target: {fileID: 44171258}
-  MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 400, y: 200}
+  Type: 0
+  Target: {fileID: 0}
+  MinimumDimmensions: {x: 50, y: 50}
+  MaximumDimmensions: {x: 800, y: 800}
 --- !u!114 &205008973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,10 +598,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aef07b466dc2154ea85c278d29042b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 5
-  Target: {fileID: 44171258}
-  MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 400, y: 200}
+  Type: 0
+  Target: {fileID: 0}
+  MinimumDimmensions: {x: 50, y: 50}
+  MaximumDimmensions: {x: 800, y: 800}
 --- !u!114 &254387789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1547,10 +1547,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aef07b466dc2154ea85c278d29042b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 2
-  Target: {fileID: 44171258}
-  MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 400, y: 200}
+  Type: 0
+  Target: {fileID: 0}
+  MinimumDimmensions: {x: 50, y: 50}
+  MaximumDimmensions: {x: 800, y: 800}
 --- !u!114 &913314869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1852,10 +1852,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aef07b466dc2154ea85c278d29042b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 7
-  Target: {fileID: 44171258}
-  MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 400, y: 200}
+  Type: 0
+  Target: {fileID: 0}
+  MinimumDimmensions: {x: 50, y: 50}
+  MaximumDimmensions: {x: 800, y: 800}
 --- !u!114 &1007078771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2101,9 +2101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 0
-  Target: {fileID: 44171258}
-  MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 400, y: 200}
+  Target: {fileID: 0}
+  MinimumDimmensions: {x: 50, y: 50}
+  MaximumDimmensions: {x: 800, y: 800}
 --- !u!114 &1122057055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2272,10 +2272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aef07b466dc2154ea85c278d29042b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 1
-  Target: {fileID: 44171258}
-  MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 400, y: 200}
+  Type: 0
+  Target: {fileID: 0}
+  MinimumDimmensions: {x: 50, y: 50}
+  MaximumDimmensions: {x: 800, y: 800}
 --- !u!114 &1141251196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2484,10 +2484,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aef07b466dc2154ea85c278d29042b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 6
-  Target: {fileID: 44171258}
-  MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 400, y: 200}
+  Type: 0
+  Target: {fileID: 0}
+  MinimumDimmensions: {x: 50, y: 50}
+  MaximumDimmensions: {x: 800, y: 800}
 --- !u!114 &1315032102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3142,7 +3142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6c737f9a0b0e045b2acc208d52e48a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 44171257}
+  Target: {fileID: 0}
 --- !u!114 &1634234597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3251,10 +3251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aef07b466dc2154ea85c278d29042b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: 3
-  Target: {fileID: 44171258}
-  MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 400, y: 200}
+  Type: 0
+  Target: {fileID: 0}
+  MinimumDimmensions: {x: 50, y: 50}
+  MaximumDimmensions: {x: 800, y: 800}
 --- !u!114 &1716229932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3750,6 +3750,7 @@ GameObject:
   - component: {fileID: 2032210461}
   - component: {fileID: 2032210460}
   - component: {fileID: 2032210459}
+  - component: {fileID: 2032210462}
   m_Layer: 5
   m_Name: Road
   m_TagString: Untagged
@@ -3871,6 +3872,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2032210462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2032210458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3278b817be0db3e48a7c5fd6ec3da8da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Ground: {fileID: 2032210458}
+  material: {fileID: 2100000, guid: 4f4dfb60516028144bc875ca92da1e5f, type: 2}
 --- !u!1 &2048563947
 GameObject:
   m_ObjectHideFlags: 0
@@ -3905,7 +3919,7 @@ MonoBehaviour:
   UIPanel: {fileID: 1046543723}
   CutAndFillPanel: {fileID: 1942142133}
   DesignPanel: {fileID: 1841756878}
-  ConfigPanel: {fileID: 44171258}
+  ConfigPanel: {fileID: 0}
 --- !u!4 &2048563949
 Transform:
   m_ObjectHideFlags: 0
