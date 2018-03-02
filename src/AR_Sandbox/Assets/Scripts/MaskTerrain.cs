@@ -36,7 +36,7 @@ public class MaskTerrain : MonoBehaviour {
 	}
 
 	void Update() {
-		ResizeMesh (width, height);
+		//ResizeMesh (width, height);
 	}
 
 	public void ResizeMesh(float width, float height) {
@@ -47,5 +47,17 @@ public class MaskTerrain : MonoBehaviour {
 
 		mesh.vertices = vertices;
 		mesh.RecalculateNormals();
+
 	}
+
+	public void RePositionMesh(Vector3 UpperLeft, Vector3 LowerLeft, Vector3 UpperRight, Vector3 LowerRight) {
+		vertices [0] = UpperLeft;
+		vertices [1] = LowerLeft;
+		vertices [2] = LowerRight;
+		vertices [3] = UpperRight;
+
+		mesh.vertices = vertices;
+		mesh.RecalculateNormals ();
+	}
+
 }
