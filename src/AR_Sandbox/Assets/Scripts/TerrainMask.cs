@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaskTerrain : MonoBehaviour {
+[RequireComponent(typeof(Mesh))]
+public class TerrainMask : MonoBehaviour {
 	public float width;
 	public float height;
 
@@ -10,7 +11,6 @@ public class MaskTerrain : MonoBehaviour {
 	private Vector3[] vertices;
 	private int[] triangles;
 
-	// Use this for initialization
 	void Start () {
 		mesh = new Mesh ();
 		GetComponent<MeshFilter> ().mesh = mesh;
