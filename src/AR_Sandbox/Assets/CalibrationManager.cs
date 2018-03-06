@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CalibrationManager : MonoBehaviour {
 	private GameObject terrain;
-	private MaskTerrain MaskScript;
+	//private MaskTerrain MaskScript;
 
 	[SerializeField]
 	Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
@@ -12,7 +12,7 @@ public class CalibrationManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		terrain = GameObject.Find ("Terrain Mask");
-		MaskScript = (MaskTerrain)(terrain.GetComponent(typeof(MaskTerrain)));
+		//MaskScript = (MaskTerrain)(terrain.GetComponent(typeof(MaskTerrain)));
 
 	}
 	
