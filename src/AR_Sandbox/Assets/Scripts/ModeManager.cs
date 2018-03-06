@@ -11,7 +11,7 @@ public class ModeManager : MonoBehaviour {
 
     public static ModeManager instance = null;
     public static DisplayMode dMode = DisplayMode.Depth;
-	private GameObject terrainGen;
+	private GameObject terrainGen, roadObj;
 
 	void Awake () {
         //Ensures that this object is a singleton
@@ -25,6 +25,8 @@ public class ModeManager : MonoBehaviour {
 	{
 		terrainGen = GameObject.Find ("Terrain");
 		terrainGen.SetActive (false);
+		roadObj = GameObject.Find ("Road");
+		roadObj.SetActive (false);
 	}
 
 	
@@ -34,18 +36,22 @@ public class ModeManager : MonoBehaviour {
             case DisplayMode.Depth:     //What should occur while in Depth Mode?
 			    //Debug.Log("I am in Depth mode");
 				enableTerrain();
+				disableRoad();
                 break;
             case DisplayMode.CutFill:   //What should occur while in CutFill Mode?
                  // Debug.Log("I am in CutFill mode");
 				disableTerrain();
+				enableRoad();
                 break;
             case DisplayMode.Calibrate: //What should occur while in Calibrate Mode?
                 // Debug.Log("I am in Calibrate mode");
-				disableTerrain();    
+				//disableTerrain();
+				disableRoad();
 				break;
             case DisplayMode.Design:    //What should occur while in Design Mode?
                 // Debug.Log("I am in Design mode");
 				disableTerrain();
+				enableRoad();
                 break;
 
         }
@@ -63,6 +69,20 @@ public class ModeManager : MonoBehaviour {
 	{
 		if (terrainGen.activeSelf)
 			terrainGen.SetActive(false);
+	}
+
+	//IF the terrain generator is disabled, enable it
+	void enableRoad()
+	{
+		if (!roadObj.activeSelf)
+			roadObj.SetActive(true);
+	}
+
+	//IF the terrain generator is enabled, disable it
+	void disableRoad()
+	{
+		if (roadObj.activeSelf)
+			roadObj.SetActive(false);
 	}
 
 }

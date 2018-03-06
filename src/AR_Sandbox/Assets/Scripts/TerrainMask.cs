@@ -34,6 +34,11 @@ public class TerrainMask : MonoBehaviour {
 		mesh.triangles = triangles;
 		mesh.RecalculateNormals();
 	}
+		
+	void Update() {
+		//ResizeMesh (width, height);
+	}
+
 
 	//set mesh length and width to a given value
 	public void ResizeMesh(float width, float height) {
@@ -44,8 +49,19 @@ public class TerrainMask : MonoBehaviour {
 
 		mesh.vertices = vertices;
 		mesh.RecalculateNormals();
+
 	}
 
+	public void RePositionMesh(Vector3 UpperLeft, Vector3 LowerLeft, Vector3 UpperRight, Vector3 LowerRight) {
+		vertices [0] = UpperLeft;
+		vertices [1] = LowerLeft;
+		vertices [2] = LowerRight;
+		vertices [3] = UpperRight;
+
+		mesh.vertices = vertices;
+		mesh.RecalculateNormals ();
+	}
+		
 	//set dimensions and position of mask by passing in world coordinates for lower left and upper right position. Y coordinates are ignored.
 	public void SetDimensions(Vector3 lowerLeft, Vector3 upperRight) {
 		transform.position = lowerLeft;
@@ -54,3 +70,4 @@ public class TerrainMask : MonoBehaviour {
 		ResizeMesh (urOffset.x, urOffset.z);
 	}
 }
+
