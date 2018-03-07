@@ -123,7 +123,7 @@ public class TerrainGenerator : MonoBehaviour {
 			Color[] pixelData = heightmap.GetPixels ();
 			heightData = new ushort[heightmap.width * heightmap.height];
 			for (int i = 0; i < (heightmap.width * heightmap.height); i++) {
-				heightData [i] = pixelData [i].r * maxHeight;
+				heightData [i] = (ushort)(pixelData [i].r * maxHeight);
 			}
 		}
 
