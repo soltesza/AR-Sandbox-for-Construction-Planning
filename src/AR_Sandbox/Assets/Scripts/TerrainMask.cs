@@ -51,12 +51,11 @@ public class TerrainMask : MonoBehaviour {
 		mesh.RecalculateNormals();
 
 	}
-
-	public void RePositionMesh(Vector3 UpperLeft, Vector3 LowerLeft, Vector3 UpperRight, Vector3 LowerRight) {
-		vertices [0] = UpperLeft;
-		vertices [1] = LowerLeft;
-		vertices [2] = LowerRight;
-		vertices [3] = UpperRight;
+	public void RePositionMesh(Vector3 LowerLeft, Vector3 UpperLeft, Vector3 UpperRight, Vector3 LowerRight) {
+		vertices [0] = LowerLeft;
+		vertices [1] = UpperLeft;
+		vertices [2] = UpperRight;
+		vertices [3] = LowerRight;
 
 		mesh.vertices = vertices;
 		mesh.RecalculateNormals ();
@@ -69,5 +68,6 @@ public class TerrainMask : MonoBehaviour {
 
 		ResizeMesh (urOffset.x, urOffset.z);
 	}
+		
 }
 

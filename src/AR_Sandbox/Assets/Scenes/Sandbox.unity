@@ -2139,10 +2139,10 @@ RectTransform:
   m_Father: {fileID: 819394456}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.399963, y: 8.899963}
-  m_SizeDelta: {x: 185.9, y: 162.3}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 564.60004, y: 344.89996}
+  m_SizeDelta: {x: 185.9, y: 162.29999}
   m_Pivot: {x: 0.4999999, y: 0.49999988}
 --- !u!114 &1329338266
 MonoBehaviour:
@@ -2677,7 +2677,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2048563954}
         m_MethodName: SubmitCalibration
         m_Mode: 1
         m_Arguments:
@@ -2997,7 +2997,7 @@ GameObject:
   - component: {fileID: 1916252198}
   - component: {fileID: 1916252197}
   m_Layer: 5
-  m_Name: TopRightHandler
+  m_Name: TopLeftHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
