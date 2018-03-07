@@ -116,7 +116,16 @@ public class TerrainGenerator : MonoBehaviour {
 
 	// Get height from heightmap at a given world coordinate
 	public float GetHeightAtWorldPosition(Vector3 pos) {
-		ushort[] heightData = manager.GetData ();
+		ushort[] heightData;
+		if (useSensor) {
+			heightData = manager.GetData ();
+		} else {
+			Color[] pixelData = heightmap.GetPixels ();
+			heightData = new ushort[heightmap.width * heightmap.height];
+			for (int i = 0; i < (heightmap.width * heightmap.height); i++) {
+				heightData [i] = pixelData [i].r * maxHeight;
+			}
+		}
 
 		Vector3 modelPos = pos - transform.position;
 		Vector3 texelPos = modelPos / spacing;
