@@ -6,6 +6,7 @@ public class RoadManager : MonoBehaviour
 {
 
     private GameObject terrain;
+    private TerrainGenerator terrainHeight;
     public static Mesh viewedModel;
     public GameObject Ground;
     public Material material;
@@ -52,5 +53,12 @@ public class RoadManager : MonoBehaviour
             material.color = Color.blue;
             GetComponent<Renderer>().material = material;
         }
+
+        // testing get height function from terrain generator
+        terrainHeight = terrain.GetComponent<TerrainGenerator>();
+        height = terrainHeight.GetHeightAtWorldPosition(transform.position);
+
+        // Uncomment for cut/fill height data debug output 
+        //Debug.Log("GetHeightAtWorldPosition: " + height);
     }
 }
