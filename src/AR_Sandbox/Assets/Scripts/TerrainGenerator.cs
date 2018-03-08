@@ -54,6 +54,10 @@ public class TerrainGenerator : MonoBehaviour {
 		}
 	}
 
+	void Update () {
+		UpdateMesh ();
+	}
+
     // Create a new mesh by generating a set of vertices and triangles
 	void CreateMesh(int x, int y) {
         // Initialize vertex and triangle arrays
