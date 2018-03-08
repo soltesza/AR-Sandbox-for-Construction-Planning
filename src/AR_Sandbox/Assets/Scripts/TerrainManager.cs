@@ -63,19 +63,19 @@ public class TerrainManager : MonoBehaviour {
 		}
 	}
 
-	void SetMaxTerrainHeight(float maxHeight) {
+	public void SetMaxTerrainHeight(float maxHeight) {
 		terrainGenerator.maxHeight = maxHeight;
 	}
 
-	float GetMaxTerrainHeight() {
+	public float GetMaxTerrainHeight() {
 		return terrainGenerator.maxHeight;
 	}
 
-	void SetMinTerrainHeight(float minHeight) {
+	public void SetMinTerrainHeight(float minHeight) {
 		terrainGenerator.minHeight = minHeight;
 	}
 
-	float getMinTerrainHeight() {
+	public float getMinTerrainHeight() {
 		return terrainGenerator.minHeight;
 	}
 }
