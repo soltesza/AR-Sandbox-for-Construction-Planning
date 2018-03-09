@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
 public class Road : MonoBehaviour {
-	public RoadControlPoint controlPointTemplate;
+	public RoadControlPoint controlPointPrefab;
 
 	private LineRenderer lineRenderer;
 	private List<RoadControlPoint> controlPoints;
@@ -27,7 +27,7 @@ public class Road : MonoBehaviour {
 	}
 
 	void CreateControlPoint(Vector3 position) {
-		RoadControlPoint newPoint = (RoadControlPoint)GameObject.Instantiate (controlPointTemplate);
+		RoadControlPoint newPoint = (RoadControlPoint)GameObject.Instantiate (controlPointPrefab);
 		newPoint.transform.position = position;
 		newPoint.road = this;
 		newPoint.transform.parent = this.transform;

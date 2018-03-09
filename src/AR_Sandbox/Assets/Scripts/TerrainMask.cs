@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MaskTerrain : MonoBehaviour {
+[RequireComponent(typeof(Mesh))]
+public class TerrainMask : MonoBehaviour {
 	public float width;
 	public float height;
 
@@ -10,7 +11,6 @@ public class MaskTerrain : MonoBehaviour {
 	private Vector3[] vertices;
 	private int[] triangles;
 
-	// Use this for initialization
 	void Start () {
 		mesh = new Mesh ();
 		GetComponent<MeshFilter> ().mesh = mesh;
@@ -46,6 +46,16 @@ public class MaskTerrain : MonoBehaviour {
 		mesh.RecalculateNormals();
 	}
 
+	public void RePositionMesh(Vector3 LowerLeft, Vector3 UpperLeft, Vector3 UpperRight, Vector3 LowerRight) {
+		vertices [0] = LowerLeft;
+		vertices [1] = UpperLeft;
+		vertices [2] = UpperRight;
+		vertices [3] = LowerRight;
+
+		mesh.vertices = vertices;
+		mesh.RecalculateNormals ();
+	}
+		
 	//set dimensions and position of mask by passing in world coordinates for lower left and upper right position. Y coordinates are ignored.
 	public void SetDimensions(Vector3 lowerLeft, Vector3 upperRight) {
 		transform.position = lowerLeft;
@@ -54,3 +64,4 @@ public class MaskTerrain : MonoBehaviour {
 		ResizeMesh (urOffset.x, urOffset.z);
 	}
 }
+
