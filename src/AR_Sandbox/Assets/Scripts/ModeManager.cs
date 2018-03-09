@@ -12,6 +12,7 @@ public class ModeManager : MonoBehaviour {
     public static ModeManager instance = null;
     public static DisplayMode dMode = DisplayMode.Depth;
 	private GameObject terrainGen, roadObj;
+	private TerrainManager terrainManager;
 
 	void Awake () {
         //Ensures that this object is a singleton
@@ -23,6 +24,7 @@ public class ModeManager : MonoBehaviour {
 
 	void Start()
 	{
+		terrainManager = GameObject.Find ("Terrain_Manager").GetComponent<TerrainManager>();
 		terrainGen = GameObject.Find ("Terrain");
 		terrainGen.SetActive (false);
 		roadObj = GameObject.Find ("Road");
@@ -35,22 +37,28 @@ public class ModeManager : MonoBehaviour {
         {
             case DisplayMode.Depth:     //What should occur while in Depth Mode?
 			    //Debug.Log("I am in Depth mode");
+				terrainManager.SetTerrainTheme(TerrainManager.TerrainTheme.rainbow);
 				enableTerrain();
 				disableRoad();
                 break;
             case DisplayMode.CutFill:   //What should occur while in CutFill Mode?
                  // Debug.Log("I am in CutFill mode");
-				disableTerrain();
+				enableTerrain();
+				terrainManager.SetTerrainTheme(TerrainManager.TerrainTheme.greyscale);
+				//disableTerrain();
 				enableRoad();
                 break;
             case DisplayMode.Calibrate: //What should occur while in Calibrate Mode?
                 // Debug.Log("I am in Calibrate mode");
 				//disableTerrain();
+				enableTerrain();
 				disableRoad();
 				break;
             case DisplayMode.Design:    //What should occur while in Design Mode?
                 // Debug.Log("I am in Design mode");
-				disableTerrain();
+				//disableTerrain();
+				terrainManager.SetTerrainTheme(TerrainManager.TerrainTheme.greyscale);
+				enableTerrain();
 				enableRoad();
                 break;
 

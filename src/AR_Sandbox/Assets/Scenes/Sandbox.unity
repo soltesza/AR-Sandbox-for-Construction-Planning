@@ -247,10 +247,10 @@ RectTransform:
   m_Father: {fileID: 1942142133}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 177, y: -24}
-  m_SizeDelta: {x: 24.82, y: 24.820007}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -22.5, y: -21.41}
+  m_SizeDelta: {x: 24.820007, y: 24.820007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &23366841
 MonoBehaviour:
@@ -4323,6 +4323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 17105641}
+  Ground: {fileID: 0}
   material: {fileID: 2100000, guid: 4f4dfb60516028144bc875ca92da1e5f, type: 2}
 --- !u!1 &2048563947
 GameObject:

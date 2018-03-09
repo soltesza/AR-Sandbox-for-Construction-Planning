@@ -6,7 +6,7 @@ public class TerrainManager : MonoBehaviour {
 	public TerrainGenerator terrainGenerator;
 	public TerrainMask terrainMask;
 
-	enum TerrainTheme {rainbow, mountain, desert, greyscale};
+	public enum TerrainTheme {rainbow, mountain, desert, greyscale};
 
 	// Use this for initialization
 	void Start () {
@@ -33,7 +33,7 @@ public class TerrainManager : MonoBehaviour {
 		SetTerrainTheme (TerrainTheme.desert);
 	}
 		
-	void SetTerrainTheme(TerrainTheme theme) {
+	public void SetTerrainTheme(TerrainTheme theme) {
 		Renderer renderer = terrainGenerator.transform.GetComponent<Renderer> ();
 
 		if (theme == TerrainTheme.greyscale) {
