@@ -5,8 +5,9 @@ using UnityEngine;
 public class RoadManager : MonoBehaviour
 {
 
-    private GameObject terrain;
+    public GameObject terrain;
     private TerrainGenerator terrainHeight;
+    private float roadHeight;
     public static Mesh viewedModel;
     public GameObject Ground;
     public Material material;
@@ -35,15 +36,15 @@ public class RoadManager : MonoBehaviour
         //Debug.Log("Altitude: " + altitude);
 
         // get height from terrain
-        float height = Mathf.Infinity;
+        roadHeight = Mathf.Infinity;
         RaycastHit hit;
 
         // when above terrain change to blue material
         // when below terrain change to red material
         if (Physics.Raycast(transform.position, Vector3.down, out hit))
-            height = Vector3.Distance(hit.point, transform.position);
-        //Debug.Log("Height: " + height);
-        if (height == Mathf.Infinity)
+            roadHeight = Vector3.Distance(hit.point, transform.position);
+        //Debug.Log("Height: " + roadHeight);
+        if (roadHeight == Mathf.Infinity)
         {
             material.color = Color.red;
             GetComponent<Renderer>().material = material;
@@ -56,9 +57,14 @@ public class RoadManager : MonoBehaviour
 
         // testing get height function from terrain generator
         terrainHeight = terrain.GetComponent<TerrainGenerator>();
-        height = terrainHeight.GetHeightAtWorldPosition(transform.position);
+        roadHeight = terrainHeight.GetHeightAtWorldPosition(transform.position);
 
         // Uncomment for cut/fill height data debug output 
-        //Debug.Log("GetHeightAtWorldPosition: " + height);
+        //Debug.Log("GetHeightAtWorldPosition: " + roadHeight);
+    }
+
+    public float getHeight()
+    {
+        return roadHeight;
     }
 }
