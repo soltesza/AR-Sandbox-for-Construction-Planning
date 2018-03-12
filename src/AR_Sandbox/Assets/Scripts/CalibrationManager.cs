@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CalibrationManager : MonoBehaviour {
 	private Camera mainCamera;
 	private GameObject terrain, terrainMask;
 	private TerrainMask MaskScript;
+
+	public Toggle scaleToggle, cropToggle;
 
 	[SerializeField]
 	Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
@@ -17,6 +20,13 @@ public class CalibrationManager : MonoBehaviour {
 		mainCamera = Camera.main;
 		MaskScript = (TerrainMask)(terrainMask.GetComponent(typeof(TerrainMask)));
 
+		if (!scaleToggle) {
+			scaleToggle = GameObject.Find ("Scale Toggle").GetComponent<Toggle> ();
+		}
+
+		if (!cropToggle) {
+			cropToggle = GameObject.Find ("Crop Toggle").GetComponent<Toggle> ();
+		}
 	}
 	
 	// Update is called once per frame
@@ -52,4 +62,15 @@ public class CalibrationManager : MonoBehaviour {
 
 	}
 
+	public void OnScaleToggleChanged() {
+		if (scaleToggle.isOn) {
+			cropToggle.isOn = false;
+		}
+	}
+
+	public void OnCropToggleChanged() {
+		if (cropToggle.isOn) {
+			scaleToggle.isOn = false;
+		}
+	}
 }
