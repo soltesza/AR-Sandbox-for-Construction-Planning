@@ -18,7 +18,7 @@ public class Road : MonoBehaviour {
 
 		CreateControlPoint (new Vector3(0f, 0f, 0f));
 		CreateControlPoint (new Vector3 (1f, 4f, 6f));
-		CreateControlPoint (new Vector3 (5f, -2f, 6f));
+		//CreateControlPoint (new Vector3 (5f, -2f, 6f));
 		CreateControlPoint (new Vector3(7f, 0f, 7f));
 
 		lineRenderer.positionCount = SEGMENT_COUNT;
