@@ -5,20 +5,19 @@ using UnityEngine.UI;
 
 public class CalibrationManager : MonoBehaviour {
 	private Camera mainCamera;
-	private GameObject terrain, terrainMask;
-	private TerrainMask MaskScript;
-
-	public Toggle scaleToggle, cropToggle;
 
 	[SerializeField]
 	Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
 
+	TerrainManager terrainManager;
+
+	public Toggle scaleToggle, cropToggle;
+
 	// Use this for initialization
 	void Start () {
-		terrainMask = GameObject.Find ("Terrain Mask");
-		terrain = GameObject.Find ("Terrain");
 		mainCamera = Camera.main;
-		MaskScript = (TerrainMask)(terrainMask.GetComponent(typeof(TerrainMask)));
+
+		terrainManager = GameObject.Find ("Terrain_Manager").GetComponent<TerrainManager> ();
 
 		if (!scaleToggle) {
 			scaleToggle = GameObject.Find ("Scale Toggle").GetComponent<Toggle> ();
@@ -34,8 +33,7 @@ public class CalibrationManager : MonoBehaviour {
 		SubmitCalibration ();
 	}
 
-	public void SubmitCalibration()
-	{
+	public void SubmitCalibration() {
 		int panelWidth, panelHeight, terrainWidth, terrainHeight;
 		Vector3 UpperRight, LowerLeft,UpperLeft,LowerRight;
 
@@ -53,13 +51,7 @@ public class CalibrationManager : MonoBehaviour {
 		Vector3 panelUL = mainCamera.ScreenToWorldPoint(UpperLeft);
 		Vector3 panelLR = mainCamera.ScreenToWorldPoint(LowerRight);
 
-
-		MaskScript.RePositionMesh (new Vector3(panelLL.x,0,panelLL.z),
-									new Vector3(panelUL.x,0,panelUL.z),
-									new Vector3(panelUR.x,0,panelUR.z),
-									new Vector3(panelLR.x,0,panelLR.z));
-
-
+		terrainManager.terrainMask.SetDimensions (panelLL, panelUR);
 	}
 
 	public void OnScaleToggleChanged() {
