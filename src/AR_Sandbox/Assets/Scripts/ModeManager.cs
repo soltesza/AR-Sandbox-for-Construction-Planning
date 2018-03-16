@@ -11,7 +11,7 @@ public class ModeManager : MonoBehaviour {
 
     public static ModeManager instance = null;
     public static DisplayMode dMode = DisplayMode.Depth;
-	private GameObject terrainGen, roadObj;
+	private Road road;
 	private TerrainManager terrainManager;
 
 	void Awake () {
@@ -25,72 +25,58 @@ public class ModeManager : MonoBehaviour {
 	void Start()
 	{
 		terrainManager = GameObject.Find ("Terrain_Manager").GetComponent<TerrainManager>();
-		terrainGen = GameObject.Find ("Terrain");
-		terrainGen.SetActive (false);
-		roadObj = GameObject.Find ("Road");
-		roadObj.SetActive (false);
+		road = GameObject.Find ("Road").GetComponent<Road>();
+		road.gameObject.SetActive (false);
 	}
 
 	
 	void Update () {
-		switch (dMode)
-        {
+		switch (dMode) {
             case DisplayMode.Depth:     //What should occur while in Depth Mode?
 			    //Debug.Log("I am in Depth mode");
 				terrainManager.SetTerrainTheme(TerrainManager.TerrainTheme.rainbow);
 				enableTerrain();
 				disableRoad();
                 break;
-            case DisplayMode.CutFill:   //What should occur while in CutFill Mode?
+			case DisplayMode.CutFill:   //What should occur while in CutFill Mode?
                  // Debug.Log("I am in CutFill mode");
-				enableTerrain();
-				terrainManager.SetTerrainTheme(TerrainManager.TerrainTheme.greyscale);
+				enableTerrain ();
+				terrainManager.SetTerrainTheme (TerrainManager.TerrainTheme.greyscale);
 				//disableTerrain();
-				enableRoad();
-                break;
+				enableRoad ();
+				road.DisableControlPoints ();
+				break;
             case DisplayMode.Calibrate: //What should occur while in Calibrate Mode?
                 // Debug.Log("I am in Calibrate mode");
 				//disableTerrain();
 				enableTerrain();
 				disableRoad();
 				break;
-            case DisplayMode.Design:    //What should occur while in Design Mode?
+			case DisplayMode.Design:    //What should occur while in Design Mode?
                 // Debug.Log("I am in Design mode");
 				//disableTerrain();
-				terrainManager.SetTerrainTheme(TerrainManager.TerrainTheme.greyscale);
-				enableTerrain();
-				enableRoad();
+				terrainManager.SetTerrainTheme (TerrainManager.TerrainTheme.greyscale);
+				enableTerrain ();
+				enableRoad ();
+				road.EnableControlPoints ();
                 break;
-
         }
 	}
-
-	//IF the terrain generator is disabled, enable it
-	void enableTerrain()
-	{
-		if (!terrainGen.activeSelf)
-			terrainGen.SetActive(true);
+		
+	void enableTerrain() {
+		terrainManager.terrainGenerator.gameObject.SetActive (true);
 	}
-
-	//IF the terrain generator is enabled, disable it
-	void disableTerrain()
-	{
-		if (terrainGen.activeSelf)
-			terrainGen.SetActive(false);
+		
+	void disableTerrain() {
+		terrainManager.terrainGenerator.gameObject.SetActive (false);
 	}
-
-	//IF the terrain generator is disabled, enable it
-	void enableRoad()
-	{
-		if (!roadObj.activeSelf)
-			roadObj.SetActive(true);
+		
+	void enableRoad() {
+		road.gameObject.SetActive (true);
 	}
-
-	//IF the terrain generator is enabled, disable it
-	void disableRoad()
-	{
-		if (roadObj.activeSelf)
-			roadObj.SetActive(false);
+		
+	void disableRoad() {
+		road.gameObject.SetActive (false);
 	}
 
 }

@@ -67,7 +67,7 @@ public class RoadManager : MonoBehaviour
 
         // testing get point from road
         roadPoint = road.GetComponent<Road>();
-        Vector3[] positions = roadPoint.getRoadPoints();
+        Vector3[] positions = roadPoint.GetRoadPoints();
 
 		// testing get height function from terrain generator
 		terrainHeight = terrain.GetComponent<TerrainGenerator>();

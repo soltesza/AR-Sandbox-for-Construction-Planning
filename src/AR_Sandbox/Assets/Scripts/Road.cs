@@ -52,10 +52,22 @@ public class Road : MonoBehaviour {
 		}
 	}
 
-    public Vector3[] getRoadPoints()
+    public Vector3[] GetRoadPoints()
     {
         Vector3[] positions = new Vector3[SEGMENT_COUNT];
         lineRenderer.GetPositions(positions);
         return positions;
     }
+
+	public void DisableControlPoints() {
+		foreach (RoadControlPoint controlPoint in controlPoints) {
+			controlPoint.gameObject.SetActive (false);
+		}
+	}
+
+	public void EnableControlPoints() {
+		foreach (RoadControlPoint controlPoint in controlPoints) {
+			controlPoint.gameObject.SetActive (true);
+		}
+	}
 }
