@@ -51,4 +51,11 @@ public class Road : MonoBehaviour {
 			return Vector3.Lerp (points [0].transform.position, points [1].transform.position, t);
 		}
 	}
+
+    public Vector3[] getRoadPoints()
+    {
+        Vector3[] positions = new Vector3[SEGMENT_COUNT];
+        lineRenderer.GetPositions(positions);
+        return positions;
+    }
 }

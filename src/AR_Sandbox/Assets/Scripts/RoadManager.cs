@@ -7,16 +7,21 @@ public class RoadManager : MonoBehaviour
 
     public GameObject terrain;
     private TerrainGenerator terrainHeight;
+
     private float roadHeight;
     public static Mesh viewedModel;
     public GameObject Ground;
     public Material material;
+
+    public GameObject road;
+    private Road roadPoint;
 
     // Use this for initialization
     void Start()
     {
         // get terrain object mesh
         terrain = GameObject.Find("Terrain");
+        road = GameObject.Find("Road");
         //MeshFilter viewedModelFilter = (MeshFilter)terrain.GetComponent("MeshFilter");
         //viewedModel = viewedModelFilter.mesh;
 
@@ -60,13 +65,20 @@ public class RoadManager : MonoBehaviour
 			GetComponent<Renderer>().material = material;
 		}
 
+        // testing get point from road
+        roadPoint = road.GetComponent<Road>();
+        Vector3[] positions = roadPoint.getRoadPoints();
+
 		// testing get height function from terrain generator
 		terrainHeight = terrain.GetComponent<TerrainGenerator>();
-		roadHeight = terrainHeight.GetHeightAtWorldPosition(transform.position);
-
-		// Uncomment for cut/fill height data debug output 
-		//Debug.Log("GetHeightAtWorldPosition: " + roadHeight);
-
+        int count = 0;
+        foreach (Vector3 p in positions)
+        {
+            // Uncomment for cut/fill height data debug output 
+            roadHeight = terrainHeight.GetHeightAtWorldPosition(p);
+            roadHeight = (float)(2 * (.5 * roadHeight * roadHeight))/4f;
+            //Debug.Log("Position: " + count++ + " Height: " + roadHeight);
+        }
         return roadHeight;
     }
 }
