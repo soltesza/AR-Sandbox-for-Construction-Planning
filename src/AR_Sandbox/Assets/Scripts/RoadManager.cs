@@ -76,7 +76,8 @@ public class RoadManager : MonoBehaviour
         {
             // Uncomment for cut/fill height data debug output 
             roadHeight = terrainHeight.GetHeightAtWorldPosition(p);
-            Debug.Log("Position: " + count++ + " Height: " + roadHeight);
+            roadHeight = (float)(2 * (.5 * roadHeight * roadHeight))/4f;
+            //Debug.Log("Position: " + count++ + " Height: " + roadHeight);
         }
         return roadHeight;
     }

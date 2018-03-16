@@ -10,21 +10,42 @@ public class CutAndFillManager : MonoBehaviour {
     Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
 
     [SerializeField]
-    Text heightText; //Will assign our height Text to this variable so we can modify the text it displays.
+    Text cutText; //Will assign our cut Text to this variable so we can modify the text it displays.
+
+    [SerializeField]
+    Text fillText; //Will assign our fill Text to this variable so we can modify the text it displays.
 
     public GameObject road;
     private RoadManager roadHeight;
+
+    public GameObject terrain;
+    private TerrainGenerator terrainHeight;
 
     void Start()
     {
         UIPanel.gameObject.SetActive(false); //make sure our pause menu is disabled when scene starts
         road = GameObject.Find("Road");
+
+        // get terrain object
+        terrain = GameObject.Find("Terrain");
+        // testing get height function from terrain generator
+        terrainHeight = terrain.GetComponent<TerrainGenerator>();
     }
 
     void Update()
     {
         roadHeight = road.GetComponent<RoadManager>();
-        heightText.text = "Height of Road: " + roadHeight.getHeight(); //Tells us the height of the road
+        float area = roadHeight.getHeight();
+        if (area > 0)
+        {
+            cutText.text = "" + area; //Tells us the height of the road
+            fillText.text = "" + 0; //Tells us the height of the road
+        }
+        else
+        {
+            cutText.text = "" + 0; //Tells us the height of the road
+            fillText.text = "" + (-area); //Tells us the height of the road
+        }
     }
 
     public void Pause()
