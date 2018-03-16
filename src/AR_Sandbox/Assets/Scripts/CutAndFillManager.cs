@@ -21,10 +21,14 @@ public class CutAndFillManager : MonoBehaviour {
     public GameObject terrain;
     private TerrainGenerator terrainHeight;
 
+    float timer = 0f;
+    float waitingTime = 5f;
+
     void Start()
     {
         UIPanel.gameObject.SetActive(false); //make sure our pause menu is disabled when scene starts
         road = GameObject.Find("Road");
+        roadHeight = road.GetComponent<RoadManager>();
 
         // get terrain object
         terrain = GameObject.Find("Terrain");
@@ -34,17 +38,21 @@ public class CutAndFillManager : MonoBehaviour {
 
     void Update()
     {
-        roadHeight = road.GetComponent<RoadManager>();
-        float area = roadHeight.getHeight();
-        if (area > 0)
+        timer += Time.deltaTime;
+        if (timer > waitingTime)
         {
-            cutText.text = "" + area; //Tells us the height of the road
-            fillText.text = "" + 0; //Tells us the height of the road
-        }
-        else
-        {
-            cutText.text = "" + 0; //Tells us the height of the road
-            fillText.text = "" + (-area); //Tells us the height of the road
+            timer = 0f;
+            float area = roadHeight.getHeight();
+            if (area > 0)
+            {
+                cutText.text = "" + area; //Tells us the height of the road
+                fillText.text = "" + 0; //Tells us the height of the road
+            }
+            else
+            {
+                cutText.text = "" + 0; //Tells us the height of the road
+                fillText.text = "" + (-area); //Tells us the height of the road
+            }
         }
     }
 

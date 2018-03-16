@@ -4,8 +4,6 @@ using UnityEngine;
 
 using UnityEngine.SceneManagement; // for restart function
 
-// https://www.studica.com/blog/create-ui-unity-tutorial
-
 using UnityEngine.UI; //Need this for calling UI scripts
 
 
