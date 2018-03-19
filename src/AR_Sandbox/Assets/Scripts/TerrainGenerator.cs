@@ -25,7 +25,7 @@ public class TerrainGenerator : MonoBehaviour {
 	private const int downsampleSize = 2;
 
 	//for debugging purposes
-	private const bool useSensor = false;
+	private const bool useSensor = true;
 
 	void Start () {
 		sensor = KinectSensor.GetDefault ();
@@ -101,7 +101,7 @@ public class TerrainGenerator : MonoBehaviour {
 			for (int i = 0; i < frameHeight / downsampleSize; i++) {
 				for (int j = 0; j < frameWidth / downsampleSize; j++) {
 					ushort y = heightData [j * downsampleSize + frameWidth * i * downsampleSize];		// Get Y value from Kinect height data
-					float yNorm = (float)y / maxHeight; 													// Normalize height	
+					float yNorm = ((float)y - maxHeight) / (minHeight - maxHeight); 					// Normalize height	
 					vertices [j + frameWidth / downsampleSize * i] = new Vector3 (j * spacing, yNorm * magnitude, i * spacing);
 				}
 			}

@@ -11,21 +11,12 @@ public class CalibrationManager : MonoBehaviour {
 
 	TerrainManager terrainManager;
 
-	public Toggle scaleToggle, cropToggle;
-
 	// Use this for initialization
 	void Start () {
 		mainCamera = Camera.main;
 
 		terrainManager = GameObject.Find ("Terrain_Manager").GetComponent<TerrainManager> ();
 
-		if (!scaleToggle) {
-			scaleToggle = GameObject.Find ("Scale Toggle").GetComponent<Toggle> ();
-		}
-
-		if (!cropToggle) {
-			cropToggle = GameObject.Find ("Crop Toggle").GetComponent<Toggle> ();
-		}
 	}
 	
 	// Update is called once per frame
@@ -52,17 +43,5 @@ public class CalibrationManager : MonoBehaviour {
 		Vector3 panelLR = mainCamera.ScreenToWorldPoint(LowerRight);
 
 		terrainManager.terrainMask.SetDimensions (panelLL, panelUR);
-	}
-
-	public void OnScaleToggleChanged() {
-		if (scaleToggle.isOn) {
-			cropToggle.isOn = false;
-		}
-	}
-
-	public void OnCropToggleChanged() {
-		if (cropToggle.isOn) {
-			scaleToggle.isOn = false;
-		}
 	}
 }

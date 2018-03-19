@@ -48,7 +48,7 @@ public class ModeManager : MonoBehaviour {
 				break;
             case DisplayMode.Calibrate: //What should occur while in Calibrate Mode?
                 // Debug.Log("I am in Calibrate mode");
-				//disableTerrain();
+				terrainManager.SetTerrainTheme(TerrainManager.TerrainTheme.rainbow);
 				enableTerrain();
 				disableRoad();
 				break;
