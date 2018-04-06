@@ -18,7 +18,7 @@ public class Road : MonoBehaviour {
 
 		CreateControlPoint (new Vector3(0f, 0f, 0f));
 		CreateControlPoint (new Vector3 (1f, 4f, 6f));
-		//CreateControlPoint (new Vector3 (5f, -2f, 6f));
+		CreateControlPoint (new Vector3 (5f, -2f, 6f));
 		CreateControlPoint (new Vector3(7f, 0f, 7f));
 
 		lineRenderer.positionCount = SEGMENT_COUNT;
@@ -35,18 +35,21 @@ public class Road : MonoBehaviour {
 	}
 
 	public void UpdateCurve() {
+		Vector3[] positions = new Vector3[SEGMENT_COUNT]; 
+
 		for (int i = 0; i < SEGMENT_COUNT; i++) {
 			float t = i / (float)(SEGMENT_COUNT - 1);
-
-			Vector3 point = CalculateBezier (t, controlPoints);
-			lineRenderer.SetPosition(i, point);
+			positions[i] = CalculateBezier (t, controlPoints);
 		}
+
+		lineRenderer.SetPositions (positions);
 	}
 
 	Vector3 CalculateBezier(float t, List<RoadControlPoint> points) {
 		int count = points.Count;
 		if (count > 2) {
-			return (1 - t) * CalculateBezier(t, points.GetRange(0, count - 1)) * t + t * CalculateBezier(t, points.GetRange(1, count - 1)) * t;
+			//return (1 - t) * CalculateBezier(t, points.GetRange(0, count - 1)) * t + t * CalculateBezier(t, points.GetRange(1, count - 1)) * t;
+			return (1 - t) * CalculateBezier(t, points.GetRange(0, count - 1)) + t * CalculateBezier(t, points.GetRange(1, count - 1));
 		} else {
 			return Vector3.Lerp (points [0].transform.position, points [1].transform.position, t);
 		}
