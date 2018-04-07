@@ -4,9 +4,6 @@ using UnityEngine;
 
 [RequireComponent(typeof(Mesh))]
 public class TerrainMask : MonoBehaviour {
-	public float width;
-	public float height;
-
 	private Mesh mesh;
 	private Vector3[] vertices;
 	private int[] triangles;
@@ -52,6 +49,14 @@ public class TerrainMask : MonoBehaviour {
 		Vector3 urOffset = upperRight - transform.position;
 
 		ResizeMesh (urOffset.x, urOffset.z);
+	}
+
+	public float GetWidth() {
+		return vertices [3].x - vertices [0].x;
+	}
+
+	public float GetLength() {
+		return vertices [1].z - vertices [0].z;
 	}
 }
 

@@ -48,7 +48,6 @@ public class Road : MonoBehaviour {
 	Vector3 CalculateBezier(float t, List<RoadControlPoint> points) {
 		int count = points.Count;
 		if (count > 2) {
-			//return (1 - t) * CalculateBezier(t, points.GetRange(0, count - 1)) * t + t * CalculateBezier(t, points.GetRange(1, count - 1)) * t;
 			return (1 - t) * CalculateBezier(t, points.GetRange(0, count - 1)) + t * CalculateBezier(t, points.GetRange(1, count - 1));
 		} else {
 			return Vector3.Lerp (points [0].transform.position, points [1].transform.position, t);

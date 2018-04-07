@@ -63,6 +63,19 @@ public class TerrainManager : MonoBehaviour {
 		}
 	}
 
+	//gets the bounds of the terrain mask, in world coordinates.
+	//w = left bound, x = upper bound, y = right bound, z = lower bound
+	public Vector4 GetMaskBounds() {
+		Vector4 bounds = new Vector4 ();
+
+		bounds.w = terrainMask.transform.position.x;
+		bounds.x = terrainMask.transform.position.z + terrainMask.GetLength ();
+		bounds.y = terrainMask.transform.position.x + terrainMask.GetWidth ();
+		bounds.z = terrainMask.transform.position.z;
+
+		return bounds;
+	}
+
 	public void SetMaxTerrainHeight(float maxHeight) {
 		terrainGenerator.maxHeight = maxHeight;
 	}
@@ -75,7 +88,7 @@ public class TerrainManager : MonoBehaviour {
 		terrainGenerator.minHeight = minHeight;
 	}
 
-	public float getMinTerrainHeight() {
+	public float GetMinTerrainHeight() {
 		return terrainGenerator.minHeight;
 	}
 }
