@@ -38,7 +38,9 @@ public class RoadControlPoint : MonoBehaviour {
 
 		position.x = position.x > bounds.w ? position.x : bounds.w;
 		position.x = position.x < bounds.y ? position.x : bounds.y;
-		position.y = position.y < bounds.x ? position.y : bounds.x;
-		position.y = position.y > bounds.z ? position.y : bounds.z;
+		position.z = position.z < bounds.x ? position.z : bounds.x;
+		position.z = position.z > bounds.z ? position.z : bounds.z;
+
+		transform.position = position;
 	}
 }
