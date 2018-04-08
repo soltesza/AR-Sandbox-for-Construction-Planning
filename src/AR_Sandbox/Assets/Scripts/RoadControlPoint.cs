@@ -23,11 +23,21 @@ public class RoadControlPoint : MonoBehaviour {
 			this.enabled = false;
 		}
 	}
-
+		
 	public void OnMouseDrag() {
-		Vector3 mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-		transform.position = new Vector3 (mousePos.x, transform.position.y, mousePos.z);
-		ConstrainToTerrainMask ();
+		if (Input.GetKey (KeyCode.LeftControl)) { // Change height
+			Vector3 mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+			Vector3 pointPos = transform.position;
+			float delta = mousePos.z - pointPos.z;
+			transform.position = new Vector3 (pointPos.x, 
+											  delta, 
+											  pointPos.z);
+		} else { // Change position
+			Vector3 mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
+			transform.position = new Vector3 (mousePos.x, transform.position.y, mousePos.z);
+			ConstrainToTerrainMask ();
+		}
+
 		road.UpdateCurve ();
 	}
 
