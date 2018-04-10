@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class CalibrationManager : MonoBehaviour {
 	private Camera mainCamera;
-	public float terrainSpeed = .01f;
-	Vector3 move;
+	private float terrainSpeed = .01f;
+	private Vector3 terrainPos = new Vector3(0,0,0);
+
 	[SerializeField]
 	Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
 
@@ -70,27 +71,32 @@ public class CalibrationManager : MonoBehaviour {
 	{
 		float pos = terrain.transform.position.x;
 		pos = terrain.transform.position.x - terrainSpeed;
-		terrain.transform.position = new Vector3 (terrain.transform.position.x - terrainSpeed,terrain.transform.position.y,transform.position.z);
+		terrainPos = terrainPos + new Vector3 (-terrainSpeed,0,0);
+		terrain.transform.position = terrainPos;
+
 	}
 
 	public void moveTerrainRight()
 	{
 		float pos = terrain.transform.position.x;
 		pos = terrain.transform.position.x + terrainSpeed;
-		terrain.transform.position = new Vector3 (terrain.transform.position.x + terrainSpeed,terrain.transform.position.y,transform.position.z);
+		terrainPos = terrainPos + new Vector3 (terrainSpeed,0,0);
+		terrain.transform.position = terrainPos;
 	}
 
 	public void moveTerrainUp()
 	{
 		float pos = terrain.transform.position.z;
 		pos = terrain.transform.position.z + terrainSpeed;
-		terrain.transform.position = new Vector3 (transform.position.x,terrain.transform.position.y,terrain.transform.position.z + terrainSpeed);
+		terrainPos = terrainPos + new Vector3 (0,0,terrainSpeed);
+		terrain.transform.position = terrainPos;
 	}
 
 	public void moveTerrainDown()
 	{
 		float pos = terrain.transform.position.z;
 		pos = terrain.transform.position.z - terrainSpeed;
-		terrain.transform.position = new Vector3 (transform.position.x,terrain.transform.position.y,terrain.transform.position.z - terrainSpeed);
+		terrainPos = terrainPos + new Vector3 (0,0,-terrainSpeed);
+		terrain.transform.position = terrainPos;
 	}
 }
