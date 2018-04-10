@@ -69,8 +69,6 @@ public class CalibrationManager : MonoBehaviour {
 
 	public void moveTerrainLeft()
 	{
-		float pos = terrain.transform.position.x;
-		pos = terrain.transform.position.x - terrainSpeed;
 		terrainPos = terrainPos + new Vector3 (-terrainSpeed,0,0);
 		terrain.transform.position = terrainPos;
 
@@ -78,24 +76,18 @@ public class CalibrationManager : MonoBehaviour {
 
 	public void moveTerrainRight()
 	{
-		float pos = terrain.transform.position.x;
-		pos = terrain.transform.position.x + terrainSpeed;
 		terrainPos = terrainPos + new Vector3 (terrainSpeed,0,0);
 		terrain.transform.position = terrainPos;
 	}
 
 	public void moveTerrainUp()
 	{
-		float pos = terrain.transform.position.z;
-		pos = terrain.transform.position.z + terrainSpeed;
 		terrainPos = terrainPos + new Vector3 (0,0,terrainSpeed);
 		terrain.transform.position = terrainPos;
 	}
 
 	public void moveTerrainDown()
 	{
-		float pos = terrain.transform.position.z;
-		pos = terrain.transform.position.z - terrainSpeed;
 		terrainPos = terrainPos + new Vector3 (0,0,-terrainSpeed);
 		terrain.transform.position = terrainPos;
 	}
