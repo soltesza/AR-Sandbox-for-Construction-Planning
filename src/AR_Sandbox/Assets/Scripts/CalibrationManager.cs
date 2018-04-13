@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class CalibrationManager : MonoBehaviour {
 	private Camera mainCamera;
-	private float terrainSpeed = .01f;
+	private float terrainMoveSpeed = .01f;
+	private float terrainScaleSpeed = .001f;
 	private Vector3 terrainPos = new Vector3(0,0,0);
 
 	[SerializeField]
@@ -40,6 +41,12 @@ public class CalibrationManager : MonoBehaviour {
 			if (Input.GetKey (KeyCode.DownArrow)) {
 				moveTerrainDown ();
 			}
+			if (Input.GetKey (KeyCode.Equals)) {
+				scaleTerrainUp ();
+			}
+			if (Input.GetKey (KeyCode.Minus)) {
+				scaleTerrainDown ();
+			}
 		}
 		if(Input.GetKeyDown(KeyCode.Space))
 		{
@@ -69,26 +76,36 @@ public class CalibrationManager : MonoBehaviour {
 
 	public void moveTerrainLeft()
 	{
-		terrainPos = terrainPos + new Vector3 (-terrainSpeed,0,0);
+		terrainPos = terrainPos + new Vector3 (-terrainMoveSpeed,0,0);
 		terrain.transform.position = terrainPos;
 
 	}
 
 	public void moveTerrainRight()
 	{
-		terrainPos = terrainPos + new Vector3 (terrainSpeed,0,0);
+		terrainPos = terrainPos + new Vector3 (terrainMoveSpeed,0,0);
 		terrain.transform.position = terrainPos;
 	}
 
 	public void moveTerrainUp()
 	{
-		terrainPos = terrainPos + new Vector3 (0,0,terrainSpeed);
+		terrainPos = terrainPos + new Vector3 (0,0,terrainMoveSpeed);
 		terrain.transform.position = terrainPos;
 	}
 
 	public void moveTerrainDown()
 	{
-		terrainPos = terrainPos + new Vector3 (0,0,-terrainSpeed);
+		terrainPos = terrainPos + new Vector3 (0,0,-terrainMoveSpeed);
 		terrain.transform.position = terrainPos;
+	}
+
+	public void scaleTerrainUp()
+	{
+		terrain.transform.localScale += new Vector3 (terrainScaleSpeed,0,terrainScaleSpeed);
+	}
+
+	public void scaleTerrainDown()
+	{
+		terrain.transform.localScale -= new Vector3 (terrainScaleSpeed,0,terrainScaleSpeed);
 	}
 }
