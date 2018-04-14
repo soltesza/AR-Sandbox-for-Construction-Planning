@@ -54,8 +54,7 @@ public class Road : MonoBehaviour {
 		}
 	}
 
-    public Vector3[] GetRoadPoints()
-    {
+    public Vector3[] GetRoadPoints() {
         Vector3[] positions = new Vector3[SEGMENT_COUNT];
         lineRenderer.GetPositions(positions);
         return positions;

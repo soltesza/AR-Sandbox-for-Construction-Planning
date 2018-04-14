@@ -135,7 +135,8 @@ public class TerrainGenerator : MonoBehaviour {
 		Vector3 texelPos = modelPos / spacing;
 
 		if (texelPos.x >= 0 && texelPos.x < frameWidth && texelPos.z >= 0 && texelPos.z < frameHeight) {
-			return heightData [((int)texelPos.z) * frameWidth + ((int)texelPos.x)];
+			float y = heightData [((int)texelPos.z) * frameWidth + ((int)texelPos.x)];
+			return (((float)y - maxHeight) / (minHeight - maxHeight)) * magnitude;
 		} else {
 			Debug.LogError ("TerrainGenerator: Request for height data returned 0, world position out of range");
 			return 0;
