@@ -5882,8 +5882,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 17105641}
-  Ground: {fileID: 0}
-  material: {fileID: 2100000, guid: 4f4dfb60516028144bc875ca92da1e5f, type: 2}
   road: {fileID: 0}
 --- !u!1 &2045301327
 GameObject:
@@ -6020,8 +6018,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIPanel: {fileID: 1942142133}
-  cutText: {fileID: 578467256}
-  fillText: {fileID: 267832465}
+  cutText0: {fileID: 578467256}
+  cutText1: {fileID: 242494606}
+  cutText2: {fileID: 646171255}
+  cutText3: {fileID: 531169213}
+  cutText4: {fileID: 175430368}
+  fillText0: {fileID: 267832465}
+  fillText1: {fileID: 262364488}
+  fillText2: {fileID: 1260272738}
+  fillText3: {fileID: 2045301329}
+  fillText4: {fileID: 1887311210}
   road: {fileID: 2032210458}
   terrain: {fileID: 0}
 --- !u!114 &2048563951

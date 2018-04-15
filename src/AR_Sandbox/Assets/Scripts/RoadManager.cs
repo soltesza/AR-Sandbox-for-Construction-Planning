@@ -31,21 +31,25 @@ public class RoadManager : MonoBehaviour
        
     }
 
-    public float getHeight()
+    public float[] getRoadAreas()
     {
         Vector3[] positions = roadPoint.GetRoadPoints();
 
-        float roadHeight = 0f;
+        float[] roadHeight = new float[roadPoint.GetNumRoadPoints()];
+        float[] roadAreas = new float[roadPoint.GetNumRoadPoints()];
         int count = 0;
 
-        //Debug.Log("Height at World Position: " + terrainHeight.GetHeightAtWorldPosition(positions[0]));
         foreach (Vector3 p in positions)
         {
-            // Uncomment for cut/fill height data debug output 
-            roadHeight = 10f * terrainHeight.GetHeightAtWorldPosition(p);
-            roadHeight = (float)(2f * (.5 * roadHeight * roadHeight) + 120f * roadHeight);
-            //Debug.Log("Position: " + count++ + " Height: " + roadHeight);
+            roadHeight[count] = 10f * terrainHeight.GetHeightAtWorldPosition(p);
+            roadAreas[count] = (float)(2f * (.5 * roadHeight[count] * roadHeight[count]) + 120f * roadHeight[count]);
+
+            //Debug.Log("Height at World Position " + count + ": " + terrainHeight.GetHeightAtWorldPosition(p));
+            //Debug.Log("Position: " + count + " Height: " + roadHeight[count]);
+
+            count++;
         }
-        return roadHeight;
+
+        return roadAreas;
     }
 }
