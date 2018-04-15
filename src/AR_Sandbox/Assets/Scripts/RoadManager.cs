@@ -72,11 +72,12 @@ public class RoadManager : MonoBehaviour
 		// testing get height function from terrain generator
 		terrainHeight = terrain.GetComponent<TerrainGenerator>();
         int count = 0;
+        //Debug.Log("Height at World Position: " + terrainHeight.GetHeightAtWorldPosition(positions[0]));
         foreach (Vector3 p in positions)
         {
             // Uncomment for cut/fill height data debug output 
-            roadHeight = terrainHeight.GetHeightAtWorldPosition(p);
-            roadHeight = (float)(2 * (.5 * roadHeight * roadHeight))/4f;
+            roadHeight = 10f * terrainHeight.GetHeightAtWorldPosition(p);
+            roadHeight = (float)(2f * (.5 * roadHeight * roadHeight) + 120f * roadHeight);
             //Debug.Log("Position: " + count++ + " Height: " + roadHeight);
         }
         return roadHeight;
