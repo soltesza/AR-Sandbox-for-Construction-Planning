@@ -60,7 +60,11 @@ public class Road : MonoBehaviour {
         return positions;
     }
 
-	public void DisableControlPoints() {
+    public int GetNumRoadPoints() {
+        return lineRenderer.positionCount;
+    }
+
+    public void DisableControlPoints() {
 		foreach (RoadControlPoint controlPoint in controlPoints) {
 			controlPoint.gameObject.SetActive (false);
 		}
