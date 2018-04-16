@@ -41,8 +41,8 @@ public class HeightView : MonoBehaviour {
 		terrainLine.positionCount = roadPoints.Length;
 
 		for(int i = 0; i < roadPoints.Length; i++) {
-			roadLinePoints [i] = new Vector3 (i * spacing, 0f, roadPoints[i].y);
-			terrainLinePoints [i] = new Vector3 (i * spacing, 0f, magnitude * terrainManager.terrainGenerator.GetHeightAtWorldPosition(roadPoints[i]));
+			roadLinePoints [i] = new Vector3 (i * spacing, 0f, magnitude * roadPoints[i].y) + transform.position;
+			terrainLinePoints [i] = new Vector3 (i * spacing, 0f, magnitude * terrainManager.terrainGenerator.GetHeightAtWorldPosition(roadPoints[i])) + transform.position;
 		}
 
 		roadLine.SetPositions (roadLinePoints);

@@ -32,6 +32,7 @@ public class RoadControlPoint : MonoBehaviour {
 			transform.position = new Vector3 (pointPos.x, 
 											  delta, 
 											  pointPos.z);
+			ConstrainHeight ();
 		} else { // Change position
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			transform.position = new Vector3 (mousePos.x, transform.position.y, mousePos.z);
@@ -50,6 +51,17 @@ public class RoadControlPoint : MonoBehaviour {
 		position.x = position.x < bounds.y ? position.x : bounds.y;
 		position.z = position.z < bounds.x ? position.z : bounds.x;
 		position.z = position.z > bounds.z ? position.z : bounds.z;
+
+		transform.position = position;
+	}
+
+	// Prevents control point from moving above or below the bounds of the terrain
+	private void ConstrainHeight() {
+		Vector3 position = transform.position;
+		float maxHeight = terrainManager.terrainGenerator.magnitude;
+
+		position.y = position.y < maxHeight ? position.y : maxHeight;
+		position.y = position.y > 0 ? position.y : 0;
 
 		transform.position = position;
 	}

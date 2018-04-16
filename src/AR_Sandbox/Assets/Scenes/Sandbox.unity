@@ -3958,7 +3958,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1519270543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3981,7 +3981,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1519270542}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.6255536, y: -2.7109547, z: 3.8733616}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1628158139}
@@ -5882,8 +5882,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrain: {fileID: 17105641}
-  Ground: {fileID: 0}
-  material: {fileID: 2100000, guid: 4f4dfb60516028144bc875ca92da1e5f, type: 2}
   road: {fileID: 0}
 --- !u!1 &2045301327
 GameObject:
