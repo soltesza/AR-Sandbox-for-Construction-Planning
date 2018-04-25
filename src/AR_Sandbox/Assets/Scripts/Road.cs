@@ -5,8 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class Road : MonoBehaviour {
 	public RoadControlPoint controlPointPrefab;
+	public LineRenderer controlPointConnectorPrefab;
 
-	private LineRenderer lineRenderer;
+	private LineRenderer lineRenderer, controlPointConnector;
 	private List<RoadControlPoint> controlPoints;
 
 	private const int SEGMENT_COUNT = 20; // Number of line segments per curve, increase this number for a smoother line
@@ -23,7 +24,17 @@ public class Road : MonoBehaviour {
 
 		lineRenderer.positionCount = SEGMENT_COUNT;
 
+		controlPointConnector = CreateControlPointConnector ();
+
 		UpdateCurve ();
+	}
+
+	LineRenderer CreateControlPointConnector() {
+		LineRenderer connector = (LineRenderer)GameObject.Instantiate (controlPointConnectorPrefab);
+		connector.transform.parent = this.transform;
+		connector.positionCount = controlPoints.Count;
+
+		return connector;
 	}
 
 	void CreateControlPoint(Vector3 position) {
@@ -32,6 +43,16 @@ public class Road : MonoBehaviour {
 		newPoint.road = this;
 		newPoint.transform.parent = this.transform;
 		controlPoints.Add(newPoint);
+	}
+
+	void UpdateControlPointConnector() {
+		Vector3[] positions = new Vector3[controlPoints.Count]; 
+
+		for (int i = 0; i < controlPoints.Count; i++) {
+			positions [i] = controlPoints [i].transform.position;
+		}
+
+		controlPointConnector.SetPositions (positions);
 	}
 
 	public void UpdateCurve() {
@@ -43,6 +64,7 @@ public class Road : MonoBehaviour {
 		}
 
 		lineRenderer.SetPositions (positions);
+		UpdateControlPointConnector ();
 	}
 
 	Vector3 CalculateBezier(float t, List<RoadControlPoint> points) {
