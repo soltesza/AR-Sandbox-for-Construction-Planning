@@ -37,13 +37,13 @@ public class UIManager : MonoBehaviour {
             Pause();
         else if (Input.GetKeyDown(KeyCode.Escape) && UIPanel.gameObject.activeSelf)
             UnPause();
-		if (Input.GetKeyDown(KeyCode.Alpha1))
+		if (Input.GetKeyDown(KeyCode.Q))
 			Depth();
-		if (Input.GetKeyDown(KeyCode.Alpha2))
+		if (Input.GetKeyDown(KeyCode.W))
 			Design();
-		if (Input.GetKeyDown(KeyCode.Alpha3))
+		if (Input.GetKeyDown(KeyCode.E))
 			CutAndFill();
-		if (Input.GetKeyDown(KeyCode.Alpha4))
+		if (Input.GetKeyDown(KeyCode.R))
 			Calibrate();
     }
 
