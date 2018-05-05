@@ -87,12 +87,16 @@ public class Road : MonoBehaviour {
     }
 
     public void DisableControlPoints() {
-		foreach (RoadControlPoint controlPoint in controlPoints) {
+        controlPointConnector.enabled = false;
+
+        foreach (RoadControlPoint controlPoint in controlPoints) {
 			controlPoint.gameObject.SetActive (false);
 		}
 	}
 
 	public void EnableControlPoints() {
+        controlPointConnector.enabled = true;
+
 		foreach (RoadControlPoint controlPoint in controlPoints) {
 			controlPoint.gameObject.SetActive (true);
 		}
