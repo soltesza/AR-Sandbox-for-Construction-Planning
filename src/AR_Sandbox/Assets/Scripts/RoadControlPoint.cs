@@ -43,7 +43,7 @@ public class RoadControlPoint : MonoBehaviour {
 	}
 
 	// Prevents the control point from moving outside the bounds of the terrain mask
-	private void ConstrainToTerrainMask() {
+	public void ConstrainToTerrainMask() {
 		Vector3 position = transform.position;
 		Vector4 bounds = terrainManager.GetMaskBounds ();
 

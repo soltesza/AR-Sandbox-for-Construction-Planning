@@ -91,7 +91,9 @@ public class Road : MonoBehaviour {
 
         foreach (RoadControlPoint controlPoint in controlPoints) {
 			controlPoint.gameObject.SetActive (false);
+			controlPoint.ConstrainToTerrainMask();
 		}
+		UpdateCurve ();
 	}
 
 	public void EnableControlPoints() {
@@ -99,6 +101,8 @@ public class Road : MonoBehaviour {
 
 		foreach (RoadControlPoint controlPoint in controlPoints) {
 			controlPoint.gameObject.SetActive (true);
+			controlPoint.ConstrainToTerrainMask();
 		}
+		UpdateCurve ();
 	}
 }
