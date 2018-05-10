@@ -63,10 +63,13 @@ public class Road : MonoBehaviour {
 	}
 
 	public void RemoveControlPoint(){
-		Destroy (controlPoints[controlPoints.Count - 1]);
-		controlPoints.RemoveAt(controlPoints.Count - 1);
-		Destroy (controlPointConnector);
-		controlPointConnector = CreateControlPointConnector();
+		if (controlPoints.Count > 2) {
+		
+			Destroy (controlPoints [controlPoints.Count - 1]);
+			controlPoints.RemoveAt (controlPoints.Count - 1);
+			Destroy (controlPointConnector);
+			controlPointConnector = CreateControlPointConnector ();
+		}
 	}
 
 	void UpdateControlPointConnector() {
