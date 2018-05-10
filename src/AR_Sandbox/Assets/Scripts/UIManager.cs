@@ -53,8 +53,7 @@ public class UIManager : MonoBehaviour {
         ModeManager.dMode = DisplayMode.Depth;
 		//Make sure windows from alternate modes don't display
 		CutAndFillPanel.gameObject.SetActive(false);
-		//Uncomment below to allow asset tray to appear
-		//DesignPanel.gameObject.SetActive(false);
+		DesignPanel.gameObject.SetActive(false);
 		ConfigPanel.gameObject.SetActive (false);
     }
 
@@ -64,8 +63,7 @@ public class UIManager : MonoBehaviour {
 
         ModeManager.dMode = DisplayMode.Design;
 
-		//Uncomment below to allow asset tray to appear
-        //DesignPanel.gameObject.SetActive(!DesignPanel.gameObject.activeSelf);
+        DesignPanel.gameObject.SetActive(!DesignPanel.gameObject.activeSelf);
 		CutAndFillPanel.gameObject.SetActive(false);
 		ConfigPanel.gameObject.SetActive (false);
     }
@@ -77,8 +75,7 @@ public class UIManager : MonoBehaviour {
         ModeManager.dMode = DisplayMode.CutFill;
 
         CutAndFillPanel.gameObject.SetActive(!CutAndFillPanel.gameObject.activeSelf);
-		//Uncomment below to allow asset tray to appear
-		//DesignPanel.gameObject.SetActive(false);
+		DesignPanel.gameObject.SetActive(false);
 		ConfigPanel.gameObject.SetActive (false);
     }
 
@@ -89,8 +86,7 @@ public class UIManager : MonoBehaviour {
 
 		//Make sure windows from alternate modes don't display
 		CutAndFillPanel.gameObject.SetActive(false);
-		//Uncomment below to allow asset tray to appear
-		//DesignPanel.gameObject.SetActive(false);
+		DesignPanel.gameObject.SetActive(false);
 		ConfigPanel.gameObject.SetActive (true);
     }
 

@@ -23,6 +23,7 @@ public class Road : MonoBehaviour {
 		CreateControlPoint (new Vector3 (5f, -2f, 6f));
 		CreateControlPoint (new Vector3(7f, 0f, 7f));
 
+
 		undoStack = new Stack<List<Vector3>> ();
 
 		lineRenderer.positionCount = SEGMENT_COUNT;
@@ -46,6 +47,26 @@ public class Road : MonoBehaviour {
 		newPoint.road = this;
 		newPoint.transform.parent = this.transform;
 		controlPoints.Add(newPoint);
+	}
+
+	public void AddControlPoint(){
+		RoadControlPoint newPoint = (RoadControlPoint)GameObject.Instantiate (controlPointPrefab);
+		Vector3 positionShift = new Vector3 (1f, 0f,1f);
+		newPoint.transform.position = controlPoints[controlPoints.Count - 1].transform.position + positionShift;
+		newPoint.road = this;
+		newPoint.transform.parent = this.transform;
+		controlPoints.Add(newPoint);
+
+		Destroy (controlPointConnector);
+
+		controlPointConnector = CreateControlPointConnector();
+	}
+
+	public void RemoveControlPoint(){
+		Destroy (controlPoints[controlPoints.Count - 1]);
+		controlPoints.RemoveAt(controlPoints.Count - 1);
+		Destroy (controlPointConnector);
+		controlPointConnector = CreateControlPointConnector();
 	}
 
 	void UpdateControlPointConnector() {
