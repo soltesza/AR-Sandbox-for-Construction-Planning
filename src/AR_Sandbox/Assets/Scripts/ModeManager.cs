@@ -26,7 +26,6 @@ public class ModeManager : MonoBehaviour {
 	{
 		terrainManager = GameObject.Find ("Terrain_Manager").GetComponent<TerrainManager>();
 		road = GameObject.Find ("Road").GetComponent<Road>();
-		road.gameObject.SetActive (false);
 	}
 
 	
@@ -35,12 +34,10 @@ public class ModeManager : MonoBehaviour {
             case DisplayMode.Depth:     //What should occur while in Depth Mode?
 			    //Debug.Log("I am in Depth mode");
 				terrainManager.SetTerrainTheme(TerrainManager.TerrainTheme.rainbow);
-				enableTerrain();
 				disableRoad();
                 break;
 			case DisplayMode.CutFill:   //What should occur while in CutFill Mode?
                  // Debug.Log("I am in CutFill mode");
-				enableTerrain ();
 				terrainManager.SetTerrainTheme (TerrainManager.TerrainTheme.greyscale);
 				//disableTerrain();
 				enableRoad ();
@@ -49,16 +46,19 @@ public class ModeManager : MonoBehaviour {
             case DisplayMode.Calibrate: //What should occur while in Calibrate Mode?
                 // Debug.Log("I am in Calibrate mode");
 				terrainManager.SetTerrainTheme(TerrainManager.TerrainTheme.rainbow);
-				enableTerrain();
 				disableRoad();
 				break;
 			case DisplayMode.Design:    //What should occur while in Design Mode?
                 // Debug.Log("I am in Design mode");
 				//disableTerrain();
 				terrainManager.SetTerrainTheme (TerrainManager.TerrainTheme.greyscale);
-				enableTerrain ();
 				enableRoad ();
 				road.EnableControlPoints ();
+				Debug.Log (Input.inputString);
+				if ((Input.GetKeyDown (KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl)) && Input.GetKeyDown (KeyCode.Z)) {
+					road.Undo ();		
+				}
+
                 break;
         }
 	}

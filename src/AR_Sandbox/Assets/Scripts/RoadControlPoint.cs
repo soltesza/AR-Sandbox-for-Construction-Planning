@@ -23,7 +23,11 @@ public class RoadControlPoint : MonoBehaviour {
 			this.enabled = false;
 		}
 	}
-		
+
+	public void OnMouseDown() {
+		road.PushStateToUndoStack ();
+	}
+
 	public void OnMouseDrag() {
 		if (Input.GetKey (KeyCode.LeftControl)) { // Change height
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);

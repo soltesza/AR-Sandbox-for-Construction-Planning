@@ -9,6 +9,7 @@ public class Road : MonoBehaviour {
 
 	private LineRenderer lineRenderer, controlPointConnector;
 	private List<RoadControlPoint> controlPoints;
+	private Stack<List<Vector3>> undoStack;
 
 	private const int SEGMENT_COUNT = 20; // Number of line segments per curve, increase this number for a smoother line
 
@@ -21,6 +22,8 @@ public class Road : MonoBehaviour {
 		CreateControlPoint (new Vector3 (1f, 4f, 6f));
 		CreateControlPoint (new Vector3 (5f, -2f, 6f));
 		CreateControlPoint (new Vector3(7f, 0f, 7f));
+
+		undoStack = new Stack<List<Vector3>> ();
 
 		lineRenderer.positionCount = SEGMENT_COUNT;
 
@@ -104,5 +107,25 @@ public class Road : MonoBehaviour {
 			controlPoint.ConstrainToTerrainMask();
 		}
 		UpdateCurve ();
+	}
+
+	public void Undo() {
+		if (undoStack.Count > 0) {
+			List<Vector3> positions = undoStack.Pop ();
+
+			for (int i = 0; i < positions.Count; i++) {
+				controlPoints [i].transform.position = positions [i];
+			}
+		}
+	}
+
+	public void PushStateToUndoStack() {
+		List<Vector3> positions = new List<Vector3>(controlPoints.Count);
+
+		foreach(RoadControlPoint controlPoint in controlPoints) {
+			positions.Add (controlPoint.transform.position);
+		}
+
+		undoStack.Push(positions);
 	}
 }
