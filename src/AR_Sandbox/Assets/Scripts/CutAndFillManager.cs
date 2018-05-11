@@ -6,18 +6,21 @@ using UnityEngine.UI; //Need this for calling UI scripts
 
 public class CutAndFillManager : MonoBehaviour {
 
+    // max points for the road
+    const int MAXPOINTS = 20;
+
     // data table arrays
-    int[] station       = new int[20];
-    int[] existGrade    = new int[20];
-    int[] propGrade     = new int[20];
-    int[] roadWidth     = new int[20];
-    int[] cutArea       = new int[20];
-    int[] fillArea      = new int[20];
-    int[] cutVolume     = new int[20];
-    int[] fillVolume    = new int[20];
-    int[] adjFillVolume = new int[20];
-    int[] algebraicSum  = new int[20];
-    int[] massOrdinate  = new int[20];
+    int[] station       = new int[MAXPOINTS];
+    int[] existGrade    = new int[MAXPOINTS];
+    int[] propGrade     = new int[MAXPOINTS];
+    int[] roadWidth     = new int[MAXPOINTS];
+    int[] cutArea       = new int[MAXPOINTS];
+    int[] fillArea      = new int[MAXPOINTS];
+    int[] cutVolume     = new int[MAXPOINTS];
+    int[] fillVolume    = new int[MAXPOINTS];
+    int[] adjFillVolume = new int[MAXPOINTS];
+    int[] algebraicSum  = new int[MAXPOINTS];
+    int[] massOrdinate  = new int[MAXPOINTS];
 
     [SerializeField]
     Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
@@ -36,11 +39,11 @@ public class CutAndFillManager : MonoBehaviour {
          fillText3,
          fillText4;
 
-    public GameObject road;
-    private RoadManager roadArea;
-
     public GameObject terrain;
     private TerrainGenerator terrainHeight;
+
+    public GameObject road;
+    private Road roadPoint;
 
     float timer = 0f;
     float waitingTime = 5f;
@@ -48,91 +51,22 @@ public class CutAndFillManager : MonoBehaviour {
     void Start()
     {
         UIPanel.gameObject.SetActive(false); //make sure our pause menu is disabled when scene starts
-        road = GameObject.Find("Road");
-        roadArea = road.GetComponent<RoadManager>();
 
         // get terrain object
         terrain = GameObject.Find("Terrain");
-        // testing get height function from terrain generator
+        // get height function from terrain generator
         terrainHeight = terrain.GetComponent<TerrainGenerator>();
+
+        // get road object
+        road = GameObject.Find("Road");
+        // get point from road
+        roadPoint = road.GetComponent<Road>();
     }
 
+    // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if (timer > waitingTime)
-        {
-            timer = 0f;
-
-            float[] area = roadArea.getRoadAreas();
-            int count = 0;
-            int countBy = area.Length / 4;
-
-            // station 0
-            if (area[count] < 1000)
-            {
-                cutText0.text = "" + area[count]; 
-                fillText0.text = "" + 0; 
-            }
-            else
-            {
-                cutText0.text = "" + 0; 
-                fillText0.text = "" + (-area[count]); 
-            }
-            count += countBy - 1;
-
-            // station 1
-            if (area[count] < 1000)
-            {
-                cutText1.text = "" + area[count]; 
-                fillText1.text = "" + 0; 
-            }
-            else
-            {
-                cutText1.text = "" + 0; 
-                fillText1.text = "" + (-area[count]); 
-            }
-            count += countBy;
-
-            // station 2
-            if (area[count] < 1000)
-            {
-                cutText2.text = "" + area[count]; 
-                fillText2.text = "" + 0; 
-            }
-            else
-            {
-                cutText2.text = "" + 0; 
-                fillText2.text = "" + (-area[count]); 
-            }
-            count += countBy;
-
-            // station 3
-            if (area[count] < 1000)
-            {
-                cutText3.text = "" + area[count]; 
-                fillText3.text = "" + 0; 
-            }
-            else
-            {
-                cutText3.text = "" + 0; 
-                fillText3.text = "" + (-area[count]); 
-            }
-            count += countBy;
-
-            // station 4
-            if (area[count] < 1000)
-            {
-                cutText4.text = "" + area[count]; 
-                fillText4.text = "" + 0; 
-            }
-            else
-            {
-                cutText4.text = "" + 0; 
-                fillText4.text = "" + (-area[count]); 
-            }
-            count += countBy;
-        }
+        
     }
 
     public void Pause()
@@ -147,7 +81,12 @@ public class CutAndFillManager : MonoBehaviour {
 
     void updateStation()
     {
+        station[0] = 0;
 
+        for (int i = 0; i < MAXPOINTS; i++)
+        {
+            station[i] = station[i - 1] + 100;
+        }
     }
 
     void updateExistGrade()
