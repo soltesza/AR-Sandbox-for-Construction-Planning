@@ -25,7 +25,7 @@ public class TerrainGenerator : MonoBehaviour {
 	private const int downsampleSize = 2;
 
 	//for debugging purposes
-	private const bool useSensor = true;
+	private const bool useSensor = false;
 
 	void Start () {
 		sensor = KinectSensor.GetDefault ();

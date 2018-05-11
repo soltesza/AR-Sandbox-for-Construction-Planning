@@ -100,13 +100,15 @@ public class CutAndFillManager : MonoBehaviour {
         {
             station[i] = station[i - 1] + 100;
         }
-
+        /*
+        // DEBUG
         int count = 0;
         foreach (int s in station)
         {
             Debug.Log("STATION #" + count + " value " + s);
             count += 1;
         }
+        */
     }
 
     void updateExistGrade()
@@ -118,6 +120,14 @@ public class CutAndFillManager : MonoBehaviour {
         foreach (Vector3 p in positions)
         {
             existGrade[i] = (int)terrainHeight.GetHeightAtWorldPosition(p);
+        }
+
+        // DEBUG
+        int count = 0;
+        foreach (int s in existGrade)
+        {
+            Debug.Log("EXISTING GRADE #" + count + " value " + s);
+            count += 1;
         }
     }
 
