@@ -144,4 +144,59 @@ public class CutAndFillManager : MonoBehaviour {
     {
         UIPanel.gameObject.SetActive(false); //turn off pause menu
     }
+
+    void updateStation()
+    {
+
+    }
+
+    void updateExistGrade()
+    {
+
+    }
+
+    void updatePropGrade()
+    {
+
+    }
+
+    void updateRoadWidth()
+    {
+
+    }
+
+    void updateCutArea()
+    {
+
+    }
+
+    void updateFillArea()
+    {
+
+    }
+
+    void updateCutVolume()
+    {
+
+    }
+
+    void updateFillVolume()
+    {
+
+    }
+
+    void updateAdjFillVolume()
+    {
+
+    }
+
+    void updateAlgebraicSum()
+    {
+
+    }
+
+    void updateMassOrdinate()
+    {
+
+    }
 }
