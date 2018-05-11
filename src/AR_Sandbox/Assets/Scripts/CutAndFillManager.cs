@@ -4,6 +4,8 @@ using UnityEngine;
 
 using UnityEngine.UI; //Need this for calling UI scripts
 
+using SLS.Widgets.Table; //Need this for calling table pro
+
 public class CutAndFillManager : MonoBehaviour {
 
     // max points for the road
@@ -48,6 +50,8 @@ public class CutAndFillManager : MonoBehaviour {
     float timer = 0f;
     float waitingTime = 10f;
 
+    private Table table;
+
     void Start()
     {
         UIPanel.gameObject.SetActive(false); //make sure our pause menu is disabled when scene starts
@@ -74,6 +78,12 @@ public class CutAndFillManager : MonoBehaviour {
         updateAdjFillVolume();
         updateAlgebraicSum();
         updateMassOrdinate();
+    }
+
+    // Handle the row selection however you wish
+    private void onTableSelected(Datum datum)
+    {
+        print("You Clicked: " + datum.uid);
     }
 
     // Update is called once per frame
