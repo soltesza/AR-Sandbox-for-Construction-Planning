@@ -49,13 +49,10 @@ public class ModeManager : MonoBehaviour {
 				disableRoad();
 				break;
 			case DisplayMode.Design:    //What should occur while in Design Mode?
-                // Debug.Log("I am in Design mode");
-				//disableTerrain();
 				terrainManager.SetTerrainTheme (TerrainManager.TerrainTheme.greyscale);
 				enableRoad ();
 				road.EnableControlPoints ();
-				Debug.Log (Input.inputString);
-				if ((Input.GetKeyDown (KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl)) && Input.GetKeyDown (KeyCode.Z)) {
+				if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown (KeyCode.Z)) {
 					road.Undo ();		
 				}
 

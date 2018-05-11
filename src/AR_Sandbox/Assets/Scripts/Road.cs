@@ -57,18 +57,17 @@ public class Road : MonoBehaviour {
 		newPoint.transform.parent = this.transform;
 		controlPoints.Add(newPoint);
 
-		Destroy (controlPointConnector);
-
-		controlPointConnector = CreateControlPointConnector();
+		controlPointConnector.positionCount = controlPoints.Count;
+		UpdateControlPointConnector();
 	}
 
 	public void RemoveControlPoint(){
 		if (controlPoints.Count > 2) {
 		
-			Destroy (controlPoints [controlPoints.Count - 1]);
+			Destroy (controlPoints [controlPoints.Count - 1].gameObject);
 			controlPoints.RemoveAt (controlPoints.Count - 1);
-			Destroy (controlPointConnector);
-			controlPointConnector = CreateControlPointConnector ();
+			controlPointConnector.positionCount = controlPoints.Count;
+			UpdateControlPointConnector();
 		}
 	}
 
@@ -137,7 +136,9 @@ public class Road : MonoBehaviour {
 		if (undoStack.Count > 0) {
 			List<Vector3> positions = undoStack.Pop ();
 
-			for (int i = 0; i < positions.Count; i++) {
+			int count = positions.Count < controlPoints.Count ? positions.Count : controlPoints.Count;
+
+			for (int i = 0; i < count; i++) {
 				controlPoints [i].transform.position = positions [i];
 			}
 		}
