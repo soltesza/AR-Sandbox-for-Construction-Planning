@@ -237,7 +237,21 @@ public class CutAndFillManager : MonoBehaviour {
 
     void updateFillVolume()
     {
+        fillVolume[0] = 0;
 
+        for (int i = 1; i < MAXPOINTS; i++)
+        {
+            fillVolume[i] = (fillArea[i] + fillArea[i - 1]) / 2 * (station[i] - station[i - 1]) / 27;
+        }
+        
+        // DEBUG
+        int count = 0;
+        foreach (int s in fillVolume)
+        {
+            Debug.Log("FILL VOLUME #" + count + " value " + s);
+            count += 1;
+        }
+        
     }
 
     void updateAdjFillVolume()
