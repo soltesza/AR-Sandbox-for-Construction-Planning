@@ -46,7 +46,7 @@ public class CutAndFillManager : MonoBehaviour {
     private Road roadPoint;
 
     float timer = 0f;
-    float waitingTime = 5f;
+    float waitingTime = 10f;
 
     void Start()
     {
@@ -61,12 +61,25 @@ public class CutAndFillManager : MonoBehaviour {
         road = GameObject.Find("Road");
         // get point from road
         roadPoint = road.GetComponent<Road>();
+
+        // TESTING
+        updateStation();
+        updateExistGrade();
+        updatePropGrade();
+        updateRoadWidth();
+        updateCutArea();
+        updateFillArea();
+        updateCutVolume();
+        updateFillVolume();
+        updateAdjFillVolume();
+        updateAlgebraicSum();
+        updateMassOrdinate();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Pause()
@@ -82,16 +95,30 @@ public class CutAndFillManager : MonoBehaviour {
     void updateStation()
     {
         station[0] = 0;
-
-        for (int i = 0; i < MAXPOINTS; i++)
+        
+        for (int i = 1; i < MAXPOINTS; i++)
         {
             station[i] = station[i - 1] + 100;
+        }
+
+        int count = 0;
+        foreach (int s in station)
+        {
+            Debug.Log("STATION #" + count + " value " + s);
+            count += 1;
         }
     }
 
     void updateExistGrade()
     {
+        int i = 0;
 
+        Vector3[] positions = roadPoint.GetRoadPoints();
+
+        foreach (Vector3 p in positions)
+        {
+            existGrade[i] = (int)terrainHeight.GetHeightAtWorldPosition(p);
+        }
     }
 
     void updatePropGrade()
