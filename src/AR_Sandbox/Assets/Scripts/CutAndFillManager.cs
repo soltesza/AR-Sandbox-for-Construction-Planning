@@ -113,13 +113,15 @@ public class CutAndFillManager : MonoBehaviour {
 
     void updateExistGrade()
     {
-        int i = 0;
-
         Vector3[] positions = roadPoint.GetRoadPoints();
 
+        int i = 0;
         foreach (Vector3 p in positions)
         {
-            existGrade[i] = (int)terrainHeight.GetHeightAtWorldPosition(p);
+            existGrade[i] = (int) (10f * terrainHeight.GetHeightAtWorldPosition(p));
+            i += 1;
+            if (i >= MAXPOINTS)
+                break;
         }
 
         // DEBUG
