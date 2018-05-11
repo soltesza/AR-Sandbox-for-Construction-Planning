@@ -296,7 +296,7 @@ public class CutAndFillManager : MonoBehaviour {
         {
             massOrdinate[i] = massOrdinate[i - 1] + algebraicSum[i];
         }
-        
+        /*
         // DEBUG
         int count = 0;
         foreach (int s in massOrdinate)
@@ -304,6 +304,6 @@ public class CutAndFillManager : MonoBehaviour {
             Debug.Log("MASS ORDINATE #" + count + " value " + s);
             count += 1;
         }
-        
+        */
     }
 }
