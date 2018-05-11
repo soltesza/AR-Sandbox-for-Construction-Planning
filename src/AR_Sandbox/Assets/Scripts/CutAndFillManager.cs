@@ -6,6 +6,19 @@ using UnityEngine.UI; //Need this for calling UI scripts
 
 public class CutAndFillManager : MonoBehaviour {
 
+    // data table arrays
+    int[] station       = new int[20];
+    int[] existGrade    = new int[20];
+    int[] propGrade     = new int[20];
+    int[] roadWidth     = new int[20];
+    int[] cutArea       = new int[20];
+    int[] fillArea      = new int[20];
+    int[] cutVolume     = new int[20];
+    int[] fillVolume    = new int[20];
+    int[] adjFillVolume = new int[20];
+    int[] algebraicSum  = new int[20];
+    int[] massOrdinate  = new int[20];
+
     [SerializeField]
     Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
 
