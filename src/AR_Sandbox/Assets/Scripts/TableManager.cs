@@ -2,7 +2,7 @@
 // Note this, it's important
 using SLS.Widgets.Table;
 
-public class Simple : MonoBehaviour
+public class TableManager : MonoBehaviour
 {
 
     private Table table;
