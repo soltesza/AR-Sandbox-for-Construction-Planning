@@ -205,7 +205,7 @@ public class CutAndFillManager : MonoBehaviour {
                 fillArea[i] = 0;
             }
         }
-        
+        /*
         // DEBUG
         int count = 0;
         foreach (int s in fillArea)
@@ -213,12 +213,26 @@ public class CutAndFillManager : MonoBehaviour {
             Debug.Log("FILL AREA #" + count + " value " + s);
             count += 1;
         }
-        
+        */
     }
 
     void updateCutVolume()
     {
+        cutVolume[0] = 0;
 
+        for (int i = 1; i < MAXPOINTS; i++)
+        {
+            cutVolume[i] = (cutArea[i] + cutArea[i - 1]) / 2 * (station[i] - station[i - 1]) / 27;
+        }
+        /*
+        // DEBUG
+        int count = 0;
+        foreach (int s in cutVolume)
+        {
+            Debug.Log("CUT VOLUME #" + count + " value " + s);
+            count += 1;
+        }
+        */
     }
 
     void updateFillVolume()
