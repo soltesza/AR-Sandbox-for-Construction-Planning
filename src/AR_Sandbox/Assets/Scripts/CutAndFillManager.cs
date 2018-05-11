@@ -10,17 +10,17 @@ public class CutAndFillManager : MonoBehaviour {
     const int MAXPOINTS = 20;
 
     // data table arrays
-    int[] station       = new int[MAXPOINTS];
-    int[] existGrade    = new int[MAXPOINTS];
-    int[] propGrade     = new int[MAXPOINTS];
-    int[] roadWidth     = new int[MAXPOINTS];
-    int[] cutArea       = new int[MAXPOINTS];
-    int[] fillArea      = new int[MAXPOINTS];
-    int[] cutVolume     = new int[MAXPOINTS];
-    int[] fillVolume    = new int[MAXPOINTS];
-    int[] adjFillVolume = new int[MAXPOINTS];
-    int[] algebraicSum  = new int[MAXPOINTS];
-    int[] massOrdinate  = new int[MAXPOINTS];
+    float[] station       = new float[MAXPOINTS];
+    float[] existGrade    = new float[MAXPOINTS];
+    float[] propGrade     = new float[MAXPOINTS];
+    float[] roadWidth     = new float[MAXPOINTS];
+    float[] cutArea       = new float[MAXPOINTS];
+    float[] fillArea      = new float[MAXPOINTS];
+    float[] cutVolume     = new float[MAXPOINTS];
+    float[] fillVolume    = new float[MAXPOINTS];
+    float[] adjFillVolume = new float[MAXPOINTS];
+    float[] algebraicSum  = new float[MAXPOINTS];
+    float[] massOrdinate  = new float[MAXPOINTS];
 
     [SerializeField]
     Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
@@ -118,7 +118,7 @@ public class CutAndFillManager : MonoBehaviour {
         int i = 0;
         foreach (Vector3 p in positions)
         {
-            existGrade[i] = (int) (10f * terrainHeight.GetHeightAtWorldPosition(p));
+            existGrade[i] = 10f * terrainHeight.GetHeightAtWorldPosition(p);
             i += 1;
             if (i >= MAXPOINTS)
                 break;
@@ -243,7 +243,7 @@ public class CutAndFillManager : MonoBehaviour {
         {
             fillVolume[i] = (fillArea[i] + fillArea[i - 1]) / 2 * (station[i] - station[i - 1]) / 27;
         }
-        
+        /*
         // DEBUG
         int count = 0;
         foreach (int s in fillVolume)
@@ -251,12 +251,24 @@ public class CutAndFillManager : MonoBehaviour {
             Debug.Log("FILL VOLUME #" + count + " value " + s);
             count += 1;
         }
-        
+        */
     }
 
     void updateAdjFillVolume()
     {
-
+        for (int i = 0; i < MAXPOINTS; i++)
+        {
+            adjFillVolume[i] = fillVolume[i] / 0.9f;
+        }
+        
+        // DEBUG
+        int count = 0;
+        foreach (int s in adjFillVolume)
+        {
+            Debug.Log("ADJUSTED FILL VOLUME #" + count + " value " + s);
+            count += 1;
+        }
+        
     }
 
     void updateAlgebraicSum()
