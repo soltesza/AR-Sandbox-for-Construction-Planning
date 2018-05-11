@@ -176,8 +176,12 @@ public class CutAndFillManager : MonoBehaviour {
             {
                 cutArea[i] = (existGrade[i] * existGrade[i]) + (roadWidth[i] * existGrade[i]);
             }
+            else
+            {
+                cutArea[i] = 0;
+            }
         }
-        
+        /*
         // DEBUG
         int count = 0;
         foreach (int s in cutArea)
@@ -185,12 +189,31 @@ public class CutAndFillManager : MonoBehaviour {
             Debug.Log("CUT AREA #" + count + " value " + s);
             count += 1;
         }
-        
+        */
     }
 
     void updateFillArea()
     {
-
+        for (int i = 0; i < MAXPOINTS; i++)
+        {
+            if (existGrade[i] <= 0)
+            {
+                fillArea[i] = -1 * ((existGrade[i] * existGrade[i]) + Mathf.Abs(roadWidth[i] * existGrade[i]));
+            }
+            else
+            {
+                fillArea[i] = 0;
+            }
+        }
+        
+        // DEBUG
+        int count = 0;
+        foreach (int s in fillArea)
+        {
+            Debug.Log("FILL AREA #" + count + " value " + s);
+            count += 1;
+        }
+        
     }
 
     void updateCutVolume()
