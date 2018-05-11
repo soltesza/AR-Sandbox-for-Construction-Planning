@@ -260,7 +260,7 @@ public class CutAndFillManager : MonoBehaviour {
         {
             adjFillVolume[i] = fillVolume[i] / 0.9f;
         }
-        
+        /*
         // DEBUG
         int count = 0;
         foreach (int s in adjFillVolume)
@@ -268,12 +268,24 @@ public class CutAndFillManager : MonoBehaviour {
             Debug.Log("ADJUSTED FILL VOLUME #" + count + " value " + s);
             count += 1;
         }
-        
+        */
     }
 
     void updateAlgebraicSum()
     {
-
+        for (int i = 0; i < MAXPOINTS; i++)
+        {
+            algebraicSum[i] = cutVolume[i] + adjFillVolume[i];
+        }
+        
+        // DEBUG
+        int count = 0;
+        foreach (int s in algebraicSum)
+        {
+            Debug.Log("ALGEBRAIC SUM #" + count + " value " + s);
+            count += 1;
+        }
+        
     }
 
     void updateMassOrdinate()
