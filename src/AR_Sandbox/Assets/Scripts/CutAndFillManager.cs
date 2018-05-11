@@ -123,7 +123,7 @@ public class CutAndFillManager : MonoBehaviour {
             if (i >= MAXPOINTS)
                 break;
         }
-
+        /*
         // DEBUG
         int count = 0;
         foreach (int s in existGrade)
@@ -131,11 +131,24 @@ public class CutAndFillManager : MonoBehaviour {
             Debug.Log("EXISTING GRADE #" + count + " value " + s);
             count += 1;
         }
+        */
     }
 
     void updatePropGrade()
     {
-
+        for (int i = 0; i < MAXPOINTS; i++)
+        {
+            propGrade[i] = 0;
+        }
+        
+        // DEBUG
+        int count = 0;
+        foreach (int s in propGrade)
+        {
+            Debug.Log("PROPOSED GRADE #" + count + " value " + s);
+            count += 1;
+        }
+        
     }
 
     void updateRoadWidth()
