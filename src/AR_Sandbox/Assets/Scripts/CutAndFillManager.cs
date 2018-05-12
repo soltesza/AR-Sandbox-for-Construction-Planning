@@ -1,14 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using SLS.Widgets.Table; //Need this for calling table pro
+
 using UnityEngine.UI; //Need this for calling UI scripts
 
-
+using SLS.Widgets.Table; //Need this for calling table pro
 
 public class CutAndFillManager : MonoBehaviour {
 
-    // max points for the road
+    // max points for the table
     const int MAXPOINTS = 20;
 
     // setup arrays for cut/fill and mass haul data
@@ -34,7 +34,7 @@ public class CutAndFillManager : MonoBehaviour {
     private Road roadPoint;
 
     float timer = 0f;
-    float waitingTime = 10f;
+    float waitingTime = 5f;
 
     private Table table;
 
@@ -50,24 +50,60 @@ public class CutAndFillManager : MonoBehaviour {
         // get point from road
         roadPoint = road.GetComponent<Road>();
 
-        this.table = this.GetComponent<Table>();
+        table = GetComponent<Table>();
 
-        this.table.ResetTable();
+        updateTable();
 
-        this.table.AddTextColumn("Station");
-        this.table.AddTextColumn("Existing Gr");
-        this.table.AddTextColumn("Proposed Gr");
-        this.table.AddTextColumn("Roadway Width");
-        this.table.AddTextColumn("Cut Area");
-        this.table.AddTextColumn("Fill Area");
-        this.table.AddTextColumn("Cut Volumes");
-        this.table.AddTextColumn("Fill Volumes");
-        this.table.AddTextColumn("Adj. Fill Volumes");
-        this.table.AddTextColumn("Algebraic Sum");
-        this.table.AddTextColumn("Mass Ordinate");
+        UIPanel.gameObject.SetActive(false); //make sure our pause menu is disabled when scene starts
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // timer for testing table updates
+        timer += Time.deltaTime;
+        if (timer > waitingTime)
+        {
+            timer = 0f;
+
+            updateTable();
+        }
+    }
+
+    // Handle the row selection however you wish
+    private void onTableSelected(Datum datum)
+    {
+        print("You Clicked: " + datum.uid);
+    }
+
+    public void Pause()
+    {
+        UIPanel.gameObject.SetActive(true); //turn on the pause menu
+    }
+
+    public void UnPause()
+    {
+        UIPanel.gameObject.SetActive(false); //turn off pause menu
+    }
+
+    void updateTable()
+    {
+        table.ResetTable();
+
+        table.AddTextColumn("Station (ft)");
+        table.AddTextColumn("Existing Gr (ft)");
+        table.AddTextColumn("Proposed Gr (ft)");
+        table.AddTextColumn("Roadway Width (ft)");
+        table.AddTextColumn("Cut Area (ft)");
+        table.AddTextColumn("Fill Area (sf)");
+        table.AddTextColumn("Cut Volumes (bcy)");
+        table.AddTextColumn("Fill Volumes (ccy)");
+        table.AddTextColumn("Adj. Fill Volumes (bcy)");
+        table.AddTextColumn("Algebraic Sum (cy)");
+        table.AddTextColumn("Mass Ordinate (cy)");
 
         // Initialize Your Table
-        this.table.Initialize(this.onTableSelected);
+        table.Initialize(onTableSelected);
 
         // setup values
         updateStation();
@@ -97,72 +133,35 @@ public class CutAndFillManager : MonoBehaviour {
             d.elements.Add(adjFillVolume[i].ToString());
             d.elements.Add(algebraicSum[i].ToString());
             d.elements.Add(massOrdinate[i].ToString());
-            this.table.data.Add(d);
+            table.data.Add(d);
         }
 
         // Draw Your Table
-        this.table.StartRenderEngine();
-
-        UIPanel.gameObject.SetActive(false); //make sure our pause menu is disabled when scene starts
-    }
-
-    // Handle the row selection however you wish
-    private void onTableSelected(Datum datum)
-    {
-        print("You Clicked: " + datum.uid);
-    }
-
-
-    public void Pause()
-    {
-        UIPanel.gameObject.SetActive(true); //turn on the pause menu
-    }
-
-    public void UnPause()
-    {
-        UIPanel.gameObject.SetActive(false); //turn off pause menu
+        table.StartRenderEngine();
     }
 
     void updateStation()
     {
         station[0] = 0;
-        
+
+        Vector3[] positions = roadPoint.GetRoadPoints();
+
         for (int i = 1; i < MAXPOINTS; i++)
         {
-            station[i] = station[i - 1] + 100;
+            station[i] = station[i - 1] +  Vector3.Distance(positions[i - 1], positions[i]);
+            //Debug.Log("STATION #" + i + " value " + station[i]);
         }
-        /*
-        // DEBUG
-        int count = 0;
-        foreach (int s in station)
-        {
-            Debug.Log("STATION #" + count + " value " + s);
-            count += 1;
-        }
-        */
     }
 
     void updateExistGrade()
     {
         Vector3[] positions = roadPoint.GetRoadPoints();
 
-        int i = 0;
-        foreach (Vector3 p in positions)
+        for (int i = 0; i < MAXPOINTS; i++)
         {
-            existGrade[i] = 10f * terrainHeight.GetHeightAtWorldPosition(p);
-            i += 1;
-            if (i >= MAXPOINTS)
-                break;
-        }
-        /*
-        // DEBUG
-        int count = 0;
-        foreach (int s in existGrade)
-        {
-            Debug.Log("EXISTING GRADE #" + count + " value " + s);
-            count += 1;
-        }
-        */
+            existGrade[i] = terrainHeight.GetHeightAtWorldPosition(positions[i]);
+            //Debug.Log("EXISTING GRADE #" + i + " value " + existGrade[i]);
+        } 
     }
 
     void updatePropGrade()
@@ -170,16 +169,8 @@ public class CutAndFillManager : MonoBehaviour {
         for (int i = 0; i < MAXPOINTS; i++)
         {
             propGrade[i] = 0;
+            //Debug.Log("PROPOSED GRADE #" + i + " value " + propGrade[i]);
         }
-        /*
-        // DEBUG
-        int count = 0;
-        foreach (int s in propGrade)
-        {
-            Debug.Log("PROPOSED GRADE #" + count + " value " + s);
-            count += 1;
-        }
-        */
     }
 
     void updateRoadWidth()
@@ -187,16 +178,8 @@ public class CutAndFillManager : MonoBehaviour {
         for (int i = 0; i < MAXPOINTS; i++)
         {
             roadWidth[i] = 120;
+            //Debug.Log("ROAD WIDTH #" + i + " value " + roadWidth[i]);
         }
-        /*
-        // DEBUG
-        int count = 0;
-        foreach (int s in roadWidth)
-        {
-            Debug.Log("ROAD WIDTH #" + count + " value " + s);
-            count += 1;
-        }
-        */
     }
 
     void updateCutArea()
@@ -211,16 +194,8 @@ public class CutAndFillManager : MonoBehaviour {
             {
                 cutArea[i] = 0;
             }
+            //Debug.Log("CUT AREA #" + i + " value " + cutArea[i]);
         }
-        /*
-        // DEBUG
-        int count = 0;
-        foreach (int s in cutArea)
-        {
-            Debug.Log("CUT AREA #" + count + " value " + s);
-            count += 1;
-        }
-        */
     }
 
     void updateFillArea()
@@ -235,16 +210,8 @@ public class CutAndFillManager : MonoBehaviour {
             {
                 fillArea[i] = 0;
             }
+            //Debug.Log("FILL AREA #" + i + " value " + fillArea[i]);
         }
-        /*
-        // DEBUG
-        int count = 0;
-        foreach (int s in fillArea)
-        {
-            Debug.Log("FILL AREA #" + count + " value " + s);
-            count += 1;
-        }
-        */
     }
 
     void updateCutVolume()
@@ -254,16 +221,8 @@ public class CutAndFillManager : MonoBehaviour {
         for (int i = 1; i < MAXPOINTS; i++)
         {
             cutVolume[i] = (cutArea[i] + cutArea[i - 1]) / 2 * (station[i] - station[i - 1]) / 27;
+            //Debug.Log("CUT VOLUME #" + i + " value " + cutVolume[i]);
         }
-        /*
-        // DEBUG
-        int count = 0;
-        foreach (int s in cutVolume)
-        {
-            Debug.Log("CUT VOLUME #" + count + " value " + s);
-            count += 1;
-        }
-        */
     }
 
     void updateFillVolume()
@@ -273,16 +232,8 @@ public class CutAndFillManager : MonoBehaviour {
         for (int i = 1; i < MAXPOINTS; i++)
         {
             fillVolume[i] = (fillArea[i] + fillArea[i - 1]) / 2 * (station[i] - station[i - 1]) / 27;
+            //Debug.Log("FILL VOLUME #" + i + " value " + fillVolume[i]);
         }
-        /*
-        // DEBUG
-        int count = 0;
-        foreach (int s in fillVolume)
-        {
-            Debug.Log("FILL VOLUME #" + count + " value " + s);
-            count += 1;
-        }
-        */
     }
 
     void updateAdjFillVolume()
@@ -290,16 +241,8 @@ public class CutAndFillManager : MonoBehaviour {
         for (int i = 0; i < MAXPOINTS; i++)
         {
             adjFillVolume[i] = fillVolume[i] / 0.9f;
+            //Debug.Log("ADJUSTED FILL VOLUME #" + i + " value " + adjFillVolume[i]);
         }
-        /*
-        // DEBUG
-        int count = 0;
-        foreach (int s in adjFillVolume)
-        {
-            Debug.Log("ADJUSTED FILL VOLUME #" + count + " value " + s);
-            count += 1;
-        }
-        */
     }
 
     void updateAlgebraicSum()
@@ -307,16 +250,8 @@ public class CutAndFillManager : MonoBehaviour {
         for (int i = 0; i < MAXPOINTS; i++)
         {
             algebraicSum[i] = cutVolume[i] + adjFillVolume[i];
+            //Debug.Log("ALGEBRAIC SUM #" + i + " value " + algebraicSum[i]);
         }
-        /*
-        // DEBUG
-        int count = 0;
-        foreach (int s in algebraicSum)
-        {
-            Debug.Log("ALGEBRAIC SUM #" + count + " value " + s);
-            count += 1;
-        }
-        */
     }
 
     void updateMassOrdinate()
@@ -326,15 +261,7 @@ public class CutAndFillManager : MonoBehaviour {
         for (int i = 1; i < MAXPOINTS; i++)
         {
             massOrdinate[i] = massOrdinate[i - 1] + algebraicSum[i];
+            //Debug.Log("MASS ORDINATE #" + i + " value " + massOrdinate[i]);
         }
-        /*
-        // DEBUG
-        int count = 0;
-        foreach (int s in massOrdinate)
-        {
-            Debug.Log("MASS ORDINATE #" + count + " value " + s);
-            count += 1;
-        }
-        */
     }
 }

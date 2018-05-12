@@ -5780,7 +5780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1942142133
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5914,7 +5914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIPanel: {fileID: 1942142133}
-  terrain: {fileID: 0}
+  terrain: {fileID: 17105641}
   road: {fileID: 2032210458}
 --- !u!114 &1942142140
 MonoBehaviour:
