@@ -291,7 +291,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2048563950}
+      - m_Target: {fileID: 0}
         m_MethodName: UnPause
         m_Mode: 1
         m_Arguments:
@@ -5910,9 +5910,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1942142132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f16de187eff3dbf4dac7188c1856e67e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c469a5107104324fa41c6ab6409bf55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIPanel: {fileID: 1942142133}
+  terrain: {fileID: 0}
+  road: {fileID: 2032210458}
 --- !u!114 &1942142140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6521,7 +6524,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2048563949}
   - component: {fileID: 2048563948}
-  - component: {fileID: 2048563950}
   - component: {fileID: 2048563951}
   - component: {fileID: 2048563952}
   - component: {fileID: 2048563954}
@@ -6561,30 +6563,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2048563950
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2048563947}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c469a5107104324fa41c6ab6409bf55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UIPanel: {fileID: 1942142133}
-  cutText0: {fileID: 0}
-  cutText1: {fileID: 0}
-  cutText2: {fileID: 0}
-  cutText3: {fileID: 0}
-  cutText4: {fileID: 0}
-  fillText0: {fileID: 0}
-  fillText1: {fileID: 0}
-  fillText2: {fileID: 0}
-  fillText3: {fileID: 0}
-  fillText4: {fileID: 0}
-  terrain: {fileID: 0}
-  road: {fileID: 2032210458}
 --- !u!114 &2048563951
 MonoBehaviour:
   m_ObjectHideFlags: 0

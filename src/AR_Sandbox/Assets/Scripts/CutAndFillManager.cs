@@ -1,17 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using SLS.Widgets.Table; //Need this for calling table pro
 using UnityEngine.UI; //Need this for calling UI scripts
 
-using SLS.Widgets.Table; //Need this for calling table pro
+
 
 public class CutAndFillManager : MonoBehaviour {
 
     // max points for the road
     const int MAXPOINTS = 20;
 
-    // data table arrays
+    // setup arrays for cut/fill and mass haul data
     float[] station       = new float[MAXPOINTS];
     float[] existGrade    = new float[MAXPOINTS];
     float[] propGrade     = new float[MAXPOINTS];
@@ -27,20 +27,6 @@ public class CutAndFillManager : MonoBehaviour {
     [SerializeField]
     Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
 
-    [SerializeField]
-    Text cutText0, //Will assign our cut Text to this variable so we can modify the text it displays.
-         cutText1,
-         cutText2,
-         cutText3,
-         cutText4;
-
-    [SerializeField]
-    Text fillText0, //Will assign our fill Text to this variable so we can modify the text it displays.
-         fillText1,
-         fillText2,
-         fillText3,
-         fillText4;
-
     public GameObject terrain;
     private TerrainGenerator terrainHeight;
 
@@ -53,9 +39,7 @@ public class CutAndFillManager : MonoBehaviour {
     private Table table;
 
     void Start()
-    {
-        UIPanel.gameObject.SetActive(false); //make sure our pause menu is disabled when scene starts
-
+    {   
         // get terrain object
         terrain = GameObject.Find("Terrain");
         // get height function from terrain generator
@@ -66,7 +50,26 @@ public class CutAndFillManager : MonoBehaviour {
         // get point from road
         roadPoint = road.GetComponent<Road>();
 
-        // TESTING
+        this.table = this.GetComponent<Table>();
+
+        this.table.ResetTable();
+
+        this.table.AddTextColumn("Station");
+        this.table.AddTextColumn("Existing Gr");
+        this.table.AddTextColumn("Proposed Gr");
+        this.table.AddTextColumn("Roadway Width");
+        this.table.AddTextColumn("Cut Area");
+        this.table.AddTextColumn("Fill Area");
+        this.table.AddTextColumn("Cut Volumes");
+        this.table.AddTextColumn("Fill Volumes");
+        this.table.AddTextColumn("Adj. Fill Volumes");
+        this.table.AddTextColumn("Algebraic Sum");
+        this.table.AddTextColumn("Mass Ordinate");
+
+        // Initialize Your Table
+        this.table.Initialize(this.onTableSelected);
+
+        // setup values
         updateStation();
         updateExistGrade();
         updatePropGrade();
@@ -78,6 +81,29 @@ public class CutAndFillManager : MonoBehaviour {
         updateAdjFillVolume();
         updateAlgebraicSum();
         updateMassOrdinate();
+
+        // Populate Your Rows
+        for (int i = 0; i < MAXPOINTS; i++)
+        {
+            Datum d = Datum.Body(i.ToString());
+            d.elements.Add(station[i].ToString());
+            d.elements.Add(existGrade[i].ToString());
+            d.elements.Add(propGrade[i].ToString());
+            d.elements.Add(roadWidth[i].ToString());
+            d.elements.Add(cutArea[i].ToString());
+            d.elements.Add(fillArea[i].ToString());
+            d.elements.Add(cutVolume[i].ToString());
+            d.elements.Add(fillVolume[i].ToString());
+            d.elements.Add(adjFillVolume[i].ToString());
+            d.elements.Add(algebraicSum[i].ToString());
+            d.elements.Add(massOrdinate[i].ToString());
+            this.table.data.Add(d);
+        }
+
+        // Draw Your Table
+        this.table.StartRenderEngine();
+
+        UIPanel.gameObject.SetActive(false); //make sure our pause menu is disabled when scene starts
     }
 
     // Handle the row selection however you wish
@@ -86,11 +112,6 @@ public class CutAndFillManager : MonoBehaviour {
         print("You Clicked: " + datum.uid);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void Pause()
     {
