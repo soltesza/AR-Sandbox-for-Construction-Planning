@@ -11,8 +11,10 @@ public class CutAndFillManager : MonoBehaviour {
     // max points for the table
     const int MAXPOINTS = 20;
 
-    // setup arrays for cut/fill and mass haul data
+    // setup arrays for cut/fill data, mass haul data and equipment
+    // distances between stations
     float[] station       = new float[MAXPOINTS];
+    // grade data
     float[] existGrade    = new float[MAXPOINTS];
     float[] propGrade     = new float[MAXPOINTS];
     float[] roadWidth     = new float[MAXPOINTS];
@@ -23,6 +25,8 @@ public class CutAndFillManager : MonoBehaviour {
     float[] adjFillVolume = new float[MAXPOINTS];
     float[] algebraicSum  = new float[MAXPOINTS];
     float[] massOrdinate  = new float[MAXPOINTS];
+    // construction equipment
+    string[] equipment = { "Dozer", "Wheel Loaders", "Scraper", "Articulated Truck", "Rear Dump Truck", "Wagon" };
 
     [SerializeField]
     Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
