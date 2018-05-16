@@ -4533,7 +4533,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1519270543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6582,6 +6582,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a9d8b07c30fb049b82a4746eb3f88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeightView: {fileID: 1519270542}
+  road: {fileID: 2032210460}
+  terrainManager: {fileID: 1762244689}
 --- !u!114 &2048563952
 MonoBehaviour:
   m_ObjectHideFlags: 0
