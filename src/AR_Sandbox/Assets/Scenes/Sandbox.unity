@@ -2037,7 +2037,7 @@ MonoBehaviour:
   Type: 2
   Target: {fileID: 1329338265}
   MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 550, y: 450}
+  MaximumDimmensions: {x: 2000, y: 2000}
 --- !u!114 &761857037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4532,7 +4532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1519270543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5677,7 +5677,7 @@ MonoBehaviour:
   Type: 6
   Target: {fileID: 1329338265}
   MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 550, y: 450}
+  MaximumDimmensions: {x: 2000, y: 2000}
 --- !u!114 &1916252199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6266,7 +6266,7 @@ MonoBehaviour:
   Type: 4
   Target: {fileID: 1329338265}
   MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 550, y: 450}
+  MaximumDimmensions: {x: 2000, y: 2000}
 --- !u!114 &1978748040
 MonoBehaviour:
   m_ObjectHideFlags: 0
