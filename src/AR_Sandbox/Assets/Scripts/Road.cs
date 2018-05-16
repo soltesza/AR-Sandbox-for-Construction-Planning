@@ -6,6 +6,7 @@ using UnityEngine;
 public class Road : MonoBehaviour {
 	public RoadControlPoint controlPointPrefab;
 	public LineRenderer controlPointConnectorPrefab;
+	public TerrainGenerator terrain;
 
 	private LineRenderer lineRenderer, controlPointConnector;
 	private List<RoadControlPoint> controlPoints;
@@ -15,6 +16,10 @@ public class Road : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if (!terrain) {
+			Debug.Log ("Road.cs: terrain genrator not specified");
+		}
+
 		lineRenderer = GetComponent<LineRenderer> ();
 		controlPoints = new List<RoadControlPoint> ();
 
@@ -83,14 +88,23 @@ public class Road : MonoBehaviour {
 
 	public void UpdateCurve() {
 		Vector3[] positions = new Vector3[SEGMENT_COUNT]; 
+		Texture2D tex = new Texture2D (SEGMENT_COUNT + 1, 1);
 
 		for (int i = 0; i < SEGMENT_COUNT; i++) {
 			float t = i / (float)(SEGMENT_COUNT - 1);
 			positions[i] = CalculateBezier (t, controlPoints);
+
+			float terrainHeight = terrain.GetHeightAtWorldPosition(positions[i]);
+			Color color = terrainHeight > positions[i].y ? Color.red : Color.blue;
+
+			tex.SetPixel (i, 0, color);
 		}
 
 		lineRenderer.SetPositions (positions);
 		UpdateControlPointConnector ();
+
+		tex.Apply ();
+		GetComponent<Renderer>().material.mainTexture = tex;
 	}
 
 	Vector3 CalculateBezier(float t, List<RoadControlPoint> points) {
