@@ -30,7 +30,7 @@ public class RoadControlPoint : MonoBehaviour {
 	}
 
 	public void OnMouseDrag() {
-		if (Input.GetKey (KeyCode.LeftControl)) { // Change height
+		if (Input.GetKey (KeyCode.LeftShift)) { // Change height
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			Vector3 pointPos = transform.position;
 			float delta = mousePos.z - pointPos.z;

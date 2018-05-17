@@ -2037,7 +2037,7 @@ MonoBehaviour:
   Type: 2
   Target: {fileID: 1329338265}
   MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 550, y: 450}
+  MaximumDimmensions: {x: 2000, y: 2000}
 --- !u!114 &761857037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2087,6 +2087,7 @@ RectTransform:
   - {fileID: 1841756878}
   - {fileID: 478434674}
   - {fileID: 1615620651}
+  - {fileID: 1519270544}
   m_Father: {fileID: 1629968011}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4554,14 +4555,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1519270542}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -533, y: -336.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1628158139}
   - {fileID: 1333569714}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 802107072}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1615620650
 GameObject:
@@ -5677,7 +5678,7 @@ MonoBehaviour:
   Type: 6
   Target: {fileID: 1329338265}
   MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 550, y: 450}
+  MaximumDimmensions: {x: 2000, y: 2000}
 --- !u!114 &1916252199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6266,7 +6267,7 @@ MonoBehaviour:
   Type: 4
   Target: {fileID: 1329338265}
   MinimumDimmensions: {x: 150, y: 100}
-  MaximumDimmensions: {x: 550, y: 450}
+  MaximumDimmensions: {x: 2000, y: 2000}
 --- !u!114 &1978748040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6581,6 +6582,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a9d8b07c30fb049b82a4746eb3f88f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeightView: {fileID: 1519270542}
+  road: {fileID: 2032210460}
+  terrainManager: {fileID: 1762244689}
 --- !u!114 &2048563952
 MonoBehaviour:
   m_ObjectHideFlags: 0

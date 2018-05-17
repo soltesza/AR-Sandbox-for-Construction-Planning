@@ -11,8 +11,13 @@ public class ModeManager : MonoBehaviour {
 
     public static ModeManager instance = null;
     public static DisplayMode dMode = DisplayMode.Depth;
-	private Road road;
-	private TerrainManager terrainManager;
+
+	[SerializeField]
+	GameObject HeightView; 
+	[SerializeField]
+	Road road; 
+	[SerializeField]
+	TerrainManager terrainManager; 
 
 	void Awake () {
         //Ensures that this object is a singleton
@@ -24,8 +29,7 @@ public class ModeManager : MonoBehaviour {
 
 	void Start()
 	{
-		terrainManager = GameObject.Find ("Terrain_Manager").GetComponent<TerrainManager>();
-		road = GameObject.Find ("Road").GetComponent<Road>();
+
 	}
 
 	
@@ -48,13 +52,20 @@ public class ModeManager : MonoBehaviour {
 				terrainManager.SetTerrainTheme(TerrainManager.TerrainTheme.rainbow);
 				disableRoad();
 				break;
-			case DisplayMode.Design:    //What should occur while in Design Mode?
-				terrainManager.SetTerrainTheme (TerrainManager.TerrainTheme.greyscale);
-				enableRoad ();
-				road.EnableControlPoints ();
-				if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl)) && Input.GetKeyDown (KeyCode.Z)) {
-					road.Undo ();		
-				}
+		case DisplayMode.Design:    //What should occur while in Design Mode?
+			terrainManager.SetTerrainTheme (TerrainManager.TerrainTheme.greyscale);
+			enableRoad ();
+			road.EnableControlPoints ();
+			if ((Input.GetKey (KeyCode.LeftControl) || Input.GetKey (KeyCode.RightControl)) && Input.GetKeyDown (KeyCode.Z)) {
+				road.Undo ();		
+			}
+
+			if (Input.GetKeyDown (KeyCode.LeftShift)) {
+				HeightView.SetActive (true);
+			}
+			if (Input.GetKeyUp (KeyCode.LeftShift)) {
+				HeightView.SetActive (false);
+			}
 
                 break;
         }
