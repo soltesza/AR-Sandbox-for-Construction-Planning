@@ -86,9 +86,26 @@ public class Road : MonoBehaviour {
 		controlPointConnector.SetPositions (positions);
 	}
 
+	private void UpdateCurveMaterial() {
+		int pixelCount = SEGMENT_COUNT * 2;
+
+		Texture2D tex = new Texture2D (pixelCount, 1);
+
+		for (int i = 0; i < pixelCount; i++) {
+			float t = (1f / (float)pixelCount) * i;
+			Vector3 pos = CalculateBezier (t, controlPoints);
+			float terrainHeight = terrain.GetHeightAtWorldPosition(pos);
+			Color color = terrainHeight > pos.y ? Color.red : Color.blue;
+
+			tex.SetPixel (i, 0, color);
+		}
+
+		tex.Apply ();
+		GetComponent<Renderer>().material.mainTexture = tex;
+	}
+
 	public void UpdateCurve() {
 		Vector3[] positions = new Vector3[SEGMENT_COUNT]; 
-		Texture2D tex = new Texture2D (SEGMENT_COUNT, 1);
 
 		for (int i = 0; i < SEGMENT_COUNT; i++) {
 			float t = i / (float)(SEGMENT_COUNT - 1);
@@ -96,15 +113,11 @@ public class Road : MonoBehaviour {
 
 			float terrainHeight = terrain.GetHeightAtWorldPosition(positions[i]);
 			Color color = terrainHeight > positions[i].y ? Color.red : Color.blue;
-
-			tex.SetPixel (i, 0, color);
 		}
 
 		lineRenderer.SetPositions (positions);
 		UpdateControlPointConnector ();
-
-		tex.Apply ();
-		GetComponent<Renderer>().material.mainTexture = tex;
+		UpdateCurveMaterial ();
 	}
 
 	Vector3 CalculateBezier(float t, List<RoadControlPoint> points) {
