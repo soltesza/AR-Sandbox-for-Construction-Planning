@@ -88,7 +88,7 @@ public class Road : MonoBehaviour {
 
 	public void UpdateCurve() {
 		Vector3[] positions = new Vector3[SEGMENT_COUNT]; 
-		Texture2D tex = new Texture2D (SEGMENT_COUNT + 1, 1);
+		Texture2D tex = new Texture2D (SEGMENT_COUNT, 1);
 
 		for (int i = 0; i < SEGMENT_COUNT; i++) {
 			float t = i / (float)(SEGMENT_COUNT - 1);
