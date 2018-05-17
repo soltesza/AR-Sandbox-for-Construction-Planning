@@ -26,7 +26,7 @@ public class CutAndFillManager : MonoBehaviour {
     float[] algebraicSum  = new float[MAXPOINTS];
     float[] massOrdinate  = new float[MAXPOINTS];
     // construction equipment
-    string[] equipment = { "Dozer", "Wheel Loaders", "Scraper", "Articulated Truck", "Rear Dump Truck", "Wagon" };
+    //string[] equipment = { "Dozer", "Wheel Loaders", "Scraper", "Articulated Truck", "Rear Dump Truck", "Wagon" };
 
     [SerializeField]
     Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
