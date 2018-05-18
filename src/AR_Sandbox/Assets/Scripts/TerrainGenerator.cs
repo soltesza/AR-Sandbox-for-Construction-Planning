@@ -96,6 +96,8 @@ public class TerrainGenerator : MonoBehaviour {
 	public void UpdateMesh() {
 		ushort[] heightData = manager.GetData ();
 
+		spacing = scale / frameHeight;
+
 		if (useSensor) {
 			// Populate vertex array using sensor data
 			for (int i = 0; i < frameHeight / downsampleSize; i++) {
@@ -131,8 +133,8 @@ public class TerrainGenerator : MonoBehaviour {
 			}
 		}
 
-		Vector3 modelPos = pos - transform.position;
-		Vector3 texelPos = modelPos / spacing;
+		Vector3 modelPos = (pos - transform.position);
+		Vector3 texelPos = (modelPos / spacing) * downsampleSize;
 
 		if (texelPos.x >= 0 && texelPos.x < frameWidth && texelPos.z >= 0 && texelPos.z < frameHeight) {
 			float y = heightData [((int)texelPos.z) * frameWidth + ((int)texelPos.x)];

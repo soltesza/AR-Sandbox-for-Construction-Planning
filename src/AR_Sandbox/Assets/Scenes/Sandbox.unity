@@ -4547,7 +4547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roadLine: {fileID: 1628158138}
   terrainLine: {fileID: 1333569713}
-  spacing: 0.5
+  scale: 5
   magnitude: 1
 --- !u!4 &1519270544
 Transform:

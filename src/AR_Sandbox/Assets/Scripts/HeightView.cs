@@ -7,8 +7,10 @@ public class HeightView : MonoBehaviour {
 	Road road;
 	public LineRenderer roadLine, terrainLine;
 
-	public float spacing; // Controls the length of the line
+	public float scale; // Controls the length of the line
 	public float magnitude; // Controls the height of the line
+
+	private float spacing;
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +33,8 @@ public class HeightView : MonoBehaviour {
 			Debug.LogError ("HeightView: one or more line renderers not assigned!");
 			this.enabled = false;
 		}
+
+		spacing = scale / road.GetRoadPoints ().Length;
 	}
 
 	void UpdateLines() {

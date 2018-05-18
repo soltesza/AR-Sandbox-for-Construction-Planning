@@ -87,7 +87,7 @@ public class Road : MonoBehaviour {
 	}
 
 	private void UpdateCurveMaterial() {
-		int pixelCount = SEGMENT_COUNT * 2;
+		int pixelCount = SEGMENT_COUNT * 4;
 
 		Texture2D tex = new Texture2D (pixelCount, 1);
 
@@ -151,6 +151,7 @@ public class Road : MonoBehaviour {
 
 	public void EnableControlPoints() {
         controlPointConnector.enabled = true;
+
 
 		foreach (RoadControlPoint controlPoint in controlPoints) {
 			controlPoint.gameObject.SetActive (true);

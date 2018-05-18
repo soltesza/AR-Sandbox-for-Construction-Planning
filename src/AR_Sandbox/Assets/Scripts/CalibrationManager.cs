@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CalibrationManager : MonoBehaviour {
 	private Camera mainCamera;
 	private float terrainMoveSpeed = .01f;
-	private float terrainScaleSpeed = .001f;
+	private float terrainScaleSpeed = .05f;
 	private Vector3 terrainPos = new Vector3(0,0,0);
 
 	[SerializeField]
@@ -101,11 +101,13 @@ public class CalibrationManager : MonoBehaviour {
 
 	public void scaleTerrainUp()
 	{
-		terrain.transform.localScale += new Vector3 (terrainScaleSpeed,0,terrainScaleSpeed);
+		//terrain.transform.localScale += new Vector3 (terrainScaleSpeed,0,terrainScaleSpeed);
+		terrainManager.terrainGenerator.scale += terrainScaleSpeed;
 	}
 
 	public void scaleTerrainDown()
 	{
-		terrain.transform.localScale -= new Vector3 (terrainScaleSpeed,0,terrainScaleSpeed);
+		//terrain.transform.localScale -= new Vector3 (terrainScaleSpeed,0,terrainScaleSpeed);
+		terrainManager.terrainGenerator.scale -= terrainScaleSpeed;
 	}
 }
