@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TerrainManager : MonoBehaviour {
-	public TerrainGenerator terrainGenerator;
-	public TerrainMask terrainMask;
+	public TerrainGenerator terrainGenerator; 	// Reference to the terrain generator
+	public TerrainMask terrainMask;				// Reference to the terrain mask
 
 	public enum TerrainTheme {rainbow, mountain, desert, greyscale};
 
-	// Use this for initialization
+
 	void Start () {
 		// Check to make sure a TerrainGenerator and TerrainMask are assigned, and if not try to assign one
 		if (terrainGenerator == null) {
@@ -27,12 +27,12 @@ public class TerrainManager : MonoBehaviour {
 			}
 		}
 	}
-	
-	// Update is called once per frame
+
 	void Update () {
 		SetTerrainTheme (TerrainTheme.desert);
 	}
-		
+
+	// Set the height coloration profile of the terrain
 	public void SetTerrainTheme(TerrainTheme theme) {
 		Renderer renderer = terrainGenerator.transform.GetComponent<Renderer> ();
 
@@ -63,8 +63,8 @@ public class TerrainManager : MonoBehaviour {
 		}
 	}
 
-	//gets the bounds of the terrain mask, in world coordinates.
-	//w = left bound, x = upper bound, y = right bound, z = lower bound
+	// Gets the bounds of the terrain mask, in world coordinates.
+	// w = left bound, x = upper bound, y = right bound, z = lower bound
 	public Vector4 GetMaskBounds() {
 		Vector4 bounds = new Vector4 ();
 
@@ -75,7 +75,7 @@ public class TerrainManager : MonoBehaviour {
 
 		return bounds;
 	}
-
+		
 	public void SetMaxTerrainHeight(float maxHeight) {
 		terrainGenerator.maxHeight = maxHeight;
 	}

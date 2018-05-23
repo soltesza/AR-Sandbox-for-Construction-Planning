@@ -4,17 +4,16 @@ using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
 public class Road : MonoBehaviour {
-	public RoadControlPoint controlPointPrefab;
-	public LineRenderer controlPointConnectorPrefab;
-	public TerrainGenerator terrain;
+	public RoadControlPoint controlPointPrefab;			// Prefab that will be used to instantiate the control points
+	public LineRenderer controlPointConnectorPrefab;	// Prefab that will be used to instantiate the line connecting the control points
+	public TerrainGenerator terrain;					// Reference to the terrain
 
 	private LineRenderer lineRenderer, controlPointConnector;
-	private List<RoadControlPoint> controlPoints;
-	private Stack<List<Vector3>> undoStack;
+	private List<RoadControlPoint> controlPoints;		// List of control points that will affect the road
+	private Stack<List<Vector3>> undoStack;				// Stack containing previous road states, used for undoing actions
 
-	private const int SEGMENT_COUNT = 20; // Number of line segments per curve, increase this number for a smoother line
+	private const int SEGMENT_COUNT = 20;				// Number of line segments per curve, increase this number for a smoother line
 
-	// Use this for initialization
 	void Start () {
 		if (!terrain) {
 			Debug.Log ("Road.cs: terrain genrator not specified");
@@ -38,6 +37,7 @@ public class Road : MonoBehaviour {
 		UpdateCurve ();
 	}
 
+	// Instantiates the line connecting each control point
 	LineRenderer CreateControlPointConnector() {
 		LineRenderer connector = (LineRenderer)GameObject.Instantiate (controlPointConnectorPrefab);
 		connector.transform.parent = this.transform;
@@ -46,6 +46,7 @@ public class Road : MonoBehaviour {
 		return connector;
 	}
 
+	// Instantiates a control point at a given position
 	void CreateControlPoint(Vector3 position) {
 		RoadControlPoint newPoint = (RoadControlPoint)GameObject.Instantiate (controlPointPrefab);
 		newPoint.transform.position = position;
@@ -54,18 +55,18 @@ public class Road : MonoBehaviour {
 		controlPoints.Add(newPoint);
 	}
 
+	// Adds a new control point. Position is hardcoded to be one unit up and to the right of the current last point
 	public void AddControlPoint(){
-		RoadControlPoint newPoint = (RoadControlPoint)GameObject.Instantiate (controlPointPrefab);
 		Vector3 positionShift = new Vector3 (1f, 0f,1f);
-		newPoint.transform.position = controlPoints[controlPoints.Count - 1].transform.position + positionShift;
-		newPoint.road = this;
-		newPoint.transform.parent = this.transform;
-		controlPoints.Add(newPoint);
+		Vector3 position = controlPoints[controlPoints.Count - 1].transform.position + positionShift;
+
+		CreateControlPoint (position);
 
 		controlPointConnector.positionCount = controlPoints.Count;
 		UpdateControlPointConnector();
 	}
 
+	// Remove the last control point
 	public void RemoveControlPoint(){
 		if (controlPoints.Count > 2) {
 		
@@ -76,6 +77,7 @@ public class Road : MonoBehaviour {
 		}
 	}
 
+	// Update control point connector to pass through new control point positions
 	void UpdateControlPointConnector() {
 		Vector3[] positions = new Vector3[controlPoints.Count]; 
 
@@ -86,6 +88,7 @@ public class Road : MonoBehaviour {
 		controlPointConnector.SetPositions (positions);
 	}
 
+	//Update the coloration of the road to reflect whether it is above or below the terrain surface
 	private void UpdateCurveMaterial() {
 		int pixelCount = SEGMENT_COUNT * 4;
 
@@ -104,6 +107,7 @@ public class Road : MonoBehaviour {
 		GetComponent<Renderer>().material.mainTexture = tex;
 	}
 
+	// Recalculate the road given the current control point positions
 	public void UpdateCurve() {
 		Vector3[] positions = new Vector3[SEGMENT_COUNT]; 
 
@@ -120,6 +124,9 @@ public class Road : MonoBehaviour {
 		UpdateCurveMaterial ();
 	}
 
+	// Returns a single position along the curve
+	// t is a float in [0, 1] representing the position along the curve to sample
+	// points is the list of control points definignt he curve
 	Vector3 CalculateBezier(float t, List<RoadControlPoint> points) {
 		int count = points.Count;
 		if (count > 2) {
@@ -129,16 +136,19 @@ public class Road : MonoBehaviour {
 		}
 	}
 
+	// Returns the list of vertices that define the line segemnt
     public Vector3[] GetRoadPoints() {
         Vector3[] positions = new Vector3[SEGMENT_COUNT];
         lineRenderer.GetPositions(positions);
         return positions;
     }
 
+	// Returns the number of vertices making up the road
     public int GetNumRoadPoints() {
         return lineRenderer.positionCount;
     }
 
+	// Disables the control points
     public void DisableControlPoints() {
         controlPointConnector.enabled = false;
 
@@ -149,6 +159,7 @@ public class Road : MonoBehaviour {
 		UpdateCurve ();
 	}
 
+	// Enables the control points
 	public void EnableControlPoints() {
         controlPointConnector.enabled = true;
 
@@ -160,6 +171,7 @@ public class Road : MonoBehaviour {
 		UpdateCurve ();
 	}
 
+	// Undoes the last control point move
 	public void Undo() {
 		if (undoStack.Count > 0) {
 			List<Vector3> positions = undoStack.Pop ();
@@ -172,6 +184,7 @@ public class Road : MonoBehaviour {
 		}
 	}
 
+	// Adds the current position of the control points to the undo stack
 	public void PushStateToUndoStack() {
 		List<Vector3> positions = new List<Vector3>(controlPoints.Count);
 

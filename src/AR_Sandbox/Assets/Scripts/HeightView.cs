@@ -12,7 +12,7 @@ public class HeightView : MonoBehaviour {
 
 	private float spacing;
 
-	// Use this for initialization
+
 	void Start () {
 		road = GameObject.FindObjectOfType<Road> ();
 		if (road == null) {
@@ -37,6 +37,7 @@ public class HeightView : MonoBehaviour {
 		spacing = scale / road.GetRoadPoints ().Length;
 	}
 
+	// Update the terraina nd road lines
 	void UpdateLines() {
 		Vector3[] roadPoints = road.GetRoadPoints ();
 		Vector3[] roadLinePoints = new Vector3[roadPoints.Length];
@@ -52,8 +53,7 @@ public class HeightView : MonoBehaviour {
 		roadLine.SetPositions (roadLinePoints);
 		terrainLine.SetPositions (terrainLinePoints);
 	}
-
-	// Update is called once per frame
+		
 	void Update () {
 		UpdateLines ();
 	}

@@ -7,25 +7,24 @@ using Windows.Kinect;
 public class TerrainGenerator : MonoBehaviour {
 	public Texture2D heightmap;
 	public GameObject depthSourceManager;
-	public float scale = 10;		// Size of the resulting mesh
-	public float magnitude = 1;		// Maximum height of the resulting mesh
-	public float maxHeight; 		// Maximum height value from the sensor
-	public float minHeight; 		// Minimum height value from the sensor
+	public float scale = 10;				// Size of the resulting mesh
+	public float magnitude = 1;				// Maximum height of the resulting mesh
+	public float maxHeight; 				// Maximum height value from the sensor
+	public float minHeight; 				// Minimum height value from the sensor
 
 	private Mesh mesh;
-	private float spacing;			// The distance between vertices in the mesh
+	private float spacing;					// The distance between vertices in the mesh
 	private Vector3[] vertices;
 	private int[] triangles;
 	private KinectSensor sensor;
 	private CoordinateMapper mapper;
 	private DepthSourceManager manager;
-	private int frameWidth;
-	private int frameHeight;
+	private int frameWidth;					// The width in pixels of a frame of depth data
+	private int frameHeight;				// The height in pixels of a frame of depth data
 
-	private const int downsampleSize = 2;
+	private const int downsampleSize = 2;	// How much to scale down the depth data. 2 = half resolution
 
-	//for debugging purposes
-	private const bool useSensor = true;
+	private const bool useSensor = true;	// For debugging purposes. Uses heightmap instead of sensor data when false
 
 	void Start () {
 		sensor = KinectSensor.GetDefault ();
@@ -59,6 +58,7 @@ public class TerrainGenerator : MonoBehaviour {
 	}
 
     // Create a new mesh by generating a set of vertices and triangles
+	// x and y are the number of width and height vertices
 	void CreateMesh(int x, int y) {
         // Initialize vertex and triangle arrays
         vertices = new Vector3[x * y];
@@ -121,6 +121,7 @@ public class TerrainGenerator : MonoBehaviour {
 	}
 
 	// Get height from heightmap at a given world coordinate
+	// Very slow if not using sensor data
 	public float GetHeightAtWorldPosition(Vector3 pos) {
 		ushort[] heightData;
 		if (useSensor) {

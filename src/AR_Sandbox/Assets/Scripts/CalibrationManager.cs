@@ -10,7 +10,7 @@ public class CalibrationManager : MonoBehaviour {
 	private Vector3 terrainPos = new Vector3(0,0,0);
 
 	[SerializeField]
-	Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
+	Transform UIPanel; // Will assign our panel to this variable so we can enable/disable it
 
 	TerrainManager terrainManager;
 

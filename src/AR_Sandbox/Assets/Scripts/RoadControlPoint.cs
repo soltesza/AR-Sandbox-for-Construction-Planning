@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RoadControlPoint : MonoBehaviour {
-	public Road road;
+	public Road road;	// Reference to the road
 
 	private TerrainManager terrainManager;
 
-	// Use this for initialization
+
 	void Start () {
 		if (road == null) {
 			road = GetComponentInParent<Road> ();
@@ -24,11 +24,12 @@ public class RoadControlPoint : MonoBehaviour {
 		}
 	}
 
-
+	// When user begins moving control point, push current control point positions to the undo stack so the action can be undone
 	public void OnMouseDown() {
 		road.PushStateToUndoStack ();
 	}
 
+	// Reposition the control point when the user starts dragging the point. Change y position if shift is held
 	public void OnMouseDrag() {
 		if (Input.GetKey (KeyCode.LeftShift)) { // Change height
 			Vector3 mousePos = Camera.main.ScreenToWorldPoint (Input.mousePosition);
