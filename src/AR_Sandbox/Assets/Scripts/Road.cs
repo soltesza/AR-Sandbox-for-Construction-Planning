@@ -114,9 +114,6 @@ public class Road : MonoBehaviour {
 		for (int i = 0; i < SEGMENT_COUNT; i++) {
 			float t = i / (float)(SEGMENT_COUNT - 1);
 			positions[i] = CalculateBezier (t, controlPoints);
-
-			float terrainHeight = terrain.GetHeightAtWorldPosition(positions[i]);
-			Color color = terrainHeight > positions[i].y ? Color.red : Color.blue;
 		}
 
 		lineRenderer.SetPositions (positions);

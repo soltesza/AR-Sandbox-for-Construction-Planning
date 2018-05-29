@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HeightView : MonoBehaviour {
-	TerrainManager terrainManager;
-	Road road;
 	public LineRenderer roadLine, terrainLine;
-
 	public float scale; // Controls the length of the line
 	public float magnitude; // Controls the height of the line
 
-	private float spacing;
+	private TerrainManager terrainManager; // Reference to the terrain manager in the scene
+	private Road road; // Reference tot he road in the scene
+	private float spacing; // The actual distance between control points, determined by scale and number of road segments
 
 
 	void Start () {
@@ -37,7 +36,7 @@ public class HeightView : MonoBehaviour {
 		spacing = scale / road.GetRoadPoints ().Length;
 	}
 
-	// Update the terraina nd road lines
+	// Update the terrain and road lines
 	void UpdateLines() {
 		Vector3[] roadPoints = road.GetRoadPoints ();
 		Vector3[] roadLinePoints = new Vector3[roadPoints.Length];
@@ -45,7 +44,7 @@ public class HeightView : MonoBehaviour {
 		roadLine.positionCount = roadPoints.Length;
 		terrainLine.positionCount = roadPoints.Length;
 
-		for(int i = 0; i < roadPoints.Length; i++) {
+		for(int i = 0; i < roadPoints.Length; i++) { // Update terrain line by querying terrain height
 			roadLinePoints [i] = new Vector3 (i * spacing, 0f, magnitude * roadPoints[i].y) + transform.position;
 			terrainLinePoints [i] = new Vector3 (i * spacing, 0f, magnitude * terrainManager.terrainGenerator.GetHeightAtWorldPosition(roadPoints[i])) + transform.position;
 		}
