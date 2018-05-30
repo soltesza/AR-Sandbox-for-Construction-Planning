@@ -68,9 +68,6 @@ public class CalibrationManager : MonoBehaviour {
 		Vector3 panelLL = mainCamera.ScreenToWorldPoint(LowerLeft);
 		Vector3 panelUR = mainCamera.ScreenToWorldPoint(UpperRight);
 
-		Vector3 panelUL = mainCamera.ScreenToWorldPoint(UpperLeft);
-		Vector3 panelLR = mainCamera.ScreenToWorldPoint(LowerRight);
-
 		terrainManager.terrainMask.SetDimensions (panelLL, panelUR);
 	}
 
