@@ -6620,6 +6620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIPanel: {fileID: 819394456}
+  terrainManager: {fileID: 1762244689}
   terrain: {fileID: 17105641}
 --- !u!1 &2064270047
 GameObject:
