@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using UnityEngine.SceneManagement; // for restart function
+using UnityEngine.SceneManagement; // For restart function
 
 using UnityEngine.UI; //Need this for calling UI scripts
 
@@ -10,20 +10,21 @@ using UnityEngine.UI; //Need this for calling UI scripts
 public class UIManager : MonoBehaviour {
 
     [SerializeField]
-    Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
+    Transform UIPanel; 
 
     [SerializeField]
-    Transform CutAndFillPanel; //Will assign our panel to this variable so we can enable/disable it
+    Transform CutAndFillPanel; 
 
     [SerializeField]
-    Transform DesignPanel; //Will assign our panel to this variable so we can enable/disable it
+    Transform DesignPanel; 
 
 	[SerializeField]
-	Transform ConfigPanel; //Will assign our panel to this variable so we can enable/disable it
+	Transform ConfigPanel;
 
     void Start()
     {
-        UIPanel.gameObject.SetActive(false); //make sure our pause menu is disabled when scene starts
+		//Make sure all UI panels are disabled at the start
+        UIPanel.gameObject.SetActive(false); 
         CutAndFillPanel.gameObject.SetActive(false);
         DesignPanel.gameObject.SetActive(false);
 		ConfigPanel.gameObject.SetActive (false);
@@ -31,8 +32,7 @@ public class UIManager : MonoBehaviour {
 
     void Update()
     {
-        //If player presses escape and game is not paused. Pause game.
-        //If game is paused and player presses escape, unpause.
+        //General keyboard shortcut catcher and handlers
         if (Input.GetKeyDown(KeyCode.Escape) && !UIPanel.gameObject.activeSelf)
             Pause();
         else if (Input.GetKeyDown(KeyCode.Escape) && UIPanel.gameObject.activeSelf)
@@ -49,7 +49,6 @@ public class UIManager : MonoBehaviour {
 
     public void Depth()
     {
-        Debug.Log("Depth Mode Clicked");
         ModeManager.dMode = DisplayMode.Depth;
 		//Make sure windows from alternate modes don't display
 		CutAndFillPanel.gameObject.SetActive(false);
@@ -59,10 +58,9 @@ public class UIManager : MonoBehaviour {
 
     public void Design()
     {
-        Debug.Log("Design Mode Clicked");
-
         ModeManager.dMode = DisplayMode.Design;
 
+		//Make sure windows from alternate modes don't display
         DesignPanel.gameObject.SetActive(!DesignPanel.gameObject.activeSelf);
 		CutAndFillPanel.gameObject.SetActive(false);
 		ConfigPanel.gameObject.SetActive (false);
@@ -70,10 +68,9 @@ public class UIManager : MonoBehaviour {
 
     public void CutAndFill()
     {
-        Debug.Log("Cut and Fill Mode Clicked");
-
         ModeManager.dMode = DisplayMode.CutFill;
 
+		//Make sure windows from alternate modes don't display
         CutAndFillPanel.gameObject.SetActive(!CutAndFillPanel.gameObject.activeSelf);
 		DesignPanel.gameObject.SetActive(false);
 		ConfigPanel.gameObject.SetActive (false);
@@ -81,7 +78,6 @@ public class UIManager : MonoBehaviour {
 
     public void Calibrate()
     {
-        Debug.Log("Calibrate Mode Clicked");
         ModeManager.dMode = DisplayMode.Calibrate;
 
 		//Make sure windows from alternate modes don't display
