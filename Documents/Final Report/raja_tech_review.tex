@@ -1,0 +1,117 @@
+\subsection{Depth Visualization}
+\subsubsection{Overview}
+Depth visualization consists of ways of interpreting the height or depth of a landscape or feature.
+It is a method of scientific visualization and, as an example, can be used to model or visualize the terrain of a geographic area.
+For our project, the feature being visualized is the height or depth of sand in a sandbox.
+
+\subsubsection{Criteria}
+The depth of the sand must conveniently communicate to the user the lay of the land or, more specifically, the altitude or elevation of an area.
+This can be done effectively using technologies such as a color map, a contour map, or a topographic map.
+
+\subsubsection{Potential Choices}
+\begin{enumerate}
+\item{Color Map}
+Color is a convenient and easy way of modeling data and allows people to quickly understand a complex system or environment.
+"Digital elevation data can be translated into many types of terrain displays and maps, including color-scaled contour maps...conventional contour maps, and shaded relief maps."\citeTechReview{tech:1}
+Therefore, our first choice for representing height would be a color map.
+This color map would use different colors to represent the height or altitude on the map.
+For example, land at sea level would be blue while land above sea level would be green.
+Land at a high altitude would be represented in yellow or red indicating hills or mountains respectively.
+
+\item{Contour Map}
+A classic method of representing terrain elevation is a contour map.
+The typical contour map uses successive contour lines to represent altitude.
+Features of the landscape, such as hills or mountains are outlined using these contour lines.
+These contours can be used to give an outline of the terrain.
+
+\item{Topographic Map}
+Topographic maps can be thought of as a combination of both color and contour maps.
+"Topographic maps are a detailed record of a land area, giving geographic positions and elevations for both natural and man-made features"\citeTechReview{tech:2}.
+In addition, topographic maps are also traditionally used in highway planning, because they provide important information "about the features of the land, approximate amount of cut and fill, drainage, where bridges may be needed, degree of economic development of the area, and other useful information".\citeTechReview{tech:2}
+This makes topographic maps an excellent choice for visualizing depth, because it is a format that civil and construction engineers would be familiar with.
+\end{enumerate}
+\subsubsection{Discussion}
+While both the color map and contour map can be used to represent the same thing, color is an easier indicator of height or altitude when compared to contour maps, since contours in a contour map need to be counted.
+Contrast this with easily looking at the color of an area and recognizing the elevation.
+However, topographic maps combine both of these advantages and therefore provide both means of reading the terrain.
+On top of this, topographic maps are a more traditional format that civil and construction engineers would be familiar with.
+
+\subsubsection{Conclusion}
+A topographic map may be the best choice, simply because it can represent more information than a color or contour map.
+Additionally, topographic maps are already used in fields such as civil engineering and city planning.
+
+\subsection{Cut and Fill Visualization}
+\subsubsection{Overview}
+Cut and fill refers to the process of creating a level path where a road or highway can be built.
+Visualizing the cut and fill of a road helps engineers determine the amount of earth that will need to be moved in order to create a level roadway.
+Land that is too high in elevation is cut and land that is too low in elevation is filled.
+
+\subsubsection{Criteria}
+The cut and fill of a road must be easily determined simply by looking at the road itself or looking at some sort of diagram representing the road.
+This is a key feature of our project and must be intuitive enough that the engineer can tell which part of the road will need to be cut and which part will need to be filled.
+
+\subsubsection{Potential Choices}
+\begin{enumerate}
+\item{Color}
+An easy and simple way of visualizing the cut and fill of a road is using a color coordinated system similar to the topographic map.
+For example, an area that needs to be filled is colored blue and an area that needs to be cut is colored red. 
+
+\item{Mass Haul Diagram}
+Another way of visualizing cut and fill is using a mass haul diagram.
+A mass haul diagram is "a graphical representation of the cumulative amount of earthwork moved...and distances over which the earth and materials are to be transported."\citeTechReview{tech:3}
+The y-axis of a mass haul diagram represents the volume of material to be cut or filled, while the x-axis shows the distances the material will need to be hauled.
+
+\item{Cut and Fill Table}
+A table can also be used to show cut and fill for a road.
+Each subsection of the road could be represented by a positive number showing the amount to fill, while a negative number could represent the amount to cut.
+This would look similar to an Excel spreadsheet.
+\end{enumerate}
+\subsubsection{Discussion}
+The cut and fill table would not be a good choice, because it does not effectively convey the cut and fill of the road in an easy manner.
+The user would have to analyze the numbers in the table and mentally visualize the cut and fill.
+In contrast, the mass haul diagram is commonly used when building roads and highways and conveys the necessary information graphically; however, when talking with our client, he mentioned that the mass haul diagram can be confusing since it requires showing both the profile of the road and a graph of the cut/fill volume.
+An easier method may be representing cut and fill using a color map.
+
+\subsubsection{Conclusion}
+The best way to represent the cut and fill would be using color.
+Color would allow the user to simply eyeball the road and make a determination if the subsection needs to be cut or filled.
+Higher gradations or intensities of color can show if more earth needs to be cut or more filled.
+
+\subsection{User Interface}
+\subsubsection{Overview}
+For our project, the user will be able to manipulate the design of the road and change the display mode of the augmented reality sandbox.
+It's important that the user interface is organized in a convenient and simple way in order to make the user comfortable.
+
+\subsubsection{Criteria}
+The user interface must be in a format that is familiar to the user, but also useful enough to utilize the software.
+The cost of input devices for the user interface as well as whether the user will need to be trained to use the software is another requirement to consider.
+
+\subsubsection{Potential Choices}
+\begin{enumerate}
+\item{Computer Terminal}
+Our first choice would be to use a simple keyboard and mouse interface on a computer terminal.
+A majority of software programs are used with a mouse and keyboard so this would be something a user would more than likely be familiar with.
+
+\item{Projected UI}
+Our client discussed the possibility of using some sort of hardware pointing device to manipulate the road design and interact with UI elements.
+A similar project I found shows a proof of concept using a Wii Remote.\citeTechReview{tech:4}
+This would basically be a windows interface, but projected on the sand.
+This would make it easier for users to see what they're doing and get instant feedback.
+
+\item{Gesture Controls}
+Another choice brought up by our client is using a gesture based interface.
+Certain gestures would be captured by the hardware and interpreted as interacting with the software.
+I came across a project demonstrating a proof of concept of this idea, again using a Wii Remote.\citeTechReview{tech:5}
+This is a novel method and unlike the projected UI would not require the use of additional hardware, since we will be using a Microsoft Kinect as a depth sensor.
+The Kinect could also be used to track a user's hands.
+\end{enumerate}
+
+\subsubsection{Discussion}
+The gesture control interface is an interesting and novel idea; however, it may be too confusing for users who are used to a more simple keyboard and mouse interface.
+Users may need to be trained before they can use gestures. In contrast, the projected UI would be intuitive, as it would be similar to a basic windows interface, but projected onto the sand.
+However, this technology may incur extra costs since we would need to implement some sort of hardware pointing device.
+On top of that we would also need to learn how to interface the new hardware with our software.
+The interface projected on the sand may work, but it may simply be easier to use a computer terminal that users most likely have experience with.
+
+\subsubsection{Conclusion}
+The computer terminal interface would be our choice, because it's a technology that user's are familiar with and would not require additional training or cost to use or implement.

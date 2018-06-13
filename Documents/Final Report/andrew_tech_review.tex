@@ -1,0 +1,67 @@
+\subsection{Rendering Framework}
+At its lowest level, the rendering framework handles the communication between an application and the graphics hardware. In this case, the term is expanded to also include game engines, which act as their own self contained development environments and handle many other tasks in addition to rendering graphics.
+
+\subsubsection{Unreal Engine 4}
+Unreal Engine is an eighth generation game engine produced by Epic Games. Notable features include real-time global illumination, full access to the engine's source code, and the ability to tweak code while the game is running in order to rapidly test features.
+Unreal Engine is free to download and use, but requires 5\% of the game developer's profits upon launching their title \citeTechReview{unreal}.
+The engine has a large userbase and an active forum, meaning that in-depth user created instructional content exists, and technical questions can be answered quickly. 
+
+One of Unreal Engine's main strengths is its graphical fidelity. 
+With very little effort a developer can create a realistic scene with convincing materials and lighting.
+For the scope of this project however, this is irrelevant as realistic rendering is not the desired result.
+
+\subsubsection{Unity Engine}
+Unity Engine is a game engine developed by Unity Technologies. It is free to use, as long as the developer's total revenue or funding does not exceed \$100,000. Two paid versions of Unity are available, with higher revenue caps and additional features. 
+Unity's scripting language is C\#, and user created shaders are specified using GLSL \citeTechReview{unity}.
+
+One of the Unity's biggest strengths is its ability to easily deploy to multiple platforms, such as Windows, MacOS, and Linux, as well as many mobile platforms and game consoles \citeTechReview{unity}. 
+This could be a boon to this project as the ability to use a computer running Linux or MacOS to create an AR sandbox could vastly increase the accessibility of our final product, as well as decrease costs for the end user.
+
+Another strength is the relatively small learning curve. 
+This makes it very easy for new developers to quickly begin creating their project in Unity, which would be beneficial to our project, given our short development period.
+
+\subsubsection{OpenGL}
+Open GL is a cross-platform computer graphics API maintained by Khronos Group. Unlike Unity or Unreal, OpenGL is not a game engine, but instead an interface between an application and the GPU. This means that OpenGL does not provide a development environment, or specify that a particular language be used to develop the application. 
+
+The main benefit of using OpenGL is performance, since no additional features are provided, there is no overhead for features that go unused. The developer is free to specify exactly what they want the graphics hardware to do without interfacing with an additional layer of abstraction, such as a game engine. This can also be a drawback as one of the main draws to using a game engine is the ease of development and the fact that the engine automatically takes care of much of the heavy lifting associated with rendering an object on the screen. 
+
+For a project such as this, the majority of a game engine's features such as physics will go unused, and a majority of the rendering power built in to the engine will be either turned off or hidden, making a much lower level system such as OpenGL more attractive. 
+
+\subsubsection{Conclusion}
+While the more efficient OpenGL is certainly an attractive choice for this project, the best tool for the job is the Unity engine. Unity provides a middle ground between Unreal 4, which is focused more on photorealistic rendering, and the simplicity of OpenGL. Unity retains all the integrated build support of a game engine while still being easy to use and fully capable of supporting the requirements of this project. While we may gain additional performance from OpenGL, Unity's performance should be more than acceptable for the caliber of graphics that we wish to achieve. 
+
+\subsection{Height Data Storage}
+In order to save the sandbox's topology, a digital representation must be created. This representation must contain enough information to correctly recreate the sand's surface.
+
+\subsubsection{Greyscale Bitmap}
+The most logical option for storing the terrain of the sandbox is with a greyscale bitmap image, since this is the format that the depth sensor uses to express this information. The benefit of this approach is that a bitmap is relatively small in comparison to other options, and represents all the information required to recreate the sand's surface, without additional unnecessary metadata. The main downside of this approach is that if the user wishes to reconstruct the sand's surface in an easy to visualize manner, they will have to convert the height map to a mesh. An additional downside is the fact that a heightmap is unable to represent undercuts (areas where the surface of the terrain fold back on itself, such as a cave) since it can only represent one height value per x-y coordinate.
+
+\subsubsection{FBX File Format}
+The FBX file format is a proprietary file format designed by Autodesk for storing three dimensional scenes. The FBX format is one of the most widely used 3D file formats because of its ability to also store additional scene data such as camera position, skeletal meshes used for animation, lights, and materials, as well as its compact size. The main downside to this format is that Autodesk is not forthcoming about the structure of the FBX format, and while it does offer a C++ API which allows developers to export FBX files from their applications, the internals of this API are obfuscated. Individuals and organizations have made efforts to reverse engineer the format in order to integrate FBX import and export capabilities into a wider range of programs. Notably, Blender Foundation has been able to successfully implement FBX support into the 3D modeling package Blender without using the Autodesk provided API \citeTechReview{foundation_2013}. 
+
+\subsubsection{OBJ File Format}
+The OBJ file format was originally developed by Wavefront Technologies for use with their motion capture program Advanced Visualizer. Unlike the FBX format, OBJ files are written in plaintext, meaning that they are relatively human readable.  Another difference is that OBJ files are only capable of specifying geometry, and materials through a reference to an external MTL file. The benefit of the OBJ format is that it is supported across almost every 3D graphics platform. Another benefit is the ease of creation, since the files are written with ASCII characters \citeTechReview{reddy}. OBJ has two major drawbacks however: the first is the fact that only geometry can be stored, which for this project is a relatively minor concern. More pressing is the file size, especially when compared to the FBX format. As an example, a 6,050 triangle mesh saved as an OBJ file is 293 KB, whereas the same mesh saved as an FBX file is only 127 KB, less than half the size. Scaled up, a 732,050 triangle mesh saved as an OBJ file is 39.7 MB, and the equivalent FBX file is only 11.9 MB. 
+
+\subsubsection{Conclusion}
+The best approach for storing height data is to use a greyscale heightmap, with the option of exporting an OBJ file should the user request one. An image file is far more compact than any of the 3D file formats discussed and contains all the information necessary to recreate the sand's topology. The only downside is that it's less meaningful than viewing an actual three dimensional mesh of the terrain; a downside mitigate by giving the user the option to export one. The OBJ file format is preferable due to its ease of creation and universal support.
+
+\subsection{Height Data Representation}
+Raw data from the AR sandbox's depth sensor takes the form of a heightmap - a greyscale image whose pixels correspond to the height of the sand at a specific location. The heightmap must be interpreted by our application in order to display meaningful information on the sand. 
+
+\subsubsection{Two Dimensional Representation}
+One approach is to use the value at each pixel in the heightmap to color pixels on a 2D image in order to represent height. 
+The benefit of this technique is simplicity, as there is only one step involved in converting raw height data to the final image. 
+A drawback to this approach is that it offers little flexibility should we or another developer wish to implement additional features in the future.
+
+\subsubsection{Three Dimensional Representation}
+Another approach is to use the height data to generate a three dimensional mesh. A shader would then be used to apply color to the mesh to represent the height. A top-down view of this mesh would then be projected onto the sand. While this seems like unnecessary work and does add an extra step to the rendering process, it gives us a lot more flexibility when adding additional features. For instance, when simulating the effects of runoff on the terrain, the mesh could be used to calculate the flow of water. Additionally, if the user wants to save the state of the sandbox, having a three dimensional representation of the topography at a specific time would give the saved data more meaning as the user would be able to view not only the path of the road, but also the terrain that the road is passing through. 
+
+One downside to this approach is the additional computational cost of looking up the height of individual points. If using a mesh, it is first necessary to determine which triangle the point falls on, then use the three vertices that make it up to determine the height of the point geometrically.
+
+Another downside is that, depending on the resolution of the heightmap, the resolution of the three dimensional mesh may need to be downsampled in order to efficiently render the mesh.
+
+\subsubsection{Coupled Two and Three Dimensional Representation}
+A third option is to retain both the original greyscale heightmap, as well as render a three dimensional mesh. While this would be the most computationally expensive approach and would require more data to be stored in RAM, it would be very easy to obtain the height value at a given point. The point in three dimensional space would need to be correlated to a pixel on the heightmap, which could then be sampled to get a height value. This approach also mitigates the issue of having a lower resolution mesh than the original heightmap since the original heightmap is maintained and can be referenced when exact heights are required.
+
+\subsubsection{Conclusion}
+Maintaining both a mesh and a heightmap is the best approach as the additional computational overhead imposed would be more than made up for by the ease of acquiring height information. Additional RAM usage is not a major concern either as the capacity of modern memory modules is so large. The ability to render a lower resolution mesh would also be helpful since even a low resolution heightmap would require a large number of triangles to represent it at full resolution. As an example, a 480 by 480 pixel heightmap would require \[ \frac{480^2}{2}=115,200 \] triangles to be rendered. While not implausible with modern graphics hardware, this could be a concern for older computers.

@@ -1,0 +1,172 @@
+\subsection{Capture of Data}
+\subsubsection{Overview}
+In order for the system to properly represent the height of the sand via projection, it has to capture the height of the sand as input.
+This can be done in several different ways: with the use of scales recording the weight of the sand atop it; a camera recording the surface of the sand and extrapolating the height from that; or a 3-dimensional depth sensor to take in the heights at various points.
+\subsubsection{Criteria}
+All of the potential choices have positives and negatives.
+In order to make the best decision, the following will be used as the primary criteria which will be used to assess the various options.
+These criteria include the following:
+\begin{itemize}
+\item Precision: How precise the measurements taken are.
+\item Cost: How much it is going to cost to implement.
+\item Data Manipulation: How much the raw data must be manipulated in order to achieve the desired information.
+\end{itemize}
+
+\subsubsection{Potential Choices}
+
+This subsection explores three potential choices for how the system can capture the height of the sand throughout the sandbox as input.
+The first of these choice is the installment of a grid of scales along the floor of the sandbox, measuring the amount of sand above that given point.
+The second choice is to utilize two cameras positioned above the sandbox, creating a stereoscopic image for the system to analyze.
+The final option is to utilize a 3-dimensional, depth sensing camera placed above the sandbox.  
+
+\subsubsection{Discussion}
+
+The greatest drawback when using scales to determine the height of the sand is the lack of precision.
+A scale will only ever yield the average height along the area that it is weighing.
+With smaller scales, comes a greater quantity needed in order to fill the area of the sandbox, and a sharp increase in cost.
+With most scales costing around \$100, the cost of creating a grid would get very expensive very quickly \citeTechReview{scales_galore}.
+In addition to the high costs and lack of precision, using scales also requires a increased amount of data manipulation.
+The data captured via the scales is the weight of the sand placed atop it.
+In order to get the desired height data, that weight must be manipulated using the density of sand and the area the scale covers in order to get the average height within the area.
+This is far from efficient and will require a vast number of calculation.
+\\\\
+Utilizing two different cameras to capture a stereoscopic view is more precise than using scales to measure the sand's weight.  
+It depends on the resolution of the camera, but instead of just providing the average height over larger areas, the cameras can provide a height for a given point along the surface of the sand.
+In addition to the increased precision, it is also slightly more cost efficient.
+These days, computer interfacing cameras can be purchased for as cheap as \$10 \citeTechReview{amazon}.
+By having two cameras record the state of the sand, we create a system that acts much like the human eyeballs. 
+By analyzing the disparity between the a point from one camera to another the height of that point is able to be derived \citeTechReview{shapiro_stockman_2001}.
+Because of the increased precision, more calculations have to executed in order to complete the data, and those calculation are a lot more complex. 
+Instead of an increase in cost for an increase in precision, using 2 cameras increases the amount of calculations required to manipulate the data in order to gain increased precision.
+\\\\
+A depth sensor yields equal (if not more) precision then a stereoscopic setup.
+They often utilize similar technologies to that of the system above, but often take things a few steps further in order to improve on efficiency and precision.
+A depth sensor is typically a little more expensive than using a 2 camera setup, but what it makes up for that in lack of data manipulation required.
+Depth sensors are designed specifically for the task at hand.  As a result, they output the exact data needed, no additional calculations are required in order to get the various heights along the sand.
+
+%Put in table with comparisons of criteria?
+
+\subsubsection{Conclusion}
+Of all the potential choices, it makes sense that using a depth sensor would be the best.
+Depth sensors are designed specifically to provide the information that the system needs.
+They have the greatest precision of all the options and the least amount of system calculations, letting the system focus on the its own calculations.
+Although it is not the cheapest option available, its strengths in the other categories far outweigh the negative. 
+
+\subsection{Depth Sensor}
+\subsubsection{Overview}
+The conclusion that a depth sensor is the best way for the system o gather its input begs one question: Which depth sensor should be used?
+This sensor needs to be able to record the topography along the sand and send it to the system for analysis.
+For the purposes of the AR Sandbox for Construction planning, the 3 of the best sensors are the Microsoft Kinect, the Intel RealSense SR300, and the Asus Xtion 2.
+\subsubsection{Criteria}
+In order to ensure the best possible depth sensor for the sandbox, 3 criteria have been chosen by which to compare the sensors.
+These components will include the following:
+\begin{itemize}
+\item Quality of Camera: The quality of the camera itself.  This includes the resolution of the image taken.
+\item Ease of Interface: How easy the information from the depth sensor can be sent to the computer.
+\item Cost: How much the device will cost to purchase.
+\end{itemize}
+\subsubsection{Potential Choices}
+There are three depth sensors that appear to be the best options.
+The first of these is the Microsoft Kinect for Windows PC, a small sensor utilizing a infrared camera and emitter to capture depth.
+The second is the Intel RealSense Camera SR300.  
+The successor to the Kinect, it utilizes similar technology.
+The third and final option is the Asus Xtion 2. Also using infrared to determine depth, the Xtion was created to be a direct competitor to the Kinect and RealSense.
+
+\subsubsection{Discussion}
+
+The Microsoft Kinect was one of the first devices to really enter the market as a infrared-using depth sensor/camera.
+It emits a series of infrared beams and has a sensor to pick up the reflections and create a 3-dimensional image.
+This technology and technique was found to be very accurate and only began falling off as the distance from the target was increased \citeTechReview{andersen_jensen_lisouski_2012}.
+For the purposes of the sandbox, the depth sensor will be placed relatively close to the surface.
+Another benefit if utilizing the Kinect is that Microsoft has already created an API in order for the sensor to interface with windows computers\citeTechReview{kinect_api_overview}.
+This framework is created in order to help developers trying to utilize the sensor get going as quickly and as easily as possible.
+In addition, with the age of the Kinect there is a vast amount of on line assistant available to aid in the implementation of the device.
+With all of this put together, the Microsoft's Kinect costs about \$170 to purchase \citeTechReview{amazon}.
+However, we already have access to a Kinect for the purposes of this project, effectively reducing its cost to \$0.
+\\\\
+The Intel RealSense Camera was created to be the successor to the Kinect and is encouraged to be used instead \citeTechReview{kinect_microsoft}.
+The Kinect is still a used in abundance throughout the industry, but it is no longer being manufactured.
+As a result, the RealSense will slowly take its place.
+Being the next generation of the Kinect, the RealSense utilizes the same method for determining the depth throughout the sensor's field.
+Designed to be in a depth range of 0.2 meters to 1.5 meters, the sensor fits into the exact range we need it to function within\citeTechReview{realsense_intel}.
+As with the Kinect's technology, the RealSense's precision has been found to be accurate when operating within a short to medium range from the sensor\citeTechReview{andersen_jensen_lisouski_2012}.
+The RealSense builds off of the Kinect's Windows interface and interacts with the computer in much the same way with its own SDK and API \citeTechReview{realsense_intel}.
+In addition to these improvements to the Kinect, the Intel RealSense SR300 Camera will only cost \$109 \citeTechReview{realsense_intel}.
+\\\\
+The final depth sensor taken into consideration is the Asus Xtion 2.
+This sensor, like the others, uses the same technology to create its 3-dimensional images.
+It uses the same technology, however it does not have as strong of hardware in comparison to the Intel RealSense.
+As a result, the resolution of the image taken and the precision of the data is slightly less than that of the RealSense\citeTechReview{miller_2017}.
+Though there are drivers and ways for the Xtion to interface with the computer, they are not as efficient and not as well supported as that of the Kinect or RealSense.
+This can partially be attributed to the Kinect being created by Microsoft and the RealSense receiving their endorsement as a device.
+Bring these things together and the Xtion is less impressive than the either of the to other two sensors.
+In addition, the Xtion costs \$270\citeTechReview{miller_2017}.
+When comparing the abilities of the sensors and the costs, this sensor is out of the question.
+
+
+\subsubsection{Conclusion}
+Of all the depth sensors, the Intel RealSense appears to be the best choice when placed in a vacuum.
+Both the Kinect and the Intel RealSense work a little bit better than the Asus Xtion, but the RealSense takes all that is great about the Kinect and builds upon it.
+With that being said, we are not in a vacuum.
+Because we already have access to a Kinect, it is the best choice for the AR Sandbox project.
+Not only do we already have access to it, but it also offers a complete and accurate infra-red camera system along with a complete user API which makes the sensor particularly suited for the tasks at hand.
+
+\subsection{Projector}
+\subsubsection{Overview}
+The input device has been determined, but a means of output still needed.
+In order for the height visualization to be presented upon the surface of the sand, a projector is the best choice.
+Projectors come in various strengths, refresh rates and costs, but which is the best for the Sandbox's purposes?
+
+\subsubsection{Criteria}
+In order to determine the best projector for the system, several aspects an option are weighed against that of the others.
+These aspects include:
+\begin{itemize}
+\item Resolution: The resolution of the picture created by the projector.  The higher the resolution the clearer the picture projected will be.
+\item Brightness: How bright the projector's bulb will be.  The brighter the bulb the brighter the environment the projection can be in.
+\item Cost: How much the device will cost to purchase.
+\item Size/Weight: The projector needs to be light enough to be mounted above the sandbox.
+\end{itemize}
+\subsubsection{Potential Choices}
+The following three projectors have been determined as 3 of the best options to satisfy the needs of the Sandbox System.
+The first is the ViewSonic PJD7720HD.
+The second is the BenQ TH670, and the final potential choice is the AAXA M5 Mini Portable Business Projector.
+
+\subsubsection{Discussion}
+The ViewSonic projector is an all-around solid projector for its price tier.  
+It offers a full 1080p picture, allowing for the data to be presented clearly to the user.
+Though the picture is in full-HD, the brightness is equally important.
+Without an adequate brightness, the image will not be able to be viewed at all.
+The ViewSonic has a brightness of 3200 lumens, meaning the picture will be very clear in most environments.
+With a cost of \$585, this is one of the better valued projectors there are \citeTechReview{best_projectors}.
+With that in mind, the ViewSonic is not very compact.
+It is approximately 12 in. x 9 in. x 4 in. in size and weighs 5.3 lbs; a manageable size, but not great either \citeTechReview{amazon}.
+
+Taking a step up, the next option, the BenQ TH670, is the strongest of the projectors.
+Like the ViewSonic, the BenQ projects a picture at full 1080p HD quality.
+With 3000 lumens of brightness, the BenQ sits in the middle of the pack in regards to brightness.
+Similar to the Epson, the BenQ allows for a screen up to 300 inches in size, overkill for what the system needs projected.
+At \$700, this is by far the most expensive of the projectors.
+For this price, the BenQ offers a greater screen size and built in speakers; two additions that are far from necessary in the system \citeTechReview{best_projectors}.
+Along with the increased power and cost, the BenQ comes with increased size and mass.
+At approximately 13 in. x 19 in. x 15 in. and weighing nine pounds, the BenQ is both larger and heaver than the ViewSonic \citeTechReview{amazon}.  
+With these physical dimensions, it would be difficult the mount the projector in the desired position for the sandbox. 
+\\\\
+The final projector under consideration is the AAXA M5 Mini Portable Business Projector.
+Once again, this projector offers 1080p HD quality.
+However, the AAXA only offers 900 lumens of brightness.
+This brightness will work on most low-light situations, but may begin to become hard to see when the brightness of the room starts to increase.
+At a price of \$435, this is the cheapest of the options.
+What the AAXA lacks in brightness it makes up in its compact size and low-weight.
+It is 6 in. x 6 in. x 1.8 in. in size and weights less than two pounds. \citeTechReview{amazon}.
+Though its brightness is less than that of the others, it should be noted that 900 lumens is still one of the highest available at this size of projector.
+\subsubsection{Conclusion}
+
+All 3 of the projectors discussed have their pros and cons.
+They all provide a full HD picture at 1080p and adequate picture brightness for the majority of environments, with the ViewSonic providing the greatest brightness with 3200 lumens.
+For BenQ projector, larger picture size is provided at a higher cost and increased size.
+Because of the mounting requirements we are under and the lack of necessity for a larger picture, the BenQ is not the best projector.
+The ViewSonic PJD7720HD offers a better price and smaller dimensions and weight for an unimpactful reduction of picture size.  However, its weight of five pounds is still hindersome to the mounting required.  As a result, the AAXA is the best projector for the AR Sandbox project.  It is not as bright as the others, but will be sufficient in most lighting environments, and its small, two pound body is too valuable to pass up.
+
+
+\bibliographystyleTechReview{IEEEtran}
+\bibliographyTechReview{references}

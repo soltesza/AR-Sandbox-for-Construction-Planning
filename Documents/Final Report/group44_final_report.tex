@@ -1,0 +1,827 @@
+\documentclass[onecolumn, draftclsnofoot,10pt, compsoc]{IEEEtran}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{setspace}
+\usepackage{pgfgantt}
+\usepackage[hidelinks]{hyperref}
+\usepackage{listings}
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
+
+\usepackage[resetlabels,labeled]{multibib}
+\newcites{Design}{Design References}
+\newcites{TechReview}{Tech Review References}
+
+\usepackage[colorinlistoftodos]{todonotes}%Take out when complete, allows intext comments during work
+
+\usepackage{geometry}
+\geometry{textheight=9.5in, textwidth=7in}
+
+% Used for code listings
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=[Sharp]C,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+% 1. Fill in these details
+\def \CapstoneTeamName{		Team Sandy}
+\def \CapstoneTeamNumber{		44}
+\def \GroupMemberOne{			Raja Petroff			}
+\def \GroupMemberTwo{			Andrew Soltesz			}
+\def \GroupMemberThree{			Mark Sprouse			}
+\def \CapstoneProjectName{		AR Sandbox for Construction Planning}
+\def \CapstoneSponsorCompany{	Oregon State University}
+\def \CapstoneSponsorPerson{		Dr. Joseph Louis}
+\title{Progress Report}
+
+% 2. Uncomment the appropriate line below so that the document type works
+\def \DocType{		%Problem Statement
+				%Requirements Document
+				%Technology Review
+				%Design Document
+				Final Report
+				}
+			
+\newcommand{\NameSigPair}[1]{\par
+\makebox[2.75in][r]{#1} \hfil 	\makebox[3.25in]{\makebox[2.25in]{\hrulefill} \hfill		\makebox[.75in]{\hrulefill}}
+\par\vspace{-12pt} \textit{\tiny\noindent
+\makebox[2.75in]{} \hfil		\makebox[3.25in]{\makebox[2.25in][r]{Signature} \hfill	\makebox[.75in][r]{Date}}}}
+% 3. If the document is not to be signed, uncomment the RENEWcommand below
+\renewcommand{\NameSigPair}[1]{#1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{titlepage}
+    \pagenumbering{gobble}
+    \begin{singlespace}
+    	%\includegraphics[height=4cm]{coe_v_spot1}
+        \hfill 
+        % 4. If you have a logo, use this includegraphics command to put it on the coversheet.
+        %\includegraphics[height=4cm]{CompanyLogo}   
+        \par\vspace{.2in}
+        \centering
+        \scshape{
+            \huge CS Capstone \DocType \par
+            {\large\today}\par
+            \vspace{.5in}
+            \textbf{\Huge\CapstoneProjectName}\par
+            \vfill
+            {\large Prepared for}\par
+            \Huge \CapstoneSponsorCompany\par
+            \vspace{5pt}
+            {\Large\NameSigPair{\CapstoneSponsorPerson}\par}
+            {\large Prepared by }\par
+            Group\CapstoneTeamNumber\par
+            % 5. comment out the line below this one if you do not wish to name your team
+            %\CapstoneTeamName\par 
+            \vspace{5pt}
+            {\Large
+                \NameSigPair{\GroupMemberOne}\par
+                \NameSigPair{\GroupMemberTwo}\par
+                \NameSigPair{\GroupMemberThree}\par
+            }
+            \vspace{20pt}
+        }
+        \begin{abstract}
+        % 6. Fill in your abstract
+        This document covers the Augmented Reality Sandbox capstone project for the 2017-2018 school year. Specifically, this document discusses the purposes and goals of the project, as well as who was involved. Moreover, this document includes our project requirements, project design, technology reviews, poster, documentation, helpful technical resources, and our conclusions and reflections.
+        \end{abstract}     
+    \end{singlespace}
+\end{titlepage}
+\newpage
+\pagenumbering{arabic}
+\tableofcontents
+% 7. uncomment this (if applicable). Consider adding a page break.
+\listoffigures
+%\listoftables
+\clearpage
+
+% 8. now you write!
+\section{Introduction to Project}
+Tangible interfaces that combine manipulation of physical objects or material with real-time computer graphics offer an innovative and interactive method of visualizing and interacting with real-world data. This is especially true for augmented reality systems such as an AR sandbox. Which is why the goal of our project was to create an AR sandbox for construction planning. Our client, Dr. Joseph Louis, requested this project, because he wanted a new system to help enhance collaborative design and planning for the construction phases of highways and other possible civil engineering applications. This project is important, because it will radically redefine the way that construction and highway planning is done through use of appropriate novel interfaces.
+\par Our project team consisted of three members: Andrew Soltesz, Mark Sprouse, and Raja Petroff. The roles of our team often overlapped, but for the most part Andrew was responsible for terrain and road generation and integrating the Kinect sensor, Mark took care of calibration mode and integrating the projector, and Raja worked on cut and fill mode and the UI manager. Our client, Joe, took on a supervising role, but also helped us with researching civil and construction engineering concepts. Joe also funded the building of the physical AR sandbox and had one of his research assistants, Jeff Gent, do the actual construction.
+
+
+\section{Requirements Document}
+\subsection{Change Log}
+\begin{tabular}{| p{0.3\linewidth}| p{0.3\linewidth}| p{0.3\linewidth}|}
+\hline
+ Section Changed & Description & Reason \\ \hline 
+ Functional Requirements: Cut \& Fill Mode 3.4.2.1 & Cut \& Fill table now displays cut/fill areas, cut/fill volumes, and stations and no longer displays the estimated haul duration, and the construction equipment to use & Certain columns of information were found to be unnecessary and other (more relevant) information was added.\\ \hline
+\end{tabular}
+\input{requirements.tex}
+\subsection{Final Gantt Chart}
+\subsubsection{Development Schedule}
+The following chart outlines the schedule that this project will follow: \\\\
+\begin{center}
+\begin{ganttchart}{1}{30}
+\gantttitle{AR Sandbox Development Weeks 1-30}{30} \\
+\gantttitlelist{1,...,30}{1} \\
+\ganttbar{Problem Statement}{2}{3} \\
+\ganttlinkedbar{Requirements Document}{4}{5} \ganttnewline
+\ganttmilestone{Begin Development}{9} \ganttnewline
+\ganttbar{Mesh generation}{10}{11} \ganttnewline
+\ganttbar{Shader Creation}{10}{11} \ganttnewline
+\ganttbar{Depth Sensor Integration}{12}{14} \ganttnewline
+\ganttbar{Calibration Development}{15}{27} \ganttnewline
+\ganttbar{Design Development}{15}{27} \ganttnewline
+\ganttbar{Cut \& Fill Development}{15}{27} \ganttnewline
+\ganttbar{UI Development}{13}{26} \ganttnewline
+\ganttmilestone{End Development}{28} \ganttnewline
+\ganttlink{elem2}{elem3}
+\ganttlink[link type=f-f]{elem3}{elem4}
+\ganttlink[link type=f-s]{elem4}{elem5}
+\ganttlink[link type=f-s]{elem5}{elem6}
+\ganttlink[link type=f-f]{elem6}{elem7}
+\ganttlink[link type=f-f]{elem7}{elem8}
+\ganttlink{elem8}{elem10}
+\end{ganttchart}
+\end{center}
+\pagebreak
+
+\section{Design Document}
+\subsection{Change Log}
+\begin{tabular}{| p{0.3\linewidth}| p{0.3\linewidth}| p{0.3\linewidth}|}
+\hline
+ Section Changed & Description & Reason \\ \hline 
+ System Components: Cut \& Fill Mode 2.2.4 & Cut \& Fill table now displays cut/fill areas, cut/fill volumes, and stations and no longer displays the estimated haul duration, and the construction equipment to use  & Reflection of requirements changes mentioned above \\ \hline
+ Physical Architecture: Architectural Design 4.1 & Added the actual sandbox cart dimensions as $5'$ X $3'$ X $6.5'$. & These values were unknown at the time of the initial design document \\ \hline
+ Data Description: Data Dictionary 5.2.1 & Changed heightmap definition to be "a one dimensional array representation of a two dimensional array of unsigned integers" & Our idea of how the Kinect output information was slightly flawed, this definition more accurately reflects how the Kinect worked and how our system interacted with it. \\ \hline
+  Physical Architecture: Architectural Design Projector 4.1.2 & Changed out projector to the Optoma ML750ST Projector & The original projector was found to be inadequate and so a different one was chosen. \\ \hline
+\end{tabular}
+\input{design.tex}
+\pagebreak
+
+\section{Tech Review}
+\input{andrew_tech_review.tex}
+\input{raja_tech_review.tex}
+\input{mark_tech_review.tex}
+\pagebreak
+
+\section{Weekly Blog Posts}
+\subsection{\GroupMemberOne}
+\subsubsection{Fall}
+\begin{itemize}
+\item Week 1
+	\begin{itemize}
+	\item \textbf{Plans:}
+    \item \textbf{Problems:}
+    \item \textbf{Progress:}
+    \item \textbf{Summary:} Thought about which projects I wanted to work on. Filled out preferences. Setup OneNote and created biography. Went over resume.
+	\end{itemize}
+\item Week 2
+	\begin{itemize}
+	\item \textbf{Plans:} 
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} 
+    \item \textbf{Summary:} Found out which project I was assigned (AR Sandbox for Construction Planning). Met with group for the first time. Emailed client and setup a time and place to meet. Scheduled time to meet with TA.
+	\end{itemize}
+\item Week 3
+	\begin{itemize}
+	\item \textbf{Plans:} 
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} 
+    \item \textbf{Summary:} Finished and peer reviewed rough draft of problem statement. Met with client for the first time. Met with TA for the first time.
+	\end{itemize}
+\item Week 4
+	\begin{itemize}
+	\item \textbf{Plans:} Start on rough draft of requirements document.
+    \item \textbf{Problems:} Final draft of problem statement due on Friday.
+    \item \textbf{Progress:} Finalized problem statement and talked with team about requirements document.
+    \item \textbf{Summary:} Final draft of problem statement is finished and approved. We talked about the requirements document and what we need to do. We will have to setup a meeting with the client and go over what our requirements should be for the project.
+	\end{itemize}
+\item Week 5
+	\begin{itemize}
+	\item \textbf{Plans:} Work on final draft of requirements document.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Started and finished rough draft of requirements document.
+    \item \textbf{Summary:} Our team met on Tuesday after class and read over the IEEE SRS document. We started outlining the requirements document for our project. We scheduled a meeting with our client on Friday. I worked on section one of the requirements document. We went over our rough draft with the client and he gave us a lot of feedback. We scheduled another meeting with the client on Thursday next week. We'll go over the final draft of our requirements document with him then.
+	\end{itemize}
+\item Week 6
+	\begin{itemize}
+	\item \textbf{Plans:} Begin working on rough draft of the technology review assignment.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Met with client and got feedback on our requirements document. Finished the final draft of the requirements document and submitted it for client approval.
+    \item \textbf{Summary:} This week, we learned about the technology review assignment. We worked on the requirements document and met with our client to get his feedback. We then worked on including his feedback in the document and submitted it for approval.
+	\end{itemize}
+\item Week 7
+	\begin{itemize}
+	\item \textbf{Plans:} Finish rough draft of technology review next week.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Started working on rough draft of tech review.
+    \item \textbf{Summary:} Our team came up with nine different technologies for our project. We divided them into three technologies we each have to talk about in the technology review. I started writing the rough draft of my tech review this week.
+	\end{itemize}
+\item Week 8
+	\begin{itemize}
+	\item \textbf{Plans:} Finish final draft of technology review. Start working on design document.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Finished rough draft of tech review and started on the final draft.
+    \item \textbf{Summary:} Handed in rough draft of technology review after doing peer review in class. Got good feedback on what to revise. Final draft of tech review is due next Tuesday, November 21. Our team plans on starting the design document next week, or at least talk about it. No class next week.
+	\end{itemize}
+\item Week 9
+	\begin{itemize}
+	\item \textbf{Plans:} Work on design document next week.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Finished and turned in technology review.
+    \item \textbf{Summary:} Completed the final draft of the technology review and submitted it.
+	\end{itemize}
+\item Week 10
+	\begin{itemize}
+	\item \textbf{Plans:} Complete and submit fall progress report next week.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Completed preliminary design doc.
+    \item \textbf{Summary:} We completed our design document and went over it with our client. He wanted certain parts revised. After revising the document, we submitted it on Friday. We will work on the fall progress report and submit that next week on Monday at 2pm.
+	\end{itemize}
+\end{itemize}
+\subsubsection{Winter}
+\begin{itemize}
+\item Week 1
+	\begin{itemize}
+	\item \textbf{Plans:} Start work on building the AR sandbox itself.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Met with team, went over our schedules and figured out when we're all available this term.
+    \item \textbf{Summary:} Met with team. We discussed our schedules and when we're available. We're all available after class on Tuesdays and can also meet up over Google Hangouts. We also discussed our plan for building the AR sandbox.
+	\end{itemize}
+\item Week 2
+	\begin{itemize}
+	\item \textbf{Plans:} Work on our design doc and tech reviews and get approval for both. Continue working on the Unity project.
+    \item \textbf{Problems:} We still need our design doc and tech reviews approved.
+    \item \textbf{Progress:} We worked on our documents and met with Joe this week, he went over our design doc, but he wants further revisions.
+    \item \textbf{Summary:} We worked on our design document, our individual technology reviews, and we met with Joe, our client. Joe wants further revisions, but once we finish them I'm sure he'll approve our documents. Meanwhile, we talked about building the physical AR sandbox itself and Joe said that he'll purchase some components in the coming weeks. We just need to keep working on the software and get Unity working with our Kinect.
+	\end{itemize}
+\item Week 3
+	\begin{itemize}
+	\item \textbf{Plans:} Create the first version of our user interface.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Joe approved our design doc and tech reviews, which were the last documents that needed to be approved by him.
+    \item \textbf{Summary:} We implemented the revisions for our design document and technology reviews that Joe wanted. We met with Joe this Friday and he approved of our documents. Now we focus on the project itself. Joe is still getting funding in order to buy the physical parts of the AR sandbox. So, we will focus on the software for now.
+	\end{itemize}
+\item Week 4
+	\begin{itemize}
+	\item \textbf{Plans:} Have the user interface implemented by Tuesday, February 6.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} We created a user interface skeleton. I wrote a UI manager script that gives the buttons functionality. We'll meet on Monday and go over what is left to work on.
+    \item \textbf{Summary:} We met on Monday and created a schedule of what we think should be worked on for the next month. We decided that the user interface should be the first order of business. We created a user interface skeleton. I wrote a UI manager script that gives the buttons functionality. We'll meet on Monday and go over what is left to work on.
+	\end{itemize}
+\item Week 5
+	\begin{itemize}
+	\item \textbf{Plans:} Finish project poster and midterm progress report by next week.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Finished project poster introduction and background.
+    \item \textbf{Summary:}  The project poster and midterm progress report are due next week. We met up as a group on Monday and decided to split up the work. First, we'll work on the poster. When the poster is finished we'll get started on the progress report.
+	\end{itemize}
+\item Week 6
+	\begin{itemize}
+	\item \textbf{Plans:} Start work on the cut and fill mode.
+    \item \textbf{Problems:} Joe wanted us to try to integrate a RealSense depth sensor into our project, but it didn't work.
+    \item \textbf{Progress:} Completed rough draft of poster. Completed midterm progress report.
+    \item \textbf{Summary:} We finished the rough draft of our poster and emailed it to Junki. We also completed our midterm progress report and presentation. Joe wanted us to try integrating a different depth sensor with our project, but it didn't work out. We will stick with the Kinect for now. Most of the software for our project works, but we still need to implement the cut and fill mode. We will work on that next week.
+	\end{itemize}
+\item Week 7
+	\begin{itemize}
+	\item \textbf{Plans:} Complete the cut and fill shader, or at least get close to completion.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Helped implement a design panel. This will eventually be the interface for the design mode.
+    \item \textbf{Summary:} Worked more on the cut and fill shader. Implemented a design mode script that manages the design mode. Basically, clicking the design mode button opens an asset tray that will be used as the interface for creating and editing a road.
+	\end{itemize}
+\item Week 8
+	\begin{itemize}
+	\item \textbf{Plans:} Work on cut and fill calculations. Integrate features into software.
+    \item \textbf{Problems:} We have separate components, now we need to integrate them.
+    \item \textbf{Progress:} Finished the road shader for cut and fill mode.
+    \item \textbf{Summary:} I finished the road shader for cut and fill mode. It changes the color of the road depending on whether it's above or below the terrain. I also wrote a road manager script that uses a get height function in the terrain generator to determine the height of the road above the terrain. This will make it easier to do the actual calculations for the cut and fill table. We also had a meeting with Joe today. We showed him our progress on the software and discussed how the physical sandbox will be built. Joe told us he has a guy that will build it for him. He'll probably hear back from him by next week, so we'll meet up with Joe next Friday to see how things are going. The software is basically in separate components right now. We just have to integrate it together and also hook it up to the user interface.
+	\end{itemize}
+\item Week 9
+	\begin{itemize}
+	\item \textbf{Plans:} Complete or at least mostly complete cut/fill mode.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} We now get the height of the road above the terrain and display it on the cut/fill panel. Joe told us he has spoken with a technician and will meet with him on Monday. Joe also went over how to do the cut/fill calculations.
+    \item \textbf{Summary:} We met with Kirsten and did our poster critique. We got a lot of good feedback which we plan on incorporating into our poster. I also worked on the cut/fill for the road. It can now display the height of the road in the cut/fill panel. We met with Joe and discussed our progress on the project. Joe told us he has spoken with a technician and will meet with him on Monday. He hopes to have a concrete timeline on when the sandbox will be built. Joe also went over how to do the cut/fill calculations and gave us some material to read over.
+	\end{itemize}
+\item Week 10
+	\begin{itemize}
+	\item \textbf{Plans:} Finish and turn in winter term progress report.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} I finished up the cut and fill mode, so we have our beta release. We also met with Joe and discussed how the physical sandbox is going to be built.
+    \item \textbf{Summary:} I finished up the cut/fill mode. The cut/fill panel has a table that lists out stations and each stations cut/fill information. The cut and fill is calculated based on the height of the road above or below the terrain. We also met with Joe and discussed the physical sandbox. He's picked out some parts and talked with a technician who will build the sandbox. Overall, we've finished our beta release and will work on and submit our final progress presentation for the term next week.
+	\end{itemize}
+\end{itemize}
+\subsubsection{Spring}
+\begin{itemize}
+\item Week 1
+	\begin{itemize}
+	\item \textbf{Plans:} Meet up again on Monday at 4pm. Fix bugs in cut and fill mode.
+    \item \textbf{Problems:} Many bugs that need to be fixed.
+    \item \textbf{Progress:} Met with team and discussed our schedules for the term. Also went over what we have left to work on for the project.
+	\item \textbf{Summary:} We had a team meeting and discussed what we have left to do. We went over what we'll need for expo, what we have left to do for our poster before submitting it, and what bugs and refinements we have left for the software. We also discussed our schedules and when we'll be available. We all agreed we could meet on Mondays and Wednesdays at 4pm. We also emailed Joe and asked if he would like to meet Monday or Wednesday next week. Lastly, we split up the tasks we have left to do. I'll focus on cut and fill mode, which is still kind of slow when performing calculations.
+	\end{itemize}
+\item Week 2
+	\begin{itemize}
+	\item \textbf{Plans:} Meet with Joe again next week. Work on the poster some more.
+    \item \textbf{Problems:} Fix slow down bug in cut/fill mode.
+    \item \textbf{Progress:} We met with Joe and went over how the project is going. I registered us for expo. We also worked on the poster.
+    \item \textbf{Summary:} We met with Joe and showed him the progress we've made thus far on the software side of the project. He showed us how construction on the physical sandbox is progressing. So far, it's a cart with some supports for the Kinect and projector. I also registered our team for expo. We also worked on the poster this week. We reorganized poster sections so that they're easier to read, and will also work on the poster some more next week.
+	\end{itemize}
+\item Week 3
+	\begin{itemize}
+	\item \textbf{Plans:} Continue working on cut/fill mode and poster. Finish and submit Wired article assignment.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Fixed some bugs in the cut/fill mode so it fills all the columns. Worked on our poster for expo.
+    \item \textbf{Summary:} I fixed some bugs in the cut/fill mode for the software so that it fills all the columns in the cut/fill panel. We had a client meeting on Monday and discussed our progress and the progress being made on the physical sandbox. We also met up on Tuesday and worked on the poster for expo. We rewrote a few sections and added some pictures so it's easier to read and look at. I also began the Wired article writing assignment. I interviewed another student and will finish my write-up by next week.
+	\end{itemize}
+\item Week 4
+	\begin{itemize}
+	\item \textbf{Plans:} Meet up with Joe on Monday and integrate the Kinect and projector with the sandbox.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Finished Wired article assignment. Finished poster.
+    \item \textbf{Summary:} I finished and submitted the Wired article writing assignment. We had a client meeting with Joe and he showed us the built sandbox cart. All it needs now is sand and the projector and depth sensor mounted on it and it will be ready. We are also working on some extra features Joe requested. He wants more columns in the cut/fill mode panel so it looks like a proper cut/fill data table. He also wanted us to figure out how to graph the data so it'll display a mass haul diagram. We finished up the poster and submitted it on Canvas.
+	\end{itemize}
+\item Week 5
+	\begin{itemize}
+	\item \textbf{Plans:} Continue fixing bugs. Get sand for sandbox. Exchange projector.
+    \item \textbf{Problems:} The mounting mechanism on the projector broke, so we'll need to exchange it before expo.
+    \item \textbf{Progress:} Met with Joe and showed poster. Integrated projector and Kinect with sandbox. Recorded demo for report. Completed midterm report and presentation. Submitted poster and model release forms.
+    \item \textbf{Summary:} Met with Joe and showed him our final poster before submitting it. Integrated the Kinect and projector with the sandbox. Currently, the sandbox is stored at the Hinsdale Wave Lab, so we have to leave before they close down for the day. I also submitted the model release forms for expo. One problem we ran into is the mounting mechanism on the projector broke, so we had to use zip ties to attach it to the sandbox. This will be sufficient for our demo, but we plan on exchanging the damaged projector for a new one before expo. We tested the system and it worked. The color changes depending on the height of an object within the boundaries of the Kinect sensor. Lastly, we recorded the demo for our midterm progress report, finished the report, recorded our presentation and submitted it.
+	\end{itemize}
+\item Week 6
+	\begin{itemize}
+	\item \textbf{Plans:} Continue working on bugs, polish things up in time for expo.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Met with Joe and discussed what we have left to do. Picked up desktop computer for sandbox. Revamped data table display.
+    \item \textbf{Summary:} We met with Joe and discussed what is left for the project. We need sand for the sandbox, and this sand should be arriving by the end of the week, or possibly next week. We wanted to exchange the projector since the mounting mechanism is damaged, but Joe told us that it's passed the return window. So, we'll just have to fix the projector mounting, or improvise something come expo. We picked up the desktop computer that'll be used with the sandbox. We also went over what we have left for the software and it's mostly bug fixes and polishing things up for expo. I also implemented a revamped data table with some more columns that Joe wanted. We also had class this week and basically went over what to expect for expo and how to prepare.
+	\end{itemize}
+\item Week 7
+	\begin{itemize}
+	\item \textbf{Plans:} Work on the final report.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} We had expo this week.
+    \item \textbf{Summary:} We had expo this week, and it went smoothly. We spent most of the week planning out the logistics of moving the sandbox from the wave lab to Kelley. We talked with Joe, and he said that he'll have Jeff move it from the wave lab to Dearborn. Then on Friday, the day of expo, we moved the sandbox from Dearborn to Kelley.
+	\end{itemize}
+\item Week 8
+	\begin{itemize}
+	\item \textbf{Plans:} Work on final progress presentation and report.
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Met up and decided we'll work on the presentation first.
+    \item \textbf{Summary:} We met up this week and decided that since the presentation is due first, we should focus on that for now. We emailed Joe and will meet with him on Wednesday to hand off the project. The sandbox is being stored in Joe's office, so we will need to figure out a time when we can record a demo video with the sandbox for our presentation.
+	\end{itemize}
+\item Week 9
+	\begin{itemize}
+	\item \textbf{Plans:} Meet up on Tuesday and record demo for presentation.
+    \item \textbf{Problems:}
+    \item \textbf{Progress:} We continued work on the presentation and report.
+    \item \textbf{Summary:} We met with Joe on Wednesday to do the project handoff. We showed how to setup the sandbox and use it. We also worked on the presentation. We will meet on Tuesday to film our demo.
+	\end{itemize}
+\item Week 10
+	\begin{itemize}
+	\item \textbf{Plans:} Finish final report.
+    \item \textbf{Problems:}
+    \item \textbf{Progress:} Finished final presentation.
+    \item \textbf{Summary:} We finished our final presentation this week. We also worked on the final report and will finish it by Monday or Tuesday next week.
+	\end{itemize}
+\end{itemize}
+
+\subsection{\GroupMemberTwo}
+\subsubsection{Fall}
+\begin{itemize}
+\item Week 1
+	\begin{itemize}
+	\item \textbf{Plans:} Look at capstone projects, Submit project preferences
+    \item \textbf{Problems:} None
+    \item \textbf{Progress:} Looked at capstone projects, Submitted capstone preferences
+    \item \textbf{Summary:} This week I investigated the available capstone projects and submitted my five preferences.
+	\end{itemize}
+\item Week 2
+	\begin{itemize}
+	\item \textbf{Plans:} Write problem statement, Schedule meeting with client
+    \item \textbf{Problems:} Our client meeting was scheduled after the problem statement was due, making it difficult to write some sections.
+    \item \textbf{Progress:} Wrote problem statement, Scheduled meeting with client
+    \item \textbf{Summary:}
+	\end{itemize}
+\item Week 3
+	\begin{itemize}
+	\item \textbf{Plans:} Meet with client to introduce ourselves and establish project objectives, Create GitHub repo for project, Turn in problem statement, Meet with TA
+    \item \textbf{Problems:} None
+    \item \textbf{Progress:} Turned in problem statement, Made GitHub repo, added teammates and instructors, Met with client, Met with TA
+    \item \textbf{Summary:} This week we met with our client for the first time and established what he was looking for in this project. 
+	\end{itemize}
+\item Week 4
+	\begin{itemize}
+	\item \textbf{Plans:} Meet with group to finalize Problem Statement, Email problem statement to client, Begin working on requirements document
+    \item \textbf{Problems:} None
+    \item \textbf{Progress:} Met with group and finished the problem statement. Problem statement was emailed to client
+    \item \textbf{Summary:} This week we finished our problem statement and submitted it to our client for approval. He suggested some edits, which we added to our document before resubmitting.
+	\end{itemize}
+\item Week 5
+	\begin{itemize}
+	\item \textbf{Plans:} Meet with team to work on requirements document, Meet with client to discuss requirements document, Turn in rough draft of requirements document
+    \item \textbf{Problems:} The requirements document was more involved than we originally anticipated.
+    \item \textbf{Progress:} Worked on requirements document, Met with client, went over project requirements
+    \item \textbf{Summary:} 
+	\end{itemize}
+\item Week 6
+	\begin{itemize}
+	\item \textbf{Plans:} Finish requirements document, Meet with client to review requirements document, Divvy up topics for tech review 
+    \item \textbf{Problems:} Some of  the sections of the requirements document seem to be asking for the same thing, making it difficult to figure out what goes where.
+    \item \textbf{Progress:} Finished requirements document, met with client and reviewed requirements document, made necessary changes, submitted final draft
+    \item \textbf{Summary:} The majority of the week was spent finishing the requirements document, as well as thinking about what we might want to research for the technology review.
+	\end{itemize}
+\item Week 7
+	\begin{itemize}
+	\item \textbf{Plans:} Come up with tech review tasks, Divide up tech review tasks, Research tech review, Write tech review
+    \item \textbf{Problems:} We didn't have class on Thursday, so we had to meet via Hangouts instead of face to face
+    \item \textbf{Progress:} Came up with topics, divided up topics
+    \item \textbf{Summary:} This week we focused on figuring out who was doing what for the tech review. Since this is an individual assignment, we only needed to meet as a group to discuss and divide our topics.
+	\end{itemize}
+\item Week 8
+	\begin{itemize}
+	\item \textbf{Plans:} Work on technology review
+    \item \textbf{Problems:} I realized that I didn't have anything to write about for one of my sections, so I had to change topics.
+    \item \textbf{Progress:} Turned in the rough draft of the tech review and received feedback
+    \item \textbf{Summary:} This week I mostly focused on the tech review.
+	\end{itemize}
+\item Week 9
+	\begin{itemize}
+	\item \textbf{Plans:} Begin thinking about design document
+    \item \textbf{Problems:} Being Thanksgiving week, my group was not able to meet to discuss the design document.
+    \item \textbf{Progress:} I thought about the design document
+    \item \textbf{Summary:} Little progress was made this week due to the Thanksgiving holiday, however I was able to review the IEEE standard for the software design document.
+	\end{itemize}
+\item Week 10
+	\begin{itemize}
+	\item \textbf{Plans:} Meet with Capstone team to discuss tech reviews/design document, Meet with client, Create graphics for the design document, Work on the design document, Finish the design document
+    \item \textbf{Problems:} Being dead week, it was hard to find time to work on the design document.
+    \item \textbf{Progress:} Met with Capstone team, Met with client, Finished design document
+    \item \textbf{Summary:} Finishing the design document during dead week proved difficult but not impossible. We were able to meet early in the week to discuss our technology choices and again later to divvy up sections of the design document based on our research for the tech review.
+	\end{itemize}
+\end{itemize}
+\subsubsection{Winter}
+\begin{itemize}
+\item Week 1
+	\begin{itemize}
+	\item \textbf{Plans:} Meet with team to discuss meeting times, Schedule TA meeting time
+    \item \textbf{Problems:} We don't have many large blocks of time during the week that we are all able to meet
+    \item \textbf{Progress:} Met with team, figured out some options for meeting times, Scheduled weekly TA meeting
+    \item \textbf{Summary:} This week was mostly spent scheduling meetings
+	\end{itemize}
+\item Week 2
+	\begin{itemize}
+	\item \textbf{Plans:} Meet with team to discuss plans for the near future, Schedule meeting with client, Finish design document and tech review, Meet with client to submit design doc and tech reviews, discuss procuring equipment, Finish terrain shader
+    \item \textbf{Problems:} Client currently doesn't have the funds to buy the equipment. We already have the kinect, but won't be able to get a projector for some time.
+    \item \textbf{Progress:} Scheduled and met with client, planned a regular meeting time, Got feedback on design document from client, Discussed equipment procurement with client, Finished terrain shader
+    \item \textbf{Summary:}
+	\end{itemize}
+\item Week 3
+	\begin{itemize}
+	\item \textbf{Plans:} Meet with client, Get approval for design document and tech reviews, Integrate Kinect into existing code, Design visual appearance of UI
+    \item \textbf{Problems:} Client wants to switch to using Intel Realsense cameras instead of the Kinect. Was not able to meet with team to discuss UI designs
+    \item \textbf{Progress:} Met with client, got approval for our various documents, Designed a UI, but have not had a chance to discuss it with the rest of the team
+    \item \textbf{Summary:} This week I mainly worked on integrating the Kinect into our code, as well as adding some additional optimizations. Additionally, I designed a UI for our system, however I have not had a chance to review this UI with anyone else.
+	\end{itemize}
+\item Week 4
+	\begin{itemize}
+	\item \textbf{Plans:} Work on UI, Meet with client, Meet with team to make development schedule
+    \item \textbf{Problems:} We got the projector we had planned on using, but the throw distance needed to get a big enough image is around 55".
+    \item \textbf{Progress:} Made a lot of progress on the UI for the system. Still need to polish what we have and duplicate some menus to fully flesh it out. Made a development schedule that will take us through to the beta release. Met with client and received the projector we ordered.
+    \item \textbf{Summary:} This week was spent mainly working on UI in order to prepare for the alpha release in two weeks.
+	\end{itemize}
+\item Week 5
+	\begin{itemize}
+	\item \textbf{Plans:} Finish UI, Integrate depth sensor, Start working on poster
+    \item \textbf{Problems:} The depth sensor didn't arrive until Friday
+    \item \textbf{Progress:} We finished the UI earlier this week, keeping us on track with our development schedule. We divided up the work for the poster and began filling in sections of it.
+    \item \textbf{Summary:} This week was spent preparing for the alpha release due week 6.
+	\end{itemize}
+\item Week 6
+	\begin{itemize}
+	\item \textbf{Plans:} Finish progress report, Delegate video parts, Record videos, Finish integrating Kinect
+    \item \textbf{Problems:} Some last minute bugs crept up when attempting to demo the project
+    \item \textbf{Progress:} I finished integrating the Kinect, we managed to finish the progress report and video on time.
+    \item \textbf{Summary:} This week we focused on the midterm progress report and attaining an alpha version for our project.
+	\end{itemize}
+\item Week 7
+	\begin{itemize}
+	\item \textbf{Plans:} Add ability to use placeholder heightmap when Kinect is not connected, Implement Bezier curves
+    \item \textbf{Problems:} The Kinect API removed the ability to tell if a Kinect is connected or not.
+    \item \textbf{Progress:} A placeholder heightmap is used when a private constant is switched to false. Bezier curves have been implemented, but are not controllable by the user yet.
+    \item \textbf{Summary:} After finishing the progress report, this week was spent adding functionality to the system.
+	\end{itemize}
+\item Week 8
+	\begin{itemize}
+	\item \textbf{Plans:} Implement terrain manager to consolidate terrain masking and generation functionality, Add ability to modify bezier curves at runtime
+    \item \textbf{Problems:} Some of the functionality in the TerrainManager class was implemented to assist with cut/fill calculations and couldn't be easily tested.
+    \item \textbf{Progress:} Bezier curves can now be controlled at runtime with control points. Terrain manager has been implemented, however may require revision later as needs change.
+    \item \textbf{Summary:} This week was spent refining the terrain system in order to make its architecture more congruent with the rest of the system, as well as to facilitate future additions to the system.
+	\end{itemize}
+\item Week 9
+	\begin{itemize}
+	\item \textbf{Plans:} Add visual polish, Help implement cut/fill mode, Fix issue getting height information in terrain manager, Investigate road performance issues
+    \item \textbf{Problems:} I didn't have time this week to work on cut/fill mode.
+    \item \textbf{Progress:} Sandbox interface now looks slightly better, terrain height lookups can be performed without raytracing, road performance is now acceptable after removing road manager script. Cut/fill mode is still not implemented.
+    \item \textbf{Summary:} No new features were added this week, but existing features were improved and important bugs were fixed.
+	\end{itemize}
+\item Week 10
+	\begin{itemize}
+	\item \textbf{Plans:} Implement terrain scaling and translation in calibration mode, Implement cut/fill mode
+    \item \textbf{Problems:} Cut/fill mode does a number on the performance of the sandbox.
+    \item \textbf{Progress:} Cut/fill mode is implemented, however does not utilize the table in the UI yet.
+    \item \textbf{Summary:} We managed to implement a rudimentary cut/fill mode this week. In order to mitigate performance issues, the mass haul is only updated every 5 seconds.
+	\end{itemize}
+\end{itemize}
+\subsubsection{Spring}
+\begin{itemize}
+\item Week 1
+	\begin{itemize}
+	\item \textbf{Plans:} Meet with capstone team, Schedule client meeting, Work on road system
+    \item \textbf{Problems:} Raja is not available Tuesdays and Thursdays, I am almost exclusively available those days
+    \item \textbf{Progress:} Roads now behave as expected, height of control points can be adjusted, client meeting scheduled
+	\end{itemize}
+\item Week 2
+	\begin{itemize}
+	\item \textbf{Plans:} Work on poster, Add profile view of terrain, Write project documentation
+    \item \textbf{Problems:} Profile view is slow when not using sensor data
+    \item \textbf{Progress:} Worked on poster, Added terrain profile view, Started project documentation
+    \item \textbf{Summary:} This week was spent creating a method for visualizing the height of the road in relation to the terrain 
+	\end{itemize}
+\item Week 3
+	\begin{itemize}
+	\item \textbf{Plans:} Polish road specification
+    \item \textbf{Problems:} I did not have much time this week to work on the project
+    \item \textbf{Progress:} Added lines connecting road control points making it easier to view and edit roads
+    \item \textbf{Summary:} This week was spent adding additional features to design mode.
+	\end{itemize}
+\item Week 4
+	\begin{itemize}
+	\item \textbf{Plans:} Polish road specification, Finish poster
+    \item \textbf{Problems:} 
+    \item \textbf{Progress:} Finished and submitted poster
+    \item \textbf{Summary:} This week was spent finalizing the poster for printing.
+	\end{itemize}
+\item Week 5
+	\begin{itemize}
+	\item \textbf{Plans:} Test physical sandbox, Create progress report, Record progress report presentation
+    \item \textbf{Problems:} The threaded tripod mount broke on our projector
+    \item \textbf{Progress:} Tested sandbox hardware, Recorded demo video, Wrote progress report
+    \item \textbf{Summary:} This week we were mainly focused on getting the sandbox together and making sure everything works together, as well as recording a demo and writing the progress report.
+	\end{itemize}
+\item Week 6
+	\begin{itemize}
+	\item \textbf{Plans:} Ensure that features laid out in requirements document are met
+    \item \textbf{Problems:} none 
+    \item \textbf{Progress:} We were able to complete all features mentioned in the requirements document.
+    \item \textbf{Summary:} This week was spent finishing small features called for in the requirements document before the code freeze on Friday.
+	\end{itemize}
+\item Week 7
+	\begin{itemize}
+	\item \textbf{Plans:} Finish visual tweaks to sandbox, attend expo
+    \item \textbf{Problems:} An issue cropped up in the Get HeightAtWorldPosition function to where it was returning an incorrect height.
+    \item \textbf{Progress:} Fixed GetHeightAtWorldPosition function, finished visual tweaks to sandbox, presented at expo
+    \item \textbf{Summary:} The main focus of this week was preparing the project for expo, figuring out logistics, and finally presenting at expo.
+	\end{itemize}
+\item Week 8
+	\begin{itemize}
+	\item \textbf{Plans:} Begin thinking about final report and presentation
+    \item \textbf{Problems:} None
+    \item \textbf{Progress:} Thought about the final presentation
+    \item \textbf{Summary:} This week was spent recovering from Expo and planning the final report and presentation.
+	\end{itemize}
+\item Week 9
+	\begin{itemize}
+	\item \textbf{Plans:} Meet with Joe for project handoff
+    \item \textbf{Problems:} None
+    \item \textbf{Progress:} Handed off the project, made plans to record demo videos next Tuesday
+    \item \textbf{Summary:}
+	\end{itemize}
+\item Week 10
+	\begin{itemize}
+	\item \textbf{Plans:} Record demo video, work on final report
+    \item \textbf{Problems:} We were not able to record on Tuesday, had to reschedule for Thursday
+    \item \textbf{Progress:} Finished final presentation, made progress on report
+    \item \textbf{Summary:} This week was spent working on the final documentation for the project
+	\end{itemize}
+\end{itemize}
+\subsection{\GroupMemberThree}
+\input{mark_blog_post.tex}
+
+\section{Final Poster}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6in]{poster}
+    \caption{Expo Poster}
+    \label{fig:expoposter}
+\end{figure}
+
+\section{Project Documentation}
+\subsection{Technical Documentation}
+The system is built using the Unity engine, which means that the frameworks necessary for realtime rendering are already in place. 
+
+The main input for the system is sensor data from the Microsoft Kinect. Microsoft created a Unity plugin for interacting with the Kinect, which vastly simplified data gathering operations. Height data is received as an array of unsigned integers, which are normalized based on a known minimum and maximum sand height. Sensor data is used to generate a triangle mesh, where each index in the array represents a vertex in the mesh. A custom shader colors the mesh based on the position of each fragment in world space. We have created a number of color profiles to change the appearance of the mesh. An orthographic camera is positioned above the mesh, which captures the top-down view that will be projected back onto the sand. Since the physical sandbox has a smaller area than the field of view of the Kinect, a rectangular mask covers the terrain, making only a specified part of the terrain visible. This mask can be modified at runtime. 
+
+The system has four modes in its current form. These modes are changed by the user through interaction with the UI, and are kept track of by a simple state machine. Each mode has its own script which listens for key presses and performs actions specific to that mode. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6in]{SysArch}
+    \label{fig:sysarchitecture}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=2in]{SysArchKey}
+    \caption{System Architecture}
+\end{figure}
+
+\subsection{Installation}
+This project requires the Unity game engine and the Microsoft Kinect SDK to operate. After installing Unity and the Kinect SDK, run the Unity editor. Open a new project, and navigate to the src directory in the local Github repository. Unity should recognize the AR\_Sandbox directory contained in the src directory as a Unity project. After opening the project, the program can be run in editor by pressing the play button, or as an executable by navigating to File $>$ Build \& Run or pressing \texttt{CTRL + B}.
+\subsection{Operation}
+This section describes the different modes and details the operation of the system.
+\subsubsection{Navigation}
+The navigation menu is opened by pressing the \texttt{ESC} key. The menu gives the option to change mode, calibrate the system, or quit the application. The mode can also be changed by pressing \texttt{Q} for depth mode, \texttt{W} for design mode, \texttt{E} for cut and fill mode, and \texttt{R} for calibration mode.
+\subsubsection{System Setup}
+When the system starts, a number of parameters must be set in order to ensure proper height measurement and display. These parameters are set by opening the navigation menu and pressing Calibrate or pressing the \texttt{R} key. Begin by dragging the grey control points at each edge of the projection area so that the entire surface of the sandbox is covered by the projection. Clicking and dragging anywhere on the projection area itself will move entire projection area. To align the projected image with the physical features of the sandbox, use the Arrow Keys to translate and the \texttt{+} and \texttt{-} keys to scale it. Finally, set the lowest and highest points on the sand by adjusting the two sliders labelled maximum and minimum height that appear in the lower lefthand corner. Dig a hole in the sand down to the bottom of the sandbox, or to the desired lowest point. Build a hill to the highest desired point. Start with the Minimum Height slider at 0 and lower the Maximum Height slider until the lowest point on the sand turns red but before orange equipotential lines appear. Raise the Minimum Height slider until the highest point on the sand turns blue, but before cyan equipotential lines appear.
+\subsubsection{Depth Mode}
+Depth mode is used for displaying strictly the height of the sand using a color gradient. Red areas are the lowest, and blue areas are the highest.
+\subsubsection{Design Mode}
+Design Mode is used for designing a road segment that will be used for cut and fill calculations. When Design Mode is selected, a road will appear on the sand. This road is constrained to the bounds of the sandbox. The path of the road can be changed by clicking and dragging the orange diamond shaped control points. holding the Shift key causes a cross-sectional view of the road and terrain to appear, and allows the height of the control points to be changed by clicking and dragging with the mouse. Points can be added or removed by pressing the Add Point or Remove Point buttons. Unwanted changes to control point position can be undone by pressing \texttt{CTRL + Z}.
+\subsubsection{Cut/Fill Mode}
+Cut/Fill Mode is used to display a table containing information about the road segment such as cut and fill areas and volumes. When design mode is selected, the road segment will be visible. To open the cut/fill table, press the \texttt{E} key. The table updates every 5 seconds, and can be scrolled using the horizontal scrollbar to the bottom and vertical scrollbar to the right.
+\subsection{Hardware}
+This project requires a number of pieces of specialized hardware. At a bare minimum, a Microsoft Kinect V2, a projector, a computer with at least one USB 3.0 port, and some way to mount the Kinect and projector in close proximity are required.
+
+\section{Recommended Technical Resources for Learning More}
+\subsection{Websites}
+\begin{itemize}
+\item Unity API documentation (\url{https://docs.unity3d.com/ScriptReference/}): Provided information on how to utilize the Unity Game engine and greatly assisted in the speed of the project's development.
+\item UC Davis AR Sandbox (\url{https://arsandbox.ucdavis.edu/}): Gave us a strong starting point and allowed us to see what a working AR sandbox should be able to accomplish.
+\item Kinect API documentation (\url{https://developer.microsoft.com/en-us/windows/kinect}): Assisted in the integration of the Kinect into our system and allowed us to use it as out depth sensor.
+\end{itemize}
+
+\subsection{People}
+\begin{itemize}
+\item Dr. Joseph Louis (\href{mailto:joseph.louis@oregonstate.edu}{\nolinkurl{joseph.louis@oregonstate.edu} }): Client of the project, also provided us with information regarding Cut \& Fill.
+\item Jeff Gent (\href{mailto:jeff.gent@oregonstate.edu}{\nolinkurl{jeff.gent@oregonstate.edu} }): Built the sandbox itself along with the cart it is mounted upon.
+\end{itemize}
+
+\section{Conclusions and Reflections}
+\subsection{\GroupMemberOne}
+\begin{enumerate}
+\item What technical information did you learn?\\
+For our project, we used the Unity game engine and the C\# programming language. Before this project I didn't have any experience with either of those technologies, so I had to spend a lot of time reading up on them and watching tutorials on Youtube. Similarly, I had to learn about civil engineering concepts such as how to calculate the cut and fill for a road, and how to read a mass haul diagram. Again, these are technical concepts I never had any experience with prior to this project. Luckily, Joe, our client was able to help me out with this and gave me some material to review, as well as answer any civil engineering related questions I had.
+\item What non-technical information did you learn?\\
+I learned about the logistics and paperwork involved in a large software project. Many of the documents we wrote, such as the requirements document, design documents, and technical review made me think more about the project and how to break it down. I also learned how to function as part of a team and interact with clients.
+\item What have you learned about project work?\\
+An important part of project work is figuring out how to break down a large project into smaller pieces that each member of the team can handle. Another important aspect is testing each of our parts of the project and then, after putting our parts of the project together, testing the whole system to make sure that each of our pieces works together.  
+\item What have you learned about project management?\\
+Managing time efficiently and creating some sort of roadmap to follow can greatly help when it comes to project management. There are also bottlenecks in project management. For example, there were many times where we needed a piece of hardware in order to test a function of our system, but didn't have that hardware yet. So, we had to find something else to work on in the meantime.
+\item What have you learned about working in teams?\\
+Working in teams presents its own challenges, but also helps because you can break down large problems into smaller, more manageable pieces. It's very important to effectively communicate with your teammates and schedule times where you can meet up. If you're not available for something, it's vital that you tell your teammates so they can make alternate arrangements.
+\item If you could do it all over, what would you do differently?\\
+If I could do it all over again, I would use my newfound technical knowledge to create a better software base. I learned a lot about Unity and C\# over the last year and feel that if I knew then what I know now, I would be able to implement a more efficient and better performing cut and fill software system. I would also make sure to plan things out better and anticipate bottlenecks and design changes. Lastly, there are always things that you can't control. For example, the physical sandbox wasn't built until spring term, because Joe needed to get funding for the project. In such cases, you just have to work around the problem.
+
+\end{enumerate}
+\subsection{\GroupMemberTwo}
+\begin{enumerate}
+\item What technical information did you learn?\\
+There were two main pieces of technical knowledge I gained over the course of this project. The first is using HLSL/CG for shader specification, a shading language I was unfamiliar with prior to starting this project. Secondly, I gained a much better understanding of bezier curves, how they work, and how to implement them.
+
+\item What non-technical information did you learn?\\
+Capstone required me to interact with a a wide range of people with varying amounts of technical knowledge and investment in the project, from our client, a civil engineering domain expert with a large investment in the project, to people at expo, with a wide range of technical backgrounds and little investment in the project. Figuring out how best to talk to these people was certainly the most unique experience I gained through this project, and will certainly be applicable in the workplace. 
+
+\item What have you learned about project work?\\
+The biggest thing I learned about project work is the importance of setting smaller deadlines to break down a complex system into more manageable components. Doing so makes it much easier to divide up work among multiple people, since each person can tackle a smaller component of the larger system. Additionally it makes it easier to stay on track and gauge overall progress.
+
+\item What have you learned about project management?\\
+One important lesson I learned about project management was the importance of source control. This has been the first system I've worked on where source control is absolutely essential. At the beginning of the development process, we played fast and loose with our Git commits and as a result spent a good amount of time working through merge conflicts. Partially this was due to the way we had our Unity project set up, but mostly this was due to not communicating about what portion of the code we were working on, and not committing changes for a long period of time. After awhile we learned what works and what doesn't and had a relatively smooth source control experience for the rest of the year.
+
+\item What have you learned about working in teams?\\
+Although not something new, the importance of communication was exemplified through this project. Since we were all working on the same code base, and much of the system's functionality relies on components written by other people, communication between the three of us was essential. 
+
+\item If you could do it all over, what would you do differently?\\
+The biggest issue with this project was how late in development we actually tested our software with the physical sandbox. Luckily, everything worked together with only minor changes, but had any major issues cropped up, we would have had to scramble to fix them before expo. If we were to redo this project, I would make sure we got the details of the sandbox worked out much earlier and gotten our client to order the equipment closer to the end of Fall term instead of the middle/end of winter term.
+
+
+\end{enumerate}
+\subsection{\GroupMemberThree}
+\begin{enumerate}
+\item What technical information did you learn?\\
+	The most important piece of technical information that I gained from this project is using the Unity game engine.
+    Prior to this, I had never used it.
+    This resulted in a relatively slow beginning, as I had to learn how to interface with the engine before I could really do any work on the project.
+    In addition, I gained a better understanding of several graphical concepts through asking Andrew and Raja so that I would have an adequate understanding of how the system ticks.
+\item What non-technical information did you learn?\\
+	Directly interacting with a client and maintaining proper communication with them are the most important non-technical pieces that I learned.
+    When working with your client (especially at the beginning of a project) it is crucial to be as open as possible in order to reduce any potential misunderstanding and prevent avoidable mistakes.
+\item What have you learned about project work?\\
+	As mentioned above, I learned a lot about the benefits have having proper communication with a client and making sure everyone is on the same page from the start.
+    In the same vein, have a good line of communication with other team members is very important.
+    This was mainly done by meeting in person as often as possible and helped to make sure that everyone was clear on the tasks at hand and who should be doing what.
+\item What have you learned about project management?\\
+	In regards to project management, I have learned that meeting as often as possible is vitally important.
+    This helps to reduce ambiguity and makes everything clearer.
+    By meeting often, we caught a lot of misunderstanding early which could have turned out to be problematic if left unchecked.
+    In addition, meeting allows for everyone to be heard equally and can bring in fresh perspective on a problem someone might be having.
+\item What have you learned about working in teams?\\
+	When working in a team, it is vital to meet frequently and make sure everyone is on the same page.
+    In addition, it is very valuable to meet early on and figure out how the assignment of work is going to happen.
+    For the purposes of this class, we would meet when an assignment was given to us and create a list of all the tasks that need to be accomplished in order to finish the assignment.
+    From there, it is easy to assign these tasks so that everyone has something to do and know exactly what they can work on.
+\item If you could do it all over, what would you do differently?\\
+	If I was to do this project again, the first big change I would make would be starting the conversation about the construction of the physical sandbox earlier.
+    For a long time, we would question our client about the construction and he would say that he knew a guy who would be making it.
+    In the end, they did end up making it and it turned out great.
+    However, because of the time, there was a span where we had to meet very frequently in order to integrate our things onto the box.
+    By starting our conversation earlier and properly pressing our client on the time sensitivity of getting the physical portion constructed, we would have had more time to work on the integration and had an easier time.
+
+\end{enumerate}
+		
+\begin{appendices}
+\section{Essential Code Listings}
+\begin{lstlisting} [caption=The Bezier curve calculation used for specifying a road path., label=lst:bezier,captionpos=b]
+	Vector3 CalculateBezier(float t, List<RoadControlPoint> points) {
+		int count = points.Count;
+		if (count > 2) {
+			return (1 - t) * CalculateBezier(t, points.GetRange(0, count - 1)) + t * CalculateBezier(t, points.GetRange(1, count - 1));
+		} else {
+			return Vector3.Lerp (points [0].transform.position, points [1].transform.position, t);
+		}
+	}
+\end{lstlisting}
+
+The \texttt{CalculateBezier()} function takes a float \texttt{t} representing the position along the line to sample, and a list of control points that will define the line. The output of this function is a \texttt{Vector3} representing the position in world space at \texttt{t}. The function can support n control points, and works recursively to determine the position.
+
+\begin{lstlisting} [caption=The functionality responsible for translating a Kinect height value to world space., label=lst:getheight,captionpos=b]
+	public float GetHeightAtWorldPosition(Vector3 pos) {
+		ushort[] heightData;
+		heightData = manager.GetData ();
+
+		Vector3 modelPos = pos - transform.position;
+		Vector3 texelPos = modelPos / spacing;
+
+		if (texelPos.x >= 0 && texelPos.x < frameWidth && texelPos.z >= 0 && texelPos.z < frameHeight) {
+			float y = heightData [((int)texelPos.z) * frameWidth + ((int)texelPos.x)];
+			return (((float)y - maxHeight) / (minHeight - maxHeight)) * magnitude;
+		} else {
+			Debug.LogError ("TerrainGenerator: Request for height data returned 0, world position out of range");
+			return 0;
+		}
+	}
+\end{lstlisting}
+
+The \texttt{GetHeightAtWorldPosition()} function takes a world position as a \texttt{Vector3} and returns the height of the terrain at that position. This is accomplished by first converting \texttt{pos} from world coordinates to model coordinates, then determining what texel this position is associated with. Then, since height data comes from the sensor as a 1 dimensional array, the index of the texel must be determined so that its value can be returned.
+
+\begin{lstlisting}[caption=A code snippet from the cut and fill manager demonstrating how cut and fill calculations work., label=lst:cutfill,captionpos=b]
+public float[] getRoadAreas()
+{
+    Vector3[] positions = roadPoint.GetRoadPoints();
+
+    float[] roadHeight = new float[roadPoint.GetNumRoadPoints()];
+    float[] roadAreas = new float[roadPoint.GetNumRoadPoints()];
+    int count = 0;
+
+    foreach (Vector3 p in positions)
+    {
+        roadHeight[count] = 10f * terrainHeight.GetHeightAtWorldPosition(p);
+        roadAreas[count] = (float)(2f * (.5 * roadHeight[count] * roadHeight[count]) + 120f * roadHeight[count]);
+        count++;
+    }
+
+    return roadAreas;
+}
+\end{lstlisting}
+
+The \texttt{getRoadAreas()} function returns the cut and fill areas of the road. This is done by first retrieving the points that make up the road, as shown in the \texttt{positions} array. Then, a for-each loop retrieves the height of each road point and then uses it to calculate the area. Once this is finished, the area values are stored in an array called \texttt{roadAreas} and returned to the calling function.
+
+\section{Photos}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1.\textwidth]{ar_sandbox}
+	\caption{A picture of our finished AR sandbox.}
+	\label{fig:ar_sandbox}
+\end{figure}
+
+\end{appendices}
+
+\end{document}
