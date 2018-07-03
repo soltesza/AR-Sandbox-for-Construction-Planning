@@ -59,4 +59,3 @@ public class TerrainMask : MonoBehaviour {
 		return vertices [1].z - vertices [0].z;
 	}
 }
-

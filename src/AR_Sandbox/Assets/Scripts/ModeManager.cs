@@ -64,7 +64,7 @@ public class ModeManager : MonoBehaviour {
                     HeightView.SetActive(!HeightView.activeSelf);
                 }
 
-	                break;
+                break;
         }
 	}
 		

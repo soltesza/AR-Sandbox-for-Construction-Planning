@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class CalibrationManager : MonoBehaviour {
 	private Camera mainCamera;							//Main camera for UI to world position translation
 	private float terrainMoveSpeed = .01f;				//Speed at which the user can pan the terrain for proper alignment
-	private float terrainScaleSpeed = .05f;				//Speed at which the user can grow or shrink the terrain to real-object dimentions
-	private Vector3 terrainPos = new Vector3(0,0,0);    //Tracks the previos position of the terrain for persistance
+	private float terrainScaleSpeed = .05f;				//Speed at which the user can grow or shrink the terrain to real-object dimensions
+	private Vector3 terrainPos = new Vector3(0,0,0);    //Tracks the previous position of the terrain for persistence
     private Vector3 UpperRight, LowerLeft;
 
     [SerializeField]
