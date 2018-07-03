@@ -13,10 +13,11 @@ public class Road : MonoBehaviour {
 	private Stack<List<Vector3>> undoStack;				// Stack containing previous road states, used for undoing actions
 
 	private const int SEGMENT_COUNT = 20;				// Number of line segments per curve, increase this number for a smoother line
+    private const float THRESHOLD = 0.1f;               // Threshold where road considered level with terrain
 
 	void Start () {
 		if (!terrain) {
-			Debug.Log ("Road.cs: terrain genrator not specified");
+			Debug.Log ("Road.cs: terrain generator not specified");
 		}
 
 		lineRenderer = GetComponent<LineRenderer> ();
@@ -99,7 +100,9 @@ public class Road : MonoBehaviour {
 			Vector3 pos = CalculateBezier (t, controlPoints);
 			float terrainHeight = terrain.GetHeightAtWorldPosition(pos);
 			Color color = terrainHeight > pos.y ? Color.red : Color.blue;
-            if (terrainHeight == pos.y)
+
+            // Road turns black if at or near level with terrain
+            if (System.Math.Abs(terrainHeight - pos.y) <= THRESHOLD)
                 color = Color.black;
 
 			tex.SetPixel (i, 0, color);
