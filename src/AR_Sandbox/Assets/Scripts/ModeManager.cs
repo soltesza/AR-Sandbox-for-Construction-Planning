@@ -60,6 +60,9 @@ public class ModeManager : MonoBehaviour {
 				if (Input.GetKeyUp (KeyCode.LeftShift)) {
 					HeightView.SetActive (false);
 				}
+                if (Input.GetKey(KeyCode.H)) {
+                    HeightView.SetActive(!HeightView.activeSelf);
+                }
 
 	                break;
         }

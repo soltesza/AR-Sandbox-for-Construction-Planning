@@ -99,6 +99,8 @@ public class Road : MonoBehaviour {
 			Vector3 pos = CalculateBezier (t, controlPoints);
 			float terrainHeight = terrain.GetHeightAtWorldPosition(pos);
 			Color color = terrainHeight > pos.y ? Color.red : Color.blue;
+            if (terrainHeight == pos.y)
+                color = Color.black;
 
 			tex.SetPixel (i, 0, color);
 		}
