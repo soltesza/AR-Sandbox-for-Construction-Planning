@@ -88,7 +88,7 @@ public class UIManager : MonoBehaviour {
 
     public void Help()
     {
-        // Open help file in notepad or whatever the default text editor is
+        // Open project GitHub webpage
         System.Diagnostics.Process.Start("https://github.com/soltesza/AR-Sandbox-for-Construction-Planning/");
     }
 
