@@ -57,11 +57,15 @@ public class ModeManager : MonoBehaviour {
 				if (Input.GetKeyDown (KeyCode.LeftShift)) {
 					HeightView.SetActive (true);
 				}
-				if (Input.GetKeyUp (KeyCode.LeftShift)) {
+				else if (Input.GetKeyUp (KeyCode.LeftShift)) {
 					HeightView.SetActive (false);
 				}
-                if (Input.GetKey(KeyCode.H)) {
+
+                if (Input.GetKeyDown(KeyCode.H)) {
                     HeightView.SetActive(!HeightView.activeSelf);
+                }
+                if (Input.GetKeyDown(KeyCode.Z)) {
+                    road.LevelControlPoints();
                 }
 
                 break;

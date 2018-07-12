@@ -14,8 +14,9 @@ public class Road : MonoBehaviour {
 
 	private const int SEGMENT_COUNT = 20;				// Number of line segments per curve, increase this number for a smoother line
     private const float THRESHOLD = 0.1f;               // Threshold where road considered level with terrain
+    private const float CP_LEVEL = 0.5f;                // Value to make control points level so road will be flat
 
-	void Start () {
+    void Start () {
 		if (!terrain) {
 			Debug.Log ("Road.cs: terrain generator not specified");
 		}
@@ -24,8 +25,8 @@ public class Road : MonoBehaviour {
 		controlPoints = new List<RoadControlPoint> ();
 
 		CreateControlPoint (new Vector3(0f, 0f, 0f));
-		CreateControlPoint (new Vector3 (1f, 0f, 6f));
-		CreateControlPoint (new Vector3 (5f, 0f, 6f));
+		CreateControlPoint (new Vector3 (1f, 4f, 6f));
+		CreateControlPoint (new Vector3 (5f, -2f, 6f));
 		CreateControlPoint (new Vector3(7f, 0f, 7f));
 
 
@@ -165,7 +166,6 @@ public class Road : MonoBehaviour {
 	public void EnableControlPoints() {
         controlPointConnector.enabled = true;
 
-
 		foreach (RoadControlPoint controlPoint in controlPoints) {
 			controlPoint.gameObject.SetActive (true);
 			controlPoint.ConstrainToTerrainMask();
@@ -173,8 +173,21 @@ public class Road : MonoBehaviour {
 		UpdateCurve ();
 	}
 
-	// Undoes the last control point move
-	public void Undo() {
+    // Makes control points level so road will be flat
+    // Can be used for testing design mode with sandbox
+    public void LevelControlPoints()
+    {
+        foreach (RoadControlPoint controlPoint in controlPoints)
+        {
+            Vector3 temp = controlPoint.transform.position;
+            temp.y = CP_LEVEL;
+            controlPoint.transform.position = temp;
+        }
+        UpdateCurve();
+    }
+
+    // Undoes the last control point move
+    public void Undo() {
 		if (undoStack.Count > 0) {
 			List<Vector3> positions = undoStack.Pop ();
 
