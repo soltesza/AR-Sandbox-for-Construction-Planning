@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+
+\geometry{margin=0.75in}
+
+\title{Problem Statement \\
+Senior Software Engineering Project}
+\author{McKenzie Gray}
+\date{Fall 2018}
+
+\begin{document}
+\maketitle
+
+\vfill % Fills everything between the title section and the abstract with empty space
+\section*{Abstract}
+Augmented reality has a great deal of untapped potential. This document outlines a plan to use AR as a means to improve teaching and planning methods in the fields of construction and civil engineering. Using a physical sandbox and a projector, virtual simulations can be represented in a real space and users can interact with these simulations using tangible objects. This creates a more intuitive way for engineers to learn about and plan for real events without needing to leave the confines of a classroom.
+
+\newpage
+
+\section{Problem Description}
+The fields of construction and civil engineering and, indeed, most engineering disciplines have historically operated with pencil and paper as their method of learning, communication, and planning. This approach is not only archaic, but woefully inefficient and difficult.
+
+Technology has provided engineers with progressively more effective and efficient ways of collecting, processing, and visualizing objects and information. Computer simulations in particular are an extremely effective and useful tool in planning for and teaching about the world. Engineers are able to test scenarios in simulated environments without any real-world risk. This technology also provides an opportunity for students to learn in a more practical way without having to leave the classroom. However, these simulations are limited to the virtual world. Engineers are often not familiar with the technology and this introduces a learning curve in and of itself. 
+
+Engineers are accustomed to working with their hands - with physical objects they can see in front of them. Working in a digital space can not only be a challenge, but can also limit the effectiveness of a simulation. The ability to interact with three-dimensional objects in a physical space would greatly improve engineers' ability to learn about and shape the real world.
+
+\section{Proposed Solution}
+Augmented reality (AR) is a way to bring something digital into the physical world. Using AR, we can bring a simulation, performed by a computer, into the real world. This would allow engineers to observe 3D simulations in a physical space. More importantly, engineers could manipulate physical objects in order to alter the effects of the simulation. This would provide a much more intuitive interface for engineers to use when interacting with simulations.
+
+Oregon State University has developed a sandbox that detects and projects the depth of the sand into the box. Using AR technology, we can turn this sandbox into something much more functional. Using the existing depth-sensing, we can create simulations that demonstrate how water would react to changes in terrain. We will also create traffic simulations that react and change based on changes to the scene, represented by tangible, physical markers.
+
+To accomplish this, we will employ a variety of technologies. The sandbox is currently outfitted with a high-resolution projector to project the virtual scenery and simulations onto the sandbox. In the sandbox's current state, the projector is used to overlay colors onto the sand, with different colors representing different depths. In our continuation of this project, we will use this projector to display traffic simulations and possibly other simulations in the box.
+
+The sandbox is also equipped with a Kinect sensor, which can sense depth and motion and also includes a high-resolution camera. The Kinect is currently being used to read the depth of the sand, but we will also use its camera to track AR "markers." Markers refer to physical images or objects that Vuforia (explained later in this section) will use to allow for further interaction with our simulations.
+
+The program itself runs on a high-end PC with a NVIDIA 1080 Ti graphics card, one of the most advanced commercially-available graphics processing units. This should provide us with all the power we need to create a projected AR scene. 
+
+The software was built in Unity, an intuitive and powerful game engine that is free for personal use. Unity makes it simple to create 3D scenes and has a built-in physics engine that we can use to create simulations.
+
+To implement the AR functionality, we will use the software development kit Vuforia. Vuforia uses computer vision to track real-world objects that represent virtual items. It is also integrated well with Unity, providing an easy, powerful means of creating scenes and simulations in augmented reality.
+
+Using these technologies, we intend to create a traffic simulation that will be projected into the sandbox. This simulation can be interacted with using physical markers placed in the sandbox. Based on the placement of these markers, the simulation will update to reflect changes in the flow of traffic. We would also like to create a water simulation that reacts to changes in the depth of the terrain.
+
+\section{Performance Metrics}
+The primary metric by which this project will be evaluated is the creation of a working traffic simulation. This traffic simulation must be able to adapt in a reasonable way based on the placement of markers in the sandbox. The markers themselves are another important requirement and must be available to use as a means of interacting with the simulation. Importantly, the user should be able to manipulate the simulation with minimal interaction with the computer itself. Interaction with the computer may be necessary for the purposes of menu navigation and settings changes, but the primary functions of the program should be usable without needing a keyboard or mouse. Finally, this simulation should exist as its own "mode" alongside the modules that currently make up the program.
+
+The implementation of a water simulation is a possible secondary goal. Such a simulation would include realistic water physics that can react to changes in terrain depth in real time. As with other functions of the sandbox, this should be doable without the need to interface with any traditional computer peripherals and should also exist as a mode that operates in tandem with the rest of the program.
+
+\end{document}
