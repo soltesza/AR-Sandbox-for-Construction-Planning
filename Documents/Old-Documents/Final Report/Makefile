@@ -22,7 +22,7 @@ $(TRG): %.dvi: %.tex $(EXAMPLES)
 	#requires that you \include{pygments.tex} in your preamble
 
 	$(LATEX) $<
-	#$(BIBTEX) $(<:%.tex=%)
+	$(BIBTEX) $(<:%.tex=%)
 	$(LATEX) $<
 	$(LATEX) $<
 	#remove the pygmentized output to avoid cluttering up the directory
@@ -44,7 +44,7 @@ showps: $(PSF)
 all: pdf
 
 clean:
-	rm -f *.pdf *.ps *.dvi *.out *.log *.aux *.bbl *.blg *.pyg
+	rm -f *.ps *.dvi *.out *.log *.aux *.bbl *.blg *.pyg
 
 .PHONY: all show clean ps pdf showps
 
