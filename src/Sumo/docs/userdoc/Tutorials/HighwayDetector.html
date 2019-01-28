@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Tutorials/HighwayDetector - SUMO - Simulation of Urban Mobility</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../sumo.css">
+  <link rel="license" href=
+  "http://creativecommons.org/licenses/by-sa/3.0/">
+</head>
+
+<body id="bmission">
+  <div id="container">
+    <div id="logo" style="text-align:left">
+      <img src="../logo.png" width="374" height="128"
+      alt="SUMO-Simulation of Urban Mobility" style=
+      "float:left; margin-left:10px; margin-right:20px;">
+      <div id="logo_text1">&nbsp;</div>
+      <div id="logo_text2">&nbsp;</div>
+    </div>
+
+    <div id="subsMenu">
+      <ul>
+        <li class="sub"><a href=
+        "http://sumo.dlr.de/">Home</a></li>
+
+        <li class="sub"><a href="../Downloads.html">Download</a></li>
+
+        <li class="sub"><a href="../index.html">Documentation</a></li>
+
+        <li class="sub"><a href=
+        "http://sumo.dlr.de/wiki/">Wiki</a></li>
+
+        <li class="sub"><a href=
+        "https://github.com/DLR-TS/sumo/issues">Issue Tracker</a></li>
+
+        <li class="sub"><a href="../Contact.html">Contact</a></li>
+
+        <li class="sub"><a href=
+        "https://github.com/DLR-TS/sumo">GitHub Project</a></li>
+      </ul>
+    </div>
+
+    <div id="nav">
+      <div id="step1">
+        <h3>User</h3>
+        <ul>
+        <!-- nav begins --> <li>Introduction</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Sumo_at_a_Glance.html">The traffic simulation SUMO</a></li>
+</ul></li>
+  <li>Basic Usage</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Basics/Notation.html">Notation in this Documentation</a></li>
+  <li><a href="../Basics/Basic_Computer_Skills.html">Needed, basic Computer Skills</a></li>
+  <li><a href="../Installing.html">Installing SUMO</a></li>
+  <li><a href="../Basics/Using_the_Command_Line_Applications.html">Using SUMO Command Line Applications</a></li>
+  <li><a href="../Tutorials.html">Tutorials</a></li>
+  <li><a href="../XMLValidation.html">Validating application inputs</a></li>
+</ul></li>
+  <li>Network Building</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Networks/SUMO_Road_Networks.html">SUMO Road Networks</a></li>
+  <li><a href="../Networks/Abstract_Network_Generation.html">Abstract networks generation</a></li>
+  <li><a href="../NETCONVERT.html">NETCONVERT</a></li>
+<li style="list-style: none; display: inline"><ul>
+   <li><a href="../Networks/Building_Networks_from_own_XML-descriptions.html">Defining own networks using XML</a></li>
+   <li><a href="../Networks/Import.html">Importing non-SUMO networks</a></li>
+<li style="list-style: none; display: inline"><ul>
+    <li><a href="../Networks/Import/OpenStreetMap.html">from OpenStreetMap</a></li>
+<li style="list-style: none; display: inline"><ul>
+     <li><a href="../Networks/Import/OpenStreetMap.html#3-click_scenario_generation">3-Click Scenario Generator</a></li>
+</ul></li>
+    <li><a href="../Networks/Import/VISUM.html">from VISUM</a></li>
+    <li><a href="../Networks/Import/Vissim.html">from Vissim</a></li>
+    <li><a href="../Networks/Import/OpenDRIVE.html">from OpenDRIVE</a></li>
+    <li><a href="../Networks/Import/MATsim.html">from MATsim</a></li>
+    <li><a href="../Networks/Import/ArcView.html">from ArcView (shapefiles)</a></li>
+    <li><a href="../Networks/Import/DlrNavteq.html">from DlrNavTeq</a></li>
+    <li><a href="../Networks/Import/RoboCup.html">from Robocup Simulation League</a></li>
+</ul></li>
+   <li><a href="../Networks/Import/SUMO_Road_Networks.html">Importing SUMO networks</a></li>
+   <li><a href="../Simulation/Motorways.html#Building_a_network_for_motorway_simulation">Building networks for motorway simulation</a></li>
+   <li><a href="../Simulation/Pedestrians.html#Building_a_network_for_pedestrian_simulation">Building networks for pedestrian simulation</a></li>
+   <li><a href="../Networks/Further_Options.html">Further NETCONVERT options</a></li>
+   <li><a href="../Networks/Further_Outputs.html">Additional output</a></li>
+</ul></li>
+  <li><a href="../NETEDIT.html">Creating and modifying networks with NETEDIT</a></li>
+  <li><a href="../Networks/Elevation.html">Including elevation data</a></li>
+  <li><a href="../Geo-Coordinates.html">Geo-Coordinates</a></li>
+</ul></li>
+  <li>Demand Modelling</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Demand/Introduction_to_demand_modelling_in_SUMO.html">Introduction to SUMO Demand Modelling</a></li>
+  <li><a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html">Definition of Vehicles, Vehicle Types, and Routes</a></li>
+  <li><a href="../Simulation/Public_Transport.html">Simulation of public transport</a></li>
+  <li><a href="../Specification/Persons.html">Simulation of individual persons and trip chains</a></li>
+  <li><a href="../Specification/Logistics.html">Simulation of logistics</a></li>
+  <li><a href="../Demand/Shortest_or_Optimal_Path_Routing.html">Shortest or Optimal Path Routing</a></li>
+  <li><a href="../IntermodalRouting.html">Intermodal Routing</a></li>
+  <li><a href="../Demand/Automatic_Routing_.html">Routing in the Simulation</a></li>
+  <li><a href="../Demand/Dynamic_User_Assignment.html">Computing Dynamic User Assignment</a></li>
+  <li><a href="../Simulation/Pedestrians.html#Generating_pedestrian_demand">Generating pedestrian traffic demand</a></li>
+  <li><a href="../Tools/Misc.html#createVehTypeDistributions.py">Generate a vehicle type distribution to model the fleet</a></li>
+</ul></li>
+  <li>Data sources for demand generation</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Demand/Importing_O/D_Matrices.html">Importing O/D Matrices</a></li>
+<li style="list-style: none; display: inline"><ul>
+   <li><a href="../Demand/Further_Ways_to_import_VISUM_Demand_Definitions.html">Other VISUM Demand Importers</a></li>
+   <li><a href="../Demand/Further_Ways_to_import_Vissim_Demand_Definitions.html">Other Vissim Demand Importers</a></li>
+</ul></li>
+  <li><a href="../Demand/Routes_from_Observation_Points.html">Routes from Observation Points</a></li>
+  <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
+  <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
+  <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
+</ul></li>
+  <li>Simulation</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Basic_Definition.html">Basic Definition</a></li>
+  <li><a href="../Simulation/Output.html">Simulation output</a></li>
+  <li><a href="../TraCI.html">TraCI (On-line Interaction)</a></li>
+  <li><a href="../Simulation/SaveAndLoad.html">Saving and Loading Simulation State</a></li>
+</ul></li>
+  <li> Traffic Management and Other Structures </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Traffic_Lights.html">Traffic Lights</a></li>
+  <li><a href="../Simulation/Public_Transport.html">Public Transport</a></li>
+  <li><a href="../Simulation/Variable_Speed_Signs.html">Variable Speed Signs</a></li>
+  <li><a href="../Simulation/Rerouter.html">Rerouter / Alternative Route Signage</a></li>
+  <li><a href="../Simulation/Vaporizer.html">Vaporizer</a></li>
+  <li><a href="../Simulation/Calibrator.html">Dynamic calibration of flow and speed</a></li>
+  <li><a href="../Simulation/ParkingArea.html">Parking areas</a></li>
+</ul></li>
+  <li> Traffic Modes </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Pedestrians.html">Pedestrian simulation</a></li>
+  <li><a href="../Simulation/Bicycles.html">Bicycle simulation</a></li>
+  <li><a href="../Simulation/Railways.html">Railway simulation</a></li>
+  <li><a href="../Simulation/Waterways.html">Waterway simulation</a></li>
+</ul></li>
+  <li> Additional Features </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Models/Emissions.html">Emissions</a></li>
+  <li><a href="../Models/Electric.html">Electric Vehicles</a></li>
+  <li><a href="../Specification/Logistics.html">Logistics</a></li>
+  <li><a href="../Simulation/GenericParameters.html">Generic Parameters</a></li>
+  <li><a href="../Simulation/Shapes.html">Shapes Visualisation</a></li>
+  <li><a href="../Simulation/Bluetooth.html">Wireless Device Detection</a></li>
+  <li><a href="../Simulation/Emergency.html">Emergency Vehicles</a></li>
+</ul></li>
+  <li> Model details </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/VehicleSpeed.html">Vehicle speed</a></li>
+  <li><a href="../Simulation/VehicleInsertion.html">Vehicle insertion</a></li>
+  <li><a href="../Simulation/VehiclePermissions.html">Vehicle permissions (access restrictions)</a></li>
+  <li><a href="../Simulation/Intersections.html">Intersection dynamics</a></li>
+  <li><a href="../Simulation/Randomness.html">Randomness</a></li>
+  <li><a href="../Simulation/Routing.html">Routing and Re-routing</a></li>
+  <li><a href="../Simulation/SublaneModel.html">Sublane Model</a></li>
+  <li><a href="../Simulation/OppositeDirectionDriving.html">Opposite Direction Driving</a></li>
+  <li><a href="../Simulation/Safety.html">Safety</a></li>
+  <li><a href="../Simulation/Meso.html">Mesoscopic model</a></li>
+</ul></li>
+  <li> Common Problems </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Why_Vehicles_are_teleporting.html">Why Vehicles are teleporting</a></li>
+  <li><a href="../FAQ.html#The_simulation_has_lots_of_jams.2Fdeadlocks._What_can_I_do.3F">Unexpected jamming</a></li>
+  <li><a href="../FAQ.html#Why_do_the_vehicles_perform_unexpected_lane-changing_maneuvers.3F">Unexpected lane-changing maneuvers?</a></li>
+  <li><a href="../FAQ.html#How_do_I_get_high_flows.2Fvehicle_densities.3F">How to get high flows?</a></li>
+</ul></li>
+  <li><a href="../Tools/Main.html">Additional Tools</a></li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">osmWebWizard</a></li>
+  <li><a href="../TraCI/Interfacing_TraCI_from_Python.html">TraCI/Interfacing_TraCI_from_Python</a></li>
+  <li><a href="../Tools/Sumolib.html">Reading SUMO networks and outputs with Python (sumolib)</a></li>
+  <li><a href="../Tools/Xml.html">Tools for converting SUMO outputs to CSV/Spreadsheet</a></li>
+  <li><a href="../Tools/TraceExporter.html">Exporting mobility Traces (traceExporter)</a></li>
+  <li><a href="../Tools/Net.html#netdiff.py">Determining the differences between two networks</a></li>
+  <li><a href="../Tools/Visualization.html">Tools/Visualization</a></li>
+  <li><a href="../Tools/Main.html">Tool index</a></li>
+</ul></li>
+  <li>Theory</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Theory/Traffic_Simulations.html">Traffic simulations in general</a></li>
+</ul></li>
+  <li>Application Manuals</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../SUMO.html">SUMO</a></li>
+  <li><a href="../SUMO-GUI.html">SUMO-GUI</a></li>
+  <li><a href="../NETCONVERT.html">NETCONVERT</a></li>
+  <li><a href="../NETEDIT.html">NETEDIT</a></li>
+  <li><a href="../NETGENERATE.html">NETGENERATE</a></li>
+  <li><a href="../OD2TRIPS.html">OD2TRIPS</a></li>
+  <li><a href="../DUAROUTER.html">DUAROUTER</a></li>
+  <li><a href="../JTRROUTER.html">JTRROUTER</a></li>
+  <li><a href="../DFROUTER.html">DFROUTER</a></li>
+  <li><a href="../MAROUTER.html">MAROUTER</a></li>
+  <li><a href="../POLYCONVERT.html">POLYCONVERT</a></li>
+  <li><a href="../ACTIVITYGEN.html">ACTIVITYGEN</a></li>
+  <li><a href="../Tools/Emissions.html">EMISSIONSMAP</a></li>
+  <li><a href="../Tools/Emissions.html">EMISSIONSDRIVINGCYCLE</a></li>
+</ul></li>
+  <li>Appendices</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../ChangeLog.html">ChangeLog</a></li>
+  <li><a href="../Other/Glossary.html">Glossary</a></li>
+  <li><a href="../FAQ.html">FAQ</a></li>
+  <li><a href="../Tools/Main.html">Additional Tools</a></li>
+  <li><a href="../Other/File_Extensions.html">Known File Extensions</a></li>
+</ul></li>
+<!-- nav ends -->
+        </ul>
+      </div>
+
+      <div id="step2">
+        <h3>Further Resources</h3>
+
+        <ul>
+          <li><a href="../Data/Networks.html">Example
+          Networks</a></li>
+
+          <li><a href="../Data/Scenarios.html">Example
+          Scenarios</a></li>
+
+          <li><a href="../Data/Traffic_Data.html">Traffic
+          Data</a></li>
+        </ul>
+      </div>
+
+      <div id="step3">
+        <h3>Developer</h3>
+
+        <ul>
+          <li><a href="../Developer/Main.html">Developer Docs</a></li>
+
+          <li><a href="http://sumo.dlr.de/daily/">Daily Tests
+          Status</a></li>
+
+          <li><a href="../../doxygen/">Doxygen Documentation</a></li>
+
+          <li>Python Modules Documentation</li>
+
+          <li style="list-style: none; display: inline">
+            <ul>
+              <li><a href="../../pydoc/traci.html">traci</a></li>
+
+              <li><a href="../../pydoc/sumolib.html">sumolib</a></li>
+            </ul>
+          </li>
+
+          <li>Java Modules Documentation</li>
+
+          <li style="list-style: none; display: inline">
+            <ul>
+              <li><a href="../../javadoc/traci4j/">TraCI4J</a></li>
+
+              <li><a href="../../javadoc/traas/">TraaS</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <a id="top"></a>
+
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Tutorials/HighwayDetector</h1>
+						<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">generated on 2018-12-18 00:19:50.338968 from <a href="http://sumo.dlr.de/wiki/Tutorials/HighwayDetector">the wiki page for Tutorials/HighwayDetector</a> for SUMO 1.1.0</div>
+								<div id="contentSub"></div>
+												
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p>This tutorial describes how to set up a traffic scenario using mainly <a href="../NETEDIT.html" title="NETEDIT">NETEDIT</a>, <a href="../DFROUTER.html" title="DFROUTER">DFROUTER</a> and some python tools when you already have a fairly good network source for your simulation site and also a good coverage of the network with detectors giving you aggregated counts (and maybe speeds) of the vehicles in the real world. It is not limited to highways but the preconditions are met there more frequently. The focus is more on demand preparation and calibration and not so much on network tweaking.
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:302px;"><a href="../images/Netedit_select_highway.png" class="image"><img alt="" src="../images/Netedit_select_highway.png" width="300" height="245" class="thumbimage" srcset="/w/images/thumb/b/b1/Netedit_select_highway.png/450px-Netedit_select_highway.png 1.5x, /w/images/thumb/b/b1/Netedit_select_highway.png/600px-Netedit_select_highway.png 2x" /></a>  <div class="thumbcaption"><div class="magnify"><a href="../images/Netedit_select_highway.png" class="internal" title="Enlarge"></a></div>Selected edges (blue) are of minor priority and will be discarded</div></div></div>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Network"><span class="tocnumber">1</span> <span class="toctext">Network</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Detector_data"><span class="tocnumber">2</span> <span class="toctext">Detector data</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Locating_detectors"><span class="tocnumber">2.1</span> <span class="toctext">Locating detectors</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Processing_input_data"><span class="tocnumber">2.2</span> <span class="toctext">Processing input data</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Determining_the_routes"><span class="tocnumber">3</span> <span class="toctext">Determining the routes</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#flowrouter.py_.28_more_information_at_Tools.2FDetector.29"><span class="tocnumber">3.1</span> <span class="toctext">flowrouter.py ( more information at Tools/Detector)</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#DFROUTER"><span class="tocnumber">3.2</span> <span class="toctext">DFROUTER</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Comparison_of_the_detected_and_the_estimated_flows"><span class="tocnumber">3.3</span> <span class="toctext">Comparison of the detected and the estimated flows</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-9"><a href="#Calibrating_the_data"><span class="tocnumber">4</span> <span class="toctext">Calibrating the data</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="#Speed_calibration"><span class="tocnumber">4.1</span> <span class="toctext">Speed calibration</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Network">Network</span></h2>
+<p>Assuming you are already familiar with network extraction from your favourite mapping source you can open your net with <a href="../NETEDIT.html" title="NETEDIT">NETEDIT</a> and reduce it to your area of interest. Assume you have a navteq file you can select (and then delete) all edges with a priority of less than -1 to reduce it to a highway network.
+Afterwards one can use rectangle selection (hold shift) to further limit the area considered. You also might want to enable ramp guessing in the options dialog. If the network has been prepared by an older version of SUMO it is probably a good idea to recalculate all the connections afterwards. Do so by selecting all junctions in select mode and then resetting them in connect mode. There may still be missing ramps and unusual connections which could not be guessed automatically and which should be fixed manually after setting up the basic scenario.
+</p>
+<h2><span class="mw-headline" id="Detector_data">Detector data</span></h2>
+<h3><span class="mw-headline" id="Locating_detectors">Locating detectors</span></h3>
+<p>Your final network should have locations for induction loops on many of the available edges. If you have detector positions as geo-coordinates it usually requires some manual work to locate the detectors in the network. A starting point can be to use the python sumolib to match the positions to the network:
+</p>
+<pre>
+sys.path.append(os.path.join(os.environ[&quot;SUMO_HOME&quot;], 'tools'))
+import sumolib
+
+net = sumolib.net.readNet(&lt;NETFILE&gt;)
+detectors = []
+for id, lon, lat in &lt;DETECTOR_INPUTFILE&gt;:
+	xy_pos = net.convertLonLat2XY(lon, lat)
+	# look 10m around the position
+	lanes = net.getNeighboringLanes(xy_pos[0], xy_pos[1], 10)
+	# attention, result is unsorted
+        bestLane = None
+        ref_d = 9999.
+	for lane, dist in lanes:
+		# now process them and determine a &quot;bestLane&quot;
+		# ...
+                if dist &lt; ref_d:
+                    ref_d = dist
+                    bestLane = lane
+		    pos, d = bestLane.getClosestLanePosAndDist(xy_pos)
+	detectors.append(sumolib.sensors.inductive_loop.InductiveLoop(id, bestLane.getID(), pos))
+sumolib.files.additional.write(&lt;DETECTORFILE&gt;, detectors)
+</pre>
+<p>The frequency of data aggregation for data collection is 60 sec as default. The default output file name is set as none. Detector type (source, sink, between) can also be given if it is available. En example of the output file is shown below.
+</p>
+<pre>
+&lt;additional xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:noNamespaceSchemaLocation=&quot;http://sumo.dlr.de/xsd/additional_file.xsd&quot;&gt;
+&lt;e1Detector id=&quot;&quot;det0&quot;&quot; lane=&quot;262667814#2.7_0&quot; pos=&quot;80.2550814486&quot; freq=&quot;60&quot; file=&quot;NUL&quot; friendlyPos=&quot;True&quot;/&gt;
+&lt;e1Detector id=&quot;&quot;det1&quot;&quot; lane=&quot;262667814#2.7_1&quot; pos=&quot;90.2522181762&quot; freq=&quot;60&quot; file=&quot;NUL&quot; friendlyPos=&quot;True&quot;/&gt;
+&lt;e1Detector id=&quot;&quot;det2&quot;&quot; lane=&quot;262667814#2.7_2&quot; pos=&quot;91.6879752087&quot; freq=&quot;60&quot; file=&quot;NUL&quot; friendlyPos=&quot;True&quot;/&gt;
+&lt;/additional&gt;
+</pre>
+<p>Be aware to have the python rtree library installed if you are working with large networks. It will speed up the geometry lookups tremendously. Depending on the quality of your network and detector location data, you should probably not always choose the closest lane but also consider whether the number of lanes / the speed limit match your expectations.
+After the initial positioning you can load the file for fine tuning as an additional file into <a href="../NETEDIT.html" title="NETEDIT">NETEDIT</a>.
+</p>
+<h3><span class="mw-headline" id="Processing_input_data">Processing input data</span></h3>
+<p>A common format for detector data is an aggregation into slots of one minute. The <a href="../DFROUTER.html" title="DFROUTER">DFROUTER</a> can process files with the following formats:
+</p>
+<ul><li> Detector definition</li></ul>
+<p>In addition to the above mentioned detector defintion, the following definition can also be applied.
+</p>
+<pre>   &lt;detectors xmlns:xsi="<a rel="nofollow" class="external free" href="http://www.w3.org/2001/XMLSchema-instance">http://www.w3.org/2001/XMLSchema-instance</a>" xsi:noNamespaceSchemaLocation="<a rel="nofollow" class="external free" href="http://sumo.dlr.de/xsd/detectors_file.xsd">http://sumo.dlr.de/xsd/detectors_file.xsd</a>"&gt;
+   &lt;detectorDefinition id="MQ11Fs1" lane="ErnstRuska2O_0" pos="5.00" type="source"/&gt;
+   &lt;detectorDefinition id="MQ12Fs1" lane="ErnstRuska2W_0" pos="-5.00" type="between"/&gt;
+   &lt;detectorDefinition id="MQ13Fs1N" lane="EinsteinN_0" pos="5.00" type="sink"/&gt;
+   &lt;/detectors&gt;
+</pre>
+<ul><li> Flow data   </li></ul>
+<p>The data about detector id, time and the number of each vehilce type must be given, while speed data is optional. All data is saved in csv format.
+</p>
+<pre>   Detector_id;Time(sec);Number_of_passenger_cars;Number_of_trucks;Average_speed_of passenger_cars;Average_speed_of_trucks
+</pre>
+<h2><span class="mw-headline" id="Determining_the_routes">Determining the routes</span></h2>
+<h3><span class="mw-headline" id="flowrouter.py_.28_more_information_at_Tools.2FDetector.29">flowrouter.py ( more information at <a href="../Tools/Detector.html" title="Tools/Detector">Tools/Detector</a>)</span></h3>
+<p>This script is based on the maximal flow theory and does flow routing similar to the <a href="../DFROUTER.html" title="DFROUTER">DFROUTER</a>. Three mandatory input files are needed, i.e. the SUMO network (.net.xml) and two files, which specify detectors and flows respectively. The type of the detectors (source, sink, inbetween) can be detected by the script or read from the given detector file. As an example the script can be executed as
+</p>
+<pre>   tools/detector/flowrouter.py -n net.net.xml -d detector.det.xml -f flow.csv
+</pre>
+<p>Moremover, there are options, which are not available in <a href="../DFROUTER.html" title="DFROUTER">DFROUTER</a>, for considering different parameters, such as speed, parking facilities, flow restrictions, maximal (turning) flows and vehicle types, in order to restrict the route searching space.
+</p>
+<h3><span class="mw-headline" id="DFROUTER"><a href="../DFROUTER.html" title="DFROUTER">DFROUTER</a></span></h3>
+<p>There are different options to set up the route searching/calibration conditions and to manage the content of an output file. The available options and the respective defintions can be found at <a href="../DFROUTER.html" title="DFROUTER">DFROUTER</a>. As an example the execution call is 
+</p>
+<pre>   DFROUTER -n net.net.xml -d detectors.det.xml -f flows.csv -o routes.rou.xml
+</pre>
+<p>Moreover, it is also possible to set up a configuration file with use of a XML schema definition (<a rel="nofollow" class="external text" href="http://sumo.dlr.de/xsd/dfrouterConfiguration.xsd">dfrouterConfiguration.xsd</a>).
+</p>
+<h3><span class="mw-headline" id="Comparison_of_the_detected_and_the_estimated_flows">Comparison of the detected and the estimated flows</span></h3>
+<p>According to the above metioned methods routes can be estimated/generated with given detector data, and then used in the simulation for estimating edge flows. Two scripts can be used to check to what extent the estimated flows correspond to the detected flows for multiple intervals.
+</p>
+<ul><li> flowFromEdgeData.py</li></ul>
+<p>This script is to compare the detected and simualted edge flows. The latter one is based on SUMO's aggregated outputs. The script can be executed as following:  
+</p>
+<pre>   tools/detector/flowFromEdgeData.py -d detectors.det.xml -e edgeData.xml -f detector_flows.xml -c flow_column
+</pre>
+<p>, where detectors.det.xml mainly defines the relationship between detectors and edges; edgeData.xml is the aggregated ouptut from SUMO; detector_flows.xml defines the detected flow data; the flow_column is the column, which contains flow data in the given detecotr flow file. It is also possible to specify the analyis interval and the consideration of detectors without data. In addition to edge-based relative errors per interval, average route flows, average detected flows, average flow deviation, RMSE and RMSPE are also calculated as outputs.
+</p>
+<ul><li> flowFromRoutes.py</li></ul>
+<p>This script is to compare the detected flows and the route flows according to the pre-defined emitted flows and routes. The basic execution call is as following:
+</p>
+<pre>   tools/detector/flowFromRoutes.py -d detectors.det.xml -e emitters.flows.xml -f detector_flows.txt -r routes.rou.xml
+</pre>
+<p>, where emitters.flows.xml defines the route flows; detector_flows.txt defines the detected flow data; routes.rou.xml defines the edge composition of each route. There are options to define the analysis interval. In addition to the above metioned outputs in the flowFromEdgeData.py it is also possible to get the GEH-statistics with use of the respective options --geh and --geh-treshold.
+</p>
+<h2><span class="mw-headline" id="Calibrating_the_data">Calibrating the data</span></h2>
+<h3><span class="mw-headline" id="Speed_calibration">Speed calibration</span></h3>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.032 seconds
+Real time usage: 0.032 seconds
+Preprocessor visited node count: 57/1000000
+Preprocessor generated node count: 84/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:762-0!*!0!!en!5!* and timestamp 20181217015525 and revision id 11348
+ -->
+</div>									</div><hr/><div id="lastmod">This page was last modified on 2 October 2018, at 12:38.</div> </div>
+
+    <div id="footer">
+      <div>
+        (c) 2011-2017, German Aerospace Center, Institute of
+        Transportation Systems
+      </div>
+
+      <div>
+        Layout based on <a href=
+        "http://www.oswd.org/design/preview/id/3365">"Three
+        Quarters"</a> by "SimplyGold"
+      </div>
+    </div>
+  </div>
+</body>
+</html>

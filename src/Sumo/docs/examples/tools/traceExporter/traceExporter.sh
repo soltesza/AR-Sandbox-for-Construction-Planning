@@ -1,0 +1,1 @@
+$SUMO_HOME/mobilityfile.tcl tools/traceExporter.py -i fcd.xml -n net.net.xml --ns2mobility-output

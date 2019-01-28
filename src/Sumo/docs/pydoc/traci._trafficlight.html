@@ -1,0 +1,229 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module traci._trafficlight</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="traci.html"><font color="#ffffff">traci</font></a>._trafficlight</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/delphi/gcc/sumo/tools/traci/_trafficlight.py">/home/delphi/gcc/sumo/tools/traci/_trafficlight.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-<br>
+#&nbsp;Eclipse&nbsp;SUMO,&nbsp;Simulation&nbsp;of&nbsp;Urban&nbsp;MObility;&nbsp;see&nbsp;https://eclipse.org/sumo<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;2011-2018&nbsp;German&nbsp;Aerospace&nbsp;Center&nbsp;(DLR)&nbsp;and&nbsp;others.<br>
+#&nbsp;This&nbsp;program&nbsp;and&nbsp;the&nbsp;accompanying&nbsp;materials<br>
+#&nbsp;are&nbsp;made&nbsp;available&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;Eclipse&nbsp;Public&nbsp;License&nbsp;v2.0<br>
+#&nbsp;which&nbsp;accompanies&nbsp;this&nbsp;distribution,&nbsp;and&nbsp;is&nbsp;available&nbsp;at<br>
+#&nbsp;<a href="http://www.eclipse.org/legal/epl-v20.html">http://www.eclipse.org/legal/epl-v20.html</a><br>
+#&nbsp;SPDX-License-Identifier:&nbsp;EPL-2.0</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="struct.html">struct</a><br>
+</td><td width="25%" valign=top><a href="traci.constants.html">traci.constants</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="traci._trafficlight.html#Logic">Logic</a>
+</font></dt><dt><font face="helvetica, arial"><a href="traci._trafficlight.html#Phase">Phase</a>
+</font></dt><dt><font face="helvetica, arial"><a href="traci.domain.html#Domain">traci.domain.Domain</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="traci._trafficlight.html#TrafficLightDomain">TrafficLightDomain</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Logic">class <strong>Logic</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Logic-__init__"><strong>__init__</strong></a>(self, programID, type, currentPhaseIndex, phases<font color="#909090">=None</font>, subParameter<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Logic-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Logic-getParameter"><strong>getParameter</strong></a>(self, key, default<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Logic-getParameters"><strong>getParameters</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Logic-getPhases"><strong>getPhases</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Logic-getSubID"><strong>getSubID</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Logic-getType"><strong>getType</strong></a>(self)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Phase">class <strong>Phase</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Phase-__init__"><strong>__init__</strong></a>(self, duration, state, minDur<font color="#909090">=-1</font>, maxDur<font color="#909090">=-1</font>, next<font color="#909090">=-1</font>)</dt></dl>
+
+<dl><dt><a name="Phase-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TrafficLightDomain">class <strong>TrafficLightDomain</strong></a>(<a href="traci.domain.html#Domain">traci.domain.Domain</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="TrafficLightDomain-__init__"><strong>__init__</strong></a>(self, name<font color="#909090">='trafficlight'</font>, deprecatedFor<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="TrafficLightDomain-getCompleteRedYellowGreenDefinition"><strong>getCompleteRedYellowGreenDefinition</strong></a>(self, tlsID)</dt><dd><tt><a href="#TrafficLightDomain-getCompleteRedYellowGreenDefinition">getCompleteRedYellowGreenDefinition</a>(string)&nbsp;-&gt;&nbsp;list(<a href="#Logic">Logic</a>)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;<a href="#Logic">Logic</a>&nbsp;objects.<br>
+Each&nbsp;<a href="#Logic">Logic</a>&nbsp;encodes&nbsp;a&nbsp;traffic&nbsp;light&nbsp;program&nbsp;for&nbsp;the&nbsp;given&nbsp;tlsID.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-getControlledLanes"><strong>getControlledLanes</strong></a>(self, tlsID)</dt><dd><tt><a href="#TrafficLightDomain-getControlledLanes">getControlledLanes</a>(string)&nbsp;-&gt;&nbsp;c<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;list&nbsp;of&nbsp;lanes&nbsp;which&nbsp;are&nbsp;controlled&nbsp;by&nbsp;the&nbsp;named&nbsp;traffic&nbsp;light.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-getControlledLinks"><strong>getControlledLinks</strong></a>(self, tlsID)</dt><dd><tt><a href="#TrafficLightDomain-getControlledLinks">getControlledLinks</a>(string)&nbsp;-&gt;&nbsp;list(list(list(string)))<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;links&nbsp;controlled&nbsp;by&nbsp;the&nbsp;traffic&nbsp;light,&nbsp;sorted&nbsp;by&nbsp;the&nbsp;signal&nbsp;index&nbsp;and&nbsp;described&nbsp;by&nbsp;giving<br>
+the&nbsp;incoming,&nbsp;outgoing,&nbsp;and&nbsp;via&nbsp;lane.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-getNextSwitch"><strong>getNextSwitch</strong></a>(self, tlsID)</dt><dd><tt><a href="#TrafficLightDomain-getNextSwitch">getNextSwitch</a>(string)&nbsp;-&gt;&nbsp;double<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;absolute&nbsp;simulation&nbsp;time&nbsp;at&nbsp;which&nbsp;the&nbsp;traffic&nbsp;light&nbsp;is<br>
+schedule&nbsp;to&nbsp;switch&nbsp;to&nbsp;the&nbsp;next&nbsp;phase&nbsp;(in&nbsp;seconds).</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-getPhase"><strong>getPhase</strong></a>(self, tlsID)</dt><dd><tt><a href="#TrafficLightDomain-getPhase">getPhase</a>(string)&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;index&nbsp;of&nbsp;the&nbsp;current&nbsp;phase&nbsp;within&nbsp;the&nbsp;list&nbsp;of&nbsp;all&nbsp;phases&nbsp;of<br>
+the&nbsp;current&nbsp;program.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-getPhaseDuration"><strong>getPhaseDuration</strong></a>(self, tlsID)</dt><dd><tt><a href="#TrafficLightDomain-getPhaseDuration">getPhaseDuration</a>(string)&nbsp;-&gt;&nbsp;double<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;total&nbsp;duration&nbsp;of&nbsp;the&nbsp;current&nbsp;phase&nbsp;(in&nbsp;seconds).&nbsp;This&nbsp;value<br>
+is&nbsp;not&nbsp;affected&nbsp;by&nbsp;the&nbsp;elapsed&nbsp;or&nbsp;remaining&nbsp;duration&nbsp;of&nbsp;the&nbsp;current&nbsp;phase.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-getProgram"><strong>getProgram</strong></a>(self, tlsID)</dt><dd><tt><a href="#TrafficLightDomain-getProgram">getProgram</a>(string)&nbsp;-&gt;&nbsp;string<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;id&nbsp;of&nbsp;the&nbsp;current&nbsp;program.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-getRedYellowGreenState"><strong>getRedYellowGreenState</strong></a>(self, tlsID)</dt><dd><tt><a href="#TrafficLightDomain-getRedYellowGreenState">getRedYellowGreenState</a>(string)&nbsp;-&gt;&nbsp;string<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;named&nbsp;tl's&nbsp;state&nbsp;as&nbsp;a&nbsp;tuple&nbsp;of&nbsp;light&nbsp;definitions&nbsp;from<br>
+rugGyYoO,&nbsp;for&nbsp;red,&nbsp;yed-yellow,&nbsp;green,&nbsp;yellow,&nbsp;off,&nbsp;where&nbsp;lower&nbsp;case&nbsp;letters&nbsp;mean&nbsp;that&nbsp;the&nbsp;stream<br>
+has&nbsp;to&nbsp;decelerate.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-setCompleteRedYellowGreenDefinition"><strong>setCompleteRedYellowGreenDefinition</strong></a>(self, tlsID, tls)</dt><dd><tt><a href="#TrafficLightDomain-setCompleteRedYellowGreenDefinition">setCompleteRedYellowGreenDefinition</a>(string,&nbsp;<a href="#Logic">Logic</a>)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Sets&nbsp;a&nbsp;new&nbsp;program&nbsp;for&nbsp;the&nbsp;given&nbsp;tlsID&nbsp;from&nbsp;a&nbsp;<a href="#Logic">Logic</a>&nbsp;object.<br>
+See&nbsp;getCompleteRedYellowGreenDefinition.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-setLinkState"><strong>setLinkState</strong></a>(self, tlsID, tlsLinkIndex, state)</dt><dd><tt><a href="#TrafficLightDomain-setLinkState">setLinkState</a>(string,&nbsp;string,&nbsp;int,&nbsp;string)&nbsp;-&gt;&nbsp;None<br>
+Sets&nbsp;the&nbsp;state&nbsp;for&nbsp;the&nbsp;given&nbsp;tls&nbsp;and&nbsp;link&nbsp;index.&nbsp;The&nbsp;state&nbsp;must&nbsp;be&nbsp;one<br>
+of&nbsp;rRgGyYoOu&nbsp;for&nbsp;red,&nbsp;red-yellow,&nbsp;green,&nbsp;yellow,&nbsp;off,&nbsp;where&nbsp;lower&nbsp;case&nbsp;letters&nbsp;mean&nbsp;that&nbsp;the&nbsp;stream&nbsp;has<br>
+to&nbsp;decelerate.<br>
+The&nbsp;link&nbsp;index&nbsp;is&nbsp;shown&nbsp;the&nbsp;gui&nbsp;when&nbsp;setting&nbsp;the&nbsp;appropriate&nbsp;junctino<br>
+visualization&nbsp;optin.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-setPhase"><strong>setPhase</strong></a>(self, tlsID, index)</dt><dd><tt><a href="#TrafficLightDomain-setPhase">setPhase</a>(string,&nbsp;integer)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Switches&nbsp;to&nbsp;the&nbsp;phase&nbsp;with&nbsp;the&nbsp;given&nbsp;index&nbsp;in&nbsp;the&nbsp;list&nbsp;of&nbsp;all&nbsp;phases&nbsp;for<br>
+the&nbsp;current&nbsp;program.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-setPhaseDuration"><strong>setPhaseDuration</strong></a>(self, tlsID, phaseDuration)</dt><dd><tt><a href="#TrafficLightDomain-setPhaseDuration">setPhaseDuration</a>(string,&nbsp;double)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Set&nbsp;the&nbsp;remaining&nbsp;phase&nbsp;duration&nbsp;of&nbsp;the&nbsp;current&nbsp;phase&nbsp;in&nbsp;seconds.<br>
+This&nbsp;value&nbsp;has&nbsp;no&nbsp;effect&nbsp;on&nbsp;subsquent&nbsp;repetitions&nbsp;of&nbsp;this&nbsp;phase.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-setProgram"><strong>setProgram</strong></a>(self, tlsID, programID)</dt><dd><tt><a href="#TrafficLightDomain-setProgram">setProgram</a>(string,&nbsp;string)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Switches&nbsp;to&nbsp;the&nbsp;program&nbsp;with&nbsp;the&nbsp;given&nbsp;programID.&nbsp;The&nbsp;program&nbsp;must&nbsp;have<br>
+been&nbsp;loaded&nbsp;earlier.&nbsp;The&nbsp;special&nbsp;value&nbsp;'off'&nbsp;can&nbsp;always&nbsp;be&nbsp;used&nbsp;to<br>
+switch&nbsp;off&nbsp;the&nbsp;traffic&nbsp;light.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-setRedYellowGreenState"><strong>setRedYellowGreenState</strong></a>(self, tlsID, state)</dt><dd><tt><a href="#TrafficLightDomain-setRedYellowGreenState">setRedYellowGreenState</a>(string,&nbsp;string)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Sets&nbsp;the&nbsp;named&nbsp;tl's&nbsp;state&nbsp;as&nbsp;a&nbsp;tuple&nbsp;of&nbsp;light&nbsp;definitions&nbsp;from<br>
+rugGyYuoO,&nbsp;for&nbsp;red,&nbsp;red-yellow,&nbsp;green,&nbsp;yellow,&nbsp;off,&nbsp;where&nbsp;lower&nbsp;case&nbsp;letters&nbsp;mean&nbsp;that&nbsp;the&nbsp;stream&nbsp;has<br>
+to&nbsp;decelerate.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>Logic</strong> = &lt;class traci._trafficlight.Logic&gt;</dl>
+
+<dl><dt><strong>Phase</strong> = &lt;class traci._trafficlight.Phase&gt;</dl>
+
+<hr>
+Methods inherited from <a href="traci.domain.html#Domain">traci.domain.Domain</a>:<br>
+<dl><dt><a name="TrafficLightDomain-getAllContextSubscriptionResults"><strong>getAllContextSubscriptionResults</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TrafficLightDomain-getAllSubscriptionResults"><strong>getAllSubscriptionResults</strong></a>(self)</dt><dd><tt><a href="#TrafficLightDomain-getAllSubscriptionResults">getAllSubscriptionResults</a>()&nbsp;-&gt;&nbsp;dict(string:&nbsp;dict(integer:&nbsp;&lt;value_type&gt;))<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;subscription&nbsp;results&nbsp;for&nbsp;the&nbsp;last&nbsp;time&nbsp;step&nbsp;and&nbsp;all&nbsp;objects&nbsp;of&nbsp;the&nbsp;domain.<br>
+It&nbsp;is&nbsp;not&nbsp;possible&nbsp;to&nbsp;retrieve&nbsp;older&nbsp;subscription&nbsp;results&nbsp;than&nbsp;the&nbsp;ones<br>
+from&nbsp;the&nbsp;last&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-getContextSubscriptionResults"><strong>getContextSubscriptionResults</strong></a>(self, objectID)</dt></dl>
+
+<dl><dt><a name="TrafficLightDomain-getIDCount"><strong>getIDCount</strong></a>(self)</dt><dd><tt><a href="#TrafficLightDomain-getIDCount">getIDCount</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;currently&nbsp;loaded&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-getIDList"><strong>getIDList</strong></a>(self)</dt><dd><tt><a href="#TrafficLightDomain-getIDList">getIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;objects&nbsp;in&nbsp;the&nbsp;network.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-getParameter"><strong>getParameter</strong></a>(self, objID, param)</dt><dd><tt><a href="#TrafficLightDomain-getParameter">getParameter</a>(string,&nbsp;string)&nbsp;-&gt;&nbsp;string<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;given&nbsp;parameter&nbsp;for&nbsp;the&nbsp;given&nbsp;objID</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-getSubscriptionResults"><strong>getSubscriptionResults</strong></a>(self, objectID)</dt><dd><tt><a href="#TrafficLightDomain-getSubscriptionResults">getSubscriptionResults</a>(string)&nbsp;-&gt;&nbsp;dict(integer:&nbsp;&lt;value_type&gt;)<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;subscription&nbsp;results&nbsp;for&nbsp;the&nbsp;last&nbsp;time&nbsp;step&nbsp;and&nbsp;the&nbsp;given&nbsp;object.<br>
+If&nbsp;the&nbsp;object&nbsp;id&nbsp;is&nbsp;unknown&nbsp;or&nbsp;the&nbsp;subscription&nbsp;did&nbsp;for&nbsp;any&nbsp;reason&nbsp;return&nbsp;no&nbsp;data,<br>
+'None'&nbsp;is&nbsp;returned.<br>
+It&nbsp;is&nbsp;not&nbsp;possible&nbsp;to&nbsp;retrieve&nbsp;older&nbsp;subscription&nbsp;results&nbsp;than&nbsp;the&nbsp;ones<br>
+from&nbsp;the&nbsp;last&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-setParameter"><strong>setParameter</strong></a>(self, objID, param, value)</dt><dd><tt><a href="#TrafficLightDomain-setParameter">setParameter</a>(string,&nbsp;string,&nbsp;string)&nbsp;-&gt;&nbsp;string<br>
+&nbsp;<br>
+Sets&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;given&nbsp;parameter&nbsp;to&nbsp;value&nbsp;for&nbsp;the&nbsp;given&nbsp;objID</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-subscribe"><strong>subscribe</strong></a>(self, objectID, varIDs<font color="#909090">=None</font>, begin<font color="#909090">=-1073741824</font>, end<font color="#909090">=-1073741824</font>)</dt><dd><tt><a href="#TrafficLightDomain-subscribe">subscribe</a>(string,&nbsp;list(integer),&nbsp;double,&nbsp;double)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Subscribe&nbsp;to&nbsp;one&nbsp;or&nbsp;more&nbsp;object&nbsp;values&nbsp;for&nbsp;the&nbsp;given&nbsp;interval.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-subscribeContext"><strong>subscribeContext</strong></a>(self, objectID, domain, dist, varIDs<font color="#909090">=None</font>, begin<font color="#909090">=-1073741824</font>, end<font color="#909090">=-1073741824</font>)</dt><dd><tt><a href="#TrafficLightDomain-subscribeContext">subscribeContext</a>(string,&nbsp;int,&nbsp;double,&nbsp;list(integer),&nbsp;double,&nbsp;double)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Subscribe&nbsp;to&nbsp;objects&nbsp;of&nbsp;the&nbsp;given&nbsp;domain&nbsp;(specified&nbsp;as&nbsp;domain=traci.constants.CMD_GET_&lt;DOMAIN&gt;_VARIABLE),<br>
+which&nbsp;are&nbsp;closer&nbsp;than&nbsp;dist&nbsp;to&nbsp;the&nbsp;object&nbsp;specified&nbsp;by&nbsp;objectID.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-unsubscribe"><strong>unsubscribe</strong></a>(self, objectID)</dt><dd><tt><a href="#TrafficLightDomain-unsubscribe">unsubscribe</a>(string)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Unsubscribe&nbsp;from&nbsp;receiving&nbsp;object&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="TrafficLightDomain-unsubscribeContext"><strong>unsubscribeContext</strong></a>(self, objectID, domain, dist)</dt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>absolute_import</strong> = _Feature((2, 5, 0, 'alpha', 1), (3, 0, 0, 'alpha', 0), 16384)</td></tr></table>
+</body></html>

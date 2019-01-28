@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Demand/Automatic_Routing - SUMO - Simulation of Urban Mobility</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../sumo.css">
+  <link rel="license" href=
+  "http://creativecommons.org/licenses/by-sa/3.0/">
+</head>
+
+<body id="bmission">
+  <div id="container">
+    <div id="logo" style="text-align:left">
+      <img src="../logo.png" width="374" height="128"
+      alt="SUMO-Simulation of Urban Mobility" style=
+      "float:left; margin-left:10px; margin-right:20px;">
+      <div id="logo_text1">&nbsp;</div>
+      <div id="logo_text2">&nbsp;</div>
+    </div>
+
+    <div id="subsMenu">
+      <ul>
+        <li class="sub"><a href=
+        "http://sumo.dlr.de/">Home</a></li>
+
+        <li class="sub"><a href="../Downloads.html">Download</a></li>
+
+        <li class="sub"><a href="../index.html">Documentation</a></li>
+
+        <li class="sub"><a href=
+        "http://sumo.dlr.de/wiki/">Wiki</a></li>
+
+        <li class="sub"><a href=
+        "https://github.com/DLR-TS/sumo/issues">Issue Tracker</a></li>
+
+        <li class="sub"><a href="../Contact.html">Contact</a></li>
+
+        <li class="sub"><a href=
+        "https://github.com/DLR-TS/sumo">GitHub Project</a></li>
+      </ul>
+    </div>
+
+    <div id="nav">
+      <div id="step1">
+        <h3>User</h3>
+        <ul>
+        <!-- nav begins --> <li>Introduction</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Sumo_at_a_Glance.html">The traffic simulation SUMO</a></li>
+</ul></li>
+  <li>Basic Usage</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Basics/Notation.html">Notation in this Documentation</a></li>
+  <li><a href="../Basics/Basic_Computer_Skills.html">Needed, basic Computer Skills</a></li>
+  <li><a href="../Installing.html">Installing SUMO</a></li>
+  <li><a href="../Basics/Using_the_Command_Line_Applications.html">Using SUMO Command Line Applications</a></li>
+  <li><a href="../Tutorials.html">Tutorials</a></li>
+  <li><a href="../XMLValidation.html">Validating application inputs</a></li>
+</ul></li>
+  <li>Network Building</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Networks/SUMO_Road_Networks.html">SUMO Road Networks</a></li>
+  <li><a href="../Networks/Abstract_Network_Generation.html">Abstract networks generation</a></li>
+  <li><a href="../NETCONVERT.html">NETCONVERT</a></li>
+<li style="list-style: none; display: inline"><ul>
+   <li><a href="../Networks/Building_Networks_from_own_XML-descriptions.html">Defining own networks using XML</a></li>
+   <li><a href="../Networks/Import.html">Importing non-SUMO networks</a></li>
+<li style="list-style: none; display: inline"><ul>
+    <li><a href="../Networks/Import/OpenStreetMap.html">from OpenStreetMap</a></li>
+<li style="list-style: none; display: inline"><ul>
+     <li><a href="../Networks/Import/OpenStreetMap.html#3-click_scenario_generation">3-Click Scenario Generator</a></li>
+</ul></li>
+    <li><a href="../Networks/Import/VISUM.html">from VISUM</a></li>
+    <li><a href="../Networks/Import/Vissim.html">from Vissim</a></li>
+    <li><a href="../Networks/Import/OpenDRIVE.html">from OpenDRIVE</a></li>
+    <li><a href="../Networks/Import/MATsim.html">from MATsim</a></li>
+    <li><a href="../Networks/Import/ArcView.html">from ArcView (shapefiles)</a></li>
+    <li><a href="../Networks/Import/DlrNavteq.html">from DlrNavTeq</a></li>
+    <li><a href="../Networks/Import/RoboCup.html">from Robocup Simulation League</a></li>
+</ul></li>
+   <li><a href="../Networks/Import/SUMO_Road_Networks.html">Importing SUMO networks</a></li>
+   <li><a href="../Simulation/Motorways.html#Building_a_network_for_motorway_simulation">Building networks for motorway simulation</a></li>
+   <li><a href="../Simulation/Pedestrians.html#Building_a_network_for_pedestrian_simulation">Building networks for pedestrian simulation</a></li>
+   <li><a href="../Networks/Further_Options.html">Further NETCONVERT options</a></li>
+   <li><a href="../Networks/Further_Outputs.html">Additional output</a></li>
+</ul></li>
+  <li><a href="../NETEDIT.html">Creating and modifying networks with NETEDIT</a></li>
+  <li><a href="../Networks/Elevation.html">Including elevation data</a></li>
+  <li><a href="../Geo-Coordinates.html">Geo-Coordinates</a></li>
+</ul></li>
+  <li>Demand Modelling</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Demand/Introduction_to_demand_modelling_in_SUMO.html">Introduction to SUMO Demand Modelling</a></li>
+  <li><a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html">Definition of Vehicles, Vehicle Types, and Routes</a></li>
+  <li><a href="../Simulation/Public_Transport.html">Simulation of public transport</a></li>
+  <li><a href="../Specification/Persons.html">Simulation of individual persons and trip chains</a></li>
+  <li><a href="../Specification/Logistics.html">Simulation of logistics</a></li>
+  <li><a href="../Demand/Shortest_or_Optimal_Path_Routing.html">Shortest or Optimal Path Routing</a></li>
+  <li><a href="../IntermodalRouting.html">Intermodal Routing</a></li>
+  <li><a href="../Demand/Automatic_Routing_.html">Routing in the Simulation</a></li>
+  <li><a href="../Demand/Dynamic_User_Assignment.html">Computing Dynamic User Assignment</a></li>
+  <li><a href="../Simulation/Pedestrians.html#Generating_pedestrian_demand">Generating pedestrian traffic demand</a></li>
+  <li><a href="../Tools/Misc.html#createVehTypeDistributions.py">Generate a vehicle type distribution to model the fleet</a></li>
+</ul></li>
+  <li>Data sources for demand generation</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Demand/Importing_O/D_Matrices.html">Importing O/D Matrices</a></li>
+<li style="list-style: none; display: inline"><ul>
+   <li><a href="../Demand/Further_Ways_to_import_VISUM_Demand_Definitions.html">Other VISUM Demand Importers</a></li>
+   <li><a href="../Demand/Further_Ways_to_import_Vissim_Demand_Definitions.html">Other Vissim Demand Importers</a></li>
+</ul></li>
+  <li><a href="../Demand/Routes_from_Observation_Points.html">Routes from Observation Points</a></li>
+  <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
+  <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
+  <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
+</ul></li>
+  <li>Simulation</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Basic_Definition.html">Basic Definition</a></li>
+  <li><a href="../Simulation/Output.html">Simulation output</a></li>
+  <li><a href="../TraCI.html">TraCI (On-line Interaction)</a></li>
+  <li><a href="../Simulation/SaveAndLoad.html">Saving and Loading Simulation State</a></li>
+</ul></li>
+  <li> Traffic Management and Other Structures </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Traffic_Lights.html">Traffic Lights</a></li>
+  <li><a href="../Simulation/Public_Transport.html">Public Transport</a></li>
+  <li><a href="../Simulation/Variable_Speed_Signs.html">Variable Speed Signs</a></li>
+  <li><a href="../Simulation/Rerouter.html">Rerouter / Alternative Route Signage</a></li>
+  <li><a href="../Simulation/Vaporizer.html">Vaporizer</a></li>
+  <li><a href="../Simulation/Calibrator.html">Dynamic calibration of flow and speed</a></li>
+  <li><a href="../Simulation/ParkingArea.html">Parking areas</a></li>
+</ul></li>
+  <li> Traffic Modes </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Pedestrians.html">Pedestrian simulation</a></li>
+  <li><a href="../Simulation/Bicycles.html">Bicycle simulation</a></li>
+  <li><a href="../Simulation/Railways.html">Railway simulation</a></li>
+  <li><a href="../Simulation/Waterways.html">Waterway simulation</a></li>
+</ul></li>
+  <li> Additional Features </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Models/Emissions.html">Emissions</a></li>
+  <li><a href="../Models/Electric.html">Electric Vehicles</a></li>
+  <li><a href="../Specification/Logistics.html">Logistics</a></li>
+  <li><a href="../Simulation/GenericParameters.html">Generic Parameters</a></li>
+  <li><a href="../Simulation/Shapes.html">Shapes Visualisation</a></li>
+  <li><a href="../Simulation/Bluetooth.html">Wireless Device Detection</a></li>
+  <li><a href="../Simulation/Emergency.html">Emergency Vehicles</a></li>
+</ul></li>
+  <li> Model details </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/VehicleSpeed.html">Vehicle speed</a></li>
+  <li><a href="../Simulation/VehicleInsertion.html">Vehicle insertion</a></li>
+  <li><a href="../Simulation/VehiclePermissions.html">Vehicle permissions (access restrictions)</a></li>
+  <li><a href="../Simulation/Intersections.html">Intersection dynamics</a></li>
+  <li><a href="../Simulation/Randomness.html">Randomness</a></li>
+  <li><a href="../Simulation/Routing.html">Routing and Re-routing</a></li>
+  <li><a href="../Simulation/SublaneModel.html">Sublane Model</a></li>
+  <li><a href="../Simulation/OppositeDirectionDriving.html">Opposite Direction Driving</a></li>
+  <li><a href="../Simulation/Safety.html">Safety</a></li>
+  <li><a href="../Simulation/Meso.html">Mesoscopic model</a></li>
+</ul></li>
+  <li> Common Problems </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Why_Vehicles_are_teleporting.html">Why Vehicles are teleporting</a></li>
+  <li><a href="../FAQ.html#The_simulation_has_lots_of_jams.2Fdeadlocks._What_can_I_do.3F">Unexpected jamming</a></li>
+  <li><a href="../FAQ.html#Why_do_the_vehicles_perform_unexpected_lane-changing_maneuvers.3F">Unexpected lane-changing maneuvers?</a></li>
+  <li><a href="../FAQ.html#How_do_I_get_high_flows.2Fvehicle_densities.3F">How to get high flows?</a></li>
+</ul></li>
+  <li><a href="../Tools/Main.html">Additional Tools</a></li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">osmWebWizard</a></li>
+  <li><a href="../TraCI/Interfacing_TraCI_from_Python.html">TraCI/Interfacing_TraCI_from_Python</a></li>
+  <li><a href="../Tools/Sumolib.html">Reading SUMO networks and outputs with Python (sumolib)</a></li>
+  <li><a href="../Tools/Xml.html">Tools for converting SUMO outputs to CSV/Spreadsheet</a></li>
+  <li><a href="../Tools/TraceExporter.html">Exporting mobility Traces (traceExporter)</a></li>
+  <li><a href="../Tools/Net.html#netdiff.py">Determining the differences between two networks</a></li>
+  <li><a href="../Tools/Visualization.html">Tools/Visualization</a></li>
+  <li><a href="../Tools/Main.html">Tool index</a></li>
+</ul></li>
+  <li>Theory</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Theory/Traffic_Simulations.html">Traffic simulations in general</a></li>
+</ul></li>
+  <li>Application Manuals</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../SUMO.html">SUMO</a></li>
+  <li><a href="../SUMO-GUI.html">SUMO-GUI</a></li>
+  <li><a href="../NETCONVERT.html">NETCONVERT</a></li>
+  <li><a href="../NETEDIT.html">NETEDIT</a></li>
+  <li><a href="../NETGENERATE.html">NETGENERATE</a></li>
+  <li><a href="../OD2TRIPS.html">OD2TRIPS</a></li>
+  <li><a href="../DUAROUTER.html">DUAROUTER</a></li>
+  <li><a href="../JTRROUTER.html">JTRROUTER</a></li>
+  <li><a href="../DFROUTER.html">DFROUTER</a></li>
+  <li><a href="../MAROUTER.html">MAROUTER</a></li>
+  <li><a href="../POLYCONVERT.html">POLYCONVERT</a></li>
+  <li><a href="../ACTIVITYGEN.html">ACTIVITYGEN</a></li>
+  <li><a href="../Tools/Emissions.html">EMISSIONSMAP</a></li>
+  <li><a href="../Tools/Emissions.html">EMISSIONSDRIVINGCYCLE</a></li>
+</ul></li>
+  <li>Appendices</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../ChangeLog.html">ChangeLog</a></li>
+  <li><a href="../Other/Glossary.html">Glossary</a></li>
+  <li><a href="../FAQ.html">FAQ</a></li>
+  <li><a href="../Tools/Main.html">Additional Tools</a></li>
+  <li><a href="../Other/File_Extensions.html">Known File Extensions</a></li>
+</ul></li>
+<!-- nav ends -->
+        </ul>
+      </div>
+
+      <div id="step2">
+        <h3>Further Resources</h3>
+
+        <ul>
+          <li><a href="../Data/Networks.html">Example
+          Networks</a></li>
+
+          <li><a href="../Data/Scenarios.html">Example
+          Scenarios</a></li>
+
+          <li><a href="../Data/Traffic_Data.html">Traffic
+          Data</a></li>
+        </ul>
+      </div>
+
+      <div id="step3">
+        <h3>Developer</h3>
+
+        <ul>
+          <li><a href="../Developer/Main.html">Developer Docs</a></li>
+
+          <li><a href="http://sumo.dlr.de/daily/">Daily Tests
+          Status</a></li>
+
+          <li><a href="../../doxygen/">Doxygen Documentation</a></li>
+
+          <li>Python Modules Documentation</li>
+
+          <li style="list-style: none; display: inline">
+            <ul>
+              <li><a href="../../pydoc/traci.html">traci</a></li>
+
+              <li><a href="../../pydoc/sumolib.html">sumolib</a></li>
+            </ul>
+          </li>
+
+          <li>Java Modules Documentation</li>
+
+          <li style="list-style: none; display: inline">
+            <ul>
+              <li><a href="../../javadoc/traci4j/">TraCI4J</a></li>
+
+              <li><a href="../../javadoc/traas/">TraaS</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <a id="top"></a>
+
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Demand/Automatic Routing</h1>
+						<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">generated on 2018-12-18 00:19:50.035904 from <a href="http://sumo.dlr.de/wiki/Demand/Automatic_Routing">the wiki page for Demand/Automatic_Routing</a> for SUMO 1.1.0</div>
+								<div id="contentSub"></div>
+												
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Options"><span class="tocnumber">2</span> <span class="toctext">Options</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Edge_weights"><span class="tocnumber">3</span> <span class="toctext">Edge weights</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Adapting_by_exponential_average"><span class="tocnumber">3.1</span> <span class="toctext">Adapting by exponential average</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Adapting_by_moving_average"><span class="tocnumber">3.2</span> <span class="toctext">Adapting by moving average</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Investigating_edge_weights"><span class="tocnumber">3.3</span> <span class="toctext">Investigating edge weights</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#Incomplete_trips_and_flows"><span class="tocnumber">4</span> <span class="toctext">Incomplete trips and flows</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Alternative_Declaration_via_Parameters"><span class="tocnumber">5</span> <span class="toctext">Alternative Declaration via Parameters</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#TraCI"><span class="tocnumber">6</span> <span class="toctext">TraCI</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#Randomness"><span class="tocnumber">7</span> <span class="toctext">Randomness</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Introduction">Introduction</span></h1>
+<p>Routing dynamically in the running simulation may be adequate in the following situations:
+</p>
+<ul><li> there is not enough time / computing power to wait for the dynamic user equilibrium</li>
+<li> changes to the net occur while the simulation is running</li>
+<li> vehicles need to adapt their route while running</li></ul>
+<p>In this case <a href="../SUMO.html" title="SUMO">SUMO</a> may be used directly for routing with either routes or trip files (or a mix) as input.
+</p><p>This routing approach works by giving some or all vehicles the capability to re-compute their route periodically. This routing takes into account the current and recent state of traffic in the network and thus adapts to jams and other changes in the network.
+</p><p>The options listed below allow configuring which of the vehicles shall be equipped, how often rerouting decisions shall be made and how the estimation of travel times is computed from current and recent knowledge.
+</p>
+<h1><span class="mw-headline" id="Options">Options</span></h1>
+<p>The options related to this routing are:
+</p>
+<table cellspacing="0" border="1" width="90%" align="center">
+
+<tr>
+<th style="background:#ddffdd;" valign="top"> Option
+</th>
+<th style="background:#ddffdd;" valign="top"> default
+</th>
+<th style="background:#ddffdd;" valign="top"> Description
+</th></tr>
+<tr>
+<td valign="top"> <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.probability <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span>
+</td>
+<td> 0
+</td>
+<td valign="top"> The probability for a vehicle to have a routing device
+</td></tr>
+<tr>
+<td valign="top"> <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.explicit <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a></span>
+</td>
+<td>
+</td>
+<td valign="top"> Assign a device to named vehicles
+</td></tr>
+<tr>
+<td valign="top"> <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.deterministic</span>
+</td>
+<td> false
+</td>
+<td valign="top"> The devices are set deterministic using a fraction of 1000 (with the defined <b>probability</b>)
+</td></tr>
+<tr>
+<td valign="top"> <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.period <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a></span>
+</td>
+<td> 0
+</td>
+<td valign="top"> The period with which the vehicle shall be rerouted
+</td></tr>
+<tr>
+<td valign="top"> <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.pre-period <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a></span>
+</td>
+<td> 60
+</td>
+<td valign="top"> The rerouting period before insertion/depart
+</td></tr>
+<tr>
+<td valign="top"> <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.adaptation-interval <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a></span>
+</td>
+<td> 1
+</td>
+<td valign="top">  The interval for updating the edge weights.
+</td></tr>
+<tr>
+<td valign="top"> <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.adaptation-weight <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span>
+</td>
+<td> 0.5
+</td>
+<td valign="top">  The weight of prior edge weights for exponential averaging from [0, 1].
+</td></tr>
+<tr>
+<td valign="top"> <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.adaptation-steps <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a></span>
+</td>
+<td> 0
+</td>
+<td valign="top">  The number of adaptation steps for averaging (enable for values &gt; 0).
+</td></tr>
+<tr>
+<td valign="top"> <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.with-taz</span>
+</td>
+<td> false
+</td>
+<td valign="top"> Use <a href="../Demand/Importing_O/D_Matrices.html#Describing_the_TAZ" title="Demand/Importing O/D Matrices">traffic assignment zones (TAZ/districts)</a> as routing end points
+</td></tr>
+<tr>
+<td valign="top"> <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.init-with-loaded-weights</span>
+</td>
+<td> false
+</td>
+<td valign="top"> Use option <span style="color: #111144; font-weight: bold; white-space: pre;">--weight-files</span> for initializing the edge weights at simulation start
+</td></tr>
+</table>
+<h1><span class="mw-headline" id="Edge_weights">Edge weights</span></h1>
+<p>If the routing is enabled for any vehicles, the average travel times in the net are collected for all edges. If a vehicle needs to be routed (either because it gets inserted or because a repeated route choice was enabled via the ".period" option) it chooses the fastest route to its destination edge (or district) according to the present edge weights (travel speeds and hence travel times). The update of the edge weights does not simply overwrite the old value but is computed as a weighted average as described below. Since updating the weights of all edges in each simulation step means a major slowdown for the simulation this interval may be altered using the ".adaptation-interval" option.
+</p>
+<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />these weights are also used when using <a href="../TraCI.html" title="TraCI">TraCI</a> functions <i>vehicle.rerouteTraveltime</i> and <i>vehicle.changeTarget</i> if the routing mode was set to <i>ROUTING_MODE_AGGREGATED</i> using <i>vehicle.setRoutingMode</i>.</div>
+<h2><span class="mw-headline" id="Adapting_by_exponential_average">Adapting by exponential average</span></h2>
+<p>By setting the option <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.adaptation-weight <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> the travel speed of each edge is computed as
+</p>
+<pre> FLOAT * priorValue + (1 - FLOAT) * currentMeanSpeed
+</pre>
+<p>This averaging takes place with the period set by <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.adaptation-interval</span>.
+</p>
+<h2><span class="mw-headline" id="Adapting_by_moving_average">Adapting by moving average</span></h2>
+<p>By setting the option <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.adaptation-steps <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a></span> the travel speed of each edge is computed as the average of the INT latest meanSpeed values.
+This averaging takes place with the period set by <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.adaptation-interval</span>.
+</p>
+<div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />speed values in a time interval going back as far as the multiple of <b>adaptation-interval</b> and <b>adaptation-steps</b> take part in the averaging.</div>
+<h2><span class="mw-headline" id="Investigating_edge_weights">Investigating edge weights</span></h2>
+<p>To understand the evolution of edge weights during the simulation it can be helpful to look at the values in detail:
+</p>
+<ul><li> used road coloring <i>by routing device assumed speed</i> in <a href="../SUMO-GUI.html#Changing_the_appearance.2Fvisualisation_of_the_simulation" title="SUMO-GUI">SUMO-GUI</a></li>
+<li> use option <span style="color: #111144; font-weight: bold; white-space: pre;">--device.rerouting.output <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> to get the raw numbers</li>
+<li> use <a href="../TraCI/Vehicle_Value_Retrieval.html#Supported_Device_Parameters" title="TraCI/Vehicle Value Retrieval">TraCI function <i>vehicle.getParameter("device.rerouting.edge:EDGEID")</i></a> to retrieve the averaged traveltime value for individual edges</li></ul>
+<h1><span class="mw-headline" id="Incomplete_trips_and_flows">Incomplete trips and flows</span></h1>
+<p>All vehicles which are created using a trip as input (or a flow with "from" and "to" attributes) get automatically routed at insertion without the need to instantiate the device for them explicitly. Whenever an error occurs on routing because no route can be found which includes all mandatory edges ("from", "to", and all stop edges in the correct order) and is connected (also respecting the vehicle class permissions) this is a fatal error and stops th simulation. This can be switched off by using <span style="color: #111144; font-weight: bold; white-space: pre;">--ignore-route-errors</span> which will leave the route untouched in the error case. If the vehicle did not have a route yet (because it was defined using a trip) and cannot find one and <span style="color: #111144; font-weight: bold; white-space: pre;">--ignore-route-errors</span> is used, it will not be inserted.
+</p><p>Alternatively to using attributes "from" and "to" it is also possible to use "fromTaz" and "toTaz", if a <a href="../Demand/Importing_O/D_Matrices.html#Describing_the_TAZ" title="Demand/Importing O/D Matrices">district file is loaded</a>.
+</p>
+<h1><span class="mw-headline" id="Alternative_Declaration_via_Parameters">Alternative Declaration via Parameters</span></h1>
+<p>Another way for defining the set of vehicles that are equipped with a rerouting device is via <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Devices" title="Definition of Vehicles, Vehicle Types, and Routes">generic parameters</a>.
+</p>
+<h1><span class="mw-headline" id="TraCI">TraCI</span></h1>
+<p>The device can be accessed using the TraCI function <i>vehicle.getParameter</i> and <i>vehicle.setParameter</i>:
+</p><p><b>getParameter</b>
+</p>
+<ul><li> device.rerouting.period (returns individual rerouting period in seconds)</li>
+<li> device.rerouting.edge:EDGE_ID (returns assumed travel time for rerouting where EDGE_ID is the id of a network edge)</li>
+<li> has.rerouting.device (returns "true" or "false" depending on whether the device is equipped)</li></ul>
+<p><b>setParameter</b>
+</p>
+<ul><li> device.rerouting.period (double literal, set rerouting period in seconds)</li>
+<li> device.rerouting.edge:EDGE_ID (double literal, set assumed travel time for rerouting for all vehicles (where EDGE_ID is the id if a network edge). This value is overwritten at the next update interval (--device.rerouting.adaptation-interval).</li>
+<li> has.rerouting.device ("true"): can be used to dynamically enable automatic rerouting</li></ul>
+<h1><span class="mw-headline" id="Randomness">Randomness</span></h1>
+<p>When setting the option <span style="color: #111144; font-weight: bold; white-space: pre;">--weights.random-factor <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span>, edge weights for routing are dynamically distorted by a random factor drawn uniformly from [1,<a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a>]. This randomization is performed every time an edge weight is used so the same vehicle could select a different route when rerouted on different time steps. The route generated this way may be longer than the fastest route by the given factor (in the worst case).
+This randomness is a good way to achieve a reasonable route distribution in grid networks an in other cases where many similar route alternatives are available.
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.044 seconds
+Real time usage: 0.045 seconds
+Preprocessor visited node count: 199/1000000
+Preprocessor generated node count: 580/1000000
+Post‐expand include size: 3832/2097152 bytes
+Template argument size: 1522/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   17.191      1 - -total
+ 64.91%   11.159     19 - Template:Option
+ 10.21%    1.755      2 - Template:Note
+  7.64%    1.314      5 - Template:DT_FLOAT
+  6.89%    1.184      1 - Template:DT_FILE
+  6.87%    1.181      3 - Template:DT_INT
+  6.76%    1.162      3 - Template:DT_STR
+-->
+
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:333-0!*!0!!en!*!* and timestamp 20181217081554 and revision id 11040
+ -->
+</div>									</div><hr/><div id="lastmod">This page was last modified on 31 July 2018, at 08:34.</div> </div>
+
+    <div id="footer">
+      <div>
+        (c) 2011-2017, German Aerospace Center, Institute of
+        Transportation Systems
+      </div>
+
+      <div>
+        Layout based on <a href=
+        "http://www.oswd.org/design/preview/id/3365">"Three
+        Quarters"</a> by "SimplyGold"
+      </div>
+    </div>
+  </div>
+</body>
+</html>

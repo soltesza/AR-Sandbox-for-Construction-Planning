@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Tools/Assign - SUMO - Simulation of Urban Mobility</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../sumo.css">
+  <link rel="license" href=
+  "http://creativecommons.org/licenses/by-sa/3.0/">
+</head>
+
+<body id="bmission">
+  <div id="container">
+    <div id="logo" style="text-align:left">
+      <img src="../logo.png" width="374" height="128"
+      alt="SUMO-Simulation of Urban Mobility" style=
+      "float:left; margin-left:10px; margin-right:20px;">
+      <div id="logo_text1">&nbsp;</div>
+      <div id="logo_text2">&nbsp;</div>
+    </div>
+
+    <div id="subsMenu">
+      <ul>
+        <li class="sub"><a href=
+        "http://sumo.dlr.de/">Home</a></li>
+
+        <li class="sub"><a href="../Downloads.html">Download</a></li>
+
+        <li class="sub"><a href="../index.html">Documentation</a></li>
+
+        <li class="sub"><a href=
+        "http://sumo.dlr.de/wiki/">Wiki</a></li>
+
+        <li class="sub"><a href=
+        "https://github.com/DLR-TS/sumo/issues">Issue Tracker</a></li>
+
+        <li class="sub"><a href="../Contact.html">Contact</a></li>
+
+        <li class="sub"><a href=
+        "https://github.com/DLR-TS/sumo">GitHub Project</a></li>
+      </ul>
+    </div>
+
+    <div id="nav">
+      <div id="step1">
+        <h3>User</h3>
+        <ul>
+        <!-- nav begins --> <li>Introduction</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Sumo_at_a_Glance.html">The traffic simulation SUMO</a></li>
+</ul></li>
+  <li>Basic Usage</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Basics/Notation.html">Notation in this Documentation</a></li>
+  <li><a href="../Basics/Basic_Computer_Skills.html">Needed, basic Computer Skills</a></li>
+  <li><a href="../Installing.html">Installing SUMO</a></li>
+  <li><a href="../Basics/Using_the_Command_Line_Applications.html">Using SUMO Command Line Applications</a></li>
+  <li><a href="../Tutorials.html">Tutorials</a></li>
+  <li><a href="../XMLValidation.html">Validating application inputs</a></li>
+</ul></li>
+  <li>Network Building</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Networks/SUMO_Road_Networks.html">SUMO Road Networks</a></li>
+  <li><a href="../Networks/Abstract_Network_Generation.html">Abstract networks generation</a></li>
+  <li><a href="../NETCONVERT.html">NETCONVERT</a></li>
+<li style="list-style: none; display: inline"><ul>
+   <li><a href="../Networks/Building_Networks_from_own_XML-descriptions.html">Defining own networks using XML</a></li>
+   <li><a href="../Networks/Import.html">Importing non-SUMO networks</a></li>
+<li style="list-style: none; display: inline"><ul>
+    <li><a href="../Networks/Import/OpenStreetMap.html">from OpenStreetMap</a></li>
+<li style="list-style: none; display: inline"><ul>
+     <li><a href="../Networks/Import/OpenStreetMap.html#3-click_scenario_generation">3-Click Scenario Generator</a></li>
+</ul></li>
+    <li><a href="../Networks/Import/VISUM.html">from VISUM</a></li>
+    <li><a href="../Networks/Import/Vissim.html">from Vissim</a></li>
+    <li><a href="../Networks/Import/OpenDRIVE.html">from OpenDRIVE</a></li>
+    <li><a href="../Networks/Import/MATsim.html">from MATsim</a></li>
+    <li><a href="../Networks/Import/ArcView.html">from ArcView (shapefiles)</a></li>
+    <li><a href="../Networks/Import/DlrNavteq.html">from DlrNavTeq</a></li>
+    <li><a href="../Networks/Import/RoboCup.html">from Robocup Simulation League</a></li>
+</ul></li>
+   <li><a href="../Networks/Import/SUMO_Road_Networks.html">Importing SUMO networks</a></li>
+   <li><a href="../Simulation/Motorways.html#Building_a_network_for_motorway_simulation">Building networks for motorway simulation</a></li>
+   <li><a href="../Simulation/Pedestrians.html#Building_a_network_for_pedestrian_simulation">Building networks for pedestrian simulation</a></li>
+   <li><a href="../Networks/Further_Options.html">Further NETCONVERT options</a></li>
+   <li><a href="../Networks/Further_Outputs.html">Additional output</a></li>
+</ul></li>
+  <li><a href="../NETEDIT.html">Creating and modifying networks with NETEDIT</a></li>
+  <li><a href="../Networks/Elevation.html">Including elevation data</a></li>
+  <li><a href="../Geo-Coordinates.html">Geo-Coordinates</a></li>
+</ul></li>
+  <li>Demand Modelling</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Demand/Introduction_to_demand_modelling_in_SUMO.html">Introduction to SUMO Demand Modelling</a></li>
+  <li><a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html">Definition of Vehicles, Vehicle Types, and Routes</a></li>
+  <li><a href="../Simulation/Public_Transport.html">Simulation of public transport</a></li>
+  <li><a href="../Specification/Persons.html">Simulation of individual persons and trip chains</a></li>
+  <li><a href="../Specification/Logistics.html">Simulation of logistics</a></li>
+  <li><a href="../Demand/Shortest_or_Optimal_Path_Routing.html">Shortest or Optimal Path Routing</a></li>
+  <li><a href="../IntermodalRouting.html">Intermodal Routing</a></li>
+  <li><a href="../Demand/Automatic_Routing_.html">Routing in the Simulation</a></li>
+  <li><a href="../Demand/Dynamic_User_Assignment.html">Computing Dynamic User Assignment</a></li>
+  <li><a href="../Simulation/Pedestrians.html#Generating_pedestrian_demand">Generating pedestrian traffic demand</a></li>
+  <li><a href="../Tools/Misc.html#createVehTypeDistributions.py">Generate a vehicle type distribution to model the fleet</a></li>
+</ul></li>
+  <li>Data sources for demand generation</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Demand/Importing_O/D_Matrices.html">Importing O/D Matrices</a></li>
+<li style="list-style: none; display: inline"><ul>
+   <li><a href="../Demand/Further_Ways_to_import_VISUM_Demand_Definitions.html">Other VISUM Demand Importers</a></li>
+   <li><a href="../Demand/Further_Ways_to_import_Vissim_Demand_Definitions.html">Other Vissim Demand Importers</a></li>
+</ul></li>
+  <li><a href="../Demand/Routes_from_Observation_Points.html">Routes from Observation Points</a></li>
+  <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
+  <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
+  <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
+</ul></li>
+  <li>Simulation</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Basic_Definition.html">Basic Definition</a></li>
+  <li><a href="../Simulation/Output.html">Simulation output</a></li>
+  <li><a href="../TraCI.html">TraCI (On-line Interaction)</a></li>
+  <li><a href="../Simulation/SaveAndLoad.html">Saving and Loading Simulation State</a></li>
+</ul></li>
+  <li> Traffic Management and Other Structures </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Traffic_Lights.html">Traffic Lights</a></li>
+  <li><a href="../Simulation/Public_Transport.html">Public Transport</a></li>
+  <li><a href="../Simulation/Variable_Speed_Signs.html">Variable Speed Signs</a></li>
+  <li><a href="../Simulation/Rerouter.html">Rerouter / Alternative Route Signage</a></li>
+  <li><a href="../Simulation/Vaporizer.html">Vaporizer</a></li>
+  <li><a href="../Simulation/Calibrator.html">Dynamic calibration of flow and speed</a></li>
+  <li><a href="../Simulation/ParkingArea.html">Parking areas</a></li>
+</ul></li>
+  <li> Traffic Modes </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Pedestrians.html">Pedestrian simulation</a></li>
+  <li><a href="../Simulation/Bicycles.html">Bicycle simulation</a></li>
+  <li><a href="../Simulation/Railways.html">Railway simulation</a></li>
+  <li><a href="../Simulation/Waterways.html">Waterway simulation</a></li>
+</ul></li>
+  <li> Additional Features </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Models/Emissions.html">Emissions</a></li>
+  <li><a href="../Models/Electric.html">Electric Vehicles</a></li>
+  <li><a href="../Specification/Logistics.html">Logistics</a></li>
+  <li><a href="../Simulation/GenericParameters.html">Generic Parameters</a></li>
+  <li><a href="../Simulation/Shapes.html">Shapes Visualisation</a></li>
+  <li><a href="../Simulation/Bluetooth.html">Wireless Device Detection</a></li>
+  <li><a href="../Simulation/Emergency.html">Emergency Vehicles</a></li>
+</ul></li>
+  <li> Model details </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/VehicleSpeed.html">Vehicle speed</a></li>
+  <li><a href="../Simulation/VehicleInsertion.html">Vehicle insertion</a></li>
+  <li><a href="../Simulation/VehiclePermissions.html">Vehicle permissions (access restrictions)</a></li>
+  <li><a href="../Simulation/Intersections.html">Intersection dynamics</a></li>
+  <li><a href="../Simulation/Randomness.html">Randomness</a></li>
+  <li><a href="../Simulation/Routing.html">Routing and Re-routing</a></li>
+  <li><a href="../Simulation/SublaneModel.html">Sublane Model</a></li>
+  <li><a href="../Simulation/OppositeDirectionDriving.html">Opposite Direction Driving</a></li>
+  <li><a href="../Simulation/Safety.html">Safety</a></li>
+  <li><a href="../Simulation/Meso.html">Mesoscopic model</a></li>
+</ul></li>
+  <li> Common Problems </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Why_Vehicles_are_teleporting.html">Why Vehicles are teleporting</a></li>
+  <li><a href="../FAQ.html#The_simulation_has_lots_of_jams.2Fdeadlocks._What_can_I_do.3F">Unexpected jamming</a></li>
+  <li><a href="../FAQ.html#Why_do_the_vehicles_perform_unexpected_lane-changing_maneuvers.3F">Unexpected lane-changing maneuvers?</a></li>
+  <li><a href="../FAQ.html#How_do_I_get_high_flows.2Fvehicle_densities.3F">How to get high flows?</a></li>
+</ul></li>
+  <li><a href="../Tools/Main.html">Additional Tools</a></li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">osmWebWizard</a></li>
+  <li><a href="../TraCI/Interfacing_TraCI_from_Python.html">TraCI/Interfacing_TraCI_from_Python</a></li>
+  <li><a href="../Tools/Sumolib.html">Reading SUMO networks and outputs with Python (sumolib)</a></li>
+  <li><a href="../Tools/Xml.html">Tools for converting SUMO outputs to CSV/Spreadsheet</a></li>
+  <li><a href="../Tools/TraceExporter.html">Exporting mobility Traces (traceExporter)</a></li>
+  <li><a href="../Tools/Net.html#netdiff.py">Determining the differences between two networks</a></li>
+  <li><a href="../Tools/Visualization.html">Tools/Visualization</a></li>
+  <li><a href="../Tools/Main.html">Tool index</a></li>
+</ul></li>
+  <li>Theory</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Theory/Traffic_Simulations.html">Traffic simulations in general</a></li>
+</ul></li>
+  <li>Application Manuals</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../SUMO.html">SUMO</a></li>
+  <li><a href="../SUMO-GUI.html">SUMO-GUI</a></li>
+  <li><a href="../NETCONVERT.html">NETCONVERT</a></li>
+  <li><a href="../NETEDIT.html">NETEDIT</a></li>
+  <li><a href="../NETGENERATE.html">NETGENERATE</a></li>
+  <li><a href="../OD2TRIPS.html">OD2TRIPS</a></li>
+  <li><a href="../DUAROUTER.html">DUAROUTER</a></li>
+  <li><a href="../JTRROUTER.html">JTRROUTER</a></li>
+  <li><a href="../DFROUTER.html">DFROUTER</a></li>
+  <li><a href="../MAROUTER.html">MAROUTER</a></li>
+  <li><a href="../POLYCONVERT.html">POLYCONVERT</a></li>
+  <li><a href="../ACTIVITYGEN.html">ACTIVITYGEN</a></li>
+  <li><a href="../Tools/Emissions.html">EMISSIONSMAP</a></li>
+  <li><a href="../Tools/Emissions.html">EMISSIONSDRIVINGCYCLE</a></li>
+</ul></li>
+  <li>Appendices</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../ChangeLog.html">ChangeLog</a></li>
+  <li><a href="../Other/Glossary.html">Glossary</a></li>
+  <li><a href="../FAQ.html">FAQ</a></li>
+  <li><a href="../Tools/Main.html">Additional Tools</a></li>
+  <li><a href="../Other/File_Extensions.html">Known File Extensions</a></li>
+</ul></li>
+<!-- nav ends -->
+        </ul>
+      </div>
+
+      <div id="step2">
+        <h3>Further Resources</h3>
+
+        <ul>
+          <li><a href="../Data/Networks.html">Example
+          Networks</a></li>
+
+          <li><a href="../Data/Scenarios.html">Example
+          Scenarios</a></li>
+
+          <li><a href="../Data/Traffic_Data.html">Traffic
+          Data</a></li>
+        </ul>
+      </div>
+
+      <div id="step3">
+        <h3>Developer</h3>
+
+        <ul>
+          <li><a href="../Developer/Main.html">Developer Docs</a></li>
+
+          <li><a href="http://sumo.dlr.de/daily/">Daily Tests
+          Status</a></li>
+
+          <li><a href="../../doxygen/">Doxygen Documentation</a></li>
+
+          <li>Python Modules Documentation</li>
+
+          <li style="list-style: none; display: inline">
+            <ul>
+              <li><a href="../../pydoc/traci.html">traci</a></li>
+
+              <li><a href="../../pydoc/sumolib.html">sumolib</a></li>
+            </ul>
+          </li>
+
+          <li>Java Modules Documentation</li>
+
+          <li style="list-style: none; display: inline">
+            <ul>
+              <li><a href="../../javadoc/traci4j/">TraCI4J</a></li>
+
+              <li><a href="../../javadoc/traas/">TraaS</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <a id="top"></a>
+
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Tools/Assign</h1>
+						<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">generated on 2018-12-18 00:19:50.258471 from <a href="http://sumo.dlr.de/wiki/Tools/Assign">the wiki page for Tools/Assign</a> for SUMO 1.1.0</div>
+								<div id="contentSub"></div>
+												
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Assignment_Tools"><span class="tocnumber">1</span> <span class="toctext">Assignment Tools</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#dua-iterate.py"><span class="tocnumber">1.1</span> <span class="toctext">dua-iterate.py</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#one-shot.py"><span class="tocnumber">1.2</span> <span class="toctext">one-shot.py</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Assignment.py"><span class="tocnumber">1.3</span> <span class="toctext">Assignment.py</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#networkStatistics.py"><span class="tocnumber">1.4</span> <span class="toctext">networkStatistics.py</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#matrixDailyToHourly.py"><span class="tocnumber">1.5</span> <span class="toctext">matrixDailyToHourly.py</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#costFunctionChecker.py"><span class="tocnumber">1.6</span> <span class="toctext">costFunctionChecker.py</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#addTaz.py"><span class="tocnumber">1.7</span> <span class="toctext">addTaz.py</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Assignment_Tools">Assignment Tools</span></h1>
+<h2><span class="mw-headline" id="dua-iterate.py">dua-iterate.py</span></h2>
+<p>"dua-iterate.py" helps you to perform the computation of a dynamic user assignment (DUA). It works by alternatingly running the simulation to discover travel times and then assigning alternative routes to some of the vehicles according to these travel times. This is repeated for a defined number of iteration steps.
+At least two files have to be given as input the script: a SUMO-network and a set of trip definitions. A stochastic user-equilibrium (UE)traffic state is not guaranteed after the assignment. Increasing the number of iteration steps increases the likelyhood of convergence to equilibrium.
+</p><p>Within each iteration step, the script generates a configuration file for the <a href="../DUAROUTER.html" title="DUAROUTER">DUAROUTER</a> application and starts it with this configuration file. Then, a configuration file for <a href="../SUMO.html" title="SUMO">SUMO</a> is built and <a href="../SUMO.html" title="SUMO">SUMO</a> is started. Both configuration files are competely defined within the script itself. As default, for each time step, SUMO will generate three dump files with edge-dumps aggregated over 150, 300, and 900s, a summary information as well as a trip information output. The names of these outputs are numbered according to the iteration step. If you want to change the outputs, you also have to take a look into the script, but you should not disable the edge-based dump for aggregation over 900s, because this is read by the <a href="../DUAROUTER.html" title="DUAROUTER">DUAROUTER</a> in the next iteration steps in order to compute the DUA.
+</p><p>For further options to the script look either at the source code or start it with the "--help" option.
+</p>
+<pre>dua-iterate.py -n &lt;PATH_TO_SUMO_NET&gt; -t &lt;PATH_TO_TRIPS&gt;
+</pre>
+<p>Furthermore a calibrator option is available in the script to call the Cadyts calibration tool, developed by Gunnar Flötteröd
+at EPFL, Switzerland. With this option, route choices will be adjusted according to given link counts. The validation work of the calibration between SUMO and Cadyts is work in progress.
+</p>
+<h2><span class="mw-headline" id="one-shot.py">one-shot.py</span></h2>
+<p>The one-shot.py provides a variant of the dynamic user assignment. The assignment method is the same one which SUMO and the dua-iterate.py use. Given trips will be assigned to respective fastest routes according to their departure times and a given travel-time updating interval. Different travel-time updating intervals can be defined by users, such as 900, i.e. link travel times will be updated every 900 sec. If the travel-time updating interval is set to -1, link travel times will not updated and link trave times at free-flow speeds are used for all trips.
+</p><p>A stochastic user-equilibrium traffic state will not achieved with the use of this script.
+</p><p><br />
+An examplary execution command is shown below.
+</p>
+<pre> one-shot.py -f &lt;travel-time updating interval&gt; -n &lt;network file&gt; -t &lt;trip file&gt;
+ 
+ where -f travel-time updating interval (sec); -1 means no travel-time updating (default: -1,1800,300,15)
+       -n network file name and the respective path
+       -t trip file name and the respective path
+</pre>
+<p>Additional setting, such as outputs of summary and trip-information as well as begin time, could be made by adding respective options which can be found in the script.
+</p>
+<h2><span class="mw-headline" id="Assignment.py">Assignment.py</span></h2>
+<p>In comparison to the dua-iterate.py and the one-shot.py the Assignment.py is applied to execute a macroscopic traffic assignment. Three types of  macroscopic traffic assignments are available here: an incremental assignment, a stochastic user equilibrium assignment (SUE) based on the c-logit model by Cacessta (1996) and a logit- based SUE model based on the utility function by Lohse. The c-logit model is set as default. In addition, a k-shortest-paths algorithm has also been implemented in these two SUE models with a default value of 8. 
+</p><p><br />
+Furthermore the applied route searching algorithms are based on Dijkstra. Three variants are available:
+</p>
+<ul><li> <i>Dijkstra plain</i>: travel time penalties for turning movements are <b>not</b> considered.</li>
+<li> <i>Dijkstra extend</i>: travel time penalties for turning movements are considered.</li>
+<li> <i>Dijkstra boost</i>: it is used to speed up route searching and travel time penalties for turning movements are considered here.</li></ul>
+<p><br />
+In oder to use this script the other scripts are required, i.e. elements.py, network.py, dijkstra.py, inputs.py, outputs.py, assign.py as well as tables.py. These scripts should locate in the same directory with the Assignment.py. Each of these scripts is briefly described below.
+</p><p><b>elements.py</b>
+</p><p>This script is to define the classes and functions for
+</p>
+<ul><li> reading network geometric, </li>
+<li> calculating link characteristics, such as capacity, travel time and link cost function,</li>
+<li> recording vehicular and path information, and </li>
+<li> conducting statistic tests.</li></ul>
+<p><b>network.py</b>
+</p><p>This script is to retrive the network data, the district data and the vehicle data, generated by SUMO, from the respective XML files. Besides, the class 'Net' is also definded here.
+</p><p><b>dijkstra.py</b>
+</p><p>The Dijkstra algorithm is used for searching the respective shortest paths and is based on the script from David Eppstein, UC Irvine. Moreover, this script is to find the shortest path from the given origin 'start' to the other nodes in the investigated network. The link information about the shortest paths and the corresponding travel times will be stored in the lists P and D respectively. Three variants are available: Dijkstra plain, Dijkstra extend as well as Dijkstra boost.
+</p><p><b>inputs.py</b>
+</p><p>This script is to retrieve the given incremntal assignment parameters, OD districts and the defined matrix from input files. Moreover, the link travel time for district connectors will be estimated.
+</p><p><b>outputs.py</b>
+</p><p>This script is for generating the outputs from the choosed traffic assignment.
+</p><p><b>assign.py</b>
+</p><p>This script is for executing traffic assignment according to the user-defined assignment model. The above-mentioned incremental  assignment model, the C-Logit assignment model and the logit assignment model based on the utiility function by Lohse are included in this script.
+</p><p><b>tables.py</b>
+</p><p>This file defines global tables used to:
+</p>
+<ul><li> define the parameters in link cost BPR-functions, proposed by the Bureau of Public Roads (BPR). Link travel times are then calculated based the defined functions.</li>
+<li> define the capacity and the respective cost function for each link</li>
+<li> conduct significance tests</li></ul>
+<p><br />
+The following exemplary command is to show how to exeute an assignment with the use of the Assignment.py:
+</p>
+<pre> Assignment.py -e &lt;assignment method&gt; -i 10 -d &lt;districts file&gt; -m &lt;matrix file&gt; -n &lt;network file&gt; -s &lt;traffic singal files&gt; -+ &lt;Dijkstra type&gt;
+  
+ where: -e: the assignemnt method: incremental, lohse, clogit (default: clogit)
+        -i: the number of maximal iterations for the SUE assignments; the number of iterations for an incremental assignment 
+            (default: 20)
+        -d: district file name and the respective path
+        -m: matrix file name and the respective path
+        -n: network file name and the respective path
+        -s: additional traffic signal timing files (optional)
+        -+: the used Dijkstra-method: plain, extend, boost (default: boost)
+  
+  
+ Changes of parameters setting regarding convergence criteria are possible with the use of respective options in the script.
+</pre>
+<p><br />
+In addition, the script <b>run.py</b> is to run assignment tests with different assignment methods.
+</p>
+<h2><span class="mw-headline" id="networkStatistics.py">networkStatistics.py</span></h2>
+<p>This script is to calculate the global performance indices according to <b>SUMO-based</b> simulation results. The calculation functions are directly defined in this script. Basis statistics are delivered, such as:
+</p>
+<ul><li> average travel time     (s)</li>
+<li> average travel length   (m)</li>
+<li> average travel speed    (m/s)</li>
+<li> average departure delay (s)</li>
+<li> average waiting time    (s)</li></ul>
+<p><br />
+Besides, this script is also to execute a significance test for evaluating the results from different assignment methods.The t test and the Kruskal-Wallis test are available in this script. If not specified, the Kruskal-Wallis test will be applied with the assumption that data are not normally distributed.
+</p><p>In order to exeute this script, the other two scripts, i.e. statisticsElements.py and tables.py, are required. They all should be in the same directory. 
+</p><p>In the statisticsElements.py, classes regarding vehicles, their performance measures, t values, H values as well as functions for outputs are defined. The chi-square table and the t table are defined in the tables.py.
+</p><p>An exemplary command is shown below.
+</p>
+<pre> networkStatistics.py -t &lt;tripinfo files&gt; -o &lt;output file&gt; -e 
+ 
+ where -t: name of output files containing vehicle information, generated by SUMO
+       -0: define the output file name
+       -e: set true for applying the t test (default: false)
+       -k: set true for applying the Kruskal-Wallis test (default: false)
+</pre>
+<p><br />
+</p>
+<h2><span class="mw-headline" id="matrixDailyToHourly.py">matrixDailyToHourly.py</span></h2>
+<p>This script is to generate hourly matrices from a VISUM daily matrix. The taffic demand of the traffic zones, which have the same connection links, will be integrated. The exemplary command is indicated below.
+</p>
+<pre> matrixDailyToHourly.py -m &lt;matrix file&gt; -z &lt;district file&gt; -t &lt;flow time-series file&gt; -o &lt;output directory&gt;
+ 
+ where -m: matrix file name
+       -z: district file name
+       -t: name of the file containing traffic flow time series (optional); If not specified, the defined daily matrix will be 
+           regularly divided into 24 hours.
+       -o: output directoy name and the respective path
+</pre>
+<h2><span class="mw-headline" id="costFunctionChecker.py">costFunctionChecker.py</span></h2>
+<p>Run duarouter repeatedly and simulate weight changes via a cost function. (to be continued)
+</p><p>Still under construction!
+</p><p><br />
+</p>
+<h2><span class="mw-headline" id="addTaz.py">addTaz.py</span></h2>
+<p>This script is to add the information of traffic analysis zones, i.e. origin and destination zone, in a given route file. Such information is required in a given route file when applying the calibrator option in the script dua-iterate.py. A trip file, containing traffic zones information, is required when executing this script.
+</p><p>With the use of the following command, required traffic zones information can be added in a given route file.
+</p>
+<pre> addTaz.py -r &lt;route file&gt; -t &lt;trip file&gt;
+</pre>
+<!-- 
+NewPP limit report
+CPU time usage: 0.016 seconds
+Real time usage: 0.015 seconds
+Preprocessor visited node count: 30/1000000
+Preprocessor generated node count: 36/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 - -total
+-->
+
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:249-0!*!0!!en!*!* and timestamp 20181217081638 and revision id 10521
+ -->
+</div>									</div><hr/><div id="lastmod">This page was last modified on 5 January 2018, at 14:50.</div> </div>
+
+    <div id="footer">
+      <div>
+        (c) 2011-2017, German Aerospace Center, Institute of
+        Transportation Systems
+      </div>
+
+      <div>
+        Layout based on <a href=
+        "http://www.oswd.org/design/preview/id/3365">"Three
+        Quarters"</a> by "SimplyGold"
+      </div>
+    </div>
+  </div>
+</body>
+</html>

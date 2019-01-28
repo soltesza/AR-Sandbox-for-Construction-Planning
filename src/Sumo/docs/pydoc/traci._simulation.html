@@ -1,0 +1,380 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module traci._simulation</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="traci.html"><font color="#ffffff">traci</font></a>._simulation</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/delphi/gcc/sumo/tools/traci/_simulation.py">/home/delphi/gcc/sumo/tools/traci/_simulation.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;-*-&nbsp;coding:&nbsp;utf-8&nbsp;-*-<br>
+#&nbsp;Eclipse&nbsp;SUMO,&nbsp;Simulation&nbsp;of&nbsp;Urban&nbsp;MObility;&nbsp;see&nbsp;https://eclipse.org/sumo<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;2011-2018&nbsp;German&nbsp;Aerospace&nbsp;Center&nbsp;(DLR)&nbsp;and&nbsp;others.<br>
+#&nbsp;This&nbsp;program&nbsp;and&nbsp;the&nbsp;accompanying&nbsp;materials<br>
+#&nbsp;are&nbsp;made&nbsp;available&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;Eclipse&nbsp;Public&nbsp;License&nbsp;v2.0<br>
+#&nbsp;which&nbsp;accompanies&nbsp;this&nbsp;distribution,&nbsp;and&nbsp;is&nbsp;available&nbsp;at<br>
+#&nbsp;<a href="http://www.eclipse.org/legal/epl-v20.html">http://www.eclipse.org/legal/epl-v20.html</a><br>
+#&nbsp;SPDX-License-Identifier:&nbsp;EPL-2.0</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="collections.html">collections</a><br>
+</td><td width="25%" valign=top><a href="struct.html">struct</a><br>
+</td><td width="25%" valign=top><a href="traci.constants.html">traci.constants</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#tuple">__builtin__.tuple</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="traci._simulation.html#Stage">Stage</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="traci.domain.html#Domain">traci.domain.Domain</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="traci._simulation.html#SimulationDomain">SimulationDomain</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SimulationDomain">class <strong>SimulationDomain</strong></a>(<a href="traci.domain.html#Domain">traci.domain.Domain</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="SimulationDomain-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SimulationDomain-clearPending"><strong>clearPending</strong></a>(self, routeID<font color="#909090">=''</font>)</dt></dl>
+
+<dl><dt><a name="SimulationDomain-convert2D"><strong>convert2D</strong></a>(self, edgeID, pos, laneIndex<font color="#909090">=0</font>, toGeo<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="SimulationDomain-convert3D"><strong>convert3D</strong></a>(self, edgeID, pos, laneIndex<font color="#909090">=0</font>, toGeo<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="SimulationDomain-convertGeo"><strong>convertGeo</strong></a>(self, x, y, fromGeo<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="SimulationDomain-convertRoad"><strong>convertRoad</strong></a>(self, x, y, isGeo<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="SimulationDomain-findIntermodalRoute"><strong>findIntermodalRoute</strong></a>(self, fromEdge, toEdge, modes<font color="#909090">=''</font>, depart<font color="#909090">=-1.0</font>, routingMode<font color="#909090">=0</font>, speed<font color="#909090">=-1.0</font>, walkFactor<font color="#909090">=-1.0</font>, departPos<font color="#909090">=0.0</font>, arrivalPos<font color="#909090">=-1073741824</font>, departPosLat<font color="#909090">=0.0</font>, pType<font color="#909090">=''</font>, vType<font color="#909090">=''</font>, destStop<font color="#909090">=''</font>)</dt></dl>
+
+<dl><dt><a name="SimulationDomain-findRoute"><strong>findRoute</strong></a>(self, fromEdge, toEdge, vType<font color="#909090">=''</font>, depart<font color="#909090">=-1.0</font>, routingMode<font color="#909090">=0</font>)</dt></dl>
+
+<dl><dt><a name="SimulationDomain-getArrivedIDList"><strong>getArrivedIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getArrivedIDList">getArrivedIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;ids&nbsp;of&nbsp;vehicles&nbsp;which&nbsp;arrived&nbsp;(have&nbsp;reached&nbsp;their&nbsp;destination&nbsp;and&nbsp;are&nbsp;removed&nbsp;from&nbsp;the&nbsp;road<br>
+network)&nbsp;in&nbsp;this&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getArrivedNumber"><strong>getArrivedNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getArrivedNumber">getArrivedNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;vehicles&nbsp;which&nbsp;arrived&nbsp;(have&nbsp;reached&nbsp;their&nbsp;destination&nbsp;and&nbsp;are&nbsp;removed&nbsp;from&nbsp;the&nbsp;road<br>
+network)&nbsp;in&nbsp;this&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getBusStopWaiting"><strong>getBusStopWaiting</strong></a>(self, stopID)</dt><dd><tt><a href="#SimulationDomain-getBusStopWaiting">getBusStopWaiting</a>()&nbsp;-&gt;&nbsp;integer<br>
+Get&nbsp;the&nbsp;total&nbsp;number&nbsp;of&nbsp;waiting&nbsp;persons&nbsp;at&nbsp;the&nbsp;named&nbsp;bus&nbsp;stop.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getCollidingVehiclesIDList"><strong>getCollidingVehiclesIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getCollidingVehiclesIDList">getCollidingVehiclesIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+Return&nbsp;Ids&nbsp;of&nbsp;vehicles&nbsp;involved&nbsp;in&nbsp;a&nbsp;collision&nbsp;(typically&nbsp;2&nbsp;per<br>
+collision).</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getCollidingVehiclesNumber"><strong>getCollidingVehiclesNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getCollidingVehiclesNumber">getCollidingVehiclesNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+Return&nbsp;number&nbsp;of&nbsp;vehicles&nbsp;involved&nbsp;in&nbsp;a&nbsp;collision&nbsp;(typically&nbsp;2&nbsp;per<br>
+collision).</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getCurrentTime"><strong>getCurrentTime</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getCurrentTime">getCurrentTime</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;current&nbsp;simulation&nbsp;time&nbsp;in&nbsp;ms.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getDeltaT"><strong>getDeltaT</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getDeltaT">getDeltaT</a>()&nbsp;-&gt;&nbsp;double<br>
+Returns&nbsp;the&nbsp;length&nbsp;of&nbsp;one&nbsp;simulation&nbsp;step&nbsp;in&nbsp;seconds</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getDepartedIDList"><strong>getDepartedIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getDepartedIDList">getDepartedIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;ids&nbsp;of&nbsp;vehicles&nbsp;which&nbsp;departed&nbsp;(were&nbsp;inserted&nbsp;into&nbsp;the&nbsp;road&nbsp;network)&nbsp;in&nbsp;this&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getDepartedNumber"><strong>getDepartedNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getDepartedNumber">getDepartedNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;vehicles&nbsp;which&nbsp;departed&nbsp;(were&nbsp;inserted&nbsp;into&nbsp;the&nbsp;road&nbsp;network)&nbsp;in&nbsp;this&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getDistance2D"><strong>getDistance2D</strong></a>(self, x1, y1, x2, y2, isGeo<font color="#909090">=False</font>, isDriving<font color="#909090">=False</font>)</dt><dd><tt><a href="#SimulationDomain-getDistance2D">getDistance2D</a>(double,&nbsp;double,&nbsp;double,&nbsp;double,&nbsp;boolean,&nbsp;boolean)&nbsp;-&gt;&nbsp;double<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;distance&nbsp;between&nbsp;the&nbsp;two&nbsp;coordinate&nbsp;pairs&nbsp;(x1,y1)&nbsp;and&nbsp;(x2,y2)<br>
+&nbsp;<br>
+If&nbsp;isGeo=True,&nbsp;coordinates&nbsp;are&nbsp;interpreted&nbsp;as&nbsp;longitude&nbsp;and&nbsp;latitude&nbsp;rather<br>
+than&nbsp;cartesian&nbsp;coordinates&nbsp;in&nbsp;meters.<br>
+&nbsp;<br>
+If&nbsp;isDriving=True,&nbsp;the&nbsp;coordinates&nbsp;are&nbsp;mapped&nbsp;onto&nbsp;the&nbsp;road&nbsp;network&nbsp;and&nbsp;the<br>
+length&nbsp;of&nbsp;the&nbsp;shortest&nbsp;route&nbsp;in&nbsp;the&nbsp;network&nbsp;is&nbsp;returned.&nbsp;Otherwise,&nbsp;the<br>
+straight-line&nbsp;distance&nbsp;is&nbsp;returned.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getDistanceRoad"><strong>getDistanceRoad</strong></a>(self, edgeID1, pos1, edgeID2, pos2, isDriving<font color="#909090">=False</font>)</dt><dd><tt><a href="#SimulationDomain-getDistanceRoad">getDistanceRoad</a>(string,&nbsp;double,&nbsp;string,&nbsp;double,&nbsp;boolean)&nbsp;-&gt;&nbsp;double<br>
+&nbsp;<br>
+Reads&nbsp;two&nbsp;positions&nbsp;on&nbsp;the&nbsp;road&nbsp;network&nbsp;and&nbsp;an&nbsp;indicator&nbsp;whether&nbsp;the&nbsp;air&nbsp;or&nbsp;the&nbsp;driving&nbsp;distance&nbsp;shall&nbsp;be<br>
+computed.&nbsp;Returns&nbsp;the&nbsp;according&nbsp;distance.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getEmergencyStoppingVehiclesIDList"><strong>getEmergencyStoppingVehiclesIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getEmergencyStoppingVehiclesIDList">getEmergencyStoppingVehiclesIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+Return&nbsp;Ids&nbsp;of&nbsp;vehicles&nbsp;that&nbsp;peformed&nbsp;an&nbsp;emergency&nbsp;stop&nbsp;in&nbsp;the&nbsp;last&nbsp;step</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getEmergencyStoppingVehiclesNumber"><strong>getEmergencyStoppingVehiclesNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getEmergencyStoppingVehiclesNumber">getEmergencyStoppingVehiclesNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+Return&nbsp;number&nbsp;of&nbsp;vehicles&nbsp;that&nbsp;performed&nbsp;an&nbsp;emergency&nbsp;stop&nbsp;in&nbsp;the&nbsp;last&nbsp;step</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getEndingTeleportIDList"><strong>getEndingTeleportIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getEndingTeleportIDList">getEndingTeleportIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;ids&nbsp;of&nbsp;vehicles&nbsp;which&nbsp;ended&nbsp;to&nbsp;be&nbsp;teleported&nbsp;in&nbsp;this&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getEndingTeleportNumber"><strong>getEndingTeleportNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getEndingTeleportNumber">getEndingTeleportNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;vehicles&nbsp;which&nbsp;ended&nbsp;to&nbsp;be&nbsp;teleported&nbsp;in&nbsp;this&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getLoadedIDList"><strong>getLoadedIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getLoadedIDList">getLoadedIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;ids&nbsp;of&nbsp;vehicles&nbsp;which&nbsp;were&nbsp;loaded&nbsp;in&nbsp;this&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getLoadedNumber"><strong>getLoadedNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getLoadedNumber">getLoadedNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;vehicles&nbsp;which&nbsp;were&nbsp;loaded&nbsp;in&nbsp;this&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getMinExpectedNumber"><strong>getMinExpectedNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getMinExpectedNumber">getMinExpectedNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;vehicles&nbsp;which&nbsp;are&nbsp;in&nbsp;the&nbsp;net&nbsp;plus&nbsp;the<br>
+ones&nbsp;still&nbsp;waiting&nbsp;to&nbsp;start.&nbsp;This&nbsp;number&nbsp;may&nbsp;be&nbsp;smaller&nbsp;than<br>
+the&nbsp;actual&nbsp;number&nbsp;of&nbsp;vehicles&nbsp;still&nbsp;to&nbsp;come&nbsp;because&nbsp;of&nbsp;delayed<br>
+route&nbsp;file&nbsp;parsing.&nbsp;If&nbsp;the&nbsp;number&nbsp;is&nbsp;0&nbsp;however,&nbsp;it&nbsp;is<br>
+guaranteed&nbsp;that&nbsp;all&nbsp;route&nbsp;files&nbsp;have&nbsp;been&nbsp;parsed&nbsp;completely<br>
+and&nbsp;all&nbsp;vehicles&nbsp;have&nbsp;left&nbsp;the&nbsp;network.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getNetBoundary"><strong>getNetBoundary</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getNetBoundary">getNetBoundary</a>()&nbsp;-&gt;&nbsp;((double,&nbsp;double),&nbsp;(double,&nbsp;double))<br>
+&nbsp;<br>
+The&nbsp;boundary&nbsp;box&nbsp;of&nbsp;the&nbsp;simulation&nbsp;network.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getParkingEndingVehiclesIDList"><strong>getParkingEndingVehiclesIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getParkingEndingVehiclesIDList">getParkingEndingVehiclesIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+&nbsp;<br>
+.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getParkingEndingVehiclesNumber"><strong>getParkingEndingVehiclesNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getParkingEndingVehiclesNumber">getParkingEndingVehiclesNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getParkingStartingVehiclesIDList"><strong>getParkingStartingVehiclesIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getParkingStartingVehiclesIDList">getParkingStartingVehiclesIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+&nbsp;<br>
+.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getParkingStartingVehiclesNumber"><strong>getParkingStartingVehiclesNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getParkingStartingVehiclesNumber">getParkingStartingVehiclesNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getStartingTeleportIDList"><strong>getStartingTeleportIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getStartingTeleportIDList">getStartingTeleportIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;ids&nbsp;of&nbsp;vehicles&nbsp;which&nbsp;started&nbsp;to&nbsp;teleport&nbsp;in&nbsp;this&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getStartingTeleportNumber"><strong>getStartingTeleportNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getStartingTeleportNumber">getStartingTeleportNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;vehicles&nbsp;which&nbsp;started&nbsp;to&nbsp;teleport&nbsp;in&nbsp;this&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getStopEndingVehiclesIDList"><strong>getStopEndingVehiclesIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getStopEndingVehiclesIDList">getStopEndingVehiclesIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+&nbsp;<br>
+.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getStopEndingVehiclesNumber"><strong>getStopEndingVehiclesNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getStopEndingVehiclesNumber">getStopEndingVehiclesNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getStopStartingVehiclesIDList"><strong>getStopStartingVehiclesIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getStopStartingVehiclesIDList">getStopStartingVehiclesIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+&nbsp;<br>
+.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getStopStartingVehiclesNumber"><strong>getStopStartingVehiclesNumber</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getStopStartingVehiclesNumber">getStopStartingVehiclesNumber</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getSubscriptionResults"><strong>getSubscriptionResults</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getSubscriptionResults">getSubscriptionResults</a>()&nbsp;-&gt;&nbsp;dict(integer:&nbsp;&lt;value_type&gt;)<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;subscription&nbsp;results&nbsp;for&nbsp;the&nbsp;last&nbsp;time&nbsp;step.<br>
+It&nbsp;is&nbsp;not&nbsp;possible&nbsp;to&nbsp;retrieve&nbsp;older&nbsp;subscription&nbsp;results&nbsp;than&nbsp;the&nbsp;ones<br>
+from&nbsp;the&nbsp;last&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getTime"><strong>getTime</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getTime">getTime</a>()&nbsp;-&gt;&nbsp;double<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;current&nbsp;simulation&nbsp;time&nbsp;in&nbsp;s.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-saveState"><strong>saveState</strong></a>(self, fileName)</dt></dl>
+
+<dl><dt><a name="SimulationDomain-step"><strong>step</strong></a>(self, time<font color="#909090">=0.0</font>)</dt><dd><tt><a href="#SimulationDomain-step">step</a>(double)&nbsp;-&gt;&nbsp;None<br>
+Make&nbsp;a&nbsp;simulation&nbsp;step&nbsp;and&nbsp;simulate&nbsp;up&nbsp;to&nbsp;the&nbsp;given&nbsp;sim&nbsp;time&nbsp;(in&nbsp;seconds).<br>
+If&nbsp;the&nbsp;given&nbsp;value&nbsp;is&nbsp;0&nbsp;or&nbsp;absent,&nbsp;exactly&nbsp;one&nbsp;step&nbsp;is&nbsp;performed.<br>
+Values&nbsp;smaller&nbsp;than&nbsp;or&nbsp;equal&nbsp;to&nbsp;the&nbsp;current&nbsp;sim&nbsp;time&nbsp;result&nbsp;in&nbsp;no&nbsp;action.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-subscribe"><strong>subscribe</strong></a>(self, varIDs<font color="#909090">=(116,)</font>, begin<font color="#909090">=0</font>, end<font color="#909090">=2147483647</font>)</dt><dd><tt><a href="#SimulationDomain-subscribe">subscribe</a>(list(integer),&nbsp;double,&nbsp;double)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Subscribe&nbsp;to&nbsp;one&nbsp;or&nbsp;more&nbsp;simulation&nbsp;values&nbsp;for&nbsp;the&nbsp;given&nbsp;interval.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="traci.domain.html#Domain">traci.domain.Domain</a>:<br>
+<dl><dt><a name="SimulationDomain-getAllContextSubscriptionResults"><strong>getAllContextSubscriptionResults</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SimulationDomain-getAllSubscriptionResults"><strong>getAllSubscriptionResults</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getAllSubscriptionResults">getAllSubscriptionResults</a>()&nbsp;-&gt;&nbsp;dict(string:&nbsp;dict(integer:&nbsp;&lt;value_type&gt;))<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;subscription&nbsp;results&nbsp;for&nbsp;the&nbsp;last&nbsp;time&nbsp;step&nbsp;and&nbsp;all&nbsp;objects&nbsp;of&nbsp;the&nbsp;domain.<br>
+It&nbsp;is&nbsp;not&nbsp;possible&nbsp;to&nbsp;retrieve&nbsp;older&nbsp;subscription&nbsp;results&nbsp;than&nbsp;the&nbsp;ones<br>
+from&nbsp;the&nbsp;last&nbsp;time&nbsp;step.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getContextSubscriptionResults"><strong>getContextSubscriptionResults</strong></a>(self, objectID)</dt></dl>
+
+<dl><dt><a name="SimulationDomain-getIDCount"><strong>getIDCount</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getIDCount">getIDCount</a>()&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;number&nbsp;of&nbsp;currently&nbsp;loaded&nbsp;objects.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getIDList"><strong>getIDList</strong></a>(self)</dt><dd><tt><a href="#SimulationDomain-getIDList">getIDList</a>()&nbsp;-&gt;&nbsp;list(string)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;objects&nbsp;in&nbsp;the&nbsp;network.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-getParameter"><strong>getParameter</strong></a>(self, objID, param)</dt><dd><tt><a href="#SimulationDomain-getParameter">getParameter</a>(string,&nbsp;string)&nbsp;-&gt;&nbsp;string<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;given&nbsp;parameter&nbsp;for&nbsp;the&nbsp;given&nbsp;objID</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-setParameter"><strong>setParameter</strong></a>(self, objID, param, value)</dt><dd><tt><a href="#SimulationDomain-setParameter">setParameter</a>(string,&nbsp;string,&nbsp;string)&nbsp;-&gt;&nbsp;string<br>
+&nbsp;<br>
+Sets&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;given&nbsp;parameter&nbsp;to&nbsp;value&nbsp;for&nbsp;the&nbsp;given&nbsp;objID</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-subscribeContext"><strong>subscribeContext</strong></a>(self, objectID, domain, dist, varIDs<font color="#909090">=None</font>, begin<font color="#909090">=-1073741824</font>, end<font color="#909090">=-1073741824</font>)</dt><dd><tt><a href="#SimulationDomain-subscribeContext">subscribeContext</a>(string,&nbsp;int,&nbsp;double,&nbsp;list(integer),&nbsp;double,&nbsp;double)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Subscribe&nbsp;to&nbsp;objects&nbsp;of&nbsp;the&nbsp;given&nbsp;domain&nbsp;(specified&nbsp;as&nbsp;domain=traci.constants.CMD_GET_&lt;DOMAIN&gt;_VARIABLE),<br>
+which&nbsp;are&nbsp;closer&nbsp;than&nbsp;dist&nbsp;to&nbsp;the&nbsp;object&nbsp;specified&nbsp;by&nbsp;objectID.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-unsubscribe"><strong>unsubscribe</strong></a>(self, objectID)</dt><dd><tt><a href="#SimulationDomain-unsubscribe">unsubscribe</a>(string)&nbsp;-&gt;&nbsp;None<br>
+&nbsp;<br>
+Unsubscribe&nbsp;from&nbsp;receiving&nbsp;object&nbsp;values.</tt></dd></dl>
+
+<dl><dt><a name="SimulationDomain-unsubscribeContext"><strong>unsubscribeContext</strong></a>(self, objectID, domain, dist)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Stage">class <strong>Stage</strong></a>(<a href="__builtin__.html#tuple">__builtin__.tuple</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Stage">Stage</a>(stageType,&nbsp;line,&nbsp;destStop,&nbsp;edges,&nbsp;travelTime,&nbsp;cost,&nbsp;intended,&nbsp;depart)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="traci._simulation.html#Stage">Stage</a></dd>
+<dd><a href="__builtin__.html#tuple">__builtin__.tuple</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Stage-__getnewargs__"><strong>__getnewargs__</strong></a>(self)</dt><dd><tt>Return&nbsp;self&nbsp;as&nbsp;a&nbsp;plain&nbsp;<a href="__builtin__.html#tuple">tuple</a>.&nbsp;&nbsp;Used&nbsp;by&nbsp;copy&nbsp;and&nbsp;pickle.</tt></dd></dl>
+
+<dl><dt><a name="Stage-__getstate__"><strong>__getstate__</strong></a>(self)</dt><dd><tt>Exclude&nbsp;the&nbsp;OrderedDict&nbsp;from&nbsp;pickling</tt></dd></dl>
+
+<dl><dt><a name="Stage-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;nicely&nbsp;formatted&nbsp;representation&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Stage-_asdict"><strong>_asdict</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;new&nbsp;OrderedDict&nbsp;which&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;their&nbsp;values</tt></dd></dl>
+
+<dl><dt><a name="Stage-_replace"><strong>_replace</strong></a>(_self, **kwds)</dt><dd><tt>Return&nbsp;a&nbsp;new&nbsp;<a href="#Stage">Stage</a>&nbsp;object&nbsp;replacing&nbsp;specified&nbsp;fields&nbsp;with&nbsp;new&nbsp;values</tt></dd></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="Stage-_make"><strong>_make</strong></a>(cls, iterable, new<font color="#909090">=&lt;built-in method __new__ of type object&gt;</font>, len<font color="#909090">=&lt;built-in function len&gt;</font>)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt><dd><tt>Make&nbsp;a&nbsp;new&nbsp;<a href="#Stage">Stage</a>&nbsp;object&nbsp;from&nbsp;a&nbsp;sequence&nbsp;or&nbsp;iterable</tt></dd></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Stage-__new__"><strong>__new__</strong></a>(_cls, stageType, line, destStop, edges, travelTime, cost, intended, depart)</dt><dd><tt>Create&nbsp;new&nbsp;instance&nbsp;of&nbsp;<a href="#Stage">Stage</a>(stageType,&nbsp;line,&nbsp;destStop,&nbsp;edges,&nbsp;travelTime,&nbsp;cost,&nbsp;intended,&nbsp;depart)</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>Return&nbsp;a&nbsp;new&nbsp;OrderedDict&nbsp;which&nbsp;maps&nbsp;field&nbsp;names&nbsp;to&nbsp;their&nbsp;values</tt></dd>
+</dl>
+<dl><dt><strong>cost</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;5</tt></dd>
+</dl>
+<dl><dt><strong>depart</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;7</tt></dd>
+</dl>
+<dl><dt><strong>destStop</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;2</tt></dd>
+</dl>
+<dl><dt><strong>edges</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;3</tt></dd>
+</dl>
+<dl><dt><strong>intended</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;6</tt></dd>
+</dl>
+<dl><dt><strong>line</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;1</tt></dd>
+</dl>
+<dl><dt><strong>stageType</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;0</tt></dd>
+</dl>
+<dl><dt><strong>travelTime</strong></dt>
+<dd><tt>Alias&nbsp;for&nbsp;field&nbsp;number&nbsp;4</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>_fields</strong> = ('stageType', 'line', 'destStop', 'edges', 'travelTime', 'cost', 'intended', 'depart')</dl>
+
+<hr>
+Methods inherited from <a href="__builtin__.html#tuple">__builtin__.tuple</a>:<br>
+<dl><dt><a name="Stage-__add__"><strong>__add__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__add__">__add__</a>(y)&nbsp;&lt;==&gt;&nbsp;x+y</tt></dd></dl>
+
+<dl><dt><a name="Stage-__contains__"><strong>__contains__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__contains__">__contains__</a>(y)&nbsp;&lt;==&gt;&nbsp;y&nbsp;in&nbsp;x</tt></dd></dl>
+
+<dl><dt><a name="Stage-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__eq__">__eq__</a>(y)&nbsp;&lt;==&gt;&nbsp;x==y</tt></dd></dl>
+
+<dl><dt><a name="Stage-__ge__"><strong>__ge__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__ge__">__ge__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;=y</tt></dd></dl>
+
+<dl><dt><a name="Stage-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="Stage-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="Stage-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="Stage-__gt__"><strong>__gt__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__gt__">__gt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;y</tt></dd></dl>
+
+<dl><dt><a name="Stage-__hash__"><strong>__hash__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__hash__">__hash__</a>()&nbsp;&lt;==&gt;&nbsp;hash(x)</tt></dd></dl>
+
+<dl><dt><a name="Stage-__iter__"><strong>__iter__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__iter__">__iter__</a>()&nbsp;&lt;==&gt;&nbsp;iter(x)</tt></dd></dl>
+
+<dl><dt><a name="Stage-__le__"><strong>__le__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__le__">__le__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;=y</tt></dd></dl>
+
+<dl><dt><a name="Stage-__len__"><strong>__len__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__len__">__len__</a>()&nbsp;&lt;==&gt;&nbsp;len(x)</tt></dd></dl>
+
+<dl><dt><a name="Stage-__lt__"><strong>__lt__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__lt__">__lt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;y</tt></dd></dl>
+
+<dl><dt><a name="Stage-__mul__"><strong>__mul__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__mul__">__mul__</a>(n)&nbsp;&lt;==&gt;&nbsp;x*n</tt></dd></dl>
+
+<dl><dt><a name="Stage-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__ne__">__ne__</a>(y)&nbsp;&lt;==&gt;&nbsp;x!=y</tt></dd></dl>
+
+<dl><dt><a name="Stage-__rmul__"><strong>__rmul__</strong></a>(...)</dt><dd><tt>x.<a href="#Stage-__rmul__">__rmul__</a>(n)&nbsp;&lt;==&gt;&nbsp;n*x</tt></dd></dl>
+
+<dl><dt><a name="Stage-count"><strong>count</strong></a>(...)</dt><dd><tt>T.<a href="#Stage-count">count</a>(value)&nbsp;-&gt;&nbsp;integer&nbsp;--&nbsp;return&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;of&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="Stage-index"><strong>index</strong></a>(...)</dt><dd><tt>T.<a href="#Stage-index">index</a>(value,&nbsp;[start,&nbsp;[stop]])&nbsp;-&gt;&nbsp;integer&nbsp;--&nbsp;return&nbsp;first&nbsp;index&nbsp;of&nbsp;value.<br>
+Raises&nbsp;ValueError&nbsp;if&nbsp;the&nbsp;value&nbsp;is&nbsp;not&nbsp;present.</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>absolute_import</strong> = _Feature((2, 5, 0, 'alpha', 1), (3, 0, 0, 'alpha', 0), 16384)</td></tr></table>
+</body></html>

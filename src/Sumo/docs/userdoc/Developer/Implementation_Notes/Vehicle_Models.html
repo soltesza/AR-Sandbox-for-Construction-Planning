@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Developer/Implementation_Notes/Vehicle_Models - SUMO - Simulation of Urban Mobility</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../../sumo.css">
+  <link rel="license" href=
+  "http://creativecommons.org/licenses/by-sa/3.0/">
+</head>
+
+<body id="bmission">
+  <div id="container">
+    <div id="logo" style="text-align:left">
+      <img src="../../logo.png" width="374" height="128"
+      alt="SUMO-Simulation of Urban Mobility" style=
+      "float:left; margin-left:10px; margin-right:20px;">
+      <div id="logo_text1">&nbsp;</div>
+      <div id="logo_text2">&nbsp;</div>
+    </div>
+
+    <div id="subsMenu">
+      <ul>
+        <li class="sub"><a href=
+        "http://sumo.dlr.de/">Home</a></li>
+
+        <li class="sub"><a href="../../Downloads.html">Download</a></li>
+
+        <li class="sub"><a href="../../index.html">Documentation</a></li>
+
+        <li class="sub"><a href=
+        "http://sumo.dlr.de/wiki/">Wiki</a></li>
+
+        <li class="sub"><a href=
+        "https://github.com/DLR-TS/sumo/issues">Issue Tracker</a></li>
+
+        <li class="sub"><a href="../../Contact.html">Contact</a></li>
+
+        <li class="sub"><a href=
+        "https://github.com/DLR-TS/sumo">GitHub Project</a></li>
+      </ul>
+    </div>
+
+    <div id="nav">
+      <div id="step1">
+        <h3>User</h3>
+        <ul>
+        <!-- nav begins --> <li>Introduction</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Sumo_at_a_Glance.html">The traffic simulation SUMO</a></li>
+</ul></li>
+  <li>Basic Usage</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Basics/Notation.html">Notation in this Documentation</a></li>
+  <li><a href="../../Basics/Basic_Computer_Skills.html">Needed, basic Computer Skills</a></li>
+  <li><a href="../../Installing.html">Installing SUMO</a></li>
+  <li><a href="../../Basics/Using_the_Command_Line_Applications.html">Using SUMO Command Line Applications</a></li>
+  <li><a href="../../Tutorials.html">Tutorials</a></li>
+  <li><a href="../../XMLValidation.html">Validating application inputs</a></li>
+</ul></li>
+  <li>Network Building</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Networks/SUMO_Road_Networks.html">SUMO Road Networks</a></li>
+  <li><a href="../../Networks/Abstract_Network_Generation.html">Abstract networks generation</a></li>
+  <li><a href="../../NETCONVERT.html">NETCONVERT</a></li>
+<li style="list-style: none; display: inline"><ul>
+   <li><a href="../../Networks/Building_Networks_from_own_XML-descriptions.html">Defining own networks using XML</a></li>
+   <li><a href="../../Networks/Import.html">Importing non-SUMO networks</a></li>
+<li style="list-style: none; display: inline"><ul>
+    <li><a href="../../Networks/Import/OpenStreetMap.html">from OpenStreetMap</a></li>
+<li style="list-style: none; display: inline"><ul>
+     <li><a href="../../Networks/Import/OpenStreetMap.html#3-click_scenario_generation">3-Click Scenario Generator</a></li>
+</ul></li>
+    <li><a href="../../Networks/Import/VISUM.html">from VISUM</a></li>
+    <li><a href="../../Networks/Import/Vissim.html">from Vissim</a></li>
+    <li><a href="../../Networks/Import/OpenDRIVE.html">from OpenDRIVE</a></li>
+    <li><a href="../../Networks/Import/MATsim.html">from MATsim</a></li>
+    <li><a href="../../Networks/Import/ArcView.html">from ArcView (shapefiles)</a></li>
+    <li><a href="../../Networks/Import/DlrNavteq.html">from DlrNavTeq</a></li>
+    <li><a href="../../Networks/Import/RoboCup.html">from Robocup Simulation League</a></li>
+</ul></li>
+   <li><a href="../../Networks/Import/SUMO_Road_Networks.html">Importing SUMO networks</a></li>
+   <li><a href="../../Simulation/Motorways.html#Building_a_network_for_motorway_simulation">Building networks for motorway simulation</a></li>
+   <li><a href="../../Simulation/Pedestrians.html#Building_a_network_for_pedestrian_simulation">Building networks for pedestrian simulation</a></li>
+   <li><a href="../../Networks/Further_Options.html">Further NETCONVERT options</a></li>
+   <li><a href="../../Networks/Further_Outputs.html">Additional output</a></li>
+</ul></li>
+  <li><a href="../../NETEDIT.html">Creating and modifying networks with NETEDIT</a></li>
+  <li><a href="../../Networks/Elevation.html">Including elevation data</a></li>
+  <li><a href="../../Geo-Coordinates.html">Geo-Coordinates</a></li>
+</ul></li>
+  <li>Demand Modelling</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Demand/Introduction_to_demand_modelling_in_SUMO.html">Introduction to SUMO Demand Modelling</a></li>
+  <li><a href="../../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html">Definition of Vehicles, Vehicle Types, and Routes</a></li>
+  <li><a href="../../Simulation/Public_Transport.html">Simulation of public transport</a></li>
+  <li><a href="../../Specification/Persons.html">Simulation of individual persons and trip chains</a></li>
+  <li><a href="../../Specification/Logistics.html">Simulation of logistics</a></li>
+  <li><a href="../../Demand/Shortest_or_Optimal_Path_Routing.html">Shortest or Optimal Path Routing</a></li>
+  <li><a href="../../IntermodalRouting.html">Intermodal Routing</a></li>
+  <li><a href="../../Demand/Automatic_Routing_.html">Routing in the Simulation</a></li>
+  <li><a href="../../Demand/Dynamic_User_Assignment.html">Computing Dynamic User Assignment</a></li>
+  <li><a href="../../Simulation/Pedestrians.html#Generating_pedestrian_demand">Generating pedestrian traffic demand</a></li>
+  <li><a href="../../Tools/Misc.html#createVehTypeDistributions.py">Generate a vehicle type distribution to model the fleet</a></li>
+</ul></li>
+  <li>Data sources for demand generation</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Demand/Importing_O/D_Matrices.html">Importing O/D Matrices</a></li>
+<li style="list-style: none; display: inline"><ul>
+   <li><a href="../../Demand/Further_Ways_to_import_VISUM_Demand_Definitions.html">Other VISUM Demand Importers</a></li>
+   <li><a href="../../Demand/Further_Ways_to_import_Vissim_Demand_Definitions.html">Other Vissim Demand Importers</a></li>
+</ul></li>
+  <li><a href="../../Demand/Routes_from_Observation_Points.html">Routes from Observation Points</a></li>
+  <li><a href="../../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
+  <li><a href="../../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
+  <li><a href="../../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
+</ul></li>
+  <li>Simulation</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Simulation/Basic_Definition.html">Basic Definition</a></li>
+  <li><a href="../../Simulation/Output.html">Simulation output</a></li>
+  <li><a href="../../TraCI.html">TraCI (On-line Interaction)</a></li>
+  <li><a href="../../Simulation/SaveAndLoad.html">Saving and Loading Simulation State</a></li>
+</ul></li>
+  <li> Traffic Management and Other Structures </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Simulation/Traffic_Lights.html">Traffic Lights</a></li>
+  <li><a href="../../Simulation/Public_Transport.html">Public Transport</a></li>
+  <li><a href="../../Simulation/Variable_Speed_Signs.html">Variable Speed Signs</a></li>
+  <li><a href="../../Simulation/Rerouter.html">Rerouter / Alternative Route Signage</a></li>
+  <li><a href="../../Simulation/Vaporizer.html">Vaporizer</a></li>
+  <li><a href="../../Simulation/Calibrator.html">Dynamic calibration of flow and speed</a></li>
+  <li><a href="../../Simulation/ParkingArea.html">Parking areas</a></li>
+</ul></li>
+  <li> Traffic Modes </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Simulation/Pedestrians.html">Pedestrian simulation</a></li>
+  <li><a href="../../Simulation/Bicycles.html">Bicycle simulation</a></li>
+  <li><a href="../../Simulation/Railways.html">Railway simulation</a></li>
+  <li><a href="../../Simulation/Waterways.html">Waterway simulation</a></li>
+</ul></li>
+  <li> Additional Features </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Models/Emissions.html">Emissions</a></li>
+  <li><a href="../../Models/Electric.html">Electric Vehicles</a></li>
+  <li><a href="../../Specification/Logistics.html">Logistics</a></li>
+  <li><a href="../../Simulation/GenericParameters.html">Generic Parameters</a></li>
+  <li><a href="../../Simulation/Shapes.html">Shapes Visualisation</a></li>
+  <li><a href="../../Simulation/Bluetooth.html">Wireless Device Detection</a></li>
+  <li><a href="../../Simulation/Emergency.html">Emergency Vehicles</a></li>
+</ul></li>
+  <li> Model details </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Simulation/VehicleSpeed.html">Vehicle speed</a></li>
+  <li><a href="../../Simulation/VehicleInsertion.html">Vehicle insertion</a></li>
+  <li><a href="../../Simulation/VehiclePermissions.html">Vehicle permissions (access restrictions)</a></li>
+  <li><a href="../../Simulation/Intersections.html">Intersection dynamics</a></li>
+  <li><a href="../../Simulation/Randomness.html">Randomness</a></li>
+  <li><a href="../../Simulation/Routing.html">Routing and Re-routing</a></li>
+  <li><a href="../../Simulation/SublaneModel.html">Sublane Model</a></li>
+  <li><a href="../../Simulation/OppositeDirectionDriving.html">Opposite Direction Driving</a></li>
+  <li><a href="../../Simulation/Safety.html">Safety</a></li>
+  <li><a href="../../Simulation/Meso.html">Mesoscopic model</a></li>
+</ul></li>
+  <li> Common Problems </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Simulation/Why_Vehicles_are_teleporting.html">Why Vehicles are teleporting</a></li>
+  <li><a href="../../FAQ.html#The_simulation_has_lots_of_jams.2Fdeadlocks._What_can_I_do.3F">Unexpected jamming</a></li>
+  <li><a href="../../FAQ.html#Why_do_the_vehicles_perform_unexpected_lane-changing_maneuvers.3F">Unexpected lane-changing maneuvers?</a></li>
+  <li><a href="../../FAQ.html#How_do_I_get_high_flows.2Fvehicle_densities.3F">How to get high flows?</a></li>
+</ul></li>
+  <li><a href="../../Tools/Main.html">Additional Tools</a></li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Tools/Import/OSM.html#osmWebWizard.py">osmWebWizard</a></li>
+  <li><a href="../../TraCI/Interfacing_TraCI_from_Python.html">TraCI/Interfacing_TraCI_from_Python</a></li>
+  <li><a href="../../Tools/Sumolib.html">Reading SUMO networks and outputs with Python (sumolib)</a></li>
+  <li><a href="../../Tools/Xml.html">Tools for converting SUMO outputs to CSV/Spreadsheet</a></li>
+  <li><a href="../../Tools/TraceExporter.html">Exporting mobility Traces (traceExporter)</a></li>
+  <li><a href="../../Tools/Net.html#netdiff.py">Determining the differences between two networks</a></li>
+  <li><a href="../../Tools/Visualization.html">Tools/Visualization</a></li>
+  <li><a href="../../Tools/Main.html">Tool index</a></li>
+</ul></li>
+  <li>Theory</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../Theory/Traffic_Simulations.html">Traffic simulations in general</a></li>
+</ul></li>
+  <li>Application Manuals</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../SUMO.html">SUMO</a></li>
+  <li><a href="../../SUMO-GUI.html">SUMO-GUI</a></li>
+  <li><a href="../../NETCONVERT.html">NETCONVERT</a></li>
+  <li><a href="../../NETEDIT.html">NETEDIT</a></li>
+  <li><a href="../../NETGENERATE.html">NETGENERATE</a></li>
+  <li><a href="../../OD2TRIPS.html">OD2TRIPS</a></li>
+  <li><a href="../../DUAROUTER.html">DUAROUTER</a></li>
+  <li><a href="../../JTRROUTER.html">JTRROUTER</a></li>
+  <li><a href="../../DFROUTER.html">DFROUTER</a></li>
+  <li><a href="../../MAROUTER.html">MAROUTER</a></li>
+  <li><a href="../../POLYCONVERT.html">POLYCONVERT</a></li>
+  <li><a href="../../ACTIVITYGEN.html">ACTIVITYGEN</a></li>
+  <li><a href="../../Tools/Emissions.html">EMISSIONSMAP</a></li>
+  <li><a href="../../Tools/Emissions.html">EMISSIONSDRIVINGCYCLE</a></li>
+</ul></li>
+  <li>Appendices</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../../ChangeLog.html">ChangeLog</a></li>
+  <li><a href="../../Other/Glossary.html">Glossary</a></li>
+  <li><a href="../../FAQ.html">FAQ</a></li>
+  <li><a href="../../Tools/Main.html">Additional Tools</a></li>
+  <li><a href="../../Other/File_Extensions.html">Known File Extensions</a></li>
+</ul></li>
+<!-- nav ends -->
+        </ul>
+      </div>
+
+      <div id="step2">
+        <h3>Further Resources</h3>
+
+        <ul>
+          <li><a href="../../Data/Networks.html">Example
+          Networks</a></li>
+
+          <li><a href="../../Data/Scenarios.html">Example
+          Scenarios</a></li>
+
+          <li><a href="../../Data/Traffic_Data.html">Traffic
+          Data</a></li>
+        </ul>
+      </div>
+
+      <div id="step3">
+        <h3>Developer</h3>
+
+        <ul>
+          <li><a href="../../Developer/Main.html">Developer Docs</a></li>
+
+          <li><a href="http://sumo.dlr.de/daily/">Daily Tests
+          Status</a></li>
+
+          <li><a href="../../../doxygen/">Doxygen Documentation</a></li>
+
+          <li>Python Modules Documentation</li>
+
+          <li style="list-style: none; display: inline">
+            <ul>
+              <li><a href="../../../pydoc/traci.html">traci</a></li>
+
+              <li><a href="../../../pydoc/sumolib.html">sumolib</a></li>
+            </ul>
+          </li>
+
+          <li>Java Modules Documentation</li>
+
+          <li style="list-style: none; display: inline">
+            <ul>
+              <li><a href="../../../javadoc/traci4j/">TraCI4J</a></li>
+
+              <li><a href="../../../javadoc/traas/">TraaS</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <a id="top"></a>
+
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Developer/Implementation Notes/Vehicle Models</h1>
+						<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">generated on 2018-12-18 00:19:50.066005 from <a href="http://sumo.dlr.de/wiki/Developer/Implementation_Notes/Vehicle_Models">the wiki page for Developer/Implementation_Notes/Vehicle_Models</a> for SUMO 1.1.0</div>
+								<div id="contentSub"></div>
+												
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div style="background: #ffcc44; padding: .5em; border: 1px dashed #ff8800; margin-right:10px; margin-left:10px;"><b>Caution:</b><br />Please note that this is a working document... No user documentation!</div>
+<p><br />
+</p>
+<div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Implementing_new_Car-Following_Models"><span class="tocnumber">1</span> <span class="toctext">Implementing new Car-Following Models</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Defining_Vehicle_Types"><span class="tocnumber">2</span> <span class="toctext">Defining Vehicle Types</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Possible_Descriptions"><span class="tocnumber">2.1</span> <span class="toctext">Possible Descriptions</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#.28currently.29_Chosen_Description"><span class="tocnumber">2.2</span> <span class="toctext">(currently) Chosen Description</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Car-following_Model_Interface"><span class="tocnumber">3</span> <span class="toctext">Car-following Model Interface</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#Loading_and_Parsing_Vehicle_Types"><span class="tocnumber">3.1</span> <span class="toctext">Loading and Parsing Vehicle Types</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Implementing_new_Car-Following_Models">Implementing new Car-Following Models</span></h1>
+<p>A car-following model in SUMO is an implementation of the abstract class MSCFModel (microsim/cfmodels/MSCFModel.h).
+</p><p>The following steps must be taken to add a new model:
+</p>
+<ol><li> define a new model name in utils/common/SUMOXMLDefinitions.h and .cpp</li>
+<li> define model parameters in utild/xml/SUMOVehicleParserHelper::getAllowedCFModelAttrs() (define new attributes in SUMOXMLDefinitions if necessary)</li>
+<li> add a new class to microsim/cfmodels (i.e. by copying one of the existing classes there)</li>
+<li> add this class to the build files (i.e. microsim/cfmodels/Makefile.am when building on Linux)</li>
+<li> add code that selects the new class based on the new name in microsim/MSVehicleType::build()</li></ol>
+<p>If your model needs persistent state you need to derive a class to hold it from MSCFModel::VehicleVariables. See microsim/cfmodels/MSCFModel_IDM as an example.
+</p>
+<h1><span class="mw-headline" id="Defining_Vehicle_Types">Defining Vehicle Types</span></h1>
+<p>Before starting to hack, we should decide how vehicle type shall be represented. Some facts and needs (unsorted):
+</p>
+<ul><li> <font color="green">ok</font> Both the simulation and the routing modules must be able to parse vehicle type definitions</li>
+<li> It would be nice to allow a validation against XML Schemata</li>
+<li> At least two sub-types must be able to be defined: car-following model and lane-changing model (maybe the lane-changing model even splits into a navigational and a tactical part)</li>
+<li> <font color="green">ok</font> Parameter should have default values</li>
+<li> <font color="green">ok</font> a default vehicle type must exist</li>
+<li> Models differ in parameter sets</li></ul>
+<h2><span class="mw-headline" id="Possible_Descriptions">Possible Descriptions</span></h2>
+<table cellspacing="0" border="1">
+
+<tr>
+<th style="background:#ffdead;"> Index
+</th>
+<th style="background:#ffdead;"> Sample
+</th>
+<th style="background:#ffdead;"> pros/cons
+</th></tr>
+<tr>
+<td> A
+</td>
+<td> &lt;vtype cfModel="xxx" xxxParam1="..." xxxParam2="..." ...
+</td>
+<td>
+<ul><li> (-) hard to verify - parameter change in dependence to the value of "cfModel"</li></ul>
+</td></tr>
+<tr>
+<td> B
+</td>
+<td> &lt;vtype-XXX xxxParam1="..." xxxParam2="..." ...
+</td>
+<td>
+<ul><li> (-) large number of different elements needed</li></ul>
+</td></tr>
+<tr>
+<td> C
+</td>
+<td> &lt;cfmodel id="#id" model="xxx" param1="..." param2="..." .../&gt;&lt;vtype cfModelId="#id" .../&gt;
+</td>
+<td>
+<ul><li> (+) straight forward; many combinations possible</li>
+<li> (+) is similar to how every vehicle references its vtype</li>
+<li> (-) hard to verify - parameter change in dependence to the value of "cfModel"</li></ul>
+</td></tr>
+<tr>
+<td> D
+</td>
+<td> &lt;vtype cfModel="xxx" param1="..." param2="..." ...&gt;
+</td>
+<td>
+<ul><li> (--) parameter sets differ between models</li>
+<li> (-) hard to verify - parameter change in dependence to the value of "cfModel"</li></ul>
+</td></tr>
+<tr>
+<td> E
+</td>
+<td> &lt;vtype ...&gt;&lt;cfmodel model="xxx" param1="..." param2="..." .../&gt;&lt;/vtype&gt;
+</td>
+<td>
+<ul><li> (+) straight forward</li>
+<li> (-) hard to verify - parameter change in dependence to the value of "cfModel"</li>
+<li> <b>1 vote (Mayer)</b></li></ul>
+</td></tr>
+<tr>
+<td> F
+</td>
+<td> &lt;vtype ...&gt;&lt;cfmodel-XXX model="xxx" param1="..." param2="..." .../&gt;&lt;/vtype&gt;
+</td>
+<td>
+<ul><li> (+) straight forward</li>
+<li> (-) large number of different elements needed</li>
+<li> <b>2 votes (Behrisch, Krajzewicz)</b></li></ul>
+</td></tr></table>
+<h2><span class="mw-headline" id=".28currently.29_Chosen_Description">(currently) Chosen Description</span></h2>
+<p>After some talks, the following description of vehicle types was chosen:
+</p>
+<pre class="xml">
+&lt;vtype id=&quot;...&quot; ...&gt;
+	&lt;carFollowing-Krauss ...
+	&lt;laneChanging-DK2002 ...
+&lt;/vtype&gt;
+</pre>
+<p><span class="inlxml">vtype</span> will contain parameters which can neither be counted to the lane-changing nor the car-following model, such as the vehicle type's color, the width of the vehicle etc. which are (currently) used for visualisation only. Also, the vehicle's length and other parameter which are not only used by one of the models are stored herein.
+</p><p>The embedded <span class="inlxml">carFollowing-Krauss</span>-Element in this example describes the car-following model (Krauss in this case), the <span class="inlxml">laneChanging-DK2002</span> the lane-changing model (Daniel Krajzewicz's from 2002&#160;:-) ), each with their own parameter.
+</p>
+The known <span class="inlxml">vtype</span>-definition is wanted to be kept. In this case, the Krauss-model stays chosen per default. <div style="background: #ffffdd; padding: .5em; border: 1px dashed #ffcc44; margin-right:10px; margin-left:10px;"><b>Note:</b><br />Probably, it will not be possible to validate this against a schema.</div>
+<h1><span class="mw-headline" id="Car-following_Model_Interface">Car-following Model Interface</span></h1>
+<p>Currently, it is assumed that the following methods should be re-implemented for each model; the "generic" column should identify those which may be same across models:
+</p>
+<table border="1">
+
+<tr>
+<th> method </th>
+<th> generic? </th>
+<th> description </th>
+<th>
+</th></tr>
+<tr>
+<td> ffeV </td>
+<td> no </td>
+<td> </td>
+<td>
+</td></tr>
+<tr>
+<td> ffeS </td>
+<td> no </td>
+<td> </td>
+<td>
+</td></tr>
+<tr>
+<td> maxNextSpeed </td>
+<td> no </td>
+<td> internal SUMO-tweak </td>
+<td>
+</td></tr>
+<tr>
+<td> brakeGap </td>
+<td> maybe </td>
+<td> should depend on maximum deceleration (a rather common value) and physics, only </td>
+<td>
+</td></tr>
+<tr>
+<td> approachingBrakeGap </td>
+<td> maybe  </td>
+<td> almost same as brakeGap, only not incorporating the driver's reaction time </td>
+<td>
+</td></tr>
+<tr>
+<td> interactionGap </td>
+<td> no </td>
+<td> </td>
+<td>
+</td></tr>
+<tr>
+<td> hasSafeGap </td>
+<td> no </td>
+<td> </td>
+<td>
+</td></tr>
+<tr>
+<td> safeEmitGap </td>
+<td> no </td>
+<td> </td>
+<td>
+</td></tr>
+<tr>
+<td> dawdle </td>
+<td> no </td>
+<td> </td>
+<td>
+</td></tr>
+<tr>
+<td> decelAbility </td>
+<td> rather no </td>
+<td>  </td>
+<td>
+</td></tr></table>
+<h2><span class="mw-headline" id="Loading_and_Parsing_Vehicle_Types">Loading and Parsing Vehicle Types</span></h2>
+<p>As already implemented for vehicles, a new intermediate structure <i><b>&lt;SUMO_HOME&gt;</b></i>/src/utils/common/SUMOVTypeParameter which contains vehicle type descriptions was added. When reading XML-definitions, both routers and the simulation use the additionally implemented helper methods located in <i><b>&lt;SUMO_HOME&gt;</b></i>/src/utils/xml/SUMOVehicleParserHelper for filling this structure.
+</p><p>SUMOVTypeParameter has member variables for those vehicle type parameters which are assumed to be neither part of the car-following model nor part of the lane-change model: <i>id</i>, <i>length</i>, <i>maxSpeed</i>, <i>defaultProbability</i>, <i>speedFactor</i>, <i>speedDev</i>, <i>emissionClass</i>, <i>color</i>, <i>vehicleClass</i>, <i>width</i>, <i>offset</i>, <i>shape</i>. These values are initialised with defaults. When reading values, SUMOVehicleParserHelper stores the information about which value was set from the XML description in <i>SUMOVTypeParameter::setParameter</i>. This allows to save (pass) only set values when writing the definitions back to a file - routers need this.
+</p><p>Parameters of the car-following model are saved into a map, <i>SUMOVTypeParameter::cfParameter</i>, the model's name to <i>SUMOVTypeParameter::cfModel</i>. Note that lane-changing model parameter handling is not implemented. The map contains only those parameter of the model which were given in the read XML file; no defaults are inserted at this time. In order to allow processing of old vtype-definitions, parameter stored directly within the vtype-element for the Krauss car-following model are stored within this map, too.
+</p><p>The routers consume the SUMOVTypeParameter class directly - making ROVehicleType unnecessary. The simulation uses the new method MSVehicleType::build for building the described MSVehicleType/MSCFModel combination. Missing defaults are set within this method for obtaining complete vehicle type/model descriptions.
+</p>
+<!-- 
+NewPP limit report
+CPU time usage: 0.016 seconds
+Real time usage: 0.021 seconds
+Preprocessor visited node count: 55/1000000
+Preprocessor generated node count: 132/1000000
+Post‐expand include size: 454/2097152 bytes
+Template argument size: 137/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    6.486      1 - -total
+ 25.55%    1.657      1 - Template:Caution
+ 24.39%    1.582      1 - Template:Note
+ 23.26%    1.509      2 - Template:SUMO
+-->
+
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:281-0!*!*!!en!*!* and timestamp 20181217041737 and revision id 9612
+ -->
+</div>									</div><hr/><div id="lastmod">This page was last modified on 1 June 2017, at 13:34.</div> </div>
+
+    <div id="footer">
+      <div>
+        (c) 2011-2017, German Aerospace Center, Institute of
+        Transportation Systems
+      </div>
+
+      <div>
+        Layout based on <a href=
+        "http://www.oswd.org/design/preview/id/3365">"Three
+        Quarters"</a> by "SimplyGold"
+      </div>
+    </div>
+  </div>
+</body>
+</html>

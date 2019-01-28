@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Z/Changes_from_Version_0.24.0_to_Version_0.25.0 - SUMO - Simulation of Urban Mobility</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="../sumo.css">
+  <link rel="license" href=
+  "http://creativecommons.org/licenses/by-sa/3.0/">
+</head>
+
+<body id="bmission">
+  <div id="container">
+    <div id="logo" style="text-align:left">
+      <img src="../logo.png" width="374" height="128"
+      alt="SUMO-Simulation of Urban Mobility" style=
+      "float:left; margin-left:10px; margin-right:20px;">
+      <div id="logo_text1">&nbsp;</div>
+      <div id="logo_text2">&nbsp;</div>
+    </div>
+
+    <div id="subsMenu">
+      <ul>
+        <li class="sub"><a href=
+        "http://sumo.dlr.de/">Home</a></li>
+
+        <li class="sub"><a href="../Downloads.html">Download</a></li>
+
+        <li class="sub"><a href="../index.html">Documentation</a></li>
+
+        <li class="sub"><a href=
+        "http://sumo.dlr.de/wiki/">Wiki</a></li>
+
+        <li class="sub"><a href=
+        "https://github.com/DLR-TS/sumo/issues">Issue Tracker</a></li>
+
+        <li class="sub"><a href="../Contact.html">Contact</a></li>
+
+        <li class="sub"><a href=
+        "https://github.com/DLR-TS/sumo">GitHub Project</a></li>
+      </ul>
+    </div>
+
+    <div id="nav">
+      <div id="step1">
+        <h3>User</h3>
+        <ul>
+        <!-- nav begins --> <li>Introduction</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Sumo_at_a_Glance.html">The traffic simulation SUMO</a></li>
+</ul></li>
+  <li>Basic Usage</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Basics/Notation.html">Notation in this Documentation</a></li>
+  <li><a href="../Basics/Basic_Computer_Skills.html">Needed, basic Computer Skills</a></li>
+  <li><a href="../Installing.html">Installing SUMO</a></li>
+  <li><a href="../Basics/Using_the_Command_Line_Applications.html">Using SUMO Command Line Applications</a></li>
+  <li><a href="../Tutorials.html">Tutorials</a></li>
+  <li><a href="../XMLValidation.html">Validating application inputs</a></li>
+</ul></li>
+  <li>Network Building</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Networks/SUMO_Road_Networks.html">SUMO Road Networks</a></li>
+  <li><a href="../Networks/Abstract_Network_Generation.html">Abstract networks generation</a></li>
+  <li><a href="../NETCONVERT.html">NETCONVERT</a></li>
+<li style="list-style: none; display: inline"><ul>
+   <li><a href="../Networks/Building_Networks_from_own_XML-descriptions.html">Defining own networks using XML</a></li>
+   <li><a href="../Networks/Import.html">Importing non-SUMO networks</a></li>
+<li style="list-style: none; display: inline"><ul>
+    <li><a href="../Networks/Import/OpenStreetMap.html">from OpenStreetMap</a></li>
+<li style="list-style: none; display: inline"><ul>
+     <li><a href="../Networks/Import/OpenStreetMap.html#3-click_scenario_generation">3-Click Scenario Generator</a></li>
+</ul></li>
+    <li><a href="../Networks/Import/VISUM.html">from VISUM</a></li>
+    <li><a href="../Networks/Import/Vissim.html">from Vissim</a></li>
+    <li><a href="../Networks/Import/OpenDRIVE.html">from OpenDRIVE</a></li>
+    <li><a href="../Networks/Import/MATsim.html">from MATsim</a></li>
+    <li><a href="../Networks/Import/ArcView.html">from ArcView (shapefiles)</a></li>
+    <li><a href="../Networks/Import/DlrNavteq.html">from DlrNavTeq</a></li>
+    <li><a href="../Networks/Import/RoboCup.html">from Robocup Simulation League</a></li>
+</ul></li>
+   <li><a href="../Networks/Import/SUMO_Road_Networks.html">Importing SUMO networks</a></li>
+   <li><a href="../Simulation/Motorways.html#Building_a_network_for_motorway_simulation">Building networks for motorway simulation</a></li>
+   <li><a href="../Simulation/Pedestrians.html#Building_a_network_for_pedestrian_simulation">Building networks for pedestrian simulation</a></li>
+   <li><a href="../Networks/Further_Options.html">Further NETCONVERT options</a></li>
+   <li><a href="../Networks/Further_Outputs.html">Additional output</a></li>
+</ul></li>
+  <li><a href="../NETEDIT.html">Creating and modifying networks with NETEDIT</a></li>
+  <li><a href="../Networks/Elevation.html">Including elevation data</a></li>
+  <li><a href="../Geo-Coordinates.html">Geo-Coordinates</a></li>
+</ul></li>
+  <li>Demand Modelling</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Demand/Introduction_to_demand_modelling_in_SUMO.html">Introduction to SUMO Demand Modelling</a></li>
+  <li><a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html">Definition of Vehicles, Vehicle Types, and Routes</a></li>
+  <li><a href="../Simulation/Public_Transport.html">Simulation of public transport</a></li>
+  <li><a href="../Specification/Persons.html">Simulation of individual persons and trip chains</a></li>
+  <li><a href="../Specification/Logistics.html">Simulation of logistics</a></li>
+  <li><a href="../Demand/Shortest_or_Optimal_Path_Routing.html">Shortest or Optimal Path Routing</a></li>
+  <li><a href="../IntermodalRouting.html">Intermodal Routing</a></li>
+  <li><a href="../Demand/Automatic_Routing_.html">Routing in the Simulation</a></li>
+  <li><a href="../Demand/Dynamic_User_Assignment.html">Computing Dynamic User Assignment</a></li>
+  <li><a href="../Simulation/Pedestrians.html#Generating_pedestrian_demand">Generating pedestrian traffic demand</a></li>
+  <li><a href="../Tools/Misc.html#createVehTypeDistributions.py">Generate a vehicle type distribution to model the fleet</a></li>
+</ul></li>
+  <li>Data sources for demand generation</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Demand/Importing_O/D_Matrices.html">Importing O/D Matrices</a></li>
+<li style="list-style: none; display: inline"><ul>
+   <li><a href="../Demand/Further_Ways_to_import_VISUM_Demand_Definitions.html">Other VISUM Demand Importers</a></li>
+   <li><a href="../Demand/Further_Ways_to_import_Vissim_Demand_Definitions.html">Other Vissim Demand Importers</a></li>
+</ul></li>
+  <li><a href="../Demand/Routes_from_Observation_Points.html">Routes from Observation Points</a></li>
+  <li><a href="../Demand/Routing_by_Turn_Probabilities.html">Routing by Turn Probabilities</a></li>
+  <li><a href="../Demand/Activity-based_Demand_Generation.html">Activity-based Demand Generation</a></li>
+  <li><a href="../Tools/Trip.html#randomTrips.py">Random Trips</a></li>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">Multi-modal random traffic</a></li>
+</ul></li>
+  <li>Simulation</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Basic_Definition.html">Basic Definition</a></li>
+  <li><a href="../Simulation/Output.html">Simulation output</a></li>
+  <li><a href="../TraCI.html">TraCI (On-line Interaction)</a></li>
+  <li><a href="../Simulation/SaveAndLoad.html">Saving and Loading Simulation State</a></li>
+</ul></li>
+  <li> Traffic Management and Other Structures </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Traffic_Lights.html">Traffic Lights</a></li>
+  <li><a href="../Simulation/Public_Transport.html">Public Transport</a></li>
+  <li><a href="../Simulation/Variable_Speed_Signs.html">Variable Speed Signs</a></li>
+  <li><a href="../Simulation/Rerouter.html">Rerouter / Alternative Route Signage</a></li>
+  <li><a href="../Simulation/Vaporizer.html">Vaporizer</a></li>
+  <li><a href="../Simulation/Calibrator.html">Dynamic calibration of flow and speed</a></li>
+  <li><a href="../Simulation/ParkingArea.html">Parking areas</a></li>
+</ul></li>
+  <li> Traffic Modes </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Pedestrians.html">Pedestrian simulation</a></li>
+  <li><a href="../Simulation/Bicycles.html">Bicycle simulation</a></li>
+  <li><a href="../Simulation/Railways.html">Railway simulation</a></li>
+  <li><a href="../Simulation/Waterways.html">Waterway simulation</a></li>
+</ul></li>
+  <li> Additional Features </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Models/Emissions.html">Emissions</a></li>
+  <li><a href="../Models/Electric.html">Electric Vehicles</a></li>
+  <li><a href="../Specification/Logistics.html">Logistics</a></li>
+  <li><a href="../Simulation/GenericParameters.html">Generic Parameters</a></li>
+  <li><a href="../Simulation/Shapes.html">Shapes Visualisation</a></li>
+  <li><a href="../Simulation/Bluetooth.html">Wireless Device Detection</a></li>
+  <li><a href="../Simulation/Emergency.html">Emergency Vehicles</a></li>
+</ul></li>
+  <li> Model details </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/VehicleSpeed.html">Vehicle speed</a></li>
+  <li><a href="../Simulation/VehicleInsertion.html">Vehicle insertion</a></li>
+  <li><a href="../Simulation/VehiclePermissions.html">Vehicle permissions (access restrictions)</a></li>
+  <li><a href="../Simulation/Intersections.html">Intersection dynamics</a></li>
+  <li><a href="../Simulation/Randomness.html">Randomness</a></li>
+  <li><a href="../Simulation/Routing.html">Routing and Re-routing</a></li>
+  <li><a href="../Simulation/SublaneModel.html">Sublane Model</a></li>
+  <li><a href="../Simulation/OppositeDirectionDriving.html">Opposite Direction Driving</a></li>
+  <li><a href="../Simulation/Safety.html">Safety</a></li>
+  <li><a href="../Simulation/Meso.html">Mesoscopic model</a></li>
+</ul></li>
+  <li> Common Problems </li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Simulation/Why_Vehicles_are_teleporting.html">Why Vehicles are teleporting</a></li>
+  <li><a href="../FAQ.html#The_simulation_has_lots_of_jams.2Fdeadlocks._What_can_I_do.3F">Unexpected jamming</a></li>
+  <li><a href="../FAQ.html#Why_do_the_vehicles_perform_unexpected_lane-changing_maneuvers.3F">Unexpected lane-changing maneuvers?</a></li>
+  <li><a href="../FAQ.html#How_do_I_get_high_flows.2Fvehicle_densities.3F">How to get high flows?</a></li>
+</ul></li>
+  <li><a href="../Tools/Main.html">Additional Tools</a></li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Tools/Import/OSM.html#osmWebWizard.py">osmWebWizard</a></li>
+  <li><a href="../TraCI/Interfacing_TraCI_from_Python.html">TraCI/Interfacing_TraCI_from_Python</a></li>
+  <li><a href="../Tools/Sumolib.html">Reading SUMO networks and outputs with Python (sumolib)</a></li>
+  <li><a href="../Tools/Xml.html">Tools for converting SUMO outputs to CSV/Spreadsheet</a></li>
+  <li><a href="../Tools/TraceExporter.html">Exporting mobility Traces (traceExporter)</a></li>
+  <li><a href="../Tools/Net.html#netdiff.py">Determining the differences between two networks</a></li>
+  <li><a href="../Tools/Visualization.html">Tools/Visualization</a></li>
+  <li><a href="../Tools/Main.html">Tool index</a></li>
+</ul></li>
+  <li>Theory</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../Theory/Traffic_Simulations.html">Traffic simulations in general</a></li>
+</ul></li>
+  <li>Application Manuals</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../SUMO.html">SUMO</a></li>
+  <li><a href="../SUMO-GUI.html">SUMO-GUI</a></li>
+  <li><a href="../NETCONVERT.html">NETCONVERT</a></li>
+  <li><a href="../NETEDIT.html">NETEDIT</a></li>
+  <li><a href="../NETGENERATE.html">NETGENERATE</a></li>
+  <li><a href="../OD2TRIPS.html">OD2TRIPS</a></li>
+  <li><a href="../DUAROUTER.html">DUAROUTER</a></li>
+  <li><a href="../JTRROUTER.html">JTRROUTER</a></li>
+  <li><a href="../DFROUTER.html">DFROUTER</a></li>
+  <li><a href="../MAROUTER.html">MAROUTER</a></li>
+  <li><a href="../POLYCONVERT.html">POLYCONVERT</a></li>
+  <li><a href="../ACTIVITYGEN.html">ACTIVITYGEN</a></li>
+  <li><a href="../Tools/Emissions.html">EMISSIONSMAP</a></li>
+  <li><a href="../Tools/Emissions.html">EMISSIONSDRIVINGCYCLE</a></li>
+</ul></li>
+  <li>Appendices</li>
+<li style="list-style: none; display: inline"><ul>
+  <li><a href="../ChangeLog.html">ChangeLog</a></li>
+  <li><a href="../Other/Glossary.html">Glossary</a></li>
+  <li><a href="../FAQ.html">FAQ</a></li>
+  <li><a href="../Tools/Main.html">Additional Tools</a></li>
+  <li><a href="../Other/File_Extensions.html">Known File Extensions</a></li>
+</ul></li>
+<!-- nav ends -->
+        </ul>
+      </div>
+
+      <div id="step2">
+        <h3>Further Resources</h3>
+
+        <ul>
+          <li><a href="../Data/Networks.html">Example
+          Networks</a></li>
+
+          <li><a href="../Data/Scenarios.html">Example
+          Scenarios</a></li>
+
+          <li><a href="../Data/Traffic_Data.html">Traffic
+          Data</a></li>
+        </ul>
+      </div>
+
+      <div id="step3">
+        <h3>Developer</h3>
+
+        <ul>
+          <li><a href="../Developer/Main.html">Developer Docs</a></li>
+
+          <li><a href="http://sumo.dlr.de/daily/">Daily Tests
+          Status</a></li>
+
+          <li><a href="../../doxygen/">Doxygen Documentation</a></li>
+
+          <li>Python Modules Documentation</li>
+
+          <li style="list-style: none; display: inline">
+            <ul>
+              <li><a href="../../pydoc/traci.html">traci</a></li>
+
+              <li><a href="../../pydoc/sumolib.html">sumolib</a></li>
+            </ul>
+          </li>
+
+          <li>Java Modules Documentation</li>
+
+          <li style="list-style: none; display: inline">
+            <ul>
+              <li><a href="../../javadoc/traci4j/">TraCI4J</a></li>
+
+              <li><a href="../../javadoc/traas/">TraaS</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <a id="top"></a>
+
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">Z/Changes from Version 0.24.0 to Version 0.25.0</h1>
+						<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">generated on 2018-12-18 00:19:50.384466 from <a href="http://sumo.dlr.de/wiki/Z/Changes_from_Version_0.24.0_to_Version_0.25.0">the wiki page for Z/Changes_from_Version_0.24.0_to_Version_0.25.0</a> for SUMO 1.1.0</div>
+								<div id="contentSub"></div>
+												
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><div id="toc" class="toc"><div id="toctitle"><h2>Contents</h2></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Version_0.25.0_.2807.12.2015.29"><span class="tocnumber">1</span> <span class="toctext">Version 0.25.0 (07.12.2015)</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Bugfixes"><span class="tocnumber">1.1</span> <span class="toctext">Bugfixes</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Enhancements"><span class="tocnumber">1.2</span> <span class="toctext">Enhancements</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Other"><span class="tocnumber">1.3</span> <span class="toctext">Other</span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Version_0.25.0_.2807.12.2015.29">Version 0.25.0 (07.12.2015)</span></h2>
+<h3><span class="mw-headline" id="Bugfixes">Bugfixes</span></h3>
+<ul><li> Simulation
+<ul><li> Fixed crashing and deadlocks when performing <a href="../Demand/Automatic_Routing.html" title="Demand/Automatic Routing">routing in the simulation based</a> on <a href="../Demand/Importing_O/D_Matrices.html#Describing_the_TAZ" title="Demand/Importing O/D Matrices">districts</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1938">Issue #1938</a></li>
+<li> Fixed bug that was hindering lane-changes due to invalid cooperative speed adaptations. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1971">Issue #1971</a></li>
+<li> Fixed bug that was causing erratic lane changes when using subsecond simulation. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1440">Issue #1440</a></li>
+<li> Fixed bug that was causing erratic lane changes in front of intersections. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1856">Issue #1856</a></li>
+<li> Fixed right-of-way in regard to vehicles that were driving across the same intersection twice. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2023">Issue #2023</a></li>
+<li> Vehicles waiting to enter a roundabout no longer yield to other vehicles outside the roundabout. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1847">Issue #1847</a></li>
+<li> Pedestrians no longer walk past their specified arrival position. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1780">Issue #1780</a></li>
+<li> Fixed asymmetrical pedestrian behavior when walking to a <i>busStop</i>. Now they always walk to the middle of the busstop rather than to its <i>endPos</i>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1562">Issue #1562</a></li></ul></li></ul>
+<ul><li> SUMO-GUI
+<ul><li> Fixing crash when selecting <i>Show all routes</i> from the vehicle menu.</li>
+<li> When loading a gui-settings-file from the <i>View Settings</i> dialog, the delay value is now correctly applied.</li>
+<li> Fix bug that caused giant circles to appear when exaggerating the width of lanes with short geometry segments.</li>
+<li> Vehicle names are now drawn for vehicles that occupy multiple edges. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1960">Issue #1960</a></li>
+<li> Fixed drawing of link indices, link rules, lane markings and bus stops for left-hand networks.</li>
+<li> Fixed error when reloading a network with <span class="inlxml">&lt;param&gt;</span>-elements. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1979">Issue #1979</a></li></ul></li></ul>
+<ul><li> NETCONVERT
+<ul><li> Fixed missing connections in multi-modal networks. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1865">Issue #1865</a></li>
+<li> Fixed bug that caused invalid pedestrian crossings to be generated after importing a <i>.net.xml</i> file. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1907">Issue #1907</a></li>
+<li> Fixed bug that caused pedestrian crossings to change their priority when importing a <i>.net.xml</i> file. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1905">Issue #1905</a></li>
+<li> Fixed geometry bug when building pedestrian crossings and walkingareas for left-hand networks.</li>
+<li> Fixed invalid network after deleting edges at a joined traffic light with controlled pedestrian crossing. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1902">Issue #1902</a></li>
+<li> Motorway ramps are no longer guessed if the lane permissions indicate that the edge is not a motorway. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1894">Issue #1894</a></li>
+<li> Motorway ramps are no longer guessed at roundabouts. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1890">Issue #1890</a></li>
+<li> Fixed some cases when roads where invalidly guessed to be roundabouts. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1933">Issue #1933</a></li>
+<li> When importing a <i>.net.xml</i> file the resulting network is no longer modified due to automatic joining of edges that connect the same nodes. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1930">Issue #1930</a></li>
+<li> When importing a <i>.net.xml</i> file with pedestrian crossings and setting option <span style="color: #111144; font-weight: bold; white-space: pre;">--no-internal-links</span>, the crossings and walkingareas are removed from the resulting network. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1730">Issue #1730</a></li>
+<li> Several fixes in regard to OpenDrive networks:
+<ul><li> Fixed missing <span class="inlxml">&lt;laneLink&gt;</span> elements when exporting networks as <a href="../Networks/Import/OpenDRIVE.html" title="Networks/Import/OpenDRIVE">OpenDrive</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1973">Issue #1973</a></li>
+<li> Now successfully importing <a href="../Networks/Import/OpenDRIVE.html" title="Networks/Import/OpenDRIVE">OpenDrive networks</a> with dead-end edges. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1692">Issue #1692</a></li>
+<li> Fixed imprecise geometry when importing <a href="../Networks/Import/OpenDRIVE.html" title="Networks/Import/OpenDRIVE">OpenDrive</a> networks.</li>
+<li> Fixed imprecise geometry when exporting networks as <a href="../Networks/Import/OpenDRIVE.html" title="Networks/Import/OpenDRIVE">OpenDrive</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2031">Issue #2031</a></li>
+<li> Fixed invalid geometry of lanes within intersections when exporting networks as <a href="../Networks/Import/OpenDRIVE.html" title="Networks/Import/OpenDRIVE">OpenDrive</a>.</li></ul></li>
+<li> Fixed crash when specifying inconsistent <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Traffic_Light_Program_Definition" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">tllogic input</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2010">Issue #2010</a></li>
+<li> When patching an existing network with <i>.nod.xml</i> file, existing traffic light programs are now preserved unless changes are specified explicitly.</li>
+<li> No longer patching loaded traffic light programs for new crossings if they already have the correct state size.</li>
+<li> When importing a <i>.net.xml</i> which was built for left-hand traffic, the resulting network will also be built for left-hand traffic. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1880">Issue #1880</a></li>
+<li> When importing a <i>.net.xml</i>, generated networks will retain the same value of <span style="color: #111144; font-weight: bold; white-space: pre;">--junctions.corner-detail</span>) as the input network. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1897">Issue #1897</a></li>
+<li> Fixed invalid geo-referencing in left-hand networks. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2020">Issue #2020</a></li>
+<li> Traffic lights that control multiple intersections no longer create unsafe right-of-way rules. The edges that lie within the traffic light are now controlled according to the appropriate right of way (This does not necessarily model physical traffic signals but reflects the behavior of drivers). <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/812">Issue #812</a>
+<ul><li> Old signal plans for these <i>joined</i> traffic lights no longer work for new networks since more link states need to be defined. The option <span style="color: #111144; font-weight: bold; white-space: pre;">--tls.uncontrolled-within <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span> was added to build networks that are compatible with old-style signal plans. Note, that this may create unsafe intersections, causing collisions.</li></ul></li></ul></li></ul>
+<ul><li> NETEDIT
+<ul><li> When renaming an edge, the lane IDs are now updated as well. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1867">Issue #1867</a></li>
+<li> Fractional widths can now be set when inspecting edges.</li>
+<li> Modifying traffic light plans which control multiple nodes is now working. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2009">Issue #2009</a></li></ul></li></ul>
+<ul><li> DUAROUTER
+<ul><li> Fixed invalid error when compiled without the FOX library. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1956">Issue #1956</a></li></ul></li></ul>
+<ul><li> OD2TRIPS
+<ul><li> Option <span style="color: #111144; font-weight: bold; white-space: pre;">--begin</span> is now working. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1889">Issue #1889</a></li></ul></li></ul>
+<ul><li> MESO-GUI
+<ul><li> Loading of edge-scaling schemes from a <i>gui-settings-file</i> is now working.</li>
+<li> The front of each vehicle queue is now drawn at the start of its segment.</li></ul></li></ul>
+<ul><li> TraCI
+<ul><li> Fixed bug that prevented the <a href="../TraCI/C%2B%2BTraCIAPI.html" title="TraCI/C++TraCIAPI">C++ TraCI library</a> from functioning. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2007">Issue #2007</a></li>
+<li> <a href="../TraCI/Change_Vehicle_State.html" title="TraCI/Change Vehicle State">Vehicle command</a> <i>set speed</i> can now be used in conjunction with <i>move to VTD</i>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1984">Issue #1984</a></li>
+<li> When using <a href="../TraCI/Change_Vehicle_State.html" title="TraCI/Change Vehicle State">Vehicle command</a> <i>move to VTD</i>, the speed is set according to the covered distance where this is deemed plausible (the value of <i>set speed</i> overrides this).</li></ul></li></ul>
+<ul><li> Tools
+<ul><li> <a href="../Tools/Import/OSM.html" title="Tools/Import/OSM">osmWebWizard.py</a> no longer fails when encountering path names with space-charactes in them.</li>
+<li> <a href="../Tools/Import/OSM.html" title="Tools/Import/OSM">osmWebWizard.py</a> no longer nests output directories when generating multiple scenarios.</li></ul></li></ul>
+<h3><span class="mw-headline" id="Enhancements">Enhancements</span></h3>
+<ul><li> Simulation
+<ul><li> <a href="../Definition_of_Vehicles,_Vehicle_Types,_and_Routes.html#Abstract_Vehicle_Class" title="Definition of Vehicles, Vehicle Types, and Routes">Vehicle types</a> now have <span class="inlxml">vClass="passenger"</span> by default. Earlier, the default was <span class="inlxml">ignoring</span> which would let the vehicles drive along footpaths and railways.</li>
+<li> <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Merge_%28traffic%29">Zipper merging</a> is now supported (see Netconvert enhancement below). <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1292">Issue #1292</a></li>
+<li> Added person statistics to <a href="../Simulation/Output.html#Commandline_Output_.28verbose.29" title="Simulation/Output">verbose output</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1898">Issue #1898</a></li>
+<li> Now warning about jammed pedestrians.</li>
+<li> Now warning about pedestrians "collisions".</li>
+<li> Now warning about traffic lights where one link never gets a green light.</li>
+<li> It is now possible to <a href="../Simulation/Traffic_Lights.html#Modifying_Existing_TLS-Programs" title="Simulation/Traffic Lights">modify the offset of an existing tls program</a> without loading a completely new <span class="inlxml">tlLogic</span>-definition. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1940">Issue #1940</a></li>
+<li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--duration-log.statistics <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span> which causes average vehicle trip data to be <a href="../Simulation/Output.html#Commandline_Output_.28verbose.29" title="Simulation/Output">printed in verbose mode</a> (average route length, travel time and time loss, ...) for quick evaluation of a scenario. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1911">Issue #1911</a></li>
+<li> The option <span style="color: #111144; font-weight: bold; white-space: pre;">--max-num-vehicles <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a></span> can now be used to maintain a constant number of vehicles in the network. Vehicle insertions are delayed whenever this number would be exceeded. Previously this option would terminate the simulation when the number was exceeded. To avoid a large number of delayed vehicles it is recommended to use the option <span style="color: #111144; font-weight: bold; white-space: pre;">--max-depart-delay <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1958">Issue #1958</a></li>
+<li> Traffic detectors which are generated for <a href="../Simulation/Traffic_Lights.html#Actuated_Traffic_Lights" title="Simulation/Traffic Lights">actuated traffic lights now support additional parameters</a> to allow writing output files the same way as <a href="../Simulation/Output/Induction_Loops_Detectors_(E1).html" title="Simulation/Output/Induction Loops Detectors (E1)">regular detectors</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1839">Issue #1839</a></li>
+<li> Angles in simulation output and TraCI results now conform to <i>Navigational Standards</i> with <i>0</i> pointing towards the North and <i>90</i> pointing due East. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1372">Issue #1372</a></li></ul></li></ul>
+<ul><li> NETEDIT
+<ul><li> <a href="../NETEDIT.html" title="NETEDIT">NETEDIT</a> is now open. Have fun.</li>
+<li> Int and float options can now be set in the <i>Processing-&gt;Options</i> dialog.</li>
+<li> Added many lane- and junction-coloring modes already known from <a href="../SUMO-GUI.html#Edge.2FLane_Visualisation_Settings" title="SUMO-GUI">SUMO-GUI</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1756">Issue #1756</a></li>
+<li> Pedestrian crossings are now supported when editing traffic light plans.</li>
+<li> Attributes of pedestrian crossings can now be modified.</li>
+<li> Added context-menu option for removing intermediate geometry points from selected edges. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1913">Issue #1913</a></li>
+<li> Vehicle class permissions can now be edited via check-boxes instead of typing all class names. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1909">Issue #1909</a></li>
+<li> Individual lanes and selections of lanes can now be deleted when unchecking <i>Select edges</i>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1895">Issue #1895</a></li>
+<li> A lane (or a selections of lanes) can now be duplicated by selecting <i>Duplicate lane</i> from the context menu. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1896">Issue #1896</a></li>
+<li> <i>Selection Mode</i> now allows <a href="../NETEDIT.html#Select" title="NETEDIT">additional operators</a> when matching against a non-numerical attribute. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1923">Issue #1923</a></li>
+<li> Added new option <i>Copy edge name to clipboard</i> to the lane popup-menu.</li>
+<li> Junction attribute <i>keepClear</i> is now supported.</li>
+<li> Custom junction shapes can now be drawn by selecting <i>Set custom shape</i> from the junction popup-menu. This will create a <a href="../NETEDIT.html#Modifiable_Poly" title="NETEDIT">modifiable shape outline. The popup-menu of this outline allows saving, discarding and simplifying the shape.</a></li>
+<li> Added <i>reload</i> menu option. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2029">Issue #2029</a></li>
+<li> When editing traffic light plans, <a href="../NETEDIT.html#Traffic_Lights" title="NETEDIT">states can now be set for multiple links and multiple phases at the same time</a>.</li></ul></li></ul>
+<ul><li> SUMO-GUI
+<ul><li> Persons can now be tracked by selecting <i>Start Tracking</i> from the context menu. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1779">Issue #1779</a></li>
+<li> The current route of pedestrians can now be shown by selecting <i>Show Current Route</i> from the context menu. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1906">Issue #1906</a></li>
+<li> Error messages can now by clicked for jumping to the referenced simulation object (i.e. a teleporting vehicle). <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/900">Issue #900</a></li>
+<li> Added person statistics to network parameter dialog. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1898">Issue #1898</a></li>
+<li> Added new menu option <i>Edit-&gt;Open in Netedit</i> for opening the current network (at the current location) in <a href="../NETEDIT.html" title="NETEDIT">NETEDIT</a>.</li>
+<li> Added new option <i>Copy edge name to clipboard</i> to the lane popup-menu.</li>
+<li> Added new options <i>Close edge</i> and <i>Close lane</i> to the lane popup-menu. This will force vehicles (with an assigned vClass) to wait until the corresponding lanes have been reopened (also via popup-menu).</li>
+<li> Added new option <i>Add rerouter</i> to the lane popup-menu. This will make vehicles recompute their route when entering that edge.</li>
+<li> The size and color of link indices can now be customized (old <a href="../SUMO-GUI.html#Changing_the_appearance.2Fvisualisation_of_the_simulation" title="SUMO-GUI">gui settings files</a> may have to be updated).</li>
+<li> Average trip data (for completed vehicle trips) is now available in the network parameter dialogue when running with option <span style="color: #111144; font-weight: bold; white-space: pre;">--duration-log.statistics</span>.</li>
+<li> Added new junction visualization option <i>draw crossings/walkingareas</i>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1899">Issue #1899</a></li>
+<li> Vehicles can now be colored <i>by depart delay</i> (the differences between desired and actual depart time). Depart delay was also added to the vehicle parameter dialog. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1970">Issue #1970</a></li>
+<li> Junction shapes are no longer drawn when their color is set to fully transparent.</li>
+<li> The network version is now shown the the network parameter dialog.</li></ul></li></ul>
+<ul><li> NETCONVERT
+<ul><li> <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Merge_%28traffic%29">Zipper merging</a> is now supported via the new <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_types" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">node type <i>zipper</i></a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1292">Issue #1292</a></li>
+<li> <a rel="nofollow" class="external text" href="https://en.wikipedia.org/wiki/Right_turn_on_red">Right-turn-on-red</a> is now supported via the new <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_types" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">node type <i>traffic_light_right_on_red</i></a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1287">Issue #1287</a></li>
+<li> Importing <i>.inpx</i> <a href="../Networks/Import/Vissim.html" title="Networks/Import/Vissim">VISSIM networks</a> is now supported. Thanks to the <a rel="nofollow" class="external text" href="http://www.ait.ac.at/">AIT</a> for their contribution.</li>
+<li> The positioning and presence of <a href="../Networks/SUMO_Road_Networks.html#Internal_Junctions" title="Networks/SUMO Road Networks">internal junctions</a> can now be <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Explicitly_setting_which_Edge_.2F_Lane_is_connected_to_which" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">customized with the new connection attribute <span class="inlxml">contPos</span></a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2016">Issue #2016</a></li>
+<li> The maximum number of connections per junction was raised from 64 to 256.</li>
+<li> Added options <span style="color: #111144; font-weight: bold; white-space: pre;">--geometry.remove.keep-edges.explicit <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a></span> and <span style="color: #111144; font-weight: bold; white-space: pre;">--geometry.remove.keep-edges.input-file <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FILE&gt;</i></a></span> to exclude edges from being modified when using option <span style="color: #111144; font-weight: bold; white-space: pre;">--geometry.remove</span>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1929">Issue #1929</a></li>
+<li> When specifying <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Multiple_connections_from_the_same_edge_to_the_same_target_lane" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">multiple connections from the same edge to the same target lane</a>, safe right-of-way rules are now established among the conflicting connections. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1859">Issue #1859</a></li>
+<li> Added options <span style="color: #111144; font-weight: bold; white-space: pre;">--tls.cycle.time <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span> to ensure that heuristically generated traffic light plans have a fixed cycle length. The new default is <i>90</i> (s) which will have no effect on most 4-arm intersections but will cause different timings for controlled 3-arm intersections and other types. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1942">Issue #1942</a></li>
+<li> Added options <span style="color: #111144; font-weight: bold; white-space: pre;">--edges.join <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span> to select whether edges that connect the same nodes (and have similar geometry) shall be joined into an edge with multiple lanes. The new default is <i>false</i> (before, this heuristic was always active). <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1930">Issue #1930</a></li>
+<li> Street names are now imported form <a href="../Networks/Import/OpenDRIVE.html" title="Networks/Import/OpenDRIVE">OpenDrive</a>.</li>
+<li> Now including sumo edge-ids in <a href="../Networks/Further_Outputs.html#OpenDRIVE_Road_Networks" title="Networks/Further Outputs">OpenDrive export</a> if option <span style="color: #111144; font-weight: bold; white-space: pre;">--output.original-names</span> is given (as <span class="inlxml">&lt;userData sumoId="sumo_edge_id"/&gt;</span>).</li>
+<li> Now using more lane types in <a href="../Networks/Further_Outputs.html#OpenDRIVE_Road_Networks" title="Networks/Further Outputs">OpenDrive export</a>.</li>
+<li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--default.junctions.radius <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span> for setting the default <span class="inlxml">radius</span> of <a href="../Networks/Building_Networks_from_own_XML-descriptions.html#Node_Descriptions" title="Networks/Building Networks from own XML-descriptions" class="mw-redirect">nodes</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1987">Issue #1987</a></li>
+<li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--tls.left-green.time <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;TIME&gt;</i></a></span> to configure the default duration for the dedicated left-turn phase. A value of 0 disables building this phase. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1949">Issue #1949</a></li>
+<li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--sidewalks.guess.exclude <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a></span> to prevent guessing a sidewalk for the given list of edges.</li>
+<li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--junctions.internal-link-detail <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;INT&gt;</i></a></span> for setting the number of geometry points for lanes within intersections (Before, this was hard-coded as <i>5</i>). <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1988">Issue #1988</a></li>
+<li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--crossings.guess.speed-threshold <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;FLOAT&gt;</i></a></span>. This allows setting the speed threshold above which crossings will not be generated at uncontrolled nodes (before this was hard-coded to <i>13.89</i>m/s). <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1819">Issue #1819</a></li></ul></li></ul>
+<ul><li> POLYCONVERT
+<ul><li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--fill <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span> to control whether polygons are filled by default or not. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1858">Issue #1858</a></li>
+<li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--shapefile.fill <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;STRING&gt;</i></a></span> to override the fill state when importing shapefiles. Allowed values are <b>[auto|true|false]</b>.</li></ul></li></ul>
+<ul><li> MESO-GUI
+<ul><li> It is now possible to select individual vehicles, to examine their parameters, track them and show their route just like for <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1932">Issue #1932</a></li>
+<li> Vehicles can now be located as in <a href="../SUMO-GUI.html" title="SUMO-GUI">SUMO-GUI</a>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/1487">Issue #1487</a></li></ul></li></ul>
+<ul><li> Tools
+<ul><li> <a href="../Tools/TraceExporter.html" title="Tools/TraceExporter">traceExporter.py</a> now supports exporting traces of persons when using the new option <span style="color: #111144; font-weight: bold; white-space: pre;">--persons <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span>.</li>
+<li> Added option <span style="color: #111144; font-weight: bold; white-space: pre;">--ignore-gaps <a href="../Basics/Notation.html#Referenced_Data_Types" title="Basics/Notation"><i>&lt;BOOL&gt;</i></a></span> for <a href="../Tools/TraceExporter.html" title="Tools/TraceExporter">traceExporter.py</a>. When this is set vehicles will not be destroyed until the end of the fcd-file even when disappearing for a few simulation steps..</li>
+<li> The <a href="../Tools/Import/OSM.html#server.py" title="Tools/Import/OSM">osmWebWizard.py</a> import script is now more robust in finding a suitable output directory and recovering from errors.</li>
+<li> Added new tool <a href="../Tools/tls.html#tlsCoordinator.py" title="Tools/tls">tlsCoordinator.py</a> which coordinates traffic lights in a network for a given traffic demand in order to create green waves for many vehicles.</li>
+<li> Connection objects from networks parsed via  <a href="../Tools/Sumolib.html" title="Tools/Sumolib">Sumolib</a> can now return <i>getTLLinkIndex</i> as well as <i>getJunctionIndex</i>. <a rel="nofollow" class="external text" href="https://github.com/eclipse/sumo/issues/2048">Issue #2048</a></li></ul></li></ul>
+<ul><li> TraCI
+<ul><li> Added function <i>simulationStep()</i> to the <a href="../TraCI/C%2B%2BTraCIAPI.html" title="TraCI/C++TraCIAPI">C++ TraCI library</a>.</li></ul></li></ul>
+<h3><span class="mw-headline" id="Other">Other</span></h3>
+<ul><li> Documentation
+<ul><li> Online documentation of <a rel="nofollow" class="external text" href="http://github.com/egueli/TraCI4J">TraCI4J</a> can now be found at <a rel="nofollow" class="external text" href="http://sumo.dlr.de/daily/javadoc/traci4j/">traci4j-javadoc</a></li>
+<li> The section on <a href="../Networks/Further_Outputs.html#Further_Outputs" title="Networks/Further Outputs">Additional NETCONVERT outputs was completely rewritten</a>.</li>
+<li> Added a <a href="../XMLValidation.html" title="XMLValidation">new page on XML Validation</a></li>
+<li> Added <a href="../TraCI/C%2B%2BTraCIAPI.html" title="TraCI/C++TraCIAPI">documentation for the C++ TraCI API client</a></li>
+<li> Added documentation on <a href="../Simulation/Output/RouteProbe.html" title="Simulation/Output/RouteProbe">route probe detectors</a> (which was quite overdue).</li>
+<li> Expanded documentation on <a href="../Simulation/Calibrator.html" title="Simulation/Calibrator">Calibrators</a> in regard to their mechanism for generating new vehicles.</li>
+<li> Added <a href="../Simulation/Routing.html" title="Simulation/Routing">overview page for simulation routing</a>.</li></ul></li></ul>
+<ul><li> Simulation
+<ul><li> Attribute names of the <a href="../Models/Electric.html" title="Models/Electric">energy model (battery device, charging stations)</a> were updated to bring them in line with naming conventions. Refer to the documentation for new attribute names.</li></ul></li></ul>
+<ul><li> NETCONVERT
+<ul><li> Network version is now <b>0.25</b>. New features that justify the version change are:
+<ul><li> New linkstate <i>Z</i> and junction type <i>zipper</i> for zipper merging.</li>
+<li> New junction type <i>traffic_light_right_on_red</i>. To accommodate this type of junction, linkstate 's' (stop) is now allowed in traffic light plans.</li>
+<li> Multiple connections to the same lane do not result in a warning any more. (The conflict is resolved using zipper merging or priority right of way)</li>
+<li> New network attributes <i>lefthand</i>, <i>junctionCornerDetail</i> and <i>junctionLinkDetail</i></li>
+<li> Note, that the network version should have been updated in 0.23.0 due to the introduction of ships but this was forgotten. </li></ul></li></ul></li></ul>
+<ul><li> SUMO-GUI
+<ul><li> The visualization options <i>Show internal edge name</i> and <i>Show crossing and walkingarea name</i> were moved from the <i>Streets</i>-tab to the <i>Junctions</i>-tab.</li></ul></li></ul>
+<ul><li> Tools
+<ul><li> <i>extractRouteEdges.py</i> was removed as the functionality is now fulfilled by <a href="../Tools/Routes.html#route2sel.py" title="Tools/Routes"><i>route2sel.py</i></a>.</li>
+<li> <a href="../Tools/Import/OSM.html" title="Tools/Import/OSM">server.py</a> was renamed to <a href="../Tools/Import/OSM.html" title="Tools/Import/OSM">osmWebWizard.py</a> and now resides directly within the <i>tools</i> folder.</li></ul></li></ul>
+<ul><li> Misc
+<ul><li> <i>start-commandline-bat</i> now adds python (python 2.7 in it's default install location) and <i><b>&lt;SUMO_HOME&gt;</b></i>/tools to the path.</li>
+<li> Simplified runner script of <a href="../Tutorials/TraCI4Traffic_Lights.html" title="Tutorials/TraCI4Traffic Lights">Tutorials/TraCI4Traffic_Lights</a></li></ul></li></ul>
+
+<!-- 
+NewPP limit report
+CPU time usage: 0.108 seconds
+Real time usage: 0.117 seconds
+Preprocessor visited node count: 734/1000000
+Preprocessor generated node count: 2048/1000000
+Post‐expand include size: 8235/2097152 bytes
+Template argument size: 2048/2097152 bytes
+Highest expansion depth: 3/40
+Expensive parser function count: 0/100
+-->
+
+<!-- 
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   57.007      1 - -total
+ 32.95%   18.785     68 - Template:Ticket
+ 26.64%   15.185     23 - Template:Option
+  3.99%    2.272      8 - Template:XML
+  2.40%    1.368      6 - Template:DT_BOOL
+  2.29%    1.304      3 - Template:DT_STR
+  2.16%    1.232      1 - Template:SUMO
+  2.09%    1.194      3 - Template:DT_TIME
+  2.05%    1.167      2 - Template:DT_FLOAT
+  2.04%    1.161      2 - Template:DT_INT
+-->
+
+<!-- Saved in parser cache with key sumoSimWiki:pcache:idhash:705-0!*!0!!en!*!* and timestamp 20181217231728 and revision id 7675
+ -->
+</div>									</div><hr/><div id="lastmod">This page was last modified on 11 July 2016, at 11:23.</div> </div>
+
+    <div id="footer">
+      <div>
+        (c) 2011-2017, German Aerospace Center, Institute of
+        Transportation Systems
+      </div>
+
+      <div>
+        Layout based on <a href=
+        "http://www.oswd.org/design/preview/id/3365">"Three
+        Quarters"</a> by "SimplyGold"
+      </div>
+    </div>
+  </div>
+</body>
+</html>

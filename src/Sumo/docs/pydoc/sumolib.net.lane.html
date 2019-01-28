@@ -1,0 +1,144 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module sumolib.net.lane</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="sumolib.html"><font color="#ffffff">sumolib</font></a>.<a href="sumolib.net.html"><font color="#ffffff">net</font></a>.lane</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/delphi/gcc/sumo/tools/sumolib/net/lane.py">/home/delphi/gcc/sumo/tools/sumolib/net/lane.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;Eclipse&nbsp;SUMO,&nbsp;Simulation&nbsp;of&nbsp;Urban&nbsp;MObility;&nbsp;see&nbsp;https://eclipse.org/sumo<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;2011-2018&nbsp;German&nbsp;Aerospace&nbsp;Center&nbsp;(DLR)&nbsp;and&nbsp;others.<br>
+#&nbsp;This&nbsp;program&nbsp;and&nbsp;the&nbsp;accompanying&nbsp;materials<br>
+#&nbsp;are&nbsp;made&nbsp;available&nbsp;under&nbsp;the&nbsp;terms&nbsp;of&nbsp;the&nbsp;Eclipse&nbsp;Public&nbsp;License&nbsp;v2.0<br>
+#&nbsp;which&nbsp;accompanies&nbsp;this&nbsp;distribution,&nbsp;and&nbsp;is&nbsp;available&nbsp;at<br>
+#&nbsp;<a href="http://www.eclipse.org/legal/epl-v20.html">http://www.eclipse.org/legal/epl-v20.html</a><br>
+#&nbsp;SPDX-License-Identifier:&nbsp;EPL-2.0</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="sumolib.html">sumolib</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="sumolib.net.lane.html#Lane">Lane</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Lane">class <strong>Lane</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Lanes&nbsp;from&nbsp;a&nbsp;sumo&nbsp;network<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Lane-__init__"><strong>__init__</strong></a>(self, edge, speed, length, width, allow, disallow)</dt></dl>
+
+<dl><dt><a name="Lane-addOutgoing"><strong>addOutgoing</strong></a>(self, conn)</dt></dl>
+
+<dl><dt><a name="Lane-allows"><strong>allows</strong></a>(self, vClass)</dt><dd><tt>true&nbsp;if&nbsp;this&nbsp;lane&nbsp;allows&nbsp;the&nbsp;given&nbsp;vehicle&nbsp;class</tt></dd></dl>
+
+<dl><dt><a name="Lane-getBoundingBox"><strong>getBoundingBox</strong></a>(self, includeJunctions<font color="#909090">=True</font>)</dt></dl>
+
+<dl><dt><a name="Lane-getClosestLanePosAndDist"><strong>getClosestLanePosAndDist</strong></a>(self, point, perpendicular<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="Lane-getConnection"><strong>getConnection</strong></a>(self, toLane)</dt><dd><tt>Returns&nbsp;the&nbsp;connection&nbsp;to&nbsp;the&nbsp;given&nbsp;target&nbsp;lane&nbsp;or&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Lane-getEdge"><strong>getEdge</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Lane-getID"><strong>getID</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Lane-getIncoming"><strong>getIncoming</strong></a>(self)</dt><dd><tt>Returns&nbsp;all&nbsp;incoming&nbsp;lanes&nbsp;for&nbsp;this&nbsp;lane,&nbsp;i.e.&nbsp;lanes,&nbsp;which&nbsp;have&nbsp;a&nbsp;connection&nbsp;to&nbsp;this&nbsp;lane.</tt></dd></dl>
+
+<dl><dt><a name="Lane-getIndex"><strong>getIndex</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Lane-getLength"><strong>getLength</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Lane-getNeigh"><strong>getNeigh</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Lane-getOutgoing"><strong>getOutgoing</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Lane-getParam"><strong>getParam</strong></a>(self, key, default<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Lane-getShape"><strong>getShape</strong></a>(self, includeJunctions<font color="#909090">=False</font>)</dt><dd><tt>Returns&nbsp;the&nbsp;shape&nbsp;of&nbsp;the&nbsp;lane&nbsp;in&nbsp;2d.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;returns&nbsp;the&nbsp;shape&nbsp;of&nbsp;the&nbsp;lane,&nbsp;as&nbsp;defined&nbsp;in&nbsp;the&nbsp;net.xml<br>
+file.&nbsp;The&nbsp;returned&nbsp;shape&nbsp;is&nbsp;a&nbsp;list&nbsp;containing&nbsp;numerical<br>
+2-tuples&nbsp;representing&nbsp;the&nbsp;x,y&nbsp;coordinates&nbsp;of&nbsp;the&nbsp;shape&nbsp;points.<br>
+&nbsp;<br>
+For&nbsp;includeJunctions=True&nbsp;the&nbsp;returned&nbsp;list&nbsp;will&nbsp;contain<br>
+additionally&nbsp;the&nbsp;coords&nbsp;(x,y)&nbsp;of&nbsp;the&nbsp;fromNode&nbsp;of&nbsp;the<br>
+corresponding&nbsp;edge&nbsp;as&nbsp;first&nbsp;element&nbsp;and&nbsp;the&nbsp;coords&nbsp;(x,y)<br>
+of&nbsp;the&nbsp;toNode&nbsp;as&nbsp;last&nbsp;element.<br>
+&nbsp;<br>
+For&nbsp;internal&nbsp;lanes,&nbsp;includeJunctions&nbsp;is&nbsp;ignored&nbsp;and&nbsp;the&nbsp;unaltered<br>
+shape&nbsp;of&nbsp;the&nbsp;lane&nbsp;is&nbsp;returned.</tt></dd></dl>
+
+<dl><dt><a name="Lane-getShape3D"><strong>getShape3D</strong></a>(self, includeJunctions<font color="#909090">=False</font>)</dt><dd><tt>Returns&nbsp;the&nbsp;shape&nbsp;of&nbsp;the&nbsp;lane&nbsp;in&nbsp;3d.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;returns&nbsp;the&nbsp;shape&nbsp;of&nbsp;the&nbsp;lane,&nbsp;as&nbsp;defined&nbsp;in&nbsp;the&nbsp;net.xml<br>
+file.&nbsp;The&nbsp;returned&nbsp;shape&nbsp;is&nbsp;a&nbsp;list&nbsp;containing&nbsp;numerical<br>
+3-tuples&nbsp;representing&nbsp;the&nbsp;x,y,z&nbsp;coordinates&nbsp;of&nbsp;the&nbsp;shape&nbsp;points<br>
+where&nbsp;z&nbsp;defaults&nbsp;to&nbsp;zero.<br>
+&nbsp;<br>
+For&nbsp;includeJunction=True&nbsp;the&nbsp;returned&nbsp;list&nbsp;will&nbsp;contain<br>
+additionally&nbsp;the&nbsp;coords&nbsp;(x,y,z)&nbsp;of&nbsp;the&nbsp;fromNode&nbsp;of&nbsp;the<br>
+corresponding&nbsp;edge&nbsp;as&nbsp;first&nbsp;element&nbsp;and&nbsp;the&nbsp;coords&nbsp;(x,y,z)<br>
+of&nbsp;the&nbsp;toNode&nbsp;as&nbsp;last&nbsp;element.<br>
+&nbsp;<br>
+For&nbsp;internal&nbsp;lanes,&nbsp;includeJunctions&nbsp;is&nbsp;ignored&nbsp;and&nbsp;the&nbsp;unaltered<br>
+shape&nbsp;of&nbsp;the&nbsp;lane&nbsp;is&nbsp;returned.</tt></dd></dl>
+
+<dl><dt><a name="Lane-getSpeed"><strong>getSpeed</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Lane-getWidth"><strong>getWidth</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Lane-setNeigh"><strong>setNeigh</strong></a>(self, neigh)</dt></dl>
+
+<dl><dt><a name="Lane-setParam"><strong>setParam</strong></a>(self, key, value)</dt></dl>
+
+<dl><dt><a name="Lane-setShape"><strong>setShape</strong></a>(self, shape)</dt><dd><tt>Set&nbsp;the&nbsp;shape&nbsp;of&nbsp;the&nbsp;lane<br>
+&nbsp;<br>
+shape&nbsp;must&nbsp;be&nbsp;a&nbsp;list&nbsp;containing&nbsp;x,y,z&nbsp;coords&nbsp;as&nbsp;numbers<br>
+to&nbsp;represent&nbsp;the&nbsp;shape&nbsp;of&nbsp;the&nbsp;lane</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-addJunctionPos"><strong>addJunctionPos</strong></a>(shape, fromPos, toPos)</dt><dd><tt>Extends&nbsp;shape&nbsp;with&nbsp;the&nbsp;given&nbsp;positions&nbsp;in&nbsp;case&nbsp;they&nbsp;differ&nbsp;from&nbsp;the<br>
+existing&nbsp;endpoints.&nbsp;assumes&nbsp;that&nbsp;shape&nbsp;and&nbsp;positions&nbsp;have&nbsp;the&nbsp;same&nbsp;dimensionality</tt></dd></dl>
+ <dl><dt><a name="-get_allowed"><strong>get_allowed</strong></a>(allow, disallow)</dt><dd><tt>Normalize&nbsp;the&nbsp;given&nbsp;string&nbsp;attributes&nbsp;as&nbsp;a&nbsp;list&nbsp;of&nbsp;all&nbsp;allowed&nbsp;vClasses.</tt></dd></dl>
+ <dl><dt><a name="-reduce"><strong>reduce</strong></a>(...)</dt><dd><tt><a href="#-reduce">reduce</a>(function,&nbsp;sequence[,&nbsp;initial])&nbsp;-&gt;&nbsp;value<br>
+&nbsp;<br>
+Apply&nbsp;a&nbsp;function&nbsp;of&nbsp;two&nbsp;arguments&nbsp;cumulatively&nbsp;to&nbsp;the&nbsp;items&nbsp;of&nbsp;a&nbsp;sequence,<br>
+from&nbsp;left&nbsp;to&nbsp;right,&nbsp;so&nbsp;as&nbsp;to&nbsp;reduce&nbsp;the&nbsp;sequence&nbsp;to&nbsp;a&nbsp;single&nbsp;value.<br>
+For&nbsp;example,&nbsp;<a href="#-reduce">reduce</a>(lambda&nbsp;x,&nbsp;y:&nbsp;x+y,&nbsp;[1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;5])&nbsp;calculates<br>
+((((1+2)+3)+4)+5).&nbsp;&nbsp;If&nbsp;initial&nbsp;is&nbsp;present,&nbsp;it&nbsp;is&nbsp;placed&nbsp;before&nbsp;the&nbsp;items<br>
+of&nbsp;the&nbsp;sequence&nbsp;in&nbsp;the&nbsp;calculation,&nbsp;and&nbsp;serves&nbsp;as&nbsp;a&nbsp;default&nbsp;when&nbsp;the<br>
+sequence&nbsp;is&nbsp;empty.</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>SUMO_VEHICLE_CLASSES</strong> = ('public_emergency', 'public_authority', 'public_army', 'public_transport', 'transport', 'lightrail', 'cityrail', 'rail_slow', 'rail_fast', 'private', 'emergency', 'authority', 'army', 'vip', 'passenger', 'hov', 'taxi', 'bus', 'coach', 'delivery', ...)</td></tr></table>
+</body></html>
