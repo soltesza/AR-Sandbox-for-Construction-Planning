@@ -61,15 +61,18 @@
 					output = lerp(_Color0, _Color1, frac(y));	//blend between colors 0 and 1
 				}
 				else if (y <= 2) {
-					if (y <= 1.1) output = lerp(_ColorB, _ColorB, frac(y));
+					if (y <= 1.05) output = lerp(_ColorB, _ColorB, frac(y));
+                    else if (y >= 1.5 && y <= 1.55) output = lerp(_ColorB, _ColorB, frac(y));
 					else output = lerp(_Color1, _Color2, frac(y));	//blend between colors 1 and 2
 				}
 				else if (y <= 3) {
-					if (y <= 2.1) output = lerp(_ColorB, _ColorB, frac(y));
+					if (y <= 2.05) output = lerp(_ColorB, _ColorB, frac(y));
+                    else if (y >= 2.5 && y <= 2.55) output = lerp(_ColorB, _ColorB, frac(y));
 					else output = lerp(_Color2, _Color3, frac(y));	//blend between colors 2 and 3
 				}
 				else {
-					if (y <= 3.1) output = lerp(_ColorB, _ColorB, frac(y));
+					if (y <= 3.05) output = lerp(_ColorB, _ColorB, frac(y));
+                    else if (y >= 3.5 && y <= 3.55) output = lerp(_ColorB, _ColorB, frac(y));
 					else output = lerp(_Color3, _Color4, frac(y));	//blend between colors 3 and 4
 				}
 
