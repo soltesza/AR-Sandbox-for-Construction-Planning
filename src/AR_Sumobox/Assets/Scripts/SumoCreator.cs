@@ -33,19 +33,7 @@ public class SumoCreator : MonoBehaviour
             si.CreateNoWindow = true;
             p.StartInfo = si;
             p.Start();
-            while (!p.StandardOutput.EndOfStream)
-            {
-                string last = p.StandardOutput.ReadLine();
-                UnityEngine.Debug.Log(last);
-                if (last.Contains("osm.sumocfg"))
-                {
-                    if(!p.HasExited)
-                    {
-                        p.Kill();
-                    }
-                    break;
-                }
-            }
+            p.WaitForExit();
         }
         catch (Exception e)
         {

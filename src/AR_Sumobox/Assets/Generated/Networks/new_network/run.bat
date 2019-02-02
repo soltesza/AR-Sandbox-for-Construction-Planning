@@ -1,1 +1,0 @@
-sumo -c osm.sumocfg
