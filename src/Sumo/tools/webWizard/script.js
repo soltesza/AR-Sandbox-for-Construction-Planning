@@ -1,5 +1,5 @@
 on("ready", function(){
-    var PORT = "8010";
+    var PORT = "80";
 
     /**
      * @class
@@ -378,21 +378,37 @@ on("ready", function(){
 
 	socket.onerror = function(error) {
 	    if (presentedErrorLog == false) {
-		//window.alert("Socket connection failed. Please open the OSM WebWizard by using osmWebWizard.py or the link in your start menu.");
-		//presentedErrorLog = true;
-		window.close();
+    		window.alert("Socket connection failed. Please open the OSM WebWizard by using osmWebWizard.py or the link in your start menu.");
+    		presentedErrorLog = true;
 	    }
 	};
 	
         // whenever the socket closes (e.g. restart) try to reconnect
         socket.addEventListener("close", connectSocket);
         socket.addEventListener("message", function(evt){
-            var message = evt.data;
-            // get the first space
-            var index = message.indexOf(" ");
+            var message = event.data;
+            var index = null;
+            try{
+            	// get the first space
+            	index = message.indexOf(' ');	
+            }catch(e){
+            	var reader = new FileReader();
+            	reader.onload = function(e){
+            		message = reader.result;
+            	}
+            	reader.readAsDataURL(message);
+            	message = reader.result;
+            	index = message.indexOf(' ');
+            }
+            
             // split the message type from the message
-            var type = message.substr(0, index);
-            message = message.substr(index + 1);
+            if(index >= 0){
+            	var type = message.substr(0, index);
+            	message = message.substr(index + 1);	
+            }else{
+            	var type = "zip";
+            }
+            
 
             if(type === "zip"){
                 showZip(message);

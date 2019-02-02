@@ -132,11 +132,11 @@ class Builder(object):
 
         self.tmp = None
         if local:
-            now = data.get("testOutputDir","new_network")
-            folder = "Assets/Generated/Networks/"
+            now = data.get("testOutputDir",
+                           datetime.datetime.now().strftime("%Y-%m-%d-%H-%M-%S"))
             for base in ['', os.path.expanduser('~/Sumo')]:
                 try:
-                    self.tmp = os.path.abspath(os.path.join(base, folder+now))
+                    self.tmp = os.path.abspath(os.path.join(base, now))
                     os.makedirs(self.tmp)
                     break
                 except Exception:
@@ -358,16 +358,16 @@ class Builder(object):
         self.filename("run.bat", "run.bat", False)
 
         with open(self.files["run.bat"], "w") as batchfile:
-            batchfile.write("sumo -c " + self.files_relative["config"])
+            batchfile.write("sumo-gui -c " + self.files_relative["config"])
 
         os.chmod(self.files["run.bat"], BATCH_MODE)
 
     def openSUMO(self):
         self.report("Calling SUMO")
 
-        sumo = sumolib.checkBinary("sumo")
+        sumogui = sumolib.checkBinary("sumo-gui")
 
-        subprocess.Popen([sumo, "-c", self.files["config"]], cwd=self.tmp)
+        subprocess.Popen([sumogui, "-c", self.files["config"]], cwd=self.tmp)
 
     def createZip(self):
         "Create a zip file with everything inside which SUMO GUI needs, returns it base64 encoded"
@@ -383,7 +383,7 @@ class Builder(object):
                 files += ["poly"]
 
             # translate the pseudo file names to real file names
-            files = map(lambda name: self.files[name], files)
+            files = list(map(lambda name: self.files[name], files))
 
             if self.data["vehicles"]:
                 files += self.routenames
@@ -396,7 +396,7 @@ class Builder(object):
         with open(self.files["zip"], "rb") as zipfile:
             content = zipfile.read()
 
-        return base64.b64encode(content)
+        return base64.b64encode(content);
 
     def finalize(self):
         try:
@@ -434,13 +434,12 @@ class OSMImporterWebSocket(WebSocket):
             builder.createBatch()
 
             if self.local:
-                t = "temp"
-                
+                builder.openSUMO()
             else:
                 data = builder.createZip()
                 builder.finalize()
 
-                self.sendMessage(u"zip " + data)
+                self.sendMessage("zip " + data)
         except Exception:
             print(traceback.format_exc())
             # reset 'Generate Scenario' button
@@ -458,7 +457,7 @@ parser.add_argument("--osm-file", default="osm_bbox.osm.xml", dest="osmFile", he
 parser.add_argument("--test-output", default=None, dest="testOutputDir",
                     help="Run with pre-defined options on file 'osm_bbox.osm.xml' and write output to the given directory.")
 parser.add_argument("--address", default="", help="Address for the Websocket.")
-parser.add_argument("--port", type=int, default=8010,
+parser.add_argument("--port", type=int, default=80,
                     help="Port for the Websocket. Please edit script.js when using an other port than 8010.")
 
 if __name__ == "__main__":
