@@ -390,7 +390,7 @@ on("ready", function(){
             var index = null;
             try{
             	// get the first space
-            	index = message.indexOf(' ');	
+            	index = message.indexOf(" ");	
             }catch(e){
             	var reader = new FileReader();
             	reader.onload = function(e){
@@ -398,7 +398,7 @@ on("ready", function(){
             	}
             	reader.readAsDataURL(message);
             	message = reader.result;
-            	index = message.indexOf(' ');
+            	index = message.indexOf(" ");
             }
             
             // split the message type from the message

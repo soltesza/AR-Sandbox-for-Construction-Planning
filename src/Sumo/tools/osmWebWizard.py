@@ -439,7 +439,7 @@ class OSMImporterWebSocket(WebSocket):
                 data = builder.createZip()
                 builder.finalize()
 
-                self.sendMessage("zip " + data)
+                self.sendMessage(u"zip " + data)
         except Exception:
             print(traceback.format_exc())
             # reset 'Generate Scenario' button
