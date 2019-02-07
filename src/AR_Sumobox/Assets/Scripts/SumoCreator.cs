@@ -5,36 +5,108 @@ using System.Xml;
 using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using UnityEngine;
 using UnityEditor;
-using System.Diagnostics;
 
 public class SumoCreator : MonoBehaviour
 {
-    // Let a user pick a generated network with a file selection prompt.
+    // Lets a user pick a generated network with a file selection prompt.
     private string[] OpenFileSelectionDialog()
-    {
-        string path = EditorUtility.OpenFolderPanel("Select a SUMO Network Folder.", "", "");
-        string[] files = Directory.GetFiles(path);
-        return files;
-    }
-
-    // Get Terrain size from Network file
-    private string GetTerrainBounds(string file_ref)
     {
         try
         {
-            var xmlDoc = new XmlDocument();
-            xmlDoc.Load(file_ref);
-            XmlNode node = xmlDoc.DocumentElement.SelectSingleNode("location");
-            return node.Attributes.GetNamedItem("convBoundary").Value;
+            string path = EditorUtility.OpenFolderPanel("Select a SUMO Network Folder.", "", "");
+            string[] files = Directory.GetFiles(path);
+            return files;
         }
-        catch(Exception e)
+        catch (Exception e)
         {
-            UnityEngine.Debug.LogError(e.ToString());
-            return "";
+            UnityEngine.Debug.LogException(e);
+            return null;
+        }
+
+
+    }
+
+    // Opens and returns an XML document
+    private XmlDocument OpenXML(string filename)
+    {
+        try
+        {
+            XmlDocument x = new XmlDocument();
+            x.Load(filename);
+            return x;
+        }
+        catch (Exception e)
+        {
+            UnityEngine.Debug.LogException(e);
+            return null;
+        }
+    }
+
+    // Gets the bounds of the current network as two pairs of points in 2-Space
+    private List<float> GetNetworkBounds(XmlDocument xml)
+    {
+        try
+        {
+            XmlNode location = xml.DocumentElement.SelectSingleNode("location");
+            string[] bounds = location.Attributes.GetNamedItem("convBoundary").Value.Split(',');
+            List<string> boundarys = bounds.ToList();
+            List<float> boundaryPoints = new List<float>();
+            foreach (string b in boundarys)
+            {
+                boundaryPoints.Add(float.Parse(b, CultureInfo.InvariantCulture.NumberFormat));
+            }
+            return boundaryPoints;
+        }
+        catch (Exception e)
+        {
+            UnityEngine.Debug.LogException(e);
+            return null;
         }
         
+    }
+
+    // Builds the network pieces
+    private void BuildNetwork(string file)
+    {
+        // Open the file
+        XmlDocument xmlDoc = OpenXML(file);
+        if (xmlDoc != null)
+        {
+            // Get the network size information from the 'location' node
+            List<float> boundaryPoints = GetNetworkBounds(xmlDoc);
+
+            // Get all the edges in the network 
+            XmlNodeList edges = xmlDoc.DocumentElement.SelectNodes("edge");
+            foreach (XmlNode edge in edges)
+            {
+                // Skip internal nodes but get the children of the rest
+                if (edge.Attributes.GetNamedItem("function").Value != "internal")
+                {
+                    // Children are lanes, get shape, width and length info if it exists
+                    XmlNodeList lanes = edge.ChildNodes;
+                    foreach (XmlNode lane in lanes)
+                    {
+                        string length, width, shape = null;
+                        if (lane.Attributes["length"] != null)
+                        {
+                            length = lane.Attributes.GetNamedItem("length").Value;
+                        }
+                        if (lane.Attributes["width"] != null)
+                        {
+                            width = lane.Attributes.GetNamedItem("width").Value;
+                        }
+                        if (lane.Attributes["shape"] != null)
+                        {
+                            shape = lane.Attributes.GetNamedItem("shape").Value;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     // Open Up OSMWebWizard and let the user build a real network.
@@ -91,14 +163,7 @@ public class SumoCreator : MonoBehaviour
             // The network file.
             else if (file.EndsWith(".net.xml"))
             {
-                string networksize = GetTerrainBounds(file);
-                string[] pointdata = networksize.Split(',');
-                GameObject theterrain = GameObject.Find("Terrain");
-                TerrainData td = theterrain.GetComponent<TerrainData>();
-                float w = float.Parse(pointdata[1], System.Globalization.CultureInfo.InvariantCulture.NumberFormat) - float.Parse(pointdata[0], System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
-                float h = float.Parse(pointdata[3], System.Globalization.CultureInfo.InvariantCulture.NumberFormat) - float.Parse(pointdata[2], System.Globalization.CultureInfo.InvariantCulture.NumberFormat);
-                td.size = new Vector3(w,h,10.0f);
-                UnityEngine.Debug.Log(w.ToString()+h.ToString());
+                BuildNetwork(file);
             }
             // The polygon file.
             else if (file.EndsWith(".poly.xml"))
