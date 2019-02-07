@@ -12,6 +12,8 @@ using UnityEditor;
 
 public class SumoCreator : MonoBehaviour
 {
+    public GameObject Terrain_Plane;
+
     // Lets a user pick a generated network with a file selection prompt.
     private string[] OpenFileSelectionDialog()
     {
@@ -26,8 +28,6 @@ public class SumoCreator : MonoBehaviour
             UnityEngine.Debug.LogException(e);
             return null;
         }
-
-
     }
 
     // Opens and returns an XML document
@@ -65,8 +65,18 @@ public class SumoCreator : MonoBehaviour
         {
             UnityEngine.Debug.LogException(e);
             return null;
-        }
-        
+        }  
+    }
+
+    private void BuildTerrain(List<float> bp)
+    {
+        float x = Math.Abs(bp[2] - bp[0]) + 100.0f;
+        float y = 1.0f;
+        float z = Math.Abs(bp[3] - bp[1]) + 100.0f;
+        Vector3 scale = new Vector3(x, y, z);
+        GameObject terrain = Instantiate(Terrain_Plane, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        terrain.transform.localScale = scale;
+        terrain.SetActive(true);
     }
 
     // Builds the network pieces
@@ -78,13 +88,14 @@ public class SumoCreator : MonoBehaviour
         {
             // Get the network size information from the 'location' node
             List<float> boundaryPoints = GetNetworkBounds(xmlDoc);
+            BuildTerrain(boundaryPoints);
 
             // Get all the edges in the network 
             XmlNodeList edges = xmlDoc.DocumentElement.SelectNodes("edge");
             foreach (XmlNode edge in edges)
             {
                 // Skip internal nodes but get the children of the rest
-                if (edge.Attributes.GetNamedItem("function").Value != "internal")
+                if (edge.Attributes.GetNamedItem("function") != null && edge.Attributes.GetNamedItem("function").Value != "internal")
                 {
                     // Children are lanes, get shape, width and length info if it exists
                     XmlNodeList lanes = edge.ChildNodes;
@@ -104,6 +115,10 @@ public class SumoCreator : MonoBehaviour
                             shape = lane.Attributes.GetNamedItem("shape").Value;
                         }
                     }
+                }
+                else
+                {
+                    continue;
                 }
             }
         }
