@@ -4,96 +4,66 @@ using UnityEngine;
 
 public class UserController : MonoBehaviour
 {
-    public Camera Topdown_Camera;
-    public Camera NetworkManager_Camera;
+    public Camera Main_Camera;
+    public GameObject Canvas;
+    public float speed = 2000.0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        Topdown_Camera.gameObject.SetActive(false);
-        NetworkManager_Camera.gameObject.SetActive(true);
+        Canvas.gameObject.SetActive(false);
+
+        if (!Main_Camera.isActiveAndEnabled)
+        {
+            Main_Camera.gameObject.SetActive(true);
+            
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.M))
         {
-            if (NetworkManager_Camera.isActiveAndEnabled)
+            if (Canvas.gameObject.activeSelf)
             {
-                Topdown_Camera.gameObject.SetActive(true);
-                NetworkManager_Camera.gameObject.SetActive(false);
+                Canvas.gameObject.SetActive(false);
             }
             else
             {
-                Topdown_Camera.gameObject.SetActive(false);
-                NetworkManager_Camera.gameObject.SetActive(true);
+                Canvas.gameObject.SetActive(true);
             }
+                
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
-            if (Camera.current == Topdown_Camera)
-            {
-                Vector3 currpos = Topdown_Camera.transform.position;
-                Vector3 newpos = new Vector3(currpos.x, currpos.y, currpos.z + 1.0f);
-                Topdown_Camera.transform.position = newpos;
-            }
-            else
-            {
-                Vector3 currpos = NetworkManager_Camera.transform.position;
-                Vector3 newpos = new Vector3(currpos.x, currpos.y + 1.0f, currpos.z);
-                NetworkManager_Camera.transform.position = newpos;
-            }
-
+            Main_Camera.transform.Translate(new Vector3(0.0f, speed * Time.deltaTime, 0.0f));
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
-            if (Camera.current == Topdown_Camera)
-            {
-                Vector3 currpos = Topdown_Camera.transform.position;
-                Vector3 newpos = new Vector3(currpos.x, currpos.y, currpos.z - 1.0f);
-                Topdown_Camera.transform.position = newpos;
-            }
-            else
-            {
-                Vector3 currpos = NetworkManager_Camera.transform.position;
-                Vector3 newpos = new Vector3(currpos.x, currpos.y - 1.0f, currpos.z);
-                NetworkManager_Camera.transform.position = newpos;
-            }
+            Main_Camera.transform.Translate(new Vector3(0.0f, -speed * Time.deltaTime, 0.0f));
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            if (Camera.current == Topdown_Camera)
-            {
-                Vector3 currpos = Topdown_Camera.transform.position;
-                Vector3 newpos = new Vector3(currpos.x - 1.0f, currpos.y, currpos.z);
-                Topdown_Camera.transform.position = newpos;
-            }
-            else
-            {
-                Vector3 currpos = NetworkManager_Camera.transform.position;
-                Vector3 newpos = new Vector3(currpos.x - 1.0f, currpos.y, currpos.z);
-                NetworkManager_Camera.transform.position = newpos;
-            }
+            Main_Camera.transform.Translate(new Vector3(-speed * Time.deltaTime, 0.0f, 0.0f));
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            if (Camera.current == Topdown_Camera)
-            {
-                Vector3 currpos = Topdown_Camera.transform.position;
-                Vector3 newpos = new Vector3(currpos.x + 1.0f, currpos.y, currpos.z);
-                Topdown_Camera.transform.position = newpos;
-            }
-            else
-            {
-                Vector3 currpos = NetworkManager_Camera.transform.position;
-                Vector3 newpos = new Vector3(currpos.x + 1.0f, currpos.y, currpos.z);
-                NetworkManager_Camera.transform.position = newpos;
-            }
+            Main_Camera.transform.Translate(new Vector3(speed * Time.deltaTime, 0.0f, 0.0f));
+        }
+
+        if (Input.GetKey(KeyCode.PageDown))
+        {
+            Main_Camera.transform.Translate(new Vector3(0.0f, 0.0f, speed * Time.deltaTime));
+        }
+
+        if (Input.GetKey(KeyCode.PageUp))
+        {
+            Main_Camera.transform.Translate(new Vector3(0.0f, 0.0f, -speed * Time.deltaTime));
         }
     }
 }
