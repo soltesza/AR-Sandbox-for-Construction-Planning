@@ -824,6 +824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1864149534}
   - component: {fileID: 1864149533}
+  - component: {fileID: 1864149535}
   m_Layer: 0
   m_Name: SumoCreatorDropin
   m_TagString: Untagged
@@ -845,6 +846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Terrain_Plane: {fileID: 2652222424508221272, guid: 3b60bd3f6f9afa64e8532afbceeb4dfe,
     type: 3}
+  Network_Parent: {fileID: 0}
 --- !u!4 &1864149534
 Transform:
   m_ObjectHideFlags: 0
@@ -859,6 +861,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &1864149535
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864149532}
+  m_Mesh: {fileID: 0}
 --- !u!1 &1924412929
 GameObject:
   m_ObjectHideFlags: 0

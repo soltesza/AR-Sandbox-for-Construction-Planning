@@ -65,5 +65,10 @@ public class UserController : MonoBehaviour
         {
             Main_Camera.transform.Translate(new Vector3(0.0f, 0.0f, -speed * Time.deltaTime));
         }
+
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            Main_Camera.transform.LookAt(Input.mousePosition);
+        }
     }
 }

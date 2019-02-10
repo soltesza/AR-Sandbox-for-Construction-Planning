@@ -1,9 +1,7 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 using System.Xml;
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -12,7 +10,14 @@ using UnityEditor;
 
 public class SumoCreator : MonoBehaviour
 {
+    // A handle to the Terrain Plane
     public GameObject Terrain_Plane;
+    public GameObject Network_Parent;
+
+    void Start()
+    {
+        Network_Parent = new GameObject();
+    }
 
     // Lets a user pick a generated network with a file selection prompt.
     private string[] OpenFileSelectionDialog()
@@ -68,6 +73,24 @@ public class SumoCreator : MonoBehaviour
         }  
     }
 
+    // Sumo shape sting to List of floats point order is
+    // x1, y1, x2, y2, ....
+    private List<float> ShapeStringToFloatList(string shape)
+    {
+        List<float> points = new List<float>();
+        char[] find = new char[2];
+        find[0] = ',';
+        find[1] = ' ';
+        string[] cuts = shape.Split(find);
+        List<string> cutList = cuts.ToList();
+        foreach (string cut in cutList)
+        {
+            points.Add(float.Parse(cut, CultureInfo.InvariantCulture.NumberFormat));
+        }
+        return points;
+    }
+
+    // Adds a Terrain_Plane prefab to the scene 100 units (meters) larger than the network.
     private void BuildTerrain(List<float> bp)
     {
         float x = Math.Abs(bp[2] - bp[0]) + 100.0f;
@@ -79,6 +102,73 @@ public class SumoCreator : MonoBehaviour
         terrain.SetActive(true);
     }
 
+    // Builds Road Junctions
+    private void Build_Junction(string x, string y, string shape)
+    {
+        // String points to floats
+        List<float> fshape = ShapeStringToFloatList(shape);
+        int numverts = fshape.Count()/2;
+
+        // Center of junction
+        float xjunc = float.Parse(x, CultureInfo.InvariantCulture.NumberFormat);
+        float yjunc = float.Parse(y, CultureInfo.InvariantCulture.NumberFormat);
+        Vector3 centerpoint = new Vector3(xjunc, yjunc, 0.2f);
+
+        if (numverts > 5)
+        {
+            // Get Meshfilter and create a new mesh
+            GameObject chunk = new GameObject();
+            chunk.AddComponent<MeshRenderer>();
+            Material m = chunk.GetComponent<MeshRenderer>().material;
+            m.color = new Vector4(0.5f,0.5f,0.5f,1.0f);
+            m.SetFloat("Smoothness", 0.0f);
+            Mesh mesh = new Mesh();
+
+            // Build Vertices
+            Vector3[] verts = new Vector3[numverts+1];
+            int vc = 0;
+            for (int i = 0; i < fshape.Count(); i = i + 2)
+            {
+                verts[vc] = new Vector3(fshape[i] - centerpoint.x, fshape[i + 1] - centerpoint.y, 0.2f);
+                vc++;
+            }
+            verts[verts.Length - 1] = new Vector3(0.0f, 0.0f, 0.2f);
+            mesh.vertices = verts;
+
+            // Build Triangles
+            int[] tris = new int[(verts.Length - 1) * 3];
+            int triscounter = 0;
+            int trisindex = 0;
+            for(int k = 0; k < verts.Length - 1; k++)
+            {
+                tris[trisindex] = triscounter;
+                tris[trisindex+1] = verts.Length - 1;
+                tris[trisindex+2] = triscounter+1;
+                triscounter++;
+                trisindex += 3;
+            }
+            tris[tris.Length - 1] = 0;
+            tris[tris.Length - 2] = verts.Length - 1;
+            tris[tris.Length - 3] = verts.Length - 2;
+            mesh.triangles = tris;
+
+            // Build Normals
+            Vector3[] norms = new Vector3[numverts+1];
+            for (int k = 0; k < norms.Length; k++)
+            {
+                norms[k] = Vector3.up;
+            }
+            mesh.normals = norms;
+
+            chunk.AddComponent<MeshFilter>().mesh = mesh;
+            chunk.isStatic = false;
+            chunk.transform.Rotate(new Vector3(-90.0f, 0.0f, 0.0f));
+            chunk.transform.Translate(new Vector3(centerpoint.x * 5.0f, centerpoint.z, centerpoint.y * 5.0f), Space.World);
+            chunk.transform.localScale = chunk.transform.localScale * 5.0f;
+            chunk.transform.parent = Network_Parent.transform;
+        }
+    }
+
     // Builds the network pieces
     private void BuildNetwork(string file)
     {
@@ -86,22 +176,51 @@ public class SumoCreator : MonoBehaviour
         XmlDocument xmlDoc = OpenXML(file);
         if (xmlDoc != null)
         {
-            // Get the network size information from the 'location' node
+            // Get the network size information from the 'location' 
+            // node and build the terrain
             List<float> boundaryPoints = GetNetworkBounds(xmlDoc);
             BuildTerrain(boundaryPoints);
+
+            XmlNodeList junctions = xmlDoc.DocumentElement.SelectNodes("junction");
+            foreach (XmlNode junction in junctions)
+            {
+                string x = null;
+                string y = null;
+                string jshape = null;
+                if (junction.Attributes["x"] != null)
+                {
+                    x = junction.Attributes.GetNamedItem("x").Value;
+                }
+                if (junction.Attributes["y"] != null)
+                {
+                    y = junction.Attributes.GetNamedItem("y").Value;
+                }
+                if (junction.Attributes["shape"] != null)
+                {
+                    jshape = junction.Attributes.GetNamedItem("shape").Value;
+                }
+                if(x != null && y != null && jshape != null)
+                {
+                    Build_Junction(x, y, jshape);
+                    //UnityEngine.Debug.Log(x + " " + y + " " + jshape);
+                }
+                
+            }
 
             // Get all the edges in the network 
             XmlNodeList edges = xmlDoc.DocumentElement.SelectNodes("edge");
             foreach (XmlNode edge in edges)
             {
-                // Skip internal nodes but get the children of the rest
+                // Skip internal edges but get the children of the rest
                 if (edge.Attributes.GetNamedItem("function") != null && edge.Attributes.GetNamedItem("function").Value != "internal")
                 {
                     // Children are lanes, get shape, width and length info if it exists
                     XmlNodeList lanes = edge.ChildNodes;
                     foreach (XmlNode lane in lanes)
                     {
-                        string length, width, shape = null;
+                        string length = null;
+                        string width = null; 
+                        string eshape = null;
                         if (lane.Attributes["length"] != null)
                         {
                             length = lane.Attributes.GetNamedItem("length").Value;
@@ -112,7 +231,7 @@ public class SumoCreator : MonoBehaviour
                         }
                         if (lane.Attributes["shape"] != null)
                         {
-                            shape = lane.Attributes.GetNamedItem("shape").Value;
+                            eshape = lane.Attributes.GetNamedItem("shape").Value;
                         }
                     }
                 }
