@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Vuforia;
+using System.Linq;
 
 /// <summary>
 /// Used to provide functionality to a marker.
@@ -11,7 +12,7 @@ using Vuforia;
 public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 {
 
-	public Vector3 triggerPosition; // The position that will trigger the At Position event
+	public Vector3[] triggerPositions; // The positions that will trigger the At Position event
 	public float xYTolerance, zTolerance; // How close the marker must be to (x, y, z) to trigger the At Position event
 
 	public UnityEvent atPositionEvent;
@@ -19,6 +20,7 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 
 	private Vector3 tolerance;
 	private float timeAtPosition;
+    private int curTriggerPositionIndex;
 	private bool eventTriggered;
 	private TrackableBehaviour.Status trackingStatus;
 
@@ -28,6 +30,7 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 		tolerance = new Vector3(xYTolerance, xYTolerance, zTolerance);
 		GetComponent<TrackableBehaviour>().RegisterTrackableEventHandler(this);
 		eventTriggered = false;
+        curTriggerPositionIndex = -1;
 	}
 
 	private bool SameWithinTolerance(Vector3 v1, Vector3 v2, Vector3 tol)
@@ -43,21 +46,30 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 	{
 		if (trackingStatus != TrackableBehaviour.Status.NO_POSE) // Make sure the marker is being tracked
         {
-            Vector3 curPos = this.gameObject.transform.position;
+            Vector3 curPos = this.gameObject.transform.position;// Find the index of the trigger position that the marker is at
+            int newTriggerPositionIndex = triggerPositions.ToList().FindIndex(p => SameWithinTolerance(p, curPos, tolerance));
 
-            if (SameWithinTolerance (curPos, triggerPosition, tolerance))
+            if (newTriggerPositionIndex == -1) // The marker is not at a trigger position
             {
-				timeAtPosition += Time.deltaTime;
-				if (!eventTriggered && timeAtPosition >= timeForTrigger)
+                curTriggerPositionIndex = -1;
+                eventTriggered = false;
+            }
+            else if (newTriggerPositionIndex == curTriggerPositionIndex) // The marker is still at the same trigger position
+            {
+                timeAtPosition += Time.deltaTime;
+
+                if (!eventTriggered && timeAtPosition >= timeForTrigger)
                 {
-					atPositionEvent.Invoke ();
-					eventTriggered = true;
-				}
-			}
-            else
+                    atPositionEvent.Invoke();
+                    eventTriggered = true;
+                }
+            }
+            else // The marker is at a new trigger position
             {
-				eventTriggered = false;
-			}
+                curTriggerPositionIndex = newTriggerPositionIndex;
+                timeAtPosition = 0.0f;
+                eventTriggered = false;
+            }
 		}
 	}
 
