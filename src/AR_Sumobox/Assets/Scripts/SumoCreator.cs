@@ -20,11 +20,14 @@ public class SumoCreator : MonoBehaviour
     // Edges Parent GameObject and script.
     private GameObject Edges_GO;
 
+    private GameObject Structures_GO;
+
     private void Start()
     {
         Projection_Data_GO = GameObject.Find("Projection_Data");
         Junctions_GO = GameObject.Find("Junctions");
         Edges_GO = GameObject.Find("Edges");
+        Structures_GO = GameObject.Find("Structures");
     }
 
     // Builds the network pieces by reading a Sumo network file.
@@ -180,6 +183,44 @@ public class SumoCreator : MonoBehaviour
         }
     }
 
+    private void BuildStructures(string file)
+    {
+        // Open the file
+        bool opened = true;
+        XmlDocument xmlDoc = new XmlDocument();
+        try
+        {
+            xmlDoc.Load(file);
+        }
+        catch (Exception e)
+        {
+            opened = false;
+            UnityEngine.Debug.LogException(e);
+        }
+        if (opened)
+        {
+            XmlNodeList polys = xmlDoc.DocumentElement.SelectNodes("poly");
+            foreach (XmlNode poly in polys)
+            {
+                Poly newpoly = new Poly();
+                newpoly.Id = poly.Attributes.GetNamedItem("id").Value;
+                if (poly.Attributes["color"] != null)
+                {
+                    newpoly.Color = poly.Attributes.GetNamedItem("color").Value;
+                }
+                if (poly.Attributes["type"] != null)
+                {
+                    newpoly.Type = poly.Attributes.GetNamedItem("type").Value;
+                }
+                if (poly.Attributes["shape"] != null)
+                {
+                    newpoly.Shape = poly.Attributes.GetNamedItem("shape").Value;
+                }
+                Structures_GO.GetComponent<Structure>().Polys.Add(newpoly);
+            }
+            //Structures_GO.GetComponent<Structure>().Build();
+        }
+    }
 
     // Open Up OSMWebWizard and let the user build a real network.
     // The user will save the new network to a zipfile when done.
@@ -253,7 +294,7 @@ public class SumoCreator : MonoBehaviour
                 // The polygon file.
                 else if (file.EndsWith(".poly.xml"))
                 {
-                    continue;
+                    BuildStructures(file);
                 }
                 // The view file.
                 else if (file.EndsWith(".view.xml"))
