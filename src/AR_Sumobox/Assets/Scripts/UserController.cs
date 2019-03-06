@@ -6,7 +6,7 @@ public class UserController : MonoBehaviour
 {
     public Camera Main_Camera;
     public GameObject Canvas;
-    public float speed = 200.0f;
+    public float speed = 2.0f;
 
     // Start is called before the first frame update
     void Start()

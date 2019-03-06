@@ -125,7 +125,7 @@ public class Edge : MonoBehaviour
         int counter = 0;
         for (int i = 0; i < polyline.Count; i+=2)
         {
-            vertexPositions[counter] = new Vector3(polyline[i]-1.1f, 0.2f, polyline[i+1]);
+            vertexPositions[counter] = new Vector3(polyline[i], 0.2f, polyline[i+1]);
             counter++;
         }
 

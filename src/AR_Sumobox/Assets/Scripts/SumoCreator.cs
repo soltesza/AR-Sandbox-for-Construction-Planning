@@ -8,20 +8,21 @@ using System.Globalization;
 using UnityEngine;
 using UnityEditor;
 
-// SumoCreator class is used for creating Open Street Map networks with SUMO's
-// OSM Web Wizard and reading SUMO generated files that describe a networks logic 
-// and layout. 
+/// SumoCreator class is used for creating Open Street Map networks with SUMO's
+/// OSM Web Wizard and reading SUMO generated files that describe a networks logic 
+/// and layout. 
 public class SumoCreator : MonoBehaviour
 {
-    // ProjectionData Parent GameObject and script.
+    /// ProjectionData Parent GameObject and script.
     private GameObject Projection_Data_GO;
-    // Junctions Parent GameObject and script.
+    /// Junctions Parent GameObject and script.
     private GameObject Junctions_GO;
-    // Edges Parent GameObject and script.
+    /// Edges Parent GameObject and script.
     private GameObject Edges_GO;
-
+    /// Structures Parent GameObject and script.
     private GameObject Structures_GO;
 
+    /// Find all game objects at start.
     private void Start()
     {
         Projection_Data_GO = GameObject.Find("Projection_Data");
@@ -30,10 +31,10 @@ public class SumoCreator : MonoBehaviour
         Structures_GO = GameObject.Find("Structures");
     }
 
-    // Builds the network pieces by reading a Sumo network file.
-    // Reads through a network and saves all the network data to the handling class.
-    // There are classes for ProjectionData, Edge, and Junction.
-    // After all data is read in each class builds its own shapes. 
+    /// Builds the network pieces by reading a Sumo network file.
+    /// Reads through a network and saves all the network data to the handling class.
+    /// There are classes for ProjectionData, Edge, and Junction.
+    /// After all data is read in each class builds its own shapes. 
     private void BuildNetwork(string file)
     {
         // Open the file
@@ -183,6 +184,7 @@ public class SumoCreator : MonoBehaviour
         }
     }
 
+    /// Parse the XML file and procedurally build all buildings and landmarks
     private void BuildStructures(string file)
     {
         // Open the file
@@ -222,9 +224,9 @@ public class SumoCreator : MonoBehaviour
         }
     }
 
-    // Open Up OSMWebWizard and let the user build a real network.
-    // The user will save the new network to a zipfile when done.
-    // The processes remain open so the user can build multiple network at once.
+    /// Open Up OSMWebWizard and let the user build a real network.
+    /// The user will save the new network to a zipfile when done.
+    /// The processes remain open so the user can build multiple network at once.
     public void GenerateOsmNetwork()
     {
         try
@@ -255,9 +257,9 @@ public class SumoCreator : MonoBehaviour
         }
     }
 
-    // Go through all network description files and build the network into Unity.
-    // Most files will be passed over at this point but there are some handles left 
-    // in case we decide we need access to them later.
+    /// Goes through all network description files and build the network into Unity.
+    /// Most files will be passed over at this point but there are some handles left 
+    /// in case we decide we need access to them later.
     public void LoadNetwork()
     {
         string[] files = null;
