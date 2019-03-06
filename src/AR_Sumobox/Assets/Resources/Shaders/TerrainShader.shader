@@ -67,13 +67,13 @@
 
 				v0p.worldPos = input[0].vertex;
 				v0p.uv = input[0].uv;
-				v0p.worldPos.y += 1.0f;
+				v0p.worldPos.y += 10.0f;
 				v1p.worldPos = input[1].vertex;
 				v1p.uv = input[1].uv;
-				v1p.worldPos.y += 1.0f;
+				v1p.worldPos.y += 10.0f;
 				v2p.worldPos = input[2].vertex;
 				v2p.uv = input[2].uv;
-				v2p.worldPos.y += 1.0f;
+				v2p.worldPos.y += 10.0f;
 
 				//Top
 				tristream.Append(v0);
@@ -81,10 +81,10 @@
 				tristream.Append(v2);
 				//tristream.RestartStrip();
 
-				v0.uv = float2 (0.1f, 0.0f);
+				v0.uv = float2 (0.7f, 0.0f);
 				v1.uv = float2 (0.0f, 0.0f);
-				v0p.uv = float2 (0.1f, 0.1f);
-				v1p.uv = float2 (0.0f, 0.1f);
+				v0p.uv = float2 (0.7f, 0.7f);
+				v1p.uv = float2 (0.0f, 0.7f);
 				//f1
 				tristream.Append(v0p);
 				tristream.Append(v1p);
@@ -94,10 +94,10 @@
 				tristream.Append(v1);
 				tristream.Append(v0);
 
-				v1.uv = float2 (0.1f, 0.0f);
+				v1.uv = float2 (0.7f, 0.0f);
 				v2.uv = float2 (0.0f, 0.0f);
-				v1p.uv = float2 (0.1f, 0.1f);
-				v2p.uv = float2 (0.0f, 0.1f);
+				v1p.uv = float2 (0.7f, 0.7f);
+				v2p.uv = float2 (0.0f, 0.7f);
 				//f2
 				tristream.Append(v1p);
 				tristream.Append(v2p);
@@ -107,10 +107,10 @@
 				tristream.Append(v2);
 				tristream.Append(v1);
 
-				v2.uv = float2 (0.1f, 0.0f);
+				v2.uv = float2 (0.7f, 0.0f);
 				v0.uv = float2 (0.0f, 0.0f);
-				v2p.uv = float2 (0.1f, 0.1f);
-				v0p.uv = float2 (0.0f, 0.1f);
+				v2p.uv = float2 (0.7f, 0.7f);
+				v0p.uv = float2 (0.0f, 0.7f);
 				//f3
 				tristream.Append(v2p);
 				tristream.Append(v0p);
