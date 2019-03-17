@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Globalization;
 using UnityEngine;
 using UnityEditor;
+using CodingConnected.TraCI.NET;
 
 /// SumoCreator class is used for creating Open Street Map networks with SUMO's
 /// OSM Web Wizard and reading SUMO generated files that describe a networks logic 
@@ -169,7 +170,7 @@ public class SumoCreator : MonoBehaviour
                 // Save negative and positive edges seperatly.
                 // A negative edge always has a positive counterpart that 
                 // makes an entire road section
-                if(newEdge.Id[0] == '-')
+                if (newEdge.Id[0] == '-')
                 {
                     Edges_GO.GetComponent<Edge>().RoadList_Neg.Add(newEdge);
                 }
@@ -273,8 +274,8 @@ public class SumoCreator : MonoBehaviour
         {
             UnityEngine.Debug.LogException(e);
         }
-        
-        if(files != null)
+
+        if (files != null)
         {
             foreach (string file in files)
             {
@@ -306,6 +307,7 @@ public class SumoCreator : MonoBehaviour
                 // The config file.
                 else if (file.EndsWith(".sumocfg"))
                 {
+                    StartSumo(file, 80);
                     continue;
                 }
                 else
@@ -317,6 +319,29 @@ public class SumoCreator : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    private void StartSumo(string file, int port)
+    {
+        try
+        {
+            // Sumo Server
+            Process p = new Process();
+            ProcessStartInfo si = new ProcessStartInfo()
+            {
+                FileName = "cmd.exe",
+                Arguments = "bin/sumo.exe --remote-port " + port.ToString()
+            };
+            p.StartInfo = si;
+            p.Start();
+
+
+
+        }
+        catch (Exception e)
+        {
+            UnityEngine.Debug.LogError(e.Message);
         }
     }
 }
