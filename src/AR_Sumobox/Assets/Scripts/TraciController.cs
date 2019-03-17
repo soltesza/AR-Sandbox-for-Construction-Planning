@@ -17,25 +17,19 @@ public class TraciController : MonoBehaviour
     public String HostName;
     public int Port;
     public String ConfigFile;
+    private float Elapsedtime;
     void Start()
     {
-        if (Client == null)
-        {
-            Client = new Traci.TraCIClient();
-        }
         Cars_GO = GameObject.Find("Cars");
-        Client.VehicleSubscription += OnVehicleUpdate;
-        Client = new Traci.TraCIClient();
     }
     
     async Task <Traci.TraCIClient> ConnectToSumo()
     {
-        if (Client == null)
-        {
-            Client = new Traci.TraCIClient();
-        }
         try
         {
+            Client = new Traci.TraCIClient();
+            Client.VehicleSubscription += OnVehicleUpdate;
+
             //Process p = new Process();
             //ProcessStartInfo si = new ProcessStartInfo()
             //{
@@ -66,7 +60,6 @@ public class TraciController : MonoBehaviour
 
         // Subscribe to all cars from 0 to 2147483647, and get their 3d position data
         CarIds.Content.ForEach(car => Client.Vehicle.Subscribe(car, 0, 2147483647, carInfo));
-
     }
 
     public void OnVehicleUpdate(object sender, Traci.Types.SubscriptionEventArgs e)
@@ -81,15 +74,10 @@ public class TraciController : MonoBehaviour
             SphereCollider car = Cars_GO.AddComponent(typeof(SphereCollider)) as SphereCollider;
             car.tag = e.ObjecId;
             Traci.Types.Position3D pos = (Traci.Types.Position3D)e.Responses.ToArray()[0];
-            car.transform.position = new Vector3((float)pos.X, (float)pos.Y, (float)pos.Z);
+            car.transform.position = new Vector3((float)pos.X, 0, (float)pos.Y);
         }
     }
-
-    private void CreateObject()
-    {
-
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -100,18 +88,26 @@ public class TraciController : MonoBehaviour
 
             CarIds.Content.ForEach(carId => {
                 Traci.Types.Position3D pos = Client.Vehicle.GetPosition3D(carId).Content;
-                GameObject Car_GO = GameObject.Find(carId);
-                if (Car_GO != null)
+                Transform CarTransform = Cars_GO.transform.Find(carId);
+                if (CarTransform != null)
                 {
-                    Cars_GO.transform.position = new Vector3((float)pos.X, (float)pos.Y, (float)pos.Z);
+                    CarTransform.position = new Vector3((float)pos.X, 0, (float)pos.Y);
                 }
                 else
                 {
-                    SphereCollider car = Cars_GO.AddComponent(typeof(SphereCollider)) as SphereCollider;
+                    GameObject car = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     car.name = carId;
-                    car.transform.position = new Vector3((float)pos.X, (float)pos.Y, (float)pos.Z);
+                    car.transform.parent = Cars_GO.transform;
+                    car.transform.position = new Vector3((float)pos.X, 0, (float)pos.Y);
                 }
             });
+            Elapsedtime += Time.deltaTime;
+            if(Elapsedtime > 80000)
+            {
+                Client.Control.SimStep();
+                Elapsedtime = 0;
+            }
+            Client.Control.SimStep();
         }
         
     }
