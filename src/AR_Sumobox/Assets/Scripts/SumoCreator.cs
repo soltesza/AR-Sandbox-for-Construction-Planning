@@ -8,6 +8,7 @@ using System.Globalization;
 using UnityEngine;
 using UnityEditor;
 using CodingConnected.TraCI.NET;
+using System.Net;
 
 /// SumoCreator class is used for creating Open Street Map networks with SUMO's
 /// OSM Web Wizard and reading SUMO generated files that describe a networks logic 
@@ -267,6 +268,7 @@ public class SumoCreator : MonoBehaviour
     public void LoadNetwork()
     {
         string[] files = null;
+        bool hasConfigFile = false;
         // Lets a user pick a generated network with a file selection prompt.
         try
         {
@@ -310,6 +312,7 @@ public class SumoCreator : MonoBehaviour
                 // The config file.
                 else if (file.EndsWith(".sumocfg"))
                 {
+                    hasConfigFile = true;
                     StartSumo(file);
                     continue;
                 }
@@ -322,6 +325,7 @@ public class SumoCreator : MonoBehaviour
                     }
                 }
             }
+            UnityEngine.Debug.Assert(hasConfigFile == true, "No .sumocfg file created, something may have gone wrong with the osmWebWizard.py. Try using Python 2.X with unicode support");
         }
     }
 
@@ -330,9 +334,9 @@ public class SumoCreator : MonoBehaviour
         try
         {
             TraciClient.Port = 80;
-            TraciClient.HostName = "localhost";
+            TraciClient.HostName = Dns.GetHostEntry("localhost").AddressList[1].ToString();
             TraciClient.ConfigFile = ConfigFile;
-            TraciClient.Invoke("ConnectToSumo", 5);             
+            TraciClient.Invoke("ConnectToSumo", 0);             
         }
         catch (Exception e)
         {
