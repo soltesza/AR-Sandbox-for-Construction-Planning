@@ -1,8 +1,8 @@
 ﻿Shader "Unlit/TerrainShader"
 {
-    Properties
-    {
-        _MainTex ("MainTex", 2D) = "white" {}
+	Properties
+	{
+		_MainTex("MainTex", 2D) = "white" {}
 	}
 		SubShader
 	{
@@ -12,7 +12,7 @@
 		Pass
 		{
 			CGPROGRAM
-			
+
 			#pragma vertex vert
 			#pragma fragment frag
 			#pragma geometry geom
@@ -22,18 +22,18 @@
 
 			#include "UnityCG.cginc"	
 
-            struct appdata
-            {
-                float4 vertex : POSITION;
-				float2 uv : TEXCOORD0;
-            };
-
-            struct v2g
-            {
+			struct appdata
+			{
 				float4 vertex : POSITION;
 				float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
-            };
+			};
+
+			struct v2g
+			{
+				float4 vertex : POSITION;
+				float2 uv : TEXCOORD0;
+				UNITY_FOG_COORDS(1)
+			};
 
 			struct g2f
 			{
@@ -42,17 +42,17 @@
 				UNITY_FOG_COORDS(1)
 			};
 
-            sampler2D _MainTex;
+			sampler2D _MainTex;
 			float3 _MainTex_ST;
 
-            v2g vert (appdata v)
-            {
-                v2g o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
+			v2g vert(appdata v)
+			{
+				v2g o;
+				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.uv = v.uv;
-                UNITY_TRANSFER_FOG(o,o.vertex);
-                return o;
-            }
+				UNITY_TRANSFER_FOG(o,o.vertex);
+				return o;
+			}
 
 			[maxvertexcount(60)]
 			void geom(triangle v2g input[3], inout TriangleStream<g2f> tristream)
@@ -67,25 +67,25 @@
 
 				v0p.worldPos = input[0].vertex;
 				v0p.uv = input[0].uv;
-				v0p.worldPos.y += 25.0f;
+				v0p.worldPos.y -= 30.0f;
 				v1p.worldPos = input[1].vertex;
 				v1p.uv = input[1].uv;
-				v1p.worldPos.y += 25.0f;
+				v1p.worldPos.y -= 30.0f;
 				v2p.worldPos = input[2].vertex;
 				v2p.uv = input[2].uv;
-				v2p.worldPos.y += 25.0f;
+				v2p.worldPos.y -= 30.0f;
 
 				// Bottom
 				tristream.Append(v0);
 				tristream.Append(v1);
 				tristream.Append(v2);
-				//tristream.RestartStrip();
+				tristream.RestartStrip();
 
 				// Top
 				tristream.Append(v0p);
 				tristream.Append(v1p);
 				tristream.Append(v2p);
-				//tristream.RestartStrip();
+				tristream.RestartStrip();
 
 				// F
 				tristream.Append(v2);
@@ -116,16 +116,16 @@
 				tristream.RestartStrip();
 			}
 
-            fixed4 frag (g2f i) : SV_Target
-            {
-                // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv);
-				
-                // apply fog
-                UNITY_APPLY_FOG(i.fogCoord, col);
-                return col;
-            }
-            ENDCG
-        }
-    }
+			fixed4 frag(g2f i) : SV_Target
+			{
+				// sample the texture
+				fixed4 col = tex2D(_MainTex, i.uv);
+
+			// apply fog
+			UNITY_APPLY_FOG(i.fogCoord, col);
+			return col;
+		}
+		ENDCG
+	}
+	}
 }

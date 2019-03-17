@@ -67,13 +67,13 @@
 
 				v0p.worldPos = input[0].vertex;
 				v0p.uv = input[0].uv;
-				v0p.worldPos.y += 25.0f;
+				v0p.worldPos.y -= 0.75f;
 				v1p.worldPos = input[1].vertex;
 				v1p.uv = input[1].uv;
-				v1p.worldPos.y += 25.0f;
+				v1p.worldPos.y -= 0.75f;
 				v2p.worldPos = input[2].vertex;
 				v2p.uv = input[2].uv;
-				v2p.worldPos.y += 25.0f;
+				v2p.worldPos.y -= 0.75f;
 
 				// Bottom
 				tristream.Append(v0);
@@ -104,7 +104,7 @@
 				tristream.Append(v2p);
 				tristream.Append(v2);
 				tristream.Append(v1);
-
+				
 				// F
 				tristream.Append(v0);
 				tristream.Append(v0p);
@@ -119,8 +119,7 @@
             fixed4 frag (g2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv);
-				
+				fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;

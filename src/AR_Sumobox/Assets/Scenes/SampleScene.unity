@@ -211,6 +211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Polys: []
+  Concrete_Shader: {fileID: 4800000, guid: 7316e13cfd892514eab5117863cac74f, type: 3}
+  Building_Shader: {fileID: 4800000, guid: 73afe30492624d04b99b99f59fdf2e5a, type: 3}
 --- !u!4 &178548749
 Transform:
   m_ObjectHideFlags: 0
@@ -441,6 +443,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7efadb2884dcd4e95b8bace50bff3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Terrain_Shader: {fileID: 4800000, guid: f11204064cc7d244c8b00e755c6cbfa8, type: 3}
+  Main_Camera: {fileID: 1306495033}
   offset: 
   originalBounds: 
   projectedBounds: 
@@ -911,7 +915,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117321851}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 406}
+  m_LocalPosition: {x: 0, y: 0, z: 1400}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1811047857}
@@ -922,7 +926,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 189, y: -1}
+  m_AnchoredPosition: {x: 189.5, y: -115}
   m_SizeDelta: {x: 1123, y: 621}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1276665373
@@ -1111,7 +1115,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306495031}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 5083, z: -25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1117321855}
@@ -1207,6 +1211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f41b8c3243c2f9f46b7f7d1008ddb1b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Road_Shader: {fileID: 4800000, guid: d8c373d7e9b0ef742bd5fcdbff60cd10, type: 3}
   Id: 
   Name: 
   Type: 
@@ -1244,8 +1249,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2e7b10a5edaffa45a6276061a661c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoadList_Neg: []
-  RoadList_Pos: []
+  RoadList: []
+  Road_Shader: {fileID: 4800000, guid: d8c373d7e9b0ef742bd5fcdbff60cd10, type: 3}
+  Concrete_Shader: {fileID: 4800000, guid: 7316e13cfd892514eab5117863cac74f, type: 3}
+  LANEWIDTH: 3.2
 --- !u!4 &1646309868
 Transform:
   m_ObjectHideFlags: 0

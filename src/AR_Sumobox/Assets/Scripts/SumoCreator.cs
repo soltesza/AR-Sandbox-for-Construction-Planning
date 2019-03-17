@@ -10,23 +10,35 @@ using UnityEditor;
 using CodingConnected.TraCI.NET;
 using System.Net;
 
+/// <summary>
 /// SumoCreator class is used for creating Open Street Map networks with SUMO's
 /// OSM Web Wizard and reading SUMO generated files that describe a networks logic 
-/// and layout. 
+/// and layout.
+/// </summary>
 public class SumoCreator : MonoBehaviour
 {
-    /// ProjectionData Parent GameObject and script.
+    /// <summary>
+    /// ProjectionData parent GameObject and script.
+    /// </summary>
     private GameObject Projection_Data_GO;
-    /// Junctions Parent GameObject and script.
+    /// <summary>
+    /// Junctions parent GameObject and script.
+    /// </summary>
     private GameObject Junctions_GO;
-    /// Edges Parent GameObject and script.
+    /// <summary>
+    /// Edges parent GameObject and script.
+    /// </summary>
     private GameObject Edges_GO;
-    /// Structures Parent GameObject and script.
+    /// <summary>
+    /// Structures parent GameObject and script.
+    /// </summary>
     private GameObject Structures_GO;
     /// TraciController Game object (Script)
     private TraciController TraciClient;
 
-    /// Find all game objects at start.
+    /// <summary>
+    /// Find all parent GameObjects at start.
+    /// </summary>
     private void Start()
     {
         Projection_Data_GO = GameObject.Find("Projection_Data");
@@ -36,13 +48,15 @@ public class SumoCreator : MonoBehaviour
         TraciClient = GameObject.FindObjectOfType(typeof(TraciController)) as TraciController;
     }
 
-    /// Builds the network pieces by reading a Sumo network file.
+    /// <summary>
+    /// Builds the network pieces by parsing a Sumo network file.
     /// Reads through a network and saves all the network data to the handling class.
-    /// There are classes for ProjectionData, Edge, and Junction.
-    /// After all data is read in each class builds its own shapes. 
+    /// There are classes for ProjectionData, Edge, Junction and Structure.
+    /// After all data is read in each class builds its own shapes.
+    /// </summary>
+    /// <param name="file">The name of the SUMO .net file to parse given as a string.</param>
     private void BuildNetwork(string file)
     {
-        // Open the file
         bool opened = true;
         XmlDocument xmlDoc = new XmlDocument();
         try
@@ -94,7 +108,7 @@ public class SumoCreator : MonoBehaviour
                 {
                     Junctions_GO.GetComponent<Junction>().Shape = junction.Attributes.GetNamedItem("shape").Value;
                 }
-                Junctions_GO.GetComponent<Junction>().BuildJunction();
+                //Junctions_GO.GetComponent<Junction>().BuildJunction();
                 Junctions_GO.GetComponent<Junction>().ClearData();
             }
 
@@ -106,6 +120,7 @@ public class SumoCreator : MonoBehaviour
                 // Create the Road and add the Edges Attributes.
                 // An Id will always be present but need to check the rest.
                 Road newEdge = new Road();
+                newEdge.Built = false;
                 newEdge.Id = edge.Attributes.GetNamedItem("id").Value;
                 if (edge.Attributes["name"] != null)
                 {
@@ -127,6 +142,14 @@ public class SumoCreator : MonoBehaviour
                 {
                     newEdge.Shape = edge.Attributes.GetNamedItem("shape").Value;
                 }
+                if (edge.Attributes["function"] != null)
+                {
+                    newEdge.Function = edge.Attributes.GetNamedItem("function").Value;
+                }
+                else
+                {
+                    newEdge.Function = "normal";
+                }
 
                 // Get all the Lanes that belong to the current Edge. 
                 newEdge.Lanes = new List<Lane>();
@@ -136,6 +159,7 @@ public class SumoCreator : MonoBehaviour
                     // Create a new Lane and add the Lanes Attributes.
                     // Then save the Lane in the Road.Lanes list.
                     Lane theLane = new Lane();
+                    theLane.Built = false;
                     if (lane.Attributes["id"] != null)
                     {
                         theLane.Id = lane.Attributes.GetNamedItem("id").Value;
@@ -170,6 +194,7 @@ public class SumoCreator : MonoBehaviour
                     }
                     newEdge.Lanes.Add(theLane);
                 }
+<<<<<<< HEAD
 
                 // Save negative and positive edges seperatly.
                 // A negative edge always has a positive counterpart that 
@@ -182,6 +207,9 @@ public class SumoCreator : MonoBehaviour
                 {
                     Edges_GO.GetComponent<Edge>().RoadList_Pos.Add(newEdge);
                 }
+=======
+                Edges_GO.GetComponent<Edge>().RoadList.Add(newEdge); 
+>>>>>>> master
             }
             // Let the Edge script build all the Networks Roads/Edges.
             // This can be a very time consuming function given a large network.
@@ -189,7 +217,10 @@ public class SumoCreator : MonoBehaviour
         }
     }
 
-    /// Parse the XML file and procedurally build all buildings and landmarks
+    /// <summary>
+    /// Parse the XML file and procedurally create all buildings and landmarks.
+    /// </summary>
+    /// <param name="file">The name of the SUMO .net file to parse given as a string.</param>
     private void BuildStructures(string file)
     {
         // Open the file
@@ -225,13 +256,15 @@ public class SumoCreator : MonoBehaviour
                 }
                 Structures_GO.GetComponent<Structure>().Polys.Add(newpoly);
             }
-            //Structures_GO.GetComponent<Structure>().Build();
+            Structures_GO.GetComponent<Structure>().Build();
         }
     }
 
-    /// Open Up OSMWebWizard and let the user build a real network.
+    /// <summary>
+    /// Open the OSMWebWizard to build a real world road network.
     /// The user will save the new network to a zipfile when done.
     /// The processes remain open so the user can build multiple network at once.
+    /// </summary>
     public void GenerateOsmNetwork()
     {
         try
@@ -262,9 +295,10 @@ public class SumoCreator : MonoBehaviour
         }
     }
 
-    /// Goes through all network description files and build the network into Unity.
-    /// Most files will be passed over at this point but there are some handles left 
-    /// in case we decide we need access to them later.
+    /// <summary>
+    /// Go through all network description files and build the network into Unity.
+    /// Most files will be passed over but there are some handles left for upgrades.
+    /// </summary>
     public void LoadNetwork()
     {
         string[] files = null;
