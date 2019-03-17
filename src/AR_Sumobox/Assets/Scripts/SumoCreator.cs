@@ -7,6 +7,8 @@ using System.Diagnostics;
 using System.Globalization;
 using UnityEngine;
 using UnityEditor;
+using CodingConnected.TraCI.NET;
+using System.Net;
 
 /// <summary>
 /// SumoCreator class is used for creating Open Street Map networks with SUMO's
@@ -31,6 +33,8 @@ public class SumoCreator : MonoBehaviour
     /// Structures parent GameObject and script.
     /// </summary>
     private GameObject Structures_GO;
+    /// TraciController Game object (Script)
+    private TraciController TraciClient;
 
     /// <summary>
     /// Find all parent GameObjects at start.
@@ -41,6 +45,7 @@ public class SumoCreator : MonoBehaviour
         Junctions_GO = GameObject.Find("Junctions");
         Edges_GO = GameObject.Find("Edges");
         Structures_GO = GameObject.Find("Structures");
+        TraciClient = GameObject.FindObjectOfType(typeof(TraciController)) as TraciController;
     }
 
     /// <summary>
@@ -189,7 +194,22 @@ public class SumoCreator : MonoBehaviour
                     }
                     newEdge.Lanes.Add(theLane);
                 }
+<<<<<<< HEAD
+
+                // Save negative and positive edges seperatly.
+                // A negative edge always has a positive counterpart that 
+                // makes an entire road section
+                if (newEdge.Id[0] == '-')
+                {
+                    Edges_GO.GetComponent<Edge>().RoadList_Neg.Add(newEdge);
+                }
+                else
+                {
+                    Edges_GO.GetComponent<Edge>().RoadList_Pos.Add(newEdge);
+                }
+=======
                 Edges_GO.GetComponent<Edge>().RoadList.Add(newEdge); 
+>>>>>>> master
             }
             // Let the Edge script build all the Networks Roads/Edges.
             // This can be a very time consuming function given a large network.
@@ -282,6 +302,7 @@ public class SumoCreator : MonoBehaviour
     public void LoadNetwork()
     {
         string[] files = null;
+        bool hasConfigFile = false;
         // Lets a user pick a generated network with a file selection prompt.
         try
         {
@@ -292,8 +313,8 @@ public class SumoCreator : MonoBehaviour
         {
             UnityEngine.Debug.LogException(e);
         }
-        
-        if(files != null)
+
+        if (files != null)
         {
             foreach (string file in files)
             {
@@ -325,6 +346,8 @@ public class SumoCreator : MonoBehaviour
                 // The config file.
                 else if (file.EndsWith(".sumocfg"))
                 {
+                    hasConfigFile = true;
+                    StartSumo(file);
                     continue;
                 }
                 else
@@ -336,6 +359,22 @@ public class SumoCreator : MonoBehaviour
                     }
                 }
             }
+            UnityEngine.Debug.Assert(hasConfigFile == true, "No .sumocfg file created, something may have gone wrong with the osmWebWizard.py. Try using Python 2.X with unicode support");
+        }
+    }
+
+    private void StartSumo(string ConfigFile)
+    {
+        try
+        {
+            TraciClient.Port = 80;
+            TraciClient.HostName = Dns.GetHostEntry("localhost").AddressList[1].ToString();
+            TraciClient.ConfigFile = ConfigFile;
+            TraciClient.Invoke("ConnectToSumo", 0);             
+        }
+        catch (Exception e)
+        {
+            UnityEngine.Debug.LogError(e.Message);
         }
     }
 }
