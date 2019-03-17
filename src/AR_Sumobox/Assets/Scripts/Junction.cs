@@ -11,7 +11,7 @@ using UnityEditor;
 public class Junction : MonoBehaviour
 {
     private GameObject Junctions_GO;
-    public Shader Road_Shader;
+
     public string Id;
     public string Name;
     public string Type;
@@ -69,17 +69,23 @@ public class Junction : MonoBehaviour
         // Center of junction
         float xjunc = float.Parse(X, CultureInfo.InvariantCulture.NumberFormat);
         float yjunc = float.Parse(Y, CultureInfo.InvariantCulture.NumberFormat);
-        Vector3 centerpoint = new Vector3(xjunc, yjunc, 0.0f);
+        Vector3 centerpoint = new Vector3(xjunc, yjunc, 0.2f);
 
         if (numverts > 5)
         {
             // Get Meshfilter and create a new mesh
             GameObject chunk = new GameObject();
-            chunk.name = Id;
-
+            if (Name != null)
+            {
+                chunk.name = Name;
+            }
+            else
+            {
+                chunk.name = Id;
+            }
             
             chunk.AddComponent<MeshRenderer>();
-            Material m = new Material(Road_Shader);
+            Material m = Resources.Load("Materials/Asphault_Material", typeof(Material)) as Material;
             chunk.GetComponent<MeshRenderer>().material = m;
             Mesh mesh = new Mesh();
 
@@ -88,10 +94,28 @@ public class Junction : MonoBehaviour
             int vc = 0;
             for (int i = 0; i < fshape.Count(); i = i + 2)
             {
-                verts[vc] = new Vector3(fshape[i], 0.0f, fshape[i + 1]);
+                float fac1, fac2;
+                if (fshape[i] < 0)
+                {
+                    fac1 = 1.9f;
+                }
+                else
+                {
+                    fac1 = -1.9f;
+                }
+                if (fshape[i+1] < 0)
+                {
+                    fac2 = 1.9f;
+                }
+                else
+                {
+                    fac2 = -1.9f;
+                }
+
+                verts[vc] = new Vector3(fshape[i] - fac1, 0.21f, fshape[i + 1] - fac2);
                 vc++;
             }
-            verts[verts.Length - 1] = new Vector3(centerpoint.x, 0.0f, centerpoint.y);
+            verts[verts.Length - 1] = new Vector3(centerpoint.x, 0.21f, centerpoint.y);
             mesh.vertices = verts;
 
             // Build Triangles
@@ -113,7 +137,7 @@ public class Junction : MonoBehaviour
 
             // Build Normals
             Vector3[] norms = new Vector3[numverts + 1];
-            for (int k = 0; k < numverts + 1; k++)
+            for (int k = 0; k < norms.Length; k++)
             {
                 norms[k] = -Vector3.up;
             }

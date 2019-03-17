@@ -11,8 +11,6 @@ using UnityEditor;
 public class ProjectionData : MonoBehaviour
 {
     private GameObject Projection_Data_GO;
-    public Shader Terrain_Shader;
-    public Camera Main_Camera;
     public string offset;
     public string originalBounds;
     public string projectedBounds;
@@ -50,51 +48,35 @@ public class ProjectionData : MonoBehaviour
         float x = bp[2] - bp[0];
         float y = bp[3] - bp[1];
         //float z = 1.0f;
-        GameObject chunk = new GameObject()
-        {
-            name = "Terrain_Plane"
-        };
-        MeshRenderer mr = chunk.AddComponent<MeshRenderer>();
-        Material m = new Material(Terrain_Shader);
-        mr.material = m;
+        GameObject chunk = new GameObject();
+        chunk.name = "Terrain_Plane";
+        chunk.AddComponent<MeshRenderer>();
+        Material m = Resources.Load("Materials/Grass_Material", typeof(Material)) as Material;
+        chunk.GetComponent<MeshRenderer>().sharedMaterial = m;
 
         Mesh mesh = new Mesh();
-        mesh.vertices = new Vector3[4] {
+        Vector3[] verts = new Vector3[4] {
             new Vector3(0.0f,0.0f,y),
             new Vector3(x,0.0f,y),
             new Vector3(x,0.0f,0.0f),
             new Vector3(0.0f,0.0f,0.0f)
         };
+        mesh.vertices = verts;
+        int[] tris = new int[6] { 0, 1, 3, 1, 2, 3 };
+        mesh.triangles = tris;
 
-        mesh.triangles = new int[6] { 0, 1, 3, 1, 2, 3 };
-
-        mesh.uv = new Vector2[4] {
-            new Vector2(0.0f, 0.0f),
-            new Vector2(0.0f, y),
-            new Vector2(x, y),
-            new Vector2(x, 0.0f)
-        };
-
-        mesh.normals = new Vector3[4]{
-            -Vector3.up,
-            -Vector3.up,
-            -Vector3.up,
-            -Vector3.up
-        };
-
+        mesh.uv = new Vector2[4] { new Vector2(0.0f, 0.0f), new Vector2(0.0f, y), new Vector2(x, y), new Vector2(x, 0.0f) };
+        mesh.RecalculateNormals();
         chunk.AddComponent<MeshFilter>().mesh = mesh;
         chunk.isStatic = true;
         chunk.transform.parent = Projection_Data_GO.transform;
-        float xcenter = (bp[0] + bp[2]) / 2.0f;
-        float ycenter = (bp[1] + bp[3]) / 2.0f;
-        Main_Camera.transform.position = new Vector3(xcenter, 50.0f, ycenter);
+        //GameObject.Find("Main_Camera").transform.SetPositionAndRotation(new Vector3(x / 2.0f, y / 2.0f, 1000.0f), Quaternion.Euler(new Vector3(0.0f,180.0f,0.0f)));
     }
 
     // Start is called before the first frame update
     void Start()
     {
         Projection_Data_GO = GameObject.Find("Projection_Data");
-        Projection_Data_GO.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
     }
 
     // Update is called once per frame
