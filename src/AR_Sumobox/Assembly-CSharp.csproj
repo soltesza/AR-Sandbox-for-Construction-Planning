@@ -69,8 +69,8 @@
     <Compile Include="Assets\Scripts\ProjectionData.cs" />
     <Compile Include="Assets\Scripts\Structure.cs" />
     <Compile Include="Assets\Scripts\SumoCreator.cs" />
-    <Compile Include="Assets\Scripts\UserController.cs" />
     <Compile Include="Assets\Scripts\TraciController.cs" />
+    <Compile Include="Assets\Scripts\UserController.cs" />
     <Compile Include="Assets\Scripts\Vuforia\MarkerAction.cs" />
     <Compile Include="Assets\Scripts\Vuforia\VirtualButtonAction.cs" />
     <None Include="Assets\Vuforia\Shaders\ColoredLines.shader" />

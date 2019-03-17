@@ -22,6 +22,8 @@ public class SumoCreator : MonoBehaviour
     private GameObject Edges_GO;
     /// Structures Parent GameObject and script.
     private GameObject Structures_GO;
+    /// TraciController Game object (Script)
+    private TraciController TraciClient;
 
     /// Find all game objects at start.
     private void Start()
@@ -30,6 +32,7 @@ public class SumoCreator : MonoBehaviour
         Junctions_GO = GameObject.Find("Junctions");
         Edges_GO = GameObject.Find("Edges");
         Structures_GO = GameObject.Find("Structures");
+        TraciClient = GameObject.FindObjectOfType(typeof(TraciController)) as TraciController;
     }
 
     /// Builds the network pieces by reading a Sumo network file.
@@ -307,7 +310,7 @@ public class SumoCreator : MonoBehaviour
                 // The config file.
                 else if (file.EndsWith(".sumocfg"))
                 {
-                    StartSumo(file, 80);
+                    StartSumo(file);
                     continue;
                 }
                 else
@@ -322,21 +325,14 @@ public class SumoCreator : MonoBehaviour
         }
     }
 
-    private void StartSumo(string file, int port)
+    private void StartSumo(string ConfigFile)
     {
         try
         {
-            // Sumo Server
-            Process p = new Process();
-            ProcessStartInfo si = new ProcessStartInfo()
-            {
-                FileName = "cmd.exe",
-                Arguments = "bin/sumo.exe --remote-port " + port.ToString()
-            };
-            p.StartInfo = si;
-            p.Start();
-            
-
+            TraciClient.Port = 80;
+            TraciClient.HostName = "localhost";
+            TraciClient.ConfigFile = ConfigFile;
+            TraciClient.Invoke("ConnectToSumo", 5);             
         }
         catch (Exception e)
         {

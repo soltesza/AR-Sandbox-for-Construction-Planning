@@ -10,28 +10,38 @@ public class TraciController : MonoBehaviour
 
     public GameObject Cars_GO;
     public float speed = 2.0f;
-    public Traci.TraCIClient Client;
-    private Traci.TraCISubscriptionResponse Subscriptions = new Traci.TraCISubscriptionResponse();
-
+    public Traci.TraCIClient Client = new Traci.TraCIClient();
+    public String HostName;
+    public int Port;
+    public String ConfigFile;
     void Start()
     {
         Cars_GO = GameObject.Find("Cars");
+        Client.VehicleSubscription += OnVehicleUpdate;
     }
     
-    void ConnectToSumo(string Hostname, int Port)
+    void ConnectToSumo()
     {
         List<byte> carInfo = new List<byte> { Traci.TraCIConstants.POSITION_3D };
         try
         {
+            Process p = new Process();
+            ProcessStartInfo si = new ProcessStartInfo()
+            {
+                FileName = "cmd.exe",
+                Arguments = "bin/sumo.exe --remote-port " + Port.ToString() + " --configuration-file " + ConfigFile
+            };
+            p.StartInfo = si;
+            p.Start();
             //Connect to sumo running on specified port
-            Client = new Traci.TraCIClient();
-            Client.Connect(Hostname, Port);
+            Client.Connect(HostName, Port);
 
             //Get all the car ids we need to keep track of. 
             Traci.TraCIResponse<List<String>> CarIds = Client.Vehicle.GetIdList();
-            
-            // Subscribe to all cars
+
+            // Subscribe to all cars from 0 to 2147483647, and get their 3d position data
             CarIds.Content.ForEach(car => Client.Vehicle.Subscribe(car, 0, 2147483647, carInfo));
+            
         }
         catch(Exception e)
         {
@@ -39,10 +49,20 @@ public class TraciController : MonoBehaviour
         }
     }
 
-    Traci.Types.SubscriptionEventArgs HandleVehicleUpdate()
+    public void OnVehicleUpdate(object sender, Traci.Types.SubscriptionEventArgs e)
     {
-        //Traci.Types.SubscriptionEventArgs Event = 
-        return new Traci.Types.SubscriptionEventArgs();
+        GameObject Car_GO = GameObject.Find(e.ObjecId);
+        if (Car_GO != null)
+        {
+            Cars_GO.transform.position = (Vector3)e.Responses.ToArray()[0];
+        }
+        else
+        {
+            SphereCollider car = Cars_GO.AddComponent(typeof(SphereCollider)) as SphereCollider;
+            car.tag = e.ObjecId;
+            Traci.Types.Position3D pos = (Traci.Types.Position3D)e.Responses.ToArray()[0];
+            car.transform.position = new Vector3((float)pos.X, (float)pos.Y, (float)pos.Z);
+        }
     }
 
 
