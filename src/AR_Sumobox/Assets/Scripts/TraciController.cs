@@ -33,7 +33,7 @@ public class TraciController : MonoBehaviour
             Process p = new Process();
             ProcessStartInfo si = new ProcessStartInfo()
             {
-                WorkingDirectory = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "..\\Sumo\\bin\\")),
+                WorkingDirectory = "C:\\Sumo\\bin\\",
                 FileName = "sumo.exe",
                 Arguments = " --remote-port " + Port.ToString() + " --configuration-file " + ConfigFile,
                 WindowStyle = ProcessWindowStyle.Hidden,
