@@ -7,6 +7,7 @@ using Traci = CodingConnected.TraCI.NET;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using System.Threading;
 
 public class TraciController : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class TraciController : MonoBehaviour
             };
             p.StartInfo = si;
             p.Start();
+            Thread.Sleep(400);
             //Connect to sumo running on specified port
             await Client.ConnectAsync(HostName, Port);
             Subscribe();
@@ -100,8 +102,9 @@ public class TraciController : MonoBehaviour
                 {
                     GameObject car = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     car.name = carId;
+                    car.transform.localScale = new Vector3(1,1,1);
                     car.transform.parent = Cars_GO.transform;
-                    car.transform.position = new Vector3((float)pos.X, 0, (float)pos.Y);
+                    car.transform.position = new Vector3((float)pos.X, 1, (float)pos.Y);
                 }
             });
             Elapsedtime += Time.deltaTime;
