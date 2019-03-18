@@ -200,12 +200,7 @@ public class SumoCreator : MonoBehaviour
             // Let the Edge script build all the Networks Roads/Edges.
             // This can be a very time consuming function given a large network.
             Edges_GO.GetComponent<Edge>().BuildEdges();
-        }
-        if (CFG_FILE != null)
-        {
-            StartSumo(file);
-        }
-        
+        }        
     }
 
     /// <summary>
@@ -336,8 +331,6 @@ public class SumoCreator : MonoBehaviour
                 // The config file.
                 else if (file.EndsWith(".sumocfg"))
                 {
-                    CFG_FILE = file;
-                    StartSumo(CFG_FILE);
                     continue;
                 }
                 else
@@ -350,6 +343,10 @@ public class SumoCreator : MonoBehaviour
                 }
             }
             UnityEngine.Debug.Assert(CFG_FILE != null, "No .sumocfg file created, something may have gone wrong with the osmWebWizard.py. Try using Python 2.X with unicode support");
+            if (CFG_FILE != null)
+            {
+                StartSumo(CFG_FILE);
+            }
         }
     }
 
