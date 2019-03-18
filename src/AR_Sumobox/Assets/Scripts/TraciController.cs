@@ -6,7 +6,7 @@ using UnityEngine;
 using Traci = CodingConnected.TraCI.NET;
 using System.Linq;
 using System.Threading.Tasks;
-
+using System.IO;
 
 public class TraciController : MonoBehaviour
 {
@@ -29,15 +29,18 @@ public class TraciController : MonoBehaviour
         {
             Client = new Traci.TraCIClient();
             Client.VehicleSubscription += OnVehicleUpdate;
-
-            //Process p = new Process();
-            //ProcessStartInfo si = new ProcessStartInfo()
-            //{
-            //    FileName = "cmd.exe",
-            //    Arguments = "bin/sumo.exe --remote-port " + Port.ToString() + " --configuration-file " + ConfigFile
-            //};
-            //p.StartInfo = si;
-            //p.Start();
+            string tmp = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "..\\Sumo\\bin\\"));
+            Process p = new Process();
+            ProcessStartInfo si = new ProcessStartInfo()
+            {
+                WorkingDirectory = Path.GetFullPath(Path.Combine(Environment.CurrentDirectory, "..\\Sumo\\bin\\")),
+                FileName = "sumo.exe",
+                Arguments = " --remote-port " + Port.ToString() + " --configuration-file " + ConfigFile,
+                WindowStyle = ProcessWindowStyle.Hidden,
+                CreateNoWindow = true
+            };
+            p.StartInfo = si;
+            p.Start();
             //Connect to sumo running on specified port
             await Client.ConnectAsync(HostName, Port);
             Subscribe();
@@ -102,12 +105,11 @@ public class TraciController : MonoBehaviour
                 }
             });
             Elapsedtime += Time.deltaTime;
-            if(Elapsedtime > 80000)
+            if(Elapsedtime > 1)
             {
                 Client.Control.SimStep();
                 Elapsedtime = 0;
             }
-            Client.Control.SimStep();
         }
         
     }

@@ -337,6 +337,7 @@ public class SumoCreator : MonoBehaviour
                 else if (file.EndsWith(".sumocfg"))
                 {
                     CFG_FILE = file;
+                    StartSumo(CFG_FILE);
                     continue;
                 }
                 else
