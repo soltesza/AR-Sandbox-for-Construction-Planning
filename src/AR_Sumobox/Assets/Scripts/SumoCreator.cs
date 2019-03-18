@@ -36,6 +36,7 @@ public class SumoCreator : MonoBehaviour
     /// TraciController Game object (Script)
     private GameObject Traci_GO;
 
+    private string CFG_FILE = null;
     /// <summary>
     /// Find all parent GameObjects at start.
     /// </summary>
@@ -200,6 +201,11 @@ public class SumoCreator : MonoBehaviour
             // This can be a very time consuming function given a large network.
             Edges_GO.GetComponent<Edge>().BuildEdges();
         }
+        if (CFG_FILE != null)
+        {
+            StartSumo(file);
+        }
+        
     }
 
     /// <summary>
@@ -287,7 +293,6 @@ public class SumoCreator : MonoBehaviour
     public void LoadNetwork()
     {
         string[] files = null;
-        bool hasConfigFile = false;
         // Lets a user pick a generated network with a file selection prompt.
         try
         {
@@ -331,8 +336,7 @@ public class SumoCreator : MonoBehaviour
                 // The config file.
                 else if (file.EndsWith(".sumocfg"))
                 {
-                    hasConfigFile = true;
-                    StartSumo(file);
+                    CFG_FILE = file;
                     continue;
                 }
                 else
@@ -344,7 +348,7 @@ public class SumoCreator : MonoBehaviour
                     }
                 }
             }
-            UnityEngine.Debug.Assert(hasConfigFile == true, "No .sumocfg file created, something may have gone wrong with the osmWebWizard.py. Try using Python 2.X with unicode support");
+            UnityEngine.Debug.Assert(CFG_FILE != null, "No .sumocfg file created, something may have gone wrong with the osmWebWizard.py. Try using Python 2.X with unicode support");
         }
     }
 
