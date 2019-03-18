@@ -194,22 +194,7 @@ public class SumoCreator : MonoBehaviour
                     }
                     newEdge.Lanes.Add(theLane);
                 }
-<<<<<<< HEAD
-
-                // Save negative and positive edges seperatly.
-                // A negative edge always has a positive counterpart that 
-                // makes an entire road section
-                if (newEdge.Id[0] == '-')
-                {
-                    Edges_GO.GetComponent<Edge>().RoadList_Neg.Add(newEdge);
-                }
-                else
-                {
-                    Edges_GO.GetComponent<Edge>().RoadList_Pos.Add(newEdge);
-                }
-=======
-                Edges_GO.GetComponent<Edge>().RoadList.Add(newEdge); 
->>>>>>> master
+                Edges_GO.GetComponent<Edge>().RoadList.Add(newEdge);
             }
             // Let the Edge script build all the Networks Roads/Edges.
             // This can be a very time consuming function given a large network.
