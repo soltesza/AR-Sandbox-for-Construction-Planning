@@ -331,6 +331,7 @@ public class SumoCreator : MonoBehaviour
                 // The config file.
                 else if (file.EndsWith(".sumocfg"))
                 {
+                    CFG_FILE = file;
                     continue;
                 }
                 else
