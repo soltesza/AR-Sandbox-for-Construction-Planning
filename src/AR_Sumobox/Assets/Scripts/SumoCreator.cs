@@ -34,7 +34,7 @@ public class SumoCreator : MonoBehaviour
     /// </summary>
     private GameObject Structures_GO;
     /// TraciController Game object (Script)
-    private TraciController TraciClient;
+    private GameObject Traci_GO;
 
     /// <summary>
     /// Find all parent GameObjects at start.
@@ -45,7 +45,7 @@ public class SumoCreator : MonoBehaviour
         Junctions_GO = GameObject.Find("Junctions");
         Edges_GO = GameObject.Find("Edges");
         Structures_GO = GameObject.Find("Structures");
-        TraciClient = GameObject.FindObjectOfType(typeof(TraciController)) as TraciController;
+        Traci_GO = GameObject.Find("Traci_Controller");
     }
 
     /// <summary>
@@ -352,10 +352,10 @@ public class SumoCreator : MonoBehaviour
     {
         try
         {
-            TraciClient.Port = 80;
-            TraciClient.HostName = Dns.GetHostEntry("localhost").AddressList[1].ToString();
-            TraciClient.ConfigFile = ConfigFile;
-            TraciClient.Invoke("ConnectToSumo", 0);             
+            Traci_GO.GetComponent<TraciController>().Port = 80;
+            Traci_GO.GetComponent<TraciController>().HostName = Dns.GetHostEntry("localhost").AddressList[1].ToString();
+            Traci_GO.GetComponent<TraciController>().ConfigFile = ConfigFile;
+            Traci_GO.GetComponent<TraciController>().Invoke("ConnectToSumo", 0);             
         }
         catch (Exception e)
         {
