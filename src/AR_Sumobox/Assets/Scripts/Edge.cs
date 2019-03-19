@@ -61,7 +61,7 @@ public class Edge : MonoBehaviour
     /// <summary>
     /// The width to make lanes in meters.
     /// </summary>
-    public float LANEWIDTH = 3.5f;
+    public float LANEWIDTH = 3.4f;
 
     /// <summary>
     /// Set the Edeg parent GameObject and create a new List<Road>() in Edge.RoadList.

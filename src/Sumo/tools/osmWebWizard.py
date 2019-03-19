@@ -434,10 +434,11 @@ class OSMImporterWebSocket(WebSocket):
             builder.createBatch()
 
             if self.local:
-                openSUMO()
+                builder.openSUMO()
             else:
                 data = builder.createZip()
                 builder.finalize()
+                
                 self.sendMessage(u"zip " + data)
         except Exception:
             print(traceback.format_exc())

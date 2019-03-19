@@ -255,15 +255,15 @@ public class SumoCreator : MonoBehaviour
     {
         try
         {
-            // OSMWebWizard Server
             Process p = new Process();
             ProcessStartInfo si = new ProcessStartInfo()
             {
                 WorkingDirectory = "C:\\Sumo\\tools\\",
-                FileName = "osmWebWizard.py",
+                FileName = "osmWebWizard.py"
             };
             p.StartInfo = si;
             p.Start();
+           
         }
         catch (Exception e)
         {

@@ -30,6 +30,8 @@ public class VirtualButtonAction : MonoBehaviour, IVirtualButtonEventHandler
 
     public void OnButtonPressed(VirtualButtonBehaviour vb)
     {
+        Debug.Log(string.Format("Virtual button {0} pressed.", this.gameObject.name));
+
         if (onButtonDown != null)
         {
             onButtonDown.Invoke();
@@ -38,6 +40,8 @@ public class VirtualButtonAction : MonoBehaviour, IVirtualButtonEventHandler
 
     public void OnButtonReleased(VirtualButtonBehaviour vb)
     {
+        Debug.Log(string.Format("Virtual button {0} released.", this.gameObject.name));
+
         if (onButtonUp != null)
         {
             onButtonUp.Invoke();
