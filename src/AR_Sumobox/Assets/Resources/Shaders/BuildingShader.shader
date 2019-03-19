@@ -85,7 +85,7 @@
 				tristream.Append(v0p);
 				tristream.Append(v1p);
 				tristream.Append(v2p);
-				tristream.RestartStrip();
+				//tristream.RestartStrip();
 
 				// F
 				tristream.Append(v2);
