@@ -102,7 +102,6 @@ public class TraciController : MonoBehaviour
                 {
                     GameObject car = GameObject.CreatePrimitive(PrimitiveType.Cube);
                     car.name = carId;
-                    car.transform.localScale = new Vector3(1,1,1);
                     car.transform.parent = Cars_GO.transform;
                     car.transform.position = new Vector3((float)pos.X, 1, (float)pos.Y);
                 }
