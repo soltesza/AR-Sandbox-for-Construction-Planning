@@ -71,19 +71,20 @@ public class Structure : MonoBehaviour
             Material m;
             if (p.Type.Contains("building"))
             {
-                m = Resources.Load("Materials/Concrete_Material", typeof(Material)) as Material;
                 building = true;
+                //m = Resources.Load("Materials/Concrete_Material", typeof(Material)) as Material;
+                m = new Material(Building_Shader);
+            }
+            else
+            {
+                m = Resources.Load("Materials/Concrete_Material", typeof(Material)) as Material;
                 List<float> color;
                 if (p.Color != null)
                 {
                     color = ShapeStringToFloatList(p.Color);
                     m.color = new Color(color[0] / 255.0f, color[1] / 255.0f, color[2] / 255.0f, 1.0f);
-                }  
-            }
-            else
-            {
-                m = Resources.Load("Materials/Concrete_Material", typeof(Material)) as Material;
-                //m = new Material(Building_Shader);
+                }
+                
             }
 
             mr.material = m;
