@@ -11,6 +11,7 @@ using UnityEditor;
 /// <summary>
 /// A struct representing a Sumo Network Lane.
 /// </summary>
+/// A ConstructionZone is true if that lane has been set to a construction zone
 [Serializable]
 public struct Lane
 {
@@ -23,6 +24,8 @@ public struct Lane
     public string Disallow { get; set; }
     public string Shape { get; set; }
     public bool Built { get; set; }
+    public string DefaultSpeed { get; set; }
+    public bool ConstructionZone { get; set; }
 }
 
 /// <summary>

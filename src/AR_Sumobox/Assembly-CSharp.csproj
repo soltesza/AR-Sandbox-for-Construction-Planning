@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{A31F2CAD-4EE3-21FD-E639-FD37439D5DDE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -314,7 +315,7 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="CodingConnected.TraCI.NET">
-      <HintPath>C:/Users/DAQuser/Documents/GitHub/AR-Sandbox-for-OSU-Civil-Construction-Engineering/src/AR_Sumobox/Assets/Plugins/CodingConnected.TraCI.NET.dll</HintPath>
+      <HintPath>Assets\Plugins\CodingConnected.TraCI.NET.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
       <HintPath>C:/Users/DAQuser/Documents/GitHub/AR-Sandbox-for-OSU-Civil-Construction-Engineering/src/AR_Sumobox/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>

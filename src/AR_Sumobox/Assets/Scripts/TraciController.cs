@@ -19,11 +19,19 @@ public class TraciController : MonoBehaviour
     public int Port;
     public String ConfigFile;
     private float Elapsedtime;
+
+    /// <summary>
+    /// Called when the scene is first rendered
+    /// </summary>
     void Start()
     {
         Cars_GO = GameObject.Find("Cars");
     }
     
+    /// <summary>
+    /// This connects to sumo asynchronously
+    /// </summary>
+    /// <returns>A task to await</returns>
     async Task <Traci.TraCIClient> ConnectToSumo()
     {
         try
@@ -51,11 +59,96 @@ public class TraciController : MonoBehaviour
         }
         catch(Exception e)
         {
-            UnityEngine.Debug.LogError(e.Message);
+            UnityEngine.Debug.LogWarning(e.Message);
             return null;
         }
     }
 
+    /// <summary>
+    /// Removes the construction zone attribute for a defined lane in the given road, and updates the simulation in SUMO.
+    /// </summary>
+    /// <param name="Road">The gameobject to whom we will update the specified lane</param>
+    /// <param name="LaneId">The lane Id as specified in the SUMO network file</param>
+    public void RemoveWorkZoneOnLane(GameObject Road, String LaneId)
+    {
+        Road FoundRoad = Road.GetComponent<Edge>().RoadList.Find(found => found.Name == Road.name);
+        Lane FoundLane = FoundRoad.Lanes.Find(L => L.Id == LaneId);
+        if (FoundLane.ConstructionZone)
+        {
+            FoundLane.Speed = FoundLane.DefaultSpeed;
+            FoundLane.ConstructionZone = false;
+            Client.Edge.SetMaxSpeed(FoundRoad.Id, (double)Int32.Parse(FoundLane.DefaultSpeed));
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("Lane: " + LaneId + " Is not a construction zone");
+        }
+    }
+
+    /// <summary>
+    /// Removes the construction zone attribute from every lane in the road, and updates the simulation accordingly in SUMO.
+    /// </summary>
+    /// <param name="Road">The Road GameObject with an Edge component of roads to update </param>
+    public void RemoveWorkZoneEntireRoad(GameObject Road)
+    {
+        Road FoundRoad = Road.GetComponent<Edge>().RoadList.Find(found => found.Name == Road.name);
+        FoundRoad.Lanes.ForEach(FoundLane => {
+            if (!FoundLane.ConstructionZone)
+            {
+                FoundLane.Speed = FoundLane.DefaultSpeed;
+                FoundLane.ConstructionZone = false;
+                Client.Edge.SetMaxSpeed(FoundRoad.Id, (double)Int32.Parse(FoundLane.DefaultSpeed));
+            }
+        });
+    }
+
+    /// <summary>
+    /// Sets the construction zone attribute for every lane in the road, and updates the simulation accordingly in SUMO.
+    /// </summary>
+    /// <param name="Road">The Road GameObject to update the road</param>
+    public void SetWorkZoneEntireRoad(GameObject Road)
+    {
+        Road FoundRoad = Road.GetComponent<Edge>().RoadList.Find(found => found.Name == Road.name);
+        FoundRoad.Lanes.ForEach(FoundLane => {
+            if (!FoundLane.ConstructionZone)
+            {
+                int Speed = Int32.Parse(FoundLane.Speed);
+                //Gets the smallest, 0.75 * the speed, or 45 mph
+                Speed = (Speed * 3 / 4) > 45 ? (Speed * 3 / 4) : 45;
+                FoundLane.Speed = Speed.ToString();
+                FoundLane.ConstructionZone = true;
+                Client.Edge.SetMaxSpeed(FoundRoad.Id, (double)Speed);
+            }
+        });
+    }
+
+    /// <summary>
+    /// Sets the construction zone attribute for a defined lane in the given road, and updates the simulation in SUMO.
+    /// </summary>
+    /// <param name="Road">The gameobject to whom we will update the specified lane</param>
+    /// <param name="LaneId">The lane Id as specified in the SUMO network file</param>
+    public void SetWorkZoneOneLane(GameObject Road, String LaneId)
+    {
+        Road FoundRoad = Road.GetComponent<Edge>().RoadList.Find(found => found.Name == Road.name);
+        Lane FoundLane = FoundRoad.Lanes.Find(L => L.Id == LaneId);
+        if (!FoundLane.ConstructionZone)
+        {
+            int Speed = Int32.Parse(FoundLane.Speed);
+            //Gets the smallest, 0.75 * the speed, or 45 mph
+            Speed = (Speed * 3 / 4) > 45 ? (Speed * 3 / 4) : 45;
+            FoundLane.Speed = Speed.ToString();
+            FoundLane.ConstructionZone = true;
+            Client.Edge.SetMaxSpeed(FoundRoad.Id, (double)Speed);
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("Lane: " + LaneId + " Is already a construction zone");
+        }
+    }
+
+    /// <summary>
+    /// Subscribes to all vehicles in the simulation
+    /// </summary>
     public void Subscribe()
     {
         List<byte> carInfo = new List<byte> { Traci.TraCIConstants.POSITION_3D };
@@ -67,6 +160,11 @@ public class TraciController : MonoBehaviour
         CarIds.Content.ForEach(car => Client.Vehicle.Subscribe(car, 0, 2147483647, carInfo));
     }
 
+    /// <summary>
+    /// Event handler to handle a car update event
+    /// </summary>
+    /// <param name="sender">The client</param>
+    /// <param name="e">The event args</param>
     public void OnVehicleUpdate(object sender, Traci.Types.SubscriptionEventArgs e)
     {
         GameObject Car_GO = GameObject.Find(e.ObjecId);
@@ -82,8 +180,11 @@ public class TraciController : MonoBehaviour
             car.transform.position = new Vector3((float)pos.X, 0, (float)pos.Y);
         }
     }
-    
-    // Update is called once per frame
+
+    /// <summary>
+    /// Update is called once per frame
+    /// If the client is defined, it will attempt to get a list of vehicles who are currently active and set their positions/create them accordingly. 
+    /// </summary>
     void Update()
     {
         // Get all the car ids we need to keep track of. 

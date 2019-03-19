@@ -176,6 +176,7 @@ public class SumoCreator : MonoBehaviour
                     if (lane.Attributes["speed"] != null)
                     {
                         theLane.Speed = lane.Attributes.GetNamedItem("speed").Value;
+                        theLane.DefaultSpeed = theLane.Speed;
                     }
                     if (lane.Attributes["length"] != null)
                     {
