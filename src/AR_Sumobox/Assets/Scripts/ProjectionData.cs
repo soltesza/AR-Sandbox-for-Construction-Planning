@@ -88,8 +88,10 @@ public class ProjectionData : MonoBehaviour
         float xcenter = (bp[0] + bp[2]) / 2.0f;
         float ycenter = (bp[1] + bp[3]) / 2.0f;
         Main_Camera.transform.position = new Vector3(xcenter, 50.0f, ycenter);
+        Main_Camera.nearClipPlane = 0.01f;
         Main_Camera.farClipPlane = 1000000.0f;
-        Main_Camera.fieldOfView = 8;
+        Main_Camera.usePhysicalProperties = true;
+        Main_Camera.focalLength = 50.0f;
     }
 
     // Start is called before the first frame update

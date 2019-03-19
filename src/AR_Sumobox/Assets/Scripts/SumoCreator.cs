@@ -36,6 +36,8 @@ public class SumoCreator : MonoBehaviour
     /// TraciController Game object (Script)
     private GameObject Traci_GO;
 
+    private GameObject Main_Camera;
+
     private string CFG_FILE = null;
     /// <summary>
     /// Find all parent GameObjects at start.
@@ -47,6 +49,7 @@ public class SumoCreator : MonoBehaviour
         Edges_GO = GameObject.Find("Edges");
         Structures_GO = GameObject.Find("Structures");
         Traci_GO = GameObject.Find("Traci_Controller");
+        Main_Camera = GameObject.Find("Main_Camera");
     }
 
     /// <summary>
@@ -58,6 +61,7 @@ public class SumoCreator : MonoBehaviour
     /// <param name="file">The name of the SUMO .net file to parse given as a string.</param>
     private void BuildNetwork(string file)
     {
+        Main_Camera.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
         bool opened = true;
         XmlDocument xmlDoc = new XmlDocument();
         try
@@ -254,6 +258,7 @@ public class SumoCreator : MonoBehaviour
     /// </summary>
     public void GenerateOsmNetwork()
     {
+        Main_Camera.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
         try
         {
             Process p = new Process();
