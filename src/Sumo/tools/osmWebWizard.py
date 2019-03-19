@@ -438,7 +438,7 @@ class OSMImporterWebSocket(WebSocket):
             else:
                 data = builder.createZip()
                 builder.finalize()
-
+                
                 self.sendMessage(u"zip " + data)
         except Exception:
             print(traceback.format_exc())
