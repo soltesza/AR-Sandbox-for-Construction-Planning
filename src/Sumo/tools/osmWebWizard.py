@@ -433,7 +433,9 @@ class OSMImporterWebSocket(WebSocket):
             builder.makeConfigFile()
             builder.createBatch()
 
-            if not self.local:
+            if self.local:
+                openSUMO()
+            else:
                 data = builder.createZip()
                 builder.finalize()
                 self.sendMessage(u"zip " + data)
