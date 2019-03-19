@@ -259,21 +259,11 @@ public class SumoCreator : MonoBehaviour
             Process p = new Process();
             ProcessStartInfo si = new ProcessStartInfo()
             {
-                FileName = "cmd.exe",
-                Arguments = "/C osmWebWizard.py --remote --address=localhost --port=80"
+                WorkingDirectory = "C:\\Sumo\\tools\\",
+                FileName = "osmWebWizard.py",
             };
             p.StartInfo = si;
             p.Start();
-
-            // The Javascript Client
-            Process p2 = new Process();
-            ProcessStartInfo si2 = new ProcessStartInfo()
-            {
-                FileName = "cmd.exe",
-                Arguments = "/C C:/Sumo/tools/webWizard/index.html"
-            };
-            p2.StartInfo = si2;
-            p2.Start();
         }
         catch (Exception e)
         {
