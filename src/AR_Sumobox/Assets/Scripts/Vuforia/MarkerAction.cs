@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 using Vuforia;
 using System.Linq;
+using System;
+
+[Serializable]
+public class IntEvent : UnityEvent<int> { }
 
 /// <summary>
 /// Used to provide functionality to a marker.
@@ -11,27 +15,62 @@ using System.Linq;
 /// </summary>
 public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 {
-
-	public Vector3[] triggerPositions; // The positions that will trigger the At Position event
 	public float xYTolerance, zTolerance; // How close the marker must be to (x, y, z) to trigger the At Position event
 
-	public UnityEvent atPositionEvent;
-	public float timeForTrigger;
+	public IntEvent atPositionEvent;
+	public float timeForTrigger; // Seconds
+    public Transform mainCameraTransform;
 
 	private Vector3 tolerance;
 	private float timeAtPosition;
     private int curTriggerPositionIndex;
 	private bool eventTriggered;
 	private TrackableBehaviour.Status trackingStatus;
+    public List<Bounds> triggerBounds = new List<Bounds>();
 
-	// Start is called before the first frame update
-	void Start()
+    // Start is called before the first frame update
+    void Start()
 	{
 		tolerance = new Vector3(xYTolerance, xYTolerance, zTolerance);
 		GetComponent<TrackableBehaviour>().RegisterTrackableEventHandler(this);
 		eventTriggered = false;
         curTriggerPositionIndex = -1;
+
+        if (mainCameraTransform == null)
+        {
+            mainCameraTransform = (GameObject.Find("Main Camera") ?? GameObject.Find("Main_Camera"))?.transform;
+        }
 	}
+
+    private bool WithinBoundsWithTolerance(Vector3 point, Bounds bounds, float tol)
+    {
+        Vector3 boundsVec = bounds.max - bounds.min;
+        Vector3 pointToMin = bounds.min - point;
+        float c = Vector3.Dot(boundsVec, pointToMin);
+        double distance;
+
+        // The closest point in the bounds is min
+        if (c > 0.0f)
+        {
+            distance = Math.Sqrt(Math.Abs(Vector3.Dot(pointToMin, pointToMin)));
+            return distance <= tol;
+        }
+
+        Vector3 pointToMax = point - bounds.max;
+
+        // The closest point in the bounds is max
+        if (Vector3.Dot(boundsVec, pointToMax) > 0.0f)
+        {
+            distance = Math.Sqrt(Math.Abs(Vector3.Dot(pointToMax, pointToMax)));
+            return distance <= tol;
+        }
+
+        // The closest point in the bounds is between min and max
+        Vector3 e = pointToMin - boundsVec * (c / Vector3.Dot(boundsVec, boundsVec));
+        distance = Math.Sqrt(Math.Abs(Vector3.Dot(boundsVec, boundsVec)));
+
+        return distance <= tol;
+    }
 
 	private bool SameWithinTolerance(Vector3 v1, Vector3 v2, Vector3 tol)
 	{
@@ -41,13 +80,24 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 
 		return sameX && sameY && sameZ;
 	}
+
+    private void SetTriggerAreasRelativeToCamera()
+    {
+        for (int i = 0; i < triggerBounds.Count; i++)
+        {
+            Vector3 relativePos = mainCameraTransform.transform.InverseTransformDirection(triggerBounds[i].center - mainCameraTransform.transform.position);
+            triggerBounds[i] = new Bounds(relativePos, triggerBounds[i].size);
+        }
+    }
     
 	void Update()
 	{
 		if (trackingStatus != TrackableBehaviour.Status.NO_POSE) // Make sure the marker is being tracked
         {
+            //SetTriggerAreasRelativeToCamera();
+
             Vector3 curPos = this.gameObject.transform.position;// Find the index of the trigger position that the marker is at
-            int newTriggerPositionIndex = triggerPositions.ToList().FindIndex(p => SameWithinTolerance(p, curPos, tolerance));
+            int newTriggerPositionIndex = triggerBounds.FindIndex(b => b.size.magnitude > Mathf.Epsilon ? WithinBoundsWithTolerance(curPos, b, tolerance.x) : SameWithinTolerance(curPos, b.center, tolerance));
 
             if (newTriggerPositionIndex == -1) // The marker is not at a trigger position
             {
@@ -60,7 +110,8 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 
                 if (!eventTriggered && timeAtPosition >= timeForTrigger)
                 {
-                    atPositionEvent.Invoke();
+                    Debug.Log($"{this.name}: Event invoked.");
+                    atPositionEvent.Invoke(curTriggerPositionIndex);
                     eventTriggered = true;
                 }
             }
@@ -81,5 +132,28 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 			timeAtPosition = 0.0f;
 		}
 	}
-		
+	
+    public void AddTriggerArea(Vector3 triggerPosition)
+    {
+        if (triggerPosition != null)
+            triggerBounds.Add(new Bounds(triggerPosition, new Vector3(0, 0, 0)));
+    }
+
+    public void AddTriggerArea(Bounds triggerArea)
+    {
+        if (triggerArea != null)
+            triggerBounds.Add(triggerArea);
+    }
+
+    public void AddTriggerAreas(IEnumerable<Vector3> triggerPositions)
+    {
+        if (triggerPositions != null)
+            triggerBounds.AddRange(triggerPositions.Select(p => new Bounds(p, new Vector3(0, 0, 0))));
+    }
+
+    public void AddTriggerAreas(IEnumerable<Bounds> triggerAreas)
+    {
+        if (triggerAreas != null)
+            triggerBounds.AddRange(triggerAreas);
+    }
 }
