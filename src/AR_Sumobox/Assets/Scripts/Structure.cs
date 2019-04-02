@@ -8,6 +8,9 @@ using System.Globalization;
 using UnityEngine;
 using UnityEditor;
 
+/// <summary>
+/// Poly struct holds polygon data that represents arbitrary network shapes.
+/// </summary>
 [Serializable]
 public struct Poly
 {
@@ -17,20 +20,45 @@ public struct Poly
     public string Shape { get; set; }
 }
 
+/// <summary>
+/// Structure class stores and builds all simulation network buildings and Points of Interest.
+/// </summary>
 public class Structure : MonoBehaviour
 {
+    /// <summary>
+    /// The Structures main Game Object.
+    /// </summary>
     private GameObject Structures_GO;
+    /// <summary>
+    /// The list of polygon data.
+    /// </summary>
     public List<Poly> Polys;
+    /// <summary>
+    /// The parking lot shader.
+    /// </summary>
     public Shader Concrete_Shader;
+    /// <summary>
+    /// The building extrusion shader.
+    /// </summary>
     public Shader Building_Shader;
+    /// <summary>
+    /// Some extra colors for polygons.
+    /// </summary>
+    private Color[] BuildingColors = new Color[4];
 
+    /// <summary>
+    /// Clear all current simulation polygon data.
+    /// </summary>
     public void ClearData()
     {
         Polys.Clear();
     }
 
-    // Sumo shape sting to List of floats point order is
-    // x1, y1, x2, y2, ....
+    /// <summary>
+    /// Sumo shape sting to List of floats 
+    /// </summary>
+    /// <param name="shape"></param>
+    /// <returns>A list of floats, point order is x1, y1, x2, y2, ....</returns>
     private List<float> ShapeStringToFloatList(string shape)
     {
         List<float> points = new List<float>();
@@ -51,6 +79,10 @@ public class Structure : MonoBehaviour
     {
         Structures_GO = GameObject.Find("Structures");
         Polys = new List<Poly>();
+        BuildingColors[0] = new Color(153.0f / 255.0f, 102.0f / 255.0f, 51.0f / 255.0f, 1.0f);
+        BuildingColors[1] = new Color(102.0f / 255.0f, 51.0f / 255.0f, 0.0f / 255.0f, 1.0f);
+        BuildingColors[2] = new Color(153.0f / 255.0f, 153.0f / 255.0f, 102.0f / 255.0f, 1.0f);
+        BuildingColors[3] = new Color(153.0f / 255.0f, 51.0f / 255.0f, 0.0f / 255.0f, 1.0f);
     }
 
     // Update is called once per frame
@@ -59,6 +91,9 @@ public class Structure : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Build all stored polygon data.
+    /// </summary>
     public void Build()
     {
         foreach (Poly p in Polys)
@@ -74,6 +109,9 @@ public class Structure : MonoBehaviour
                 building = true;
                 //m = Resources.Load("Materials/Concrete_Material", typeof(Material)) as Material;
                 m = new Material(Building_Shader);
+                System.Random rnd = new System.Random();
+                int bc = rnd.Next(1, 4) - 1;
+                m.color = BuildingColors[bc];
             }
             else
             {

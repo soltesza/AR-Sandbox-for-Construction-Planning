@@ -8,16 +8,40 @@ using System.Globalization;
 using UnityEngine;
 using UnityEditor;
 
+/// <summary>
+/// Projection Data class stores and creates a simulation networks terrain.
+/// </summary>
 public class ProjectionData : MonoBehaviour
 {
+    /// <summary>
+    /// The Projection Data Game Object
+    /// </summary>
     private GameObject Projection_Data_GO;
+    /// <summary>
+    /// The Projection Data Terrain Shader.
+    /// </summary>
     public Shader Terrain_Shader;
+    /// <summary>
+    /// A handle to the main camera.
+    /// </summary>
     public Camera Main_Camera;
+    /// <summary>
+    /// The offset for network projections.
+    /// </summary>
     public string offset;
+    /// <summary>
+    /// The networks original bounds Lat/Lon
+    /// </summary>
     public string originalBounds;
+    /// <summary>
+    /// The networks projected bound. Cartesian
+    /// </summary>
     public string projectedBounds;
 
-    // Gets the bounds of the current network as a pair of points in 2-Space
+    /// <summary>
+    /// Get the bounds of the current network as a pair of points in 2-Space
+    /// </summary>
+    /// <param name="xml"> The xml file with the projection data.</param>
     public void SetProjectionData(XmlDocument xml)
     {
         XmlNode location = xml.DocumentElement.SelectSingleNode("location");
@@ -26,8 +50,11 @@ public class ProjectionData : MonoBehaviour
         projectedBounds = location.Attributes.GetNamedItem("convBoundary").Value;
     }
 
-    // Sumo shape sting to List of floats point order is
-    // x1, y1, x2, y2, ....
+    /// <summary>
+    /// Sumo shape sting to List of floats point order is x1, y1, x2, y2, ....
+    /// </summary>
+    /// <param name="shape">A Sumo formatted shape string.</param>
+    /// <returns></returns>
     public List<float> ShapeStringToFloatList(string shape)
     {
         List<float> points = new List<float>();
@@ -43,7 +70,10 @@ public class ProjectionData : MonoBehaviour
         return points;
     }
 
-    // Adds a Terrain_Plane prefab to the scene 100 units (meters) larger than the network.
+    /// <summary>
+    /// Adds a Terrain_Plane to the scene the size of the network and
+    /// sets the camera to the center of the plane.
+    /// </summary>
     public void BuildTerrain()
     {
         List<float> bp = ShapeStringToFloatList(projectedBounds);

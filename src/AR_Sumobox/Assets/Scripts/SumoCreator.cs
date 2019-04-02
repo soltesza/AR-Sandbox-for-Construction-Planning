@@ -33,11 +33,18 @@ public class SumoCreator : MonoBehaviour
     /// Structures parent GameObject and script.
     /// </summary>
     private GameObject Structures_GO;
+    /// <summary>
     /// TraciController Game object (Script)
+    /// </summary>
     private GameObject Traci_GO;
-
+    /// <summary>
+    /// A handle to the main scene camera.
+    /// </summary>
     private GameObject Main_Camera;
 
+    /// <summary>
+    /// The name of the current simulation configuration file.
+    /// </summary>
     private string CFG_FILE = null;
     /// <summary>
     /// Find all parent GameObjects at start.
@@ -347,6 +354,10 @@ public class SumoCreator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Starts Traci and Sumo to run traffic simulations
+    /// </summary>
+    /// <param name="ConfigFile"></param>
     private void StartSumo(string ConfigFile)
     {
         try

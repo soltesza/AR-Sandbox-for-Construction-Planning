@@ -8,6 +8,9 @@ using System.Globalization;
 using UnityEngine;
 using UnityEditor;
 
+/// <summary>
+/// Junction class represents road network intersection. 
+/// </summary>
 public class Junction : MonoBehaviour
 {
     private GameObject Junctions_GO;
@@ -33,6 +36,9 @@ public class Junction : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Clear all current simulation data.
+    /// </summary>
     public void ClearData()
     {
         Id = Name = Type = X = Y = IncomingLanes = InternalLanes = Shape = null;
@@ -55,7 +61,9 @@ public class Junction : MonoBehaviour
         return points;
     }
 
-    // Builds Road Junctions
+    /// <summary>
+    /// Build an Intersection.
+    /// </summary>
     public void BuildJunction()
     {
         // String points to floats
