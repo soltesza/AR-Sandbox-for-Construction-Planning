@@ -92,36 +92,37 @@ public class SumoCreator : MonoBehaviour
             XmlNodeList junctions = xmlDoc.DocumentElement.SelectNodes("junction");
             foreach (XmlNode junction in junctions)
             {
+                Intersection theJunction = new Intersection();
                 if (junction.Attributes["id"] != null)
                 {
-                    Junctions_GO.GetComponent<Junction>().Id = junction.Attributes.GetNamedItem("id").Value;
+                    theJunction.Id = junction.Attributes.GetNamedItem("id").Value;
                 }
                 if (junction.Attributes["name"] != null)
                 {
-                    Junctions_GO.GetComponent<Junction>().Name = junction.Attributes.GetNamedItem("name").Value;
+                    theJunction.Name = junction.Attributes.GetNamedItem("name").Value;
                 }
                 if (junction.Attributes["type"] != null)
                 {
-                    Junctions_GO.GetComponent<Junction>().Type = junction.Attributes.GetNamedItem("type").Value;
+                    theJunction.Type = junction.Attributes.GetNamedItem("type").Value;
                 }
                 else
                 {
-                    Junctions_GO.GetComponent<Junction>().Type = "normal";
+                    theJunction.Type = "normal";
                 }
                 if (junction.Attributes["x"] != null)
                 {
-                    Junctions_GO.GetComponent<Junction>().X = junction.Attributes.GetNamedItem("x").Value;
+                    theJunction.X = junction.Attributes.GetNamedItem("x").Value;
                 }
                 if (junction.Attributes["y"] != null)
                 {
-                    Junctions_GO.GetComponent<Junction>().Y = junction.Attributes.GetNamedItem("y").Value;
+                    theJunction.Y = junction.Attributes.GetNamedItem("y").Value;
                 }
                 if (junction.Attributes["shape"] != null)
                 {
-                    Junctions_GO.GetComponent<Junction>().Shape = junction.Attributes.GetNamedItem("shape").Value;
+                    theJunction.Shape = junction.Attributes.GetNamedItem("shape").Value;
                 }
-                //Junctions_GO.GetComponent<Junction>().BuildJunction();
-                Junctions_GO.GetComponent<Junction>().ClearData();
+                Junctions_GO.GetComponent<Junction>().Junction_List.Add(theJunction);
+                //Junctions_GO.GetComponent<Junction>().Build();
             }
 
             // Get all the Edge/Road information from the 'edge' nodes.
