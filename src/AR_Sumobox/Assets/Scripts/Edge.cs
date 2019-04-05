@@ -11,7 +11,6 @@ using UnityEditor;
 /// <summary>
 /// A struct representing a Sumo Network Lane.
 /// </summary>
-/// A ConstructionZone is true if that lane has been set to a construction zone
 [Serializable]
 public struct Lane
 {
@@ -81,7 +80,6 @@ public class Edge : MonoBehaviour
     /// </summary>    
     void Update()
     {
-
     }
 
     /// <summary>
@@ -163,15 +161,27 @@ public class Edge : MonoBehaviour
     /// Shapes are built as polygon meshes.
     /// </summary>
     /// <param name="shapelist">A List of floating point x,y position</param>
+    /// <param name="id">The string id of the Road or Lane Shape.</param>
     /// <param name="type">"Road" or "Pedestrian". This will set the materials used.</param>
+    /// <param name="width">The Road or Lane width in meters.</param>
     private void BuildShapeMesh(List<Vector3> shapelist, string id, string type, float width)
     {
         GameObject chunk = new GameObject();
         chunk.name = id;
 
         MeshRenderer mr = chunk.AddComponent<MeshRenderer>();
-        Material m = Resources.Load("Materials/Road_Material", typeof(Material)) as Material;
-
+        Material m;
+        if (type == "Road")
+        {
+            //m = new Material(Road_Shader);
+            m = Resources.Load("Materials/Road_Material", typeof(Material)) as Material;
+        }
+        else
+        {
+            m = Resources.Load("Materials/Road_Material", typeof(Material)) as Material;
+        }
+        
+        
         mr.material = m;
         Mesh mesh = new Mesh();
         int numMeshVerts = shapelist.Count * 2;
@@ -181,43 +191,9 @@ public class Edge : MonoBehaviour
         Vector2[] verts = new Vector2[numMeshVerts];
         for (int i = 0; i < numMeshVerts; i+=2)
         {
-            Vector3 V;
-            if (slcounter + 1 <= shapelist.Count - 1)
-            {
-                V = shapelist[slcounter] - shapelist[slcounter + 1];
-            }
-            else
-            {
-                V = shapelist[slcounter - 1] - shapelist[slcounter];
-            }
-            
-            if (V.x == 0.0f)
-            {
-                verts[i] = new Vector2(shapelist[slcounter].x + offset, shapelist[slcounter].z);
-                verts[i + 1] = new Vector2(shapelist[slcounter].x - offset, shapelist[slcounter].z);
-            }
-            else if (V.y == 0.0f)
-            {
-                verts[i] = new Vector2(shapelist[slcounter].x, shapelist[slcounter].z - offset);
-                verts[i + 1] = new Vector2(shapelist[slcounter].x, shapelist[slcounter].z + offset);
-            }
-            else if ((V.x < 0.0f && V.y < 0.0f) || (V.x > 0.0f && V.y > 0.0f))
-            {
-                verts[i] = new Vector2(shapelist[slcounter].x + offset, shapelist[slcounter].z - offset);
-                verts[i + 1] = new Vector2(shapelist[slcounter].x - offset, shapelist[slcounter].z + offset);
-            }
-            else if ((V.x < 0.0f && V.y > 0.0f) || (V.x > 0.0f && V.y < 0.0f))
-            {
-                verts[i] = new Vector2(shapelist[slcounter].x - offset, shapelist[slcounter].z - offset);
-                verts[i + 1] = new Vector2(shapelist[slcounter].x + offset, shapelist[slcounter].z + offset);
-            }
-            else
-            {
-                UnityEngine.Debug.Log("Failed compute edge rotation.");
-                return;
-            }
-            slcounter++;
-             
+            verts[i] = new Vector2(shapelist[slcounter].x - offset, shapelist[slcounter].z - offset);
+            verts[i + 1] = new Vector2(shapelist[slcounter].x + offset, shapelist[slcounter].z + offset);
+            slcounter++;   
         }
 
         Triangulator tr = new Triangulator(verts.ToArray());
@@ -229,9 +205,15 @@ public class Edge : MonoBehaviour
             vertices[j] = new Vector3(verts[j].x, 0.0f, verts[j].y);
         }
 
+        Vector3[] normals = new Vector3[numMeshVerts];
+        for (int k = 0; k < numMeshVerts; k++)
+        {
+            vertices[k] = -Vector3.up;
+        }
+
         mesh.vertices = vertices;
         mesh.triangles = indices;
-        mesh.RecalculateNormals();
+        mesh.normals = normals;
         mesh.RecalculateBounds();
         MeshFilter mf = chunk.AddComponent<MeshFilter>();
         mf.mesh = mesh;

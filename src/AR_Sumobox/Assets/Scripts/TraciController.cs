@@ -8,15 +8,38 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Traci = CodingConnected.TraCI.NET;
 
+/// <summary>
+/// Traci Controller class manages a running simulation by communicating with a Sumo process. 
+/// </summary>
 public class TraciController : MonoBehaviour
 {
-
+    /// <summary>
+    /// The Car main Game Object
+    /// </summary>
     public GameObject Cars_GO;
+    /// <summary>
+    /// The simulation speed.
+    /// </summary>
     public float speed = 2.0f;
+    /// <summary>
+    /// The Traci client.
+    /// </summary>
     public Traci.TraCIClient Client;
+    /// <summary>
+    /// The hostname of the computer for remote connections.
+    /// </summary>
     public String HostName;
+    /// <summary>
+    /// The post of the computer for remote connections.
+    /// </summary>
     public int Port;
+    /// <summary>
+    /// The current simulation config file.
+    /// </summary>
     public String ConfigFile;
+    /// <summary>
+    /// Simulation elapsed time.
+    /// </summary>
     private float Elapsedtime;
     private Edge edge;
 
@@ -26,6 +49,7 @@ public class TraciController : MonoBehaviour
     void Start()
     {
         Cars_GO = GameObject.Find("Cars");
+        
     }
     
     /// <summary>
@@ -44,9 +68,7 @@ public class TraciController : MonoBehaviour
             {
                 WorkingDirectory = "C:\\Sumo\\bin\\",
                 FileName = "sumo.exe",
-                Arguments = " --remote-port " + Port.ToString() + " --configuration-file " + ConfigFile,
-                WindowStyle = ProcessWindowStyle.Hidden,
-                CreateNoWindow = true
+                Arguments = " --remote-port " + Port.ToString() + " --configuration-file " + ConfigFile
             };
             p.StartInfo = si;
             p.Start();
@@ -268,6 +290,7 @@ public class TraciController : MonoBehaviour
         // Get all the car ids we need to keep track of. 
         if (Client != null)
         {
+            
             Traci.TraCIResponse<List<String>> CarIds = Client.Vehicle.GetIdList();
 
             CarIds.Content.ForEach(carId => {

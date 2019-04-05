@@ -8,22 +8,32 @@ using System.Globalization;
 using UnityEngine;
 using UnityEditor;
 
+[Serializable]
+public struct Intersection
+{
+    public string Id { get; set; }
+    public string Name { get; set; }
+    public string Type { get; set; }
+    public string X { get; set; }
+    public string Y { get; set; }
+    public string IncomingLanes { get; set; }
+    public string InternalLanes { get; set; }
+    public string Shape { get; set; }
+}
+
+/// <summary>
+/// Junction class represents road network intersection. 
+/// </summary>
 public class Junction : MonoBehaviour
 {
     private GameObject Junctions_GO;
     public Shader Road_Shader;
-    public string Id;
-    public string Name;
-    public string Type;
-    public string X;
-    public string Y;
-    public string IncomingLanes;
-    public string InternalLanes;
-    public string Shape;
+    public List<Intersection> Junction_List;
 
     // Start is called before the first frame update
     void Start()
     {
+        Junction_List = new List<Intersection>();
         Junctions_GO = GameObject.Find("Junctions");
     }
 
@@ -33,9 +43,12 @@ public class Junction : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Clear all current simulation data.
+    /// </summary>
     public void ClearData()
     {
-        Id = Name = Type = X = Y = IncomingLanes = InternalLanes = Shape = null;
+        Junction_List.Clear();
     }
 
     // Sumo shape sting to List of floats point order is
@@ -55,27 +68,29 @@ public class Junction : MonoBehaviour
         return points;
     }
 
-    // Builds Road Junctions
-    public void BuildJunction()
+    /// <summary>
+    /// Build an Intersection.
+    /// </summary>
+    public void BuildJunction(Intersection inter)
     {
         // String points to floats
-        if (Shape == null || Type == "internal")
+        if (inter.Shape == null || inter.Type == "internal")
         {
             return;
         }
-        List<float> fshape = ShapeStringToFloatList(Shape);
+        List<float> fshape = ShapeStringToFloatList(inter.Shape);
         int numverts = fshape.Count() / 2;
 
         // Center of junction
-        float xjunc = float.Parse(X, CultureInfo.InvariantCulture.NumberFormat);
-        float yjunc = float.Parse(Y, CultureInfo.InvariantCulture.NumberFormat);
+        float xjunc = float.Parse(inter.X, CultureInfo.InvariantCulture.NumberFormat);
+        float yjunc = float.Parse(inter.Y, CultureInfo.InvariantCulture.NumberFormat);
         Vector3 centerpoint = new Vector3(xjunc, yjunc, 0.0f);
 
         if (numverts > 5)
         {
             // Get Meshfilter and create a new mesh
             GameObject chunk = new GameObject();
-            chunk.name = Id;
+            chunk.name = inter.Id;
 
             
             chunk.AddComponent<MeshRenderer>();
@@ -128,6 +143,12 @@ public class Junction : MonoBehaviour
         }
     }
 
-
+    public void Build()
+    {
+        foreach (Intersection i in Junction_List)
+        {
+            BuildJunction(i);
+        }
+    }
 }
 
