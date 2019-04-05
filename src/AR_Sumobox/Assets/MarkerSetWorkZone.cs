@@ -13,9 +13,10 @@ public class MarkerSetWorkZone : MonoBehaviour
     public Material workZoneMaterial;
     public TraciController traciController;
 
-    private List<GameObject> lanes;
+    private List<GameObject> roads;
     private MarkerAction markerAction;
     private bool triggerAreasSet;
+    private Edge edge;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class MarkerSetWorkZone : MonoBehaviour
             traciController = FindObjectOfType<TraciController>();
         }
 
+        edge = lanesParentObject.GetComponent<Edge>();
         triggerAreasSet = false;
     }
 
@@ -44,35 +46,32 @@ public class MarkerSetWorkZone : MonoBehaviour
     {
         if (!triggerAreasSet && lanesParentObject.transform.childCount > 0)
         {
-            //lanes = new List<GameObject>(lanesParentObject.transform.childCount);
+            roads = new List<GameObject>(lanesParentObject.transform.childCount);
 
-            //foreach (Transform child in lanesParentObject.transform)
-            //{
-            //    lanes.Add(child.gameObject);
-            //}
-
-            //markerAction.AddTriggerAreas(lanes.Select(l => l.GetComponent<LineRenderer>().bounds));
-
-            //triggerAreasSet = true;
-
-            //REMOVE ME
-            lanes = new List<GameObject>(2);
             foreach (Transform child in lanesParentObject.transform)
             {
-                if (child.gameObject.name == "-5248257#3_0" || child.gameObject.name == "-286524716_0")
-                    lanes.Add(child.gameObject);
+                if (edge.RoadList.Any(r => r.Id == child.name))
+                    roads.Add(child.gameObject);
             }
-        }
 
-        //Bounds? test = lanes?.SingleOrDefault(l => l.name == "-315935169_0")?.GetComponent<LineRenderer>().bounds;
+            markerAction.AddTriggerAreas(roads.Select(l => l.GetComponent<LineRenderer>().bounds));
+
+            triggerAreasSet = true;
+        }
         
     }
 
-    public void SetWorkZone(int laneIndex)
+    public void SetWorkZone(int roadIndex)
     {
-        if (laneIndex >= 0 && laneIndex < lanes.Count)
+        traciController.SetWorkZoneEntireRoad(roads[roadIndex]);
+
+        if (roadIndex >= 0 && roadIndex < roads.Count)
         {
-            lanes[laneIndex].GetComponent<Renderer>().material = workZoneMaterial;
+            foreach (Lane lane in edge.RoadList.Single(r => r.Id == roads[roadIndex].name).Lanes)
+            {
+                GameObject.Find(lane.Id).GetComponent<Renderer>().material = workZoneMaterial;
+                Debug.Log($"Created work zone on lane {lane.Id}");
+            }
         }
     }
 }

@@ -7,6 +7,7 @@ using Vuforia;
 
 public class MarkerManager : MonoBehaviour
 {
+    public bool rotateCamera;
     public Text uiText;
 
     private List<ImageTargetBehaviour> markers;

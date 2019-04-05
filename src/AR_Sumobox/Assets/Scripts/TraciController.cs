@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using Traci = CodingConnected.TraCI.NET;
-using System.Linq;
-using System.Threading.Tasks;
-using System.IO;
-using System.Threading;
 
 public class TraciController : MonoBehaviour
 {
@@ -19,6 +18,7 @@ public class TraciController : MonoBehaviour
     public int Port;
     public String ConfigFile;
     private float Elapsedtime;
+    private Edge edge;
 
     /// <summary>
     /// Called when the scene is first rendered
@@ -67,82 +67,160 @@ public class TraciController : MonoBehaviour
     /// <summary>
     /// Removes the construction zone attribute for a defined lane in the given road, and updates the simulation in SUMO.
     /// </summary>
-    /// <param name="Road">The gameobject to whom we will update the specified lane</param>
-    /// <param name="LaneId">The lane Id as specified in the SUMO network file</param>
-    public void RemoveWorkZoneOnLane(GameObject Road, String LaneId)
+    /// <param name="roadObject">The gameobject to whom we will update the specified lane</param>
+    /// <param name="laneId">The lane Id as specified in the SUMO network file</param>
+    public void RemoveWorkZoneOnLane(GameObject roadObject, String laneId)
     {
-        Road FoundRoad = Road.GetComponent<Edge>().RoadList.Find(found => found.Name == Road.name);
-        Lane FoundLane = FoundRoad.Lanes.Find(L => L.Id == LaneId);
-        if (FoundLane.ConstructionZone)
+        if (edge == null)
+            edge = FindObjectOfType<Edge>();
+
+        Road road = edge.RoadList.Single(r => r.Id == roadObject.name);
+        int laneIndex = road.Lanes.FindIndex(l => l.Id == laneId);
+        Lane lane = road.Lanes[laneIndex];
+
+        if (lane.ConstructionZone)
         {
-            FoundLane.Speed = FoundLane.DefaultSpeed;
-            FoundLane.ConstructionZone = false;
-            Client.Edge.SetMaxSpeed(FoundRoad.Id, (double)Int32.Parse(FoundLane.DefaultSpeed));
+            road.Lanes[laneIndex] = new Lane()
+            {
+                Id = lane.Id,
+                Index = lane.Index,
+                Speed = lane.DefaultSpeed,
+                Length = lane.Length,
+                Width = lane.Width,
+                Allow = lane.Allow,
+                Disallow = lane.Disallow,
+                Shape = lane.Shape,
+                Built = lane.Built,
+                DefaultSpeed = lane.DefaultSpeed,
+                ConstructionZone = false
+            };
+
+            Client.Edge.SetMaxSpeed(road.Id, (double)Int32.Parse(lane.DefaultSpeed));
         }
         else
         {
-            UnityEngine.Debug.LogWarning("Lane: " + LaneId + " Is not a construction zone");
+            UnityEngine.Debug.LogWarning("Lane: " + laneId + " Is not a construction zone");
         }
     }
 
     /// <summary>
     /// Removes the construction zone attribute from every lane in the road, and updates the simulation accordingly in SUMO.
     /// </summary>
-    /// <param name="Road">The Road GameObject with an Edge component of roads to update </param>
-    public void RemoveWorkZoneEntireRoad(GameObject Road)
+    /// <param name="roadObject">The Road GameObject with an Edge component of roads to update </param>
+    public void RemoveWorkZoneEntireRoad(GameObject roadObject)
     {
-        Road FoundRoad = Road.GetComponent<Edge>().RoadList.Find(found => found.Name == Road.name);
-        FoundRoad.Lanes.ForEach(FoundLane => {
-            if (!FoundLane.ConstructionZone)
+        if (edge == null)
+            edge = FindObjectOfType<Edge>();
+
+        Road road = edge.RoadList.Single(r => r.Id == roadObject.name);
+
+        for (int i = 0; i < road.Lanes.Count; i++)
+        {
+            Lane lane = road.Lanes[i];
+
+            if (lane.ConstructionZone)
             {
-                FoundLane.Speed = FoundLane.DefaultSpeed;
-                FoundLane.ConstructionZone = false;
-                Client.Edge.SetMaxSpeed(FoundRoad.Id, (double)Int32.Parse(FoundLane.DefaultSpeed));
+                road.Lanes[i] = new Lane()
+                {
+                    Id = lane.Id,
+                    Index = lane.Index,
+                    Speed = lane.DefaultSpeed,
+                    Length = lane.Length,
+                    Width = lane.Width,
+                    Allow = lane.Allow,
+                    Disallow = lane.Disallow,
+                    Shape = lane.Shape,
+                    Built = lane.Built,
+                    DefaultSpeed = lane.DefaultSpeed,
+                    ConstructionZone = false
+                };
+
+                Client.Edge.SetMaxSpeed(road.Id, (double)Int32.Parse(lane.DefaultSpeed));
             }
-        });
+        }
     }
 
     /// <summary>
     /// Sets the construction zone attribute for every lane in the road, and updates the simulation accordingly in SUMO.
     /// </summary>
-    /// <param name="Road">The Road GameObject to update the road</param>
-    public void SetWorkZoneEntireRoad(GameObject Road)
+    /// <param name="roadObject">The Road GameObject to update the road</param>
+    public void SetWorkZoneEntireRoad(GameObject roadObject)
     {
-        Road FoundRoad = Road.GetComponent<Edge>().RoadList.Find(found => found.Name == Road.name);
-        FoundRoad.Lanes.ForEach(FoundLane => {
-            if (!FoundLane.ConstructionZone)
+        if (edge == null)
+            edge = FindObjectOfType<Edge>();
+
+        Road road = edge.RoadList.Single(r => r.Id == roadObject.name);
+
+        for (int i = 0; i < road.Lanes.Count; i++)
+        {
+            Lane lane = road.Lanes[i];
+
+            if (!lane.ConstructionZone)
             {
-                int Speed = Int32.Parse(FoundLane.Speed);
+                double newSpeed = double.Parse(road.Lanes[i].Speed);
                 //Gets the smallest, 0.75 * the speed, or 45 mph
-                Speed = (Speed * 3 / 4) > 45 ? (Speed * 3 / 4) : 45;
-                FoundLane.Speed = Speed.ToString();
-                FoundLane.ConstructionZone = true;
-                Client.Edge.SetMaxSpeed(FoundRoad.Id, (double)Speed);
+                newSpeed = (newSpeed * 3f / 4f) > 45f ? (newSpeed * 3f / 4f) : 45f;
+
+                road.Lanes[i] = new Lane()
+                {
+                    Id = lane.Id,
+                    Index = lane.Index,
+                    Speed = newSpeed.ToString(),
+                    Length = lane.Length,
+                    Width = lane.Width,
+                    Allow = lane.Allow,
+                    Disallow = lane.Disallow,
+                    Shape = lane.Shape,
+                    Built = lane.Built,
+                    DefaultSpeed = lane.DefaultSpeed,
+                    ConstructionZone = true
+                };
+
+                Client.Edge.SetMaxSpeed(road.Id, (double)newSpeed);
             }
-        });
+        }
     }
 
     /// <summary>
     /// Sets the construction zone attribute for a defined lane in the given road, and updates the simulation in SUMO.
     /// </summary>
-    /// <param name="Road">The gameobject to whom we will update the specified lane</param>
-    /// <param name="LaneId">The lane Id as specified in the SUMO network file</param>
-    public void SetWorkZoneOneLane(GameObject Road, String LaneId)
+    /// <param name="roadObject">The gameobject to whom we will update the specified lane</param>
+    /// <param name="laneId">The lane Id as specified in the SUMO network file</param>
+    public void SetWorkZoneOneLane(GameObject roadObject, String laneId)
     {
-        Road FoundRoad = Road.GetComponent<Edge>().RoadList.Find(found => found.Name == Road.name);
-        Lane FoundLane = FoundRoad.Lanes.Find(L => L.Id == LaneId);
-        if (!FoundLane.ConstructionZone)
+        if (edge == null)
+            edge = FindObjectOfType<Edge>();
+
+        Road road = edge.RoadList.Single(r => r.Id == roadObject.name);
+        int laneIndex = road.Lanes.FindIndex(l => l.Id == laneId);
+        Lane lane = road.Lanes[laneIndex];
+        
+        if (!lane.ConstructionZone)
         {
-            int Speed = Int32.Parse(FoundLane.Speed);
+            int newSpeed = Int32.Parse(lane.Speed);
             //Gets the smallest, 0.75 * the speed, or 45 mph
-            Speed = (Speed * 3 / 4) > 45 ? (Speed * 3 / 4) : 45;
-            FoundLane.Speed = Speed.ToString();
-            FoundLane.ConstructionZone = true;
-            Client.Edge.SetMaxSpeed(FoundRoad.Id, (double)Speed);
+            newSpeed = (newSpeed * 3 / 4) > 45 ? (newSpeed * 3 / 4) : 45;
+
+            road.Lanes[laneIndex] = new Lane()
+            {
+                Id = lane.Id,
+                Index = lane.Index,
+                Speed = newSpeed.ToString(),
+                Length = lane.Length,
+                Width = lane.Width,
+                Allow = lane.Allow,
+                Disallow = lane.Disallow,
+                Shape = lane.Shape,
+                Built = lane.Built,
+                DefaultSpeed = lane.DefaultSpeed,
+                ConstructionZone = true
+            };
+
+            Client.Edge.SetMaxSpeed(road.Id, (double)newSpeed);
         }
         else
         {
-            UnityEngine.Debug.LogWarning("Lane: " + LaneId + " Is already a construction zone");
+            UnityEngine.Debug.LogWarning("Lane: " + laneId + " Is already a construction zone");
         }
     }
 
