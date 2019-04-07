@@ -258,36 +258,39 @@ public class Edge : MonoBehaviour
                 //BuildShapeMesh(rsv, road.Id, rtype, LANEWIDTH);
             }
 
-            foreach (Lane lane in road.Lanes)
+           if(road.Function != "internal")
             {
-                if (lane.Shape != null)
+                foreach (Lane lane in road.Lanes)
                 {
-                    string ltype;
-                    List<float> ls = ShapeStringToFloatList(lane.Shape);
-                    List<Vector3> lsv = new List<Vector3>();
-                    for (int j = 0; j < ls.Count; j += 2)
+                    if (lane.Shape != null)
                     {
-                        lsv.Add(new Vector3(ls[j], 0.1f, ls[j + 1]));
-                    }
-
-                    if (lane.Disallow != null)
-                    {
-                        if (lane.Disallow.Contains("pedestrian"))
+                        string ltype;
+                        List<float> ls = ShapeStringToFloatList(lane.Shape);
+                        List<Vector3> lsv = new List<Vector3>();
+                        for (int j = 0; j < ls.Count; j += 2)
                         {
-                            ltype = "Road";
+                            lsv.Add(new Vector3(ls[j], 0.1f, ls[j + 1]));
+                        }
+
+                        if (lane.Disallow != null)
+                        {
+                            if (lane.Disallow.Contains("pedestrian"))
+                            {
+                                ltype = "Road";
+                            }
+                            else
+                            {
+                                //ltype = "Other";
+                                ltype = "Road";
+                            }
                         }
                         else
                         {
-                            //ltype = "Other";
                             ltype = "Road";
                         }
+                        BuildShapeLR(lsv, lane.Id, ltype, LANEWIDTH, true);
+                        //BuildShapeMesh(lsv, lane.Id, ltype, LANEWIDTH);
                     }
-                    else
-                    {
-                        ltype = "Road";
-                    }
-                    BuildShapeLR(lsv, lane.Id, ltype, LANEWIDTH, true);
-                    //BuildShapeMesh(lsv, lane.Id, ltype, LANEWIDTH);
                 }
             }
         }

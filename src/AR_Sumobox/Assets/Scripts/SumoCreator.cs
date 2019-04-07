@@ -122,8 +122,8 @@ public class SumoCreator : MonoBehaviour
                     theJunction.Shape = junction.Attributes.GetNamedItem("shape").Value;
                 }
                 Junctions_GO.GetComponent<Junction>().Junction_List.Add(theJunction);
-                //Junctions_GO.GetComponent<Junction>().Build();
             }
+            Junctions_GO.GetComponent<Junction>().Build();
 
             // Get all the Edge/Road information from the 'edge' nodes.
             // Then build the Roads.
