@@ -255,6 +255,15 @@ public class TraciController : MonoBehaviour
     }
 
     /// <summary>
+    /// Sets a junction's stop light to the "off-blinking" phase to cause all vehicles to yeild
+    /// </summary>
+    /// <param name="juntionId">The id of the stop light/junction that will be converted</param>
+    public void SetStopSignJunction(string juntionId)
+    {
+        Client.SetTrafficLightState(juntionId, "o");
+    }
+
+    /// <summary>
     /// Subscribes to all vehicles in the simulation
     /// </summary>
     public void Subscribe()
