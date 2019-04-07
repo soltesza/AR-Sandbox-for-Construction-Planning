@@ -16,11 +16,10 @@ public class IntEvent : UnityEvent<int> { }
 public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 {
 	public float xYTolerance, zTolerance; // How close the marker must be to (x, y, z) to trigger the At Position event
-
-	public IntEvent atPositionEvent;
-	public float timeForTrigger; // Seconds
+	public IntEvent atPositionEvent; 
+	public float timeForTrigger; // (in seconds)
     public Transform mainCameraTransform;
-    public float ARCameraHeight = 4350f;
+    public float ARCameraHeight = 4350f; // Determine this value by taking the z value of the marker when it is placed flat in the sandbox directly under the webcam
     public MarkerManager markerManager;
 
     private Vector3 tolerance;
@@ -28,10 +27,9 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
     private int curTriggerPositionIndex;
 	private bool eventTriggered;
 	private TrackableBehaviour.Status trackingStatus;
-    public List<Bounds> triggerBounds = new List<Bounds>();
-    private List<Vector3> triggerAbsolutePositions = new List<Vector3>();
-
-    // Start is called before the first frame update
+    private List<Bounds> triggerBounds = new List<Bounds>(); // The zones that will cause the event to be invoked
+    private List<Vector3> triggerAbsolutePositions = new List<Vector3>(); // The world coordinates of the objects that form the trigger areas
+    
     void Start()
 	{
 		tolerance = new Vector3(xYTolerance, xYTolerance, zTolerance);
@@ -50,6 +48,63 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
         }
     }
 
+    void Update()
+    {
+        if (trackingStatus != TrackableBehaviour.Status.NO_POSE) // Make sure the marker is being tracked
+        {
+            SetTriggerAreasRelativeToCamera();
+
+            Vector3 curPos = this.gameObject.transform.position;
+
+            // Find the index of the trigger position that the marker is at
+            int newTriggerPositionIndex = -1;
+            double minDist = double.MaxValue;
+            for (int i = 0; i < triggerBounds.Count; i++)
+            {
+                double distance = triggerBounds[i].size.magnitude > Mathf.Epsilon ? DistanceFromPointToLineSegment2D(curPos, triggerBounds[i]) : Vector3.Distance(curPos, triggerBounds[i].center);
+                if (distance < minDist)
+                {
+                    minDist = distance;
+
+                    if (distance <= tolerance.x && distance <= tolerance.y && curPos.z - triggerBounds[i].center.z <= tolerance.z)
+                    {
+                        newTriggerPositionIndex = i;
+                    }
+                }
+            }
+
+            if (newTriggerPositionIndex == -1) // The marker is not at a trigger position
+            {
+                curTriggerPositionIndex = -1;
+                eventTriggered = false;
+            }
+            else if (newTriggerPositionIndex == curTriggerPositionIndex) // The marker is still at the same trigger position
+            {
+                timeAtPosition += Time.deltaTime;
+
+                // Invoke the event if the marker has been at this position long enough
+                if (!eventTriggered && timeAtPosition >= timeForTrigger)
+                {
+                    eventTriggered = true;
+                    Debug.Log($"{this.name}: Event invoked.");
+                    atPositionEvent.Invoke(curTriggerPositionIndex);
+                }
+            }
+            else // The marker is at a new trigger position
+            {
+                curTriggerPositionIndex = newTriggerPositionIndex;
+                timeAtPosition = 0.0f;
+                eventTriggered = false;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Finds the shortest distance from a 2D point to a 2D line segment
+    /// </summary>
+    /// <param name="point">The point</param>
+    /// <param name="line">The line segment (note: the z component will be ignored)</param>
+    /// <returns>Returns the minimum distance between the point and the line segment</returns>
     private float DistanceFromPointToLineSegment2D(Vector2 point, Bounds line)
     {
         Vector2 lineEnd1 = line.min;
@@ -64,30 +119,33 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
         return Vector2.Distance(point, proj);
     }
 
+    /// <summary>
+    /// Determines if a point is within the x/y/z tolerance of a line segment
+    /// </summary>
+    /// <param name="point">The point</param>
+    /// <param name="bounds">The line segment to measure against</param>
+    /// <param name="tol">How far away in x, y, and z directions the point can be from the line to return true</param>
+    /// <returns>Returns true if the point is close enought to the line to be within tolerance; returns false otherwise</returns>
     private bool WithinBoundsWithTolerance(Vector3 point, Bounds bounds, Vector3 tol)
     {
         float distanceIn2D = DistanceFromPointToLineSegment2D(point, bounds);
         return distanceIn2D <= tol.x && distanceIn2D <= tol.y && Mathf.Abs(point.z - bounds.center.z) <= tol.z;
     }
 
-	private bool SameWithinTolerance(Vector3 v1, Vector3 v2, Vector3 tol)
-	{
-		bool sameX = (v1.x + tol.x >= v2.x) && (v1.x - tol.x <= v2.x);
-		bool sameY = (v1.y + tol.y >= v2.y) && (v1.y - tol.y <= v2.y);
-		bool sameZ = (v1.z + tol.z >= v2.z) && (v1.z - tol.z <= v2.z);
-
-		return sameX && sameY && sameZ;
-	}
-
+    /// <summary>
+    /// Adjusts the trigger areas to approximately line up with the position of the scene being projected into the sandbox.
+    /// </summary>
     private void SetTriggerAreasRelativeToCamera()
     {
         float cameraHeight = mainCameraTransform.position.y;
 
+        // Get the camera height relative to the objects in the scene
         if (triggerAbsolutePositions.Count > 0)
         {
             cameraHeight -= triggerAbsolutePositions[0].y;
         }
 
+        // Adjust the trigger areas
         for (int i = 0; i < triggerBounds.Count; i++)
         {
             // First, set the position relative to the Main Camera
@@ -105,58 +163,13 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
             triggerBounds[i] = new Bounds(relativePos, triggerBounds[i].size);
         }
     }
-    
-	void Update()
-	{
-		if (trackingStatus != TrackableBehaviour.Status.NO_POSE) // Make sure the marker is being tracked
-        {
-            SetTriggerAreasRelativeToCamera();
 
-            Vector3 curPos = this.gameObject.transform.position;
-            
-            // Find the index of the trigger position that the marker is at
-            int newTriggerPositionIndex = -1;
-            double minDist = double.MaxValue;
-            for (int i = 0; i < triggerBounds.Count; i++)
-            {
-                double distance = triggerBounds[i].size.magnitude > Mathf.Epsilon ? DistanceFromPointToLineSegment2D(curPos, triggerBounds[i]) : Vector3.Distance(curPos, triggerBounds[i].center);
-                if (distance < minDist)
-                {
-                    minDist = distance;
-
-                    if (distance <= tolerance.x && distance <= tolerance.y && curPos.z - triggerBounds[i].center.z <= tolerance.z)
-                    {
-                        newTriggerPositionIndex = i;
-                    }
-                }
-            }
-            
-
-            if (newTriggerPositionIndex == -1) // The marker is not at a trigger position
-            {
-                curTriggerPositionIndex = -1;
-                eventTriggered = false;
-            }
-            else if (newTriggerPositionIndex == curTriggerPositionIndex) // The marker is still at the same trigger position
-            {
-                timeAtPosition += Time.deltaTime;
-
-                if (!eventTriggered && timeAtPosition >= timeForTrigger)
-                {
-                    eventTriggered = true;
-                    Debug.Log($"{this.name}: Event invoked.");
-                    atPositionEvent.Invoke(curTriggerPositionIndex);
-                }
-            }
-            else // The marker is at a new trigger position
-            {
-                curTriggerPositionIndex = newTriggerPositionIndex;
-                timeAtPosition = 0.0f;
-                eventTriggered = false;
-            }
-		}
-	}
-
+    /// <summary>
+    /// Invoked by Vuforia whenever the status of an Image Target changes.
+    /// This lets us know whether or not the marker is being tracked.
+    /// </summary>
+    /// <param name="previousStatus">The previous status of the Image Target</param>
+    /// <param name="newStatus">The current status of the Image Target</param>
 	public void OnTrackableStateChanged(TrackableBehaviour.Status previousStatus, TrackableBehaviour.Status newStatus)
 	{
 		trackingStatus = newStatus;
@@ -166,6 +179,10 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 		}
 	}
 	
+    /// <summary>
+    /// Adds a point to the list of areas that trigger the event.
+    /// </summary>
+    /// <param name="triggerPosition">The point to add as a trigger.</param>
     public void AddTriggerArea(Vector3 triggerPosition)
     {
         if (triggerPosition != null)
@@ -175,6 +192,10 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
         }
     }
 
+    /// <summary>
+    /// Adds a Bounds to the list of areas that trigger the event.
+    /// </summary>
+    /// <param name="triggerArea">The area to add as a trigger.</param>
     public void AddTriggerArea(Bounds triggerArea)
     {
         if (triggerArea != null)
@@ -184,6 +205,10 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
         }
     }
 
+    /// <summary>
+    /// Adds multiple points to the list of areas that trigger the event.
+    /// </summary>
+    /// <param name="triggerPositions">The points to add as triggers.</param>
     public void AddTriggerAreas(IEnumerable<Vector3> triggerPositions)
     {
         if (triggerPositions != null)
@@ -193,6 +218,10 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
         }
     }
 
+    /// <summary>
+    /// Adds multiple Bounds to the list of areas that trigger the event.
+    /// </summary>
+    /// <param name="triggerAreas">The areas to add as triggers.</param>
     public void AddTriggerAreas(IEnumerable<Bounds> triggerAreas)
     {
         if (triggerAreas != null)

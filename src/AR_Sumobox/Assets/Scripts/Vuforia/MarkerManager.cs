@@ -5,6 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using Vuforia;
 
+/// <summary>
+/// Provides global management and functionality for markers.
+/// There should only be one MarkerManager in the scene.
+/// </summary>
 public class MarkerManager : MonoBehaviour
 {
     public bool rotateCamera;
@@ -13,16 +17,14 @@ public class MarkerManager : MonoBehaviour
     private List<ImageTargetBehaviour> markers;
     private List<TrackableBehaviour.Status> statuses;
     private int numTrackedMarkers;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         markers = FindObjectsOfType<ImageTargetBehaviour>().ToList();
         statuses = new List<TrackableBehaviour.Status>(markers.Count);
         numTrackedMarkers = 0;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         statuses = markers.Select(m => m.CurrentStatus).ToList();
@@ -30,6 +32,9 @@ public class MarkerManager : MonoBehaviour
         UpdateUiText();
     }
 
+    /// <summary>
+    /// Updates the UI text with how many markers are currently being tracked
+    /// </summary>
     private void UpdateUiText()
     {
         uiText.text = string.Format("{0} Marker{1} Tracking", numTrackedMarkers, numTrackedMarkers == 1 ? "" : "s");
