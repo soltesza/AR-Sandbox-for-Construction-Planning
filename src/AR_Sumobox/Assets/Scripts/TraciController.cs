@@ -43,6 +43,11 @@ public class TraciController : MonoBehaviour
     private float Elapsedtime;
     private Edge edge;
 
+    /// <summary>
+    /// The default traffic light program. (Used to reset stop lights to traffic lights)
+    /// </summary>
+    private string DefaultProgram;
+
 
     /// <summary>
     /// Called when the scene is first rendered
@@ -50,6 +55,7 @@ public class TraciController : MonoBehaviour
     void Start()
     {
         Cars_GO = GameObject.Find("Cars");
+
         
     }
     
@@ -78,6 +84,8 @@ public class TraciController : MonoBehaviour
             await Client.ConnectAsync(HostName, Port);
             Subscribe();
             Client.Control.SimStep();
+            string trafficLightID = FindObjectOfType<Junction>().Junction_List.First(e => e.Type == "traffic_light").Id;
+            DefaultProgram = GetProgram(trafficLightID);
             return Client;
         }
         catch(Exception e)
@@ -260,7 +268,25 @@ public class TraciController : MonoBehaviour
     /// <param name="juntionId">The id of the stop light/junction that will be converted</param>
     public void SetStopSignJunction(string juntionId)
     {
-        Client.SetTrafficLightState(juntionId, "o");
+        Client.TrafficLight.SetProgram(juntionId, "o");
+    }
+
+    /// <summary>
+    /// Sets a junction's stop light to the default phase to cause all vehicles to yeild
+    /// </summary>
+    /// <param name="junctionId">The id of the stop light/junction that will be converted</param>
+    public void SetTrafficLightJunction(string junctionId)
+    {
+        Client.TrafficLight.SetProgram(junctionId, DefaultProgram);
+    }
+
+    /// <summary>
+    /// Gets the current program for a given traffic light
+    /// </summary>
+    /// <param name="junctionId">The id of the stop light/junction that will be converted</param>
+    private string GetProgram(string junctionId)
+    {
+        return Client.TrafficLight.GetCurrentProgram(junctionId).Content;
     }
 
     /// <summary>
@@ -332,6 +358,5 @@ public class TraciController : MonoBehaviour
                 Elapsedtime = 0;
             }
         }
-        
     }
 }
