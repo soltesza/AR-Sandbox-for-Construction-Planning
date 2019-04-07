@@ -43,6 +43,7 @@ public class TraciController : MonoBehaviour
     private float Elapsedtime;
     private Edge edge;
 
+
     /// <summary>
     /// Called when the scene is first rendered
     /// </summary>
@@ -87,16 +88,27 @@ public class TraciController : MonoBehaviour
     }
 
     /// <summary>
+    /// Returns the speed that a lane should have when it is a construction zone
+    /// </summary>
+    /// <param name="normalSpeed">The normal speed of the lane</param>
+    /// <returns>3/4ths of the normal speed of the lane, or 20 meters per second (45 mph), whichever is higher</returns>
+    private double ToWorkZoneSpeed(double normalSpeed)
+    {
+        //Gets the smallest, 0.75 * the speed, or 45 mph
+        return (normalSpeed * 3.0 / 4.0) > 20.0 ? (normalSpeed * 3.0 / 4.0) : 20.0;
+    }
+
+    /// <summary>
     /// Removes the construction zone attribute for a defined lane in the given road, and updates the simulation in SUMO.
     /// </summary>
-    /// <param name="roadObject">The gameobject to whom we will update the specified lane</param>
+    /// <param name="roadId">The ID of the road to which the lane belongs</param>
     /// <param name="laneId">The lane Id as specified in the SUMO network file</param>
-    public void RemoveWorkZoneOnLane(GameObject roadObject, String laneId)
+    public void RemoveWorkZoneOnLane(string roadId, string laneId)
     {
         if (edge == null)
             edge = FindObjectOfType<Edge>();
 
-        Road road = edge.RoadList.Single(r => r.Id == roadObject.name);
+        Road road = edge.RoadList.Single(r => r.Id == roadId);
         int laneIndex = road.Lanes.FindIndex(l => l.Id == laneId);
         Lane lane = road.Lanes[laneIndex];
 
@@ -117,7 +129,7 @@ public class TraciController : MonoBehaviour
                 ConstructionZone = false
             };
 
-            Client.Edge.SetMaxSpeed(road.Id, (double)Int32.Parse(lane.DefaultSpeed));
+            Client.Edge.SetMaxSpeed(road.Id, double.Parse(lane.DefaultSpeed));
         }
         else
         {
@@ -128,13 +140,13 @@ public class TraciController : MonoBehaviour
     /// <summary>
     /// Removes the construction zone attribute from every lane in the road, and updates the simulation accordingly in SUMO.
     /// </summary>
-    /// <param name="roadObject">The Road GameObject with an Edge component of roads to update </param>
-    public void RemoveWorkZoneEntireRoad(GameObject roadObject)
+    /// <param name="roadId">The ID of the road to update </param>
+    public void RemoveWorkZoneEntireRoad(string roadId)
     {
         if (edge == null)
             edge = FindObjectOfType<Edge>();
 
-        Road road = edge.RoadList.Single(r => r.Id == roadObject.name);
+        Road road = edge.RoadList.Single(r => r.Id == roadId);
 
         for (int i = 0; i < road.Lanes.Count; i++)
         {
@@ -157,7 +169,7 @@ public class TraciController : MonoBehaviour
                     ConstructionZone = false
                 };
 
-                Client.Edge.SetMaxSpeed(road.Id, (double)Int32.Parse(lane.DefaultSpeed));
+                Client.Edge.SetMaxSpeed(road.Id, double.Parse(lane.DefaultSpeed));
             }
         }
     }
@@ -165,13 +177,13 @@ public class TraciController : MonoBehaviour
     /// <summary>
     /// Sets the construction zone attribute for every lane in the road, and updates the simulation accordingly in SUMO.
     /// </summary>
-    /// <param name="roadObject">The Road GameObject to update the road</param>
-    public void SetWorkZoneEntireRoad(GameObject roadObject)
+    /// <param name="roadId">The ID of the road to update</param>
+    public void SetWorkZoneEntireRoad(string roadId)
     {
         if (edge == null)
             edge = FindObjectOfType<Edge>();
 
-        Road road = edge.RoadList.Single(r => r.Id == roadObject.name);
+        Road road = edge.RoadList.Single(r => r.Id == roadId);
 
         for (int i = 0; i < road.Lanes.Count; i++)
         {
@@ -179,9 +191,7 @@ public class TraciController : MonoBehaviour
 
             if (!lane.ConstructionZone)
             {
-                double newSpeed = double.Parse(road.Lanes[i].Speed);
-                //Gets the smallest, 0.75 * the speed, or 45 mph
-                newSpeed = (newSpeed * 3f / 4f) > 45f ? (newSpeed * 3f / 4f) : 45f;
+                double newSpeed = ToWorkZoneSpeed(double.Parse(road.Lanes[i].Speed));
 
                 road.Lanes[i] = new Lane()
                 {
@@ -206,22 +216,20 @@ public class TraciController : MonoBehaviour
     /// <summary>
     /// Sets the construction zone attribute for a defined lane in the given road, and updates the simulation in SUMO.
     /// </summary>
-    /// <param name="roadObject">The gameobject to whom we will update the specified lane</param>
+    /// <param name="roadId">The ID of the road to which the lane belongs</param>
     /// <param name="laneId">The lane Id as specified in the SUMO network file</param>
-    public void SetWorkZoneOneLane(GameObject roadObject, String laneId)
+    public void SetWorkZoneOneLane(string roadId, string laneId)
     {
         if (edge == null)
             edge = FindObjectOfType<Edge>();
 
-        Road road = edge.RoadList.Single(r => r.Id == roadObject.name);
+        Road road = edge.RoadList.Single(r => r.Id == roadId);
         int laneIndex = road.Lanes.FindIndex(l => l.Id == laneId);
         Lane lane = road.Lanes[laneIndex];
         
         if (!lane.ConstructionZone)
         {
-            int newSpeed = Int32.Parse(lane.Speed);
-            //Gets the smallest, 0.75 * the speed, or 45 mph
-            newSpeed = (newSpeed * 3 / 4) > 45 ? (newSpeed * 3 / 4) : 45;
+            double newSpeed = ToWorkZoneSpeed(double.Parse(lane.Speed));
 
             road.Lanes[laneIndex] = new Lane()
             {

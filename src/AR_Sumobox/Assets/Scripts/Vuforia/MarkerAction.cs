@@ -134,6 +134,7 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 
     /// <summary>
     /// Adjusts the trigger areas to approximately line up with the position of the scene being projected into the sandbox.
+    /// TODO: If we're only adjusting the bounds centers, we may also need to adjust the marker lengths. This would also require triggerAbsolutePositions to be a list of Bounds instead of a list of Vector3s.
     /// </summary>
     private void SetTriggerAreasRelativeToCamera()
     {

@@ -11,15 +11,15 @@ using UnityEngine;
 public class MarkerSetWorkZone : MonoBehaviour
 {
     public GameObject lanesParentObject;
+    public Material roadMaterial;
     public Material workZoneMaterial;
     public TraciController traciController;
 
-    private List<GameObject> roads;
+    private List<GameObject> lanes;
     private MarkerAction markerAction;
     private bool triggerAreasSet;
     private Edge edgeScript;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         markerAction = gameObject.GetComponent<MarkerAction>();
@@ -41,25 +41,24 @@ public class MarkerSetWorkZone : MonoBehaviour
         edgeScript = lanesParentObject.GetComponent<Edge>();
         triggerAreasSet = false;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         // Wait until we have loaded a network
         if (!triggerAreasSet && lanesParentObject.transform.childCount > 0)
         {
-            roads = new List<GameObject>(lanesParentObject.transform.childCount);
+            lanes = new List<GameObject>(lanesParentObject.transform.childCount);
 
             // Populate the list of roads with the child objects of Edges
             foreach (Transform child in lanesParentObject.transform)
             {
-                // Some of the children are lanes (not roads) - we only want the roads
-                if (edgeScript.RoadList.Any(r => r.Id == child.name))
-                    roads.Add(child.gameObject);
+                // Some of the children are roads (not lanes) - we only want the lanes
+                if (edgeScript.RoadList.Any(r => r.Lanes.Any(l => l.Id == child.name)))
+                    lanes.Add(child.gameObject);
             }
 
             // Set the trigger actions to the road bounds
-            markerAction.AddTriggerAreas(roads.Select(l => l.GetComponent<LineRenderer>().bounds));
+            markerAction.AddTriggerAreas(lanes.Select(l => l.GetComponent<LineRenderer>().bounds));
 
             triggerAreasSet = true;
         }
@@ -67,22 +66,53 @@ public class MarkerSetWorkZone : MonoBehaviour
     }
 
     /// <summary>
-    /// Called by MarkerAction when the trigger event is invoked.
-    /// Creates a work zone for a given lane.
+    /// Called by MarkerAction when the event is triggered.
+    /// Creates a work zone at the given road if it is not already set as a work zone.
+    /// Removes a work zone from the given road if it is currently set as a work zone.
     /// </summary>
-    /// <param name="roadIndex">The list index for the road. This index should be the same between this script and MarkerAction.</param>
-    public void SetWorkZone(int roadIndex)
+    /// <param name="laneIndex">The list index for the road. This index should be the same between this script and MarkerAction.</param>
+    public void ToggleWorkZone(int laneIndex)
     {
-        traciController.SetWorkZoneEntireRoad(roads[roadIndex]);
-
-        // Set the material for each lane in the road to the work zone material
-        if (roadIndex >= 0 && roadIndex < roads.Count)
+        if (laneIndex >= 0 && laneIndex < lanes.Count)
         {
-            foreach (Lane lane in edgeScript.RoadList.Single(r => r.Id == roads[roadIndex].name).Lanes)
+            Road road = edgeScript.RoadList.Single(r => r.Lanes.Any(l => l.Id == lanes[laneIndex].name));
+
+            if (road.Lanes.Single(l => l.Id == lanes[laneIndex].name).ConstructionZone)
             {
-                GameObject.Find(lane.Id).GetComponent<Renderer>().material = workZoneMaterial;
-                Debug.Log($"Created work zone on lane {lane.Id}");
+                RemoveWorkZone(lanes[laneIndex].name, road.Id);
+            }
+            else
+            {
+                SetWorkZone(lanes[laneIndex].name, road.Id);
             }
         }
+    }
+
+    /// <summary>
+    /// Creates a work zone for a given road.
+    /// </summary>
+    /// <param name="laneStruct">The Road struct holding the road's information</param>
+    /// <param name="roadId">The road's game object</param>
+    public void SetWorkZone(string laneId, string roadId)
+    {
+        traciController.SetWorkZoneOneLane(roadId, laneId);
+
+        // Set the material for each lane in the road to the work zone material
+        GameObject.Find(laneId).GetComponent<Renderer>().material = workZoneMaterial;
+        Debug.Log($"Created work zone on lane {laneId}");
+    }
+
+    /// <summary>
+    /// Removes a work zone from a given road
+    /// </summary>
+    /// <param name="roadStruct">The Road struct holding the road's information</param>
+    /// <param name="roadId">The road's game object</param>
+    public void RemoveWorkZone(string laneId, string roadId)
+    {
+        traciController.RemoveWorkZoneOnLane(roadId, laneId);
+
+        // Set the material for each lane to its original material
+        GameObject.Find(laneId).GetComponent<Renderer>().material = roadMaterial;
+        Debug.Log($"Removed work zone from lane {laneId}");
     }
 }

@@ -254,7 +254,7 @@ public class Edge : MonoBehaviour
                 {
                     rtype = "Road";
                 }
-                BuildShapeLR(rsv, road.Id, rtype, LANEWIDTH, true);
+                //BuildShapeLR(rsv, road.Id, rtype, LANEWIDTH, true);
                 //BuildShapeMesh(rsv, road.Id, rtype, LANEWIDTH);
             }
 
