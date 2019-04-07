@@ -79,11 +79,11 @@ public class MarkerSetWorkZone : MonoBehaviour
 
             if (road.Lanes.Single(l => l.Id == lanes[laneIndex].name).ConstructionZone)
             {
-                RemoveWorkZone(lanes[laneIndex].name, road.Id);
+                RemoveWorkZone(lanes[laneIndex], road.Id);
             }
             else
             {
-                SetWorkZone(lanes[laneIndex].name, road.Id);
+                SetWorkZone(lanes[laneIndex], road.Id);
             }
         }
     }
@@ -93,13 +93,13 @@ public class MarkerSetWorkZone : MonoBehaviour
     /// </summary>
     /// <param name="laneStruct">The Road struct holding the road's information</param>
     /// <param name="roadId">The road's game object</param>
-    public void SetWorkZone(string laneId, string roadId)
+    public void SetWorkZone(GameObject lane, string roadId)
     {
-        traciController.SetWorkZoneOneLane(roadId, laneId);
+        traciController.SetWorkZoneOneLane(roadId, lane.name);
 
         // Set the material for each lane in the road to the work zone material
-        GameObject.Find(laneId).GetComponent<Renderer>().material = workZoneMaterial;
-        Debug.Log($"Created work zone on lane {laneId}");
+        lane.GetComponent<Renderer>().material = workZoneMaterial;
+        Debug.Log($"Created work zone on lane {lane.name}");
     }
 
     /// <summary>
@@ -107,12 +107,12 @@ public class MarkerSetWorkZone : MonoBehaviour
     /// </summary>
     /// <param name="roadStruct">The Road struct holding the road's information</param>
     /// <param name="roadId">The road's game object</param>
-    public void RemoveWorkZone(string laneId, string roadId)
+    public void RemoveWorkZone(GameObject lane, string roadId)
     {
-        traciController.RemoveWorkZoneOnLane(roadId, laneId);
+        traciController.RemoveWorkZoneOnLane(roadId, lane.name);
 
         // Set the material for each lane to its original material
-        GameObject.Find(laneId).GetComponent<Renderer>().material = roadMaterial;
-        Debug.Log($"Removed work zone from lane {laneId}");
+        lane.GetComponent<Renderer>().material = roadMaterial;
+        Debug.Log($"Removed work zone from lane {lane.name}");
     }
 }

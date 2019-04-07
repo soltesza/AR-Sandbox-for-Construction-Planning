@@ -15,12 +15,18 @@ public class IntEvent : UnityEvent<int> { }
 /// </summary>
 public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 {
-	public float xYTolerance, zTolerance; // How close the marker must be to (x, y, z) to trigger the At Position event
 	public IntEvent atPositionEvent; 
 	public float timeForTrigger; // (in seconds)
+    public float xYTolerance, zTolerance;
+
+    #region These values will be set by the Marker Manager
+    [HideInInspector]
     public Transform mainCameraTransform;
-    public float ARCameraHeight = 4350f; // Determine this value by taking the z value of the marker when it is placed flat in the sandbox directly under the webcam
-    public MarkerManager markerManager;
+    [HideInInspector]
+    public float ARCameraHeight;
+    [HideInInspector]
+    public bool rotateCamera;
+    #endregion
 
     private Vector3 tolerance;
 	private float timeAtPosition;
@@ -36,16 +42,6 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
 		GetComponent<TrackableBehaviour>().RegisterTrackableEventHandler(this);
 		eventTriggered = false;
         curTriggerPositionIndex = -1;
-
-        if (mainCameraTransform == null)
-        {
-            mainCameraTransform = (GameObject.Find("Main Camera") ?? GameObject.Find("Main_Camera"))?.transform;
-        }
-
-        if (markerManager == null)
-        {
-            markerManager = FindObjectOfType<MarkerManager>();
-        }
     }
 
     void Update()
@@ -152,7 +148,7 @@ public class MarkerAction : MonoBehaviour, ITrackableEventHandler
             // First, set the position relative to the Main Camera
             Vector3 relativePos = mainCameraTransform.transform.InverseTransformDirection(triggerAbsolutePositions[i] - mainCameraTransform.transform.position);
 
-            if (markerManager.rotateCamera)
+            if (rotateCamera)
             {
                 // The webcam looks at the scene upside-down, so rotate the position 180 degrees
                 relativePos = Vector3.Scale(relativePos, new Vector3(-1, -1, 1));

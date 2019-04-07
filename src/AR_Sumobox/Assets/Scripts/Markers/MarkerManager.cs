@@ -12,7 +12,12 @@ using Vuforia;
 public class MarkerManager : MonoBehaviour
 {
     public bool rotateCamera;
+    public Transform mainCameraTransform;
+    public float ARCameraHeight = 4350f; // Determine this value by taking the z value of the marker when it is placed flat in the sandbox directly under the webcam
     public Text uiText;
+
+    [HideInInspector]
+    public List<MarkerAction> markerActionScripts;
 
     private List<ImageTargetBehaviour> markers;
     private List<TrackableBehaviour.Status> statuses;
@@ -21,14 +26,28 @@ public class MarkerManager : MonoBehaviour
     void Start()
     {
         markers = FindObjectsOfType<ImageTargetBehaviour>().ToList();
+        markerActionScripts = FindObjectsOfType<MarkerAction>().ToList();
         statuses = new List<TrackableBehaviour.Status>(markers.Count);
         numTrackedMarkers = 0;
+
+        if (mainCameraTransform == null)
+        {
+            mainCameraTransform = (GameObject.Find("Main Camera") ?? GameObject.Find("Main_Camera"))?.transform;
+        }
     }
     
     void Update()
     {
         statuses = markers.Select(m => m.CurrentStatus).ToList();
         numTrackedMarkers = statuses.Count(s => s != TrackableBehaviour.Status.NO_POSE);
+
+        foreach (MarkerAction marker in markerActionScripts)
+        {
+            marker.rotateCamera = rotateCamera;
+            marker.mainCameraTransform = mainCameraTransform;
+            marker.ARCameraHeight = ARCameraHeight;
+        }
+
         UpdateUiText();
     }
 

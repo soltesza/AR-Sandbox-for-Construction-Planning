@@ -84,7 +84,7 @@ public class Junction : MonoBehaviour
         // Center of junction
         float xjunc = float.Parse(inter.X, CultureInfo.InvariantCulture.NumberFormat);
         float yjunc = float.Parse(inter.Y, CultureInfo.InvariantCulture.NumberFormat);
-        Vector3 centerpoint = new Vector3(xjunc, yjunc, 0.0f);
+        Vector3 centerpoint = new Vector3(xjunc, yjunc, 0.1f);
 
         if (numverts > 5)
         {
@@ -103,10 +103,10 @@ public class Junction : MonoBehaviour
             int vc = 0;
             for (int i = 0; i < fshape.Count(); i = i + 2)
             {
-                verts[vc] = new Vector3(fshape[i], 0.0f, fshape[i + 1]);
+                verts[vc] = new Vector3(fshape[i], 0.1f, fshape[i + 1]);
                 vc++;
             }
-            verts[verts.Length - 1] = new Vector3(centerpoint.x, 0.0f, centerpoint.y);
+            verts[verts.Length - 1] = new Vector3(centerpoint.x, 0.1f, centerpoint.y);
             mesh.vertices = verts;
 
             // Build Triangles
@@ -147,7 +147,10 @@ public class Junction : MonoBehaviour
     {
         foreach (Intersection i in Junction_List)
         {
-            BuildJunction(i);
+            if (i.Type == "traffic_light" || i.Type == "priority")
+            {
+                BuildJunction(i);
+            }
         }
     }
 }
