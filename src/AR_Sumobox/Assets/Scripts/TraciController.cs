@@ -369,6 +369,19 @@ public class TraciController : MonoBehaviour
             {
                 edge.RoadList.ForEach(e => {
                     e.Occupancy = (float)Client.Edge.GetLastStepOccupancy(e.Id).Content;
+                    try
+                    {
+                        GameObject edge = GameObject.Find(e.Id.ToString());
+                        if (edge != null)
+                        {
+                            edge.GetComponent<LineRenderer>().material.SetFloat("_Occupancy", 1.0f);
+                        }
+                    }
+                    catch (Exception x)
+                    {
+                        UnityEngine.Debug.LogException(x);
+                    }
+                    
                 });
             }
             if (CarVisual)
