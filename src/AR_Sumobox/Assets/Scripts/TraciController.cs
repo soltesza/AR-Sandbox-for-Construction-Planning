@@ -37,6 +37,17 @@ public class TraciController : MonoBehaviour
     /// The current simulation config file.
     /// </summary>
     public String ConfigFile;
+
+    /// <summary>
+    /// Flag to determine if the road color should be set
+    /// </summary>
+    public bool OccupancyVisual;
+
+    /// <summary>
+    /// Flag to determine if car positions should be shown.
+    /// </summary>
+    public bool CarVisual;
+    
     /// <summary>
     /// Simulation elapsed time.
     /// </summary>
@@ -48,15 +59,14 @@ public class TraciController : MonoBehaviour
     /// </summary>
     private string DefaultProgram;
 
-
     /// <summary>
     /// Called when the scene is first rendered
     /// </summary>
     void Start()
     {
         Cars_GO = GameObject.Find("Cars");
-
-        
+        OccupancyVisual = false;
+        CarVisual = true;
     }
     
     /// <summary>
@@ -343,27 +353,36 @@ public class TraciController : MonoBehaviour
     /// </summary>
     void Update()
     {
-        // Get all the car ids we need to keep track of. 
         if (Client != null)
         {
-            
-            Traci.TraCIResponse<List<String>> CarIds = Client.Vehicle.GetIdList();
+            if (OccupancyVisual)
+            {
+                edge.RoadList.ForEach(e => {
+                    e.Occupancy = (float)Client.Edge.GetLastStepOccupancy(e.Id).Content;
+                });
+            }
+            if (CarVisual)
+            {
+                // Get all the car ids we need to keep track of. 
+                Traci.TraCIResponse<List<String>> CarIds = Client.Vehicle.GetIdList();
 
-            CarIds.Content.ForEach(carId => {
-                Traci.Types.Position3D pos = Client.Vehicle.GetPosition3D(carId).Content;
-                Transform CarTransform = Cars_GO.transform.Find(carId);
-                if (CarTransform != null)
-                {
-                    CarTransform.position = new Vector3((float)pos.X, 0, (float)pos.Y);
-                }
-                else
-                {
-                    GameObject car = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    car.name = carId;
-                    car.transform.parent = Cars_GO.transform;
-                    car.transform.position = new Vector3((float)pos.X, 1, (float)pos.Y);
-                }
-            });
+                CarIds.Content.ForEach(carId => {
+                    Traci.Types.Position3D pos = Client.Vehicle.GetPosition3D(carId).Content;
+                    Transform CarTransform = Cars_GO.transform.Find(carId);
+                    if (CarTransform != null)
+                    {
+                        CarTransform.position = new Vector3((float)pos.X, 0, (float)pos.Y);
+                    }
+                    else
+                    {
+                        GameObject car = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        car.name = carId;
+                        car.transform.parent = Cars_GO.transform;
+                        car.transform.position = new Vector3((float)pos.X, 1, (float)pos.Y);
+                    }
+                });
+            }
+
             Elapsedtime += Time.deltaTime;
             if(Elapsedtime > 1)
             {

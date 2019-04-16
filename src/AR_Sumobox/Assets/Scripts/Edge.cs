@@ -42,6 +42,7 @@ public struct Road
     public string Type { get; set; }
     public string Function { get; set; }
     public List<Lane> Lanes { get; set; }
+    public float Occupancy { get; set; }
 }
 
 
