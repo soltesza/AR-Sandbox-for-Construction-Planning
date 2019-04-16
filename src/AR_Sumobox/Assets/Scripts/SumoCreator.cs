@@ -90,9 +90,12 @@ public class SumoCreator : MonoBehaviour
             // Get all the Junction/Intersection information from the 'junction' 
             // nodes and build the Junctions.
             XmlNodeList junctions = xmlDoc.DocumentElement.SelectNodes("junction");
+            XmlNodeList junctions2 = xmlDoc.SelectNodes("junction");
+
             foreach (XmlNode junction in junctions)
             {
                 Intersection theJunction = new Intersection();
+                UnityEngine.Debug.Log(junctions.Count.ToString());
                 if (junction.Attributes["id"] != null)
                 {
                     theJunction.Id = junction.Attributes.GetNamedItem("id").Value;
@@ -123,6 +126,8 @@ public class SumoCreator : MonoBehaviour
                 }
                 Junctions_GO.GetComponent<Junction>().Junction_List.Add(theJunction);
             }
+            var ids = Junctions_GO.GetComponent<Junction>().Junction_List.Select(j => j.Id);
+            var types = Junctions_GO.GetComponent<Junction>().Junction_List.Select(j => j.Type);
             Junctions_GO.GetComponent<Junction>().Build();
 
             // Get all the Edge/Road information from the 'edge' nodes.

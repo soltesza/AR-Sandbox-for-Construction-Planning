@@ -48,12 +48,12 @@ public class MarkerChangeIntersection : MonoBehaviour
             // Populate the list of roads with the child objects of Junctions
             foreach (Transform child in junctionsParentObject.transform)
             {
-                // TODO: Do we want to filter the juctions at all?
+                // TODO: Do we want to filter the juctions at all? We may want to take out dead ends, for example
                 junctions.Add(child.gameObject);
             }
 
             // Set the trigger actions to the road bounds
-            markerAction.AddTriggerAreas(/*junctionScript.Junction_List.Select(j => new Vector3(float.Parse(j.X), float.Parse(j.Y), 0))*/junctions.Select(j => j.GetComponent<MeshRenderer>().bounds));
+            markerAction.AddTriggerAreas(junctions.Select(j => j.GetComponent<MeshRenderer>().bounds));
 
             triggerAreasSet = true;
         }
@@ -61,7 +61,7 @@ public class MarkerChangeIntersection : MonoBehaviour
 
     public void SetTrafficLightIntersection(int junctionIndex)
     {
-        // TODO: Make the traci call
+        traciController.SetTrafficLightJunction(junctions[junctionIndex].name);
         
         junctions[junctionIndex].GetComponent<Renderer>().material = trafficLightMaterial;
         Debug.Log($"Set junction {junctions[junctionIndex].name} to traffic light intersection.");
@@ -69,7 +69,7 @@ public class MarkerChangeIntersection : MonoBehaviour
 
     public void SetStopSignIntersection(int junctionIndex)
     {
-        // TODO: Make the traci call
+        traciController.SetStopSignJunction(junctions[junctionIndex].name);
 
         junctions[junctionIndex].GetComponent<Renderer>().material = stopSignMaterial;
         Debug.Log($"Set junction {junctions[junctionIndex].name} to stop sign intersection.");

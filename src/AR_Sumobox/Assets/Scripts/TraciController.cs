@@ -84,8 +84,21 @@ public class TraciController : MonoBehaviour
             await Client.ConnectAsync(HostName, Port);
             Subscribe();
             Client.Control.SimStep();
-            string trafficLightID = FindObjectOfType<Junction>().Junction_List.First(e => e.Type == "traffic_light").Id;
-            DefaultProgram = GetProgram(trafficLightID);
+            Junction junction = FindObjectOfType<Junction>();
+            while (true)
+            {
+                if (junction.Built)
+                {
+                    foreach (var j in junction.Junction_List)
+                    {
+                        UnityEngine.Debug.Log(j.Type);
+                    }
+                    string trafficLightID = junction.Junction_List.First(e => e.Type == "traffic_light").Id;
+                    DefaultProgram = GetProgram(trafficLightID);
+                    break;
+                }
+            }
+            
             return Client;
         }
         catch(Exception e)
