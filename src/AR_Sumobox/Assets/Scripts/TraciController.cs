@@ -284,6 +284,16 @@ public class TraciController : MonoBehaviour
             UnityEngine.Debug.LogWarning("Lane: " + laneId + " Is already a construction zone");
         }
     }
+    
+
+    /// <summary>
+    /// Flips the Occupancy Visual to simulate a mesoscopic view.
+    /// </summary>
+    public void ToggleMesoscopic()
+    {
+        OccupancyVisual = !OccupancyVisual;
+    }
+
 
     /// <summary>
     /// Sets a junction's stop light to the "off-blinking" phase to cause all vehicles to yeild
