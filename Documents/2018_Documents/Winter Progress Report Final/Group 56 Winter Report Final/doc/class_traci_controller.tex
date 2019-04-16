@@ -1,0 +1,210 @@
+\hypertarget{class_traci_controller}{}\section{Traci\+Controller Class Reference}
+\label{class_traci_controller}\index{TraciController@{TraciController}}
+
+
+Traci Controller class manages a running simulation by communicating with a Sumo process.  
+
+
+Inheritance diagram for Traci\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_traci_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_traci_controller_adc26e9e3e188ed89f864b2e4ab8a3393}{Remove\+Work\+Zone\+On\+Lane}} (Game\+Object \mbox{\hyperlink{struct_road}{Road}}, String Lane\+Id)
+\begin{DoxyCompactList}\small\item\em Removes the construction zone attribute for a defined lane in the given road, and updates the simulation in S\+U\+MO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_ac1f189c21103504c425bd572a1634759}{Remove\+Work\+Zone\+Entire\+Road}} (Game\+Object \mbox{\hyperlink{struct_road}{Road}})
+\begin{DoxyCompactList}\small\item\em Removes the construction zone attribute from every lane in the road, and updates the simulation accordingly in S\+U\+MO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_af0beb4c7ca635ebdd090f05e42770deb}{Set\+Work\+Zone\+Entire\+Road}} (Game\+Object \mbox{\hyperlink{struct_road}{Road}})
+\begin{DoxyCompactList}\small\item\em Sets the construction zone attribute for every lane in the road, and updates the simulation accordingly in S\+U\+MO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_a0a9b38a43070487d3a2578d36e5d105a}{Set\+Work\+Zone\+One\+Lane}} (Game\+Object \mbox{\hyperlink{struct_road}{Road}}, String Lane\+Id)
+\begin{DoxyCompactList}\small\item\em Sets the construction zone attribute for a defined lane in the given road, and updates the simulation in S\+U\+MO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_aacc5a9530481fe986ee9329f07e4eccd}{Subscribe}} ()
+\begin{DoxyCompactList}\small\item\em Subscribes to all vehicles in the simulation \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_ae059ca6ccc3a8ce34a4d133de3d5fade}{On\+Vehicle\+Update}} (object sender, Traci.\+Types.\+Subscription\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Event handler to handle a car update event \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_traci_controller_a29b2da0a754eabda5002fad9b07213c6}{Cars\+\_\+\+GO}}
+\begin{DoxyCompactList}\small\item\em The Car main Game Object \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_traci_controller_abc82770640e1620b43607ad292e97f4e}{speed}} = 2.\+0f
+\begin{DoxyCompactList}\small\item\em The simulation speed. \end{DoxyCompactList}\item 
+Traci.\+Tra\+C\+I\+Client \mbox{\hyperlink{class_traci_controller_a2ad927f803db7f58f36623b8c7e4cbf8}{Client}}
+\begin{DoxyCompactList}\small\item\em The Traci client. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{class_traci_controller_aed0a2042d258363ec5726b8b7c9e40b3}{Host\+Name}}
+\begin{DoxyCompactList}\small\item\em The hostname of the computer for remote connections. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_traci_controller_a480600f51cbbd8506fbdca8fd3179cb3}{Port}}
+\begin{DoxyCompactList}\small\item\em The post of the computer for remote connections. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{class_traci_controller_a333aa35fec78296dc265107576c8dcda}{Config\+File}}
+\begin{DoxyCompactList}\small\item\em The current simulation config file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Traci Controller class manages a running simulation by communicating with a Sumo process. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_traci_controller_ae059ca6ccc3a8ce34a4d133de3d5fade}\label{class_traci_controller_ae059ca6ccc3a8ce34a4d133de3d5fade}} 
+\index{TraciController@{TraciController}!OnVehicleUpdate@{OnVehicleUpdate}}
+\index{OnVehicleUpdate@{OnVehicleUpdate}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{OnVehicleUpdate()}{OnVehicleUpdate()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+On\+Vehicle\+Update (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Traci.\+Types.\+Subscription\+Event\+Args}]{e }\end{DoxyParamCaption})}
+
+
+
+Event handler to handle a car update event 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & The client\\
+\hline
+{\em e} & The event args\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_traci_controller_ac1f189c21103504c425bd572a1634759}\label{class_traci_controller_ac1f189c21103504c425bd572a1634759}} 
+\index{TraciController@{TraciController}!RemoveWorkZoneEntireRoad@{RemoveWorkZoneEntireRoad}}
+\index{RemoveWorkZoneEntireRoad@{RemoveWorkZoneEntireRoad}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{RemoveWorkZoneEntireRoad()}{RemoveWorkZoneEntireRoad()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Remove\+Work\+Zone\+Entire\+Road (\begin{DoxyParamCaption}\item[{Game\+Object}]{Road }\end{DoxyParamCaption})}
+
+
+
+Removes the construction zone attribute from every lane in the road, and updates the simulation accordingly in S\+U\+MO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{struct_road}{Road}}} & The \mbox{\hyperlink{struct_road}{Road}} Game\+Object with an \mbox{\hyperlink{class_edge}{Edge}} component of roads to update \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_traci_controller_adc26e9e3e188ed89f864b2e4ab8a3393}\label{class_traci_controller_adc26e9e3e188ed89f864b2e4ab8a3393}} 
+\index{TraciController@{TraciController}!RemoveWorkZoneOnLane@{RemoveWorkZoneOnLane}}
+\index{RemoveWorkZoneOnLane@{RemoveWorkZoneOnLane}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{RemoveWorkZoneOnLane()}{RemoveWorkZoneOnLane()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Remove\+Work\+Zone\+On\+Lane (\begin{DoxyParamCaption}\item[{Game\+Object}]{Road,  }\item[{String}]{Lane\+Id }\end{DoxyParamCaption})}
+
+
+
+Removes the construction zone attribute for a defined lane in the given road, and updates the simulation in S\+U\+MO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{struct_road}{Road}}} & The gameobject to whom we will update the specified lane\\
+\hline
+{\em Lane\+Id} & The lane Id as specified in the S\+U\+MO network file\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_traci_controller_af0beb4c7ca635ebdd090f05e42770deb}\label{class_traci_controller_af0beb4c7ca635ebdd090f05e42770deb}} 
+\index{TraciController@{TraciController}!SetWorkZoneEntireRoad@{SetWorkZoneEntireRoad}}
+\index{SetWorkZoneEntireRoad@{SetWorkZoneEntireRoad}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{SetWorkZoneEntireRoad()}{SetWorkZoneEntireRoad()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Set\+Work\+Zone\+Entire\+Road (\begin{DoxyParamCaption}\item[{Game\+Object}]{Road }\end{DoxyParamCaption})}
+
+
+
+Sets the construction zone attribute for every lane in the road, and updates the simulation accordingly in S\+U\+MO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{struct_road}{Road}}} & The \mbox{\hyperlink{struct_road}{Road}} Game\+Object to update the road\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_traci_controller_a0a9b38a43070487d3a2578d36e5d105a}\label{class_traci_controller_a0a9b38a43070487d3a2578d36e5d105a}} 
+\index{TraciController@{TraciController}!SetWorkZoneOneLane@{SetWorkZoneOneLane}}
+\index{SetWorkZoneOneLane@{SetWorkZoneOneLane}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{SetWorkZoneOneLane()}{SetWorkZoneOneLane()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Set\+Work\+Zone\+One\+Lane (\begin{DoxyParamCaption}\item[{Game\+Object}]{Road,  }\item[{String}]{Lane\+Id }\end{DoxyParamCaption})}
+
+
+
+Sets the construction zone attribute for a defined lane in the given road, and updates the simulation in S\+U\+MO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{struct_road}{Road}}} & The gameobject to whom we will update the specified lane\\
+\hline
+{\em Lane\+Id} & The lane Id as specified in the S\+U\+MO network file\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_traci_controller_aacc5a9530481fe986ee9329f07e4eccd}\label{class_traci_controller_aacc5a9530481fe986ee9329f07e4eccd}} 
+\index{TraciController@{TraciController}!Subscribe@{Subscribe}}
+\index{Subscribe@{Subscribe}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{Subscribe()}{Subscribe()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Subscribe (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Subscribes to all vehicles in the simulation 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_traci_controller_a29b2da0a754eabda5002fad9b07213c6}\label{class_traci_controller_a29b2da0a754eabda5002fad9b07213c6}} 
+\index{TraciController@{TraciController}!Cars\_GO@{Cars\_GO}}
+\index{Cars\_GO@{Cars\_GO}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{Cars\_GO}{Cars\_GO}}
+{\footnotesize\ttfamily Game\+Object Traci\+Controller.\+Cars\+\_\+\+GO}
+
+
+
+The Car main Game Object 
+
+\mbox{\Hypertarget{class_traci_controller_a2ad927f803db7f58f36623b8c7e4cbf8}\label{class_traci_controller_a2ad927f803db7f58f36623b8c7e4cbf8}} 
+\index{TraciController@{TraciController}!Client@{Client}}
+\index{Client@{Client}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{Client}{Client}}
+{\footnotesize\ttfamily Traci.\+Tra\+C\+I\+Client Traci\+Controller.\+Client}
+
+
+
+The Traci client. 
+
+\mbox{\Hypertarget{class_traci_controller_a333aa35fec78296dc265107576c8dcda}\label{class_traci_controller_a333aa35fec78296dc265107576c8dcda}} 
+\index{TraciController@{TraciController}!ConfigFile@{ConfigFile}}
+\index{ConfigFile@{ConfigFile}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{ConfigFile}{ConfigFile}}
+{\footnotesize\ttfamily String Traci\+Controller.\+Config\+File}
+
+
+
+The current simulation config file. 
+
+\mbox{\Hypertarget{class_traci_controller_aed0a2042d258363ec5726b8b7c9e40b3}\label{class_traci_controller_aed0a2042d258363ec5726b8b7c9e40b3}} 
+\index{TraciController@{TraciController}!HostName@{HostName}}
+\index{HostName@{HostName}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{HostName}{HostName}}
+{\footnotesize\ttfamily String Traci\+Controller.\+Host\+Name}
+
+
+
+The hostname of the computer for remote connections. 
+
+\mbox{\Hypertarget{class_traci_controller_a480600f51cbbd8506fbdca8fd3179cb3}\label{class_traci_controller_a480600f51cbbd8506fbdca8fd3179cb3}} 
+\index{TraciController@{TraciController}!Port@{Port}}
+\index{Port@{Port}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{Port}{Port}}
+{\footnotesize\ttfamily int Traci\+Controller.\+Port}
+
+
+
+The post of the computer for remote connections. 
+
+\mbox{\Hypertarget{class_traci_controller_abc82770640e1620b43607ad292e97f4e}\label{class_traci_controller_abc82770640e1620b43607ad292e97f4e}} 
+\index{TraciController@{TraciController}!speed@{speed}}
+\index{speed@{speed}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily float Traci\+Controller.\+speed = 2.\+0f}
+
+
+
+The simulation speed. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+A\+R\+\_\+\+Sumobox/\+Assets/\+Scripts/Traci\+Controller.\+cs\end{DoxyCompactItemize}
