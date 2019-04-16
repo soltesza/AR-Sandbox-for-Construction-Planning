@@ -29,3 +29,7 @@ Design Mode is used for designing a road segment that will be used for cut and f
 ## Cut/Fill Mode
 
 Cut/Fill Mode is used to display a table containing information about the road segment such as cut and fill areas and volumes. When design mode is selected, the road segment will be visible. To open the cut/fill table, press the **E** key. The table updates every 5 seconds, and can be scrolled using the horizontal scrollbar to the bottom and vertical scrollbar to the right.
+
+UPDATED INSTALL GUIDE FOR TRAFFIC SIMULATION FEATURES
+
+https://github.com/spencjon/AR-Sandbox-for-OSU-Civil-Construction-Engineering/blob/master/Documents/2018_Documents/ARSandbox%20Traffic%20Simulation%20Install%20Guide/ARSandbox_Traffic_Simulation_Install_Guide.pdf
