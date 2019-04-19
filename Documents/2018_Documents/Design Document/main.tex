@@ -1,15 +1,30 @@
 \documentclass[letterpaper, 10pt, onecolumn, draftclsnofoot]{IEEEtran}
-\usepackage{enumitem}
+
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
 \usepackage{geometry}
-\usepackage{tabularx}
-\geometry{margin=.75in}
-\usepackage{url}
-\usepackage{graphicx}
 \usepackage{float}
+\usepackage{enumerate}
+\lstset{breaklines=true}
+\geometry{margin=0.75in}
+\usepackage{setspace}
+\singlespacing
 \usepackage{section}[placeins]
+\usepackage{url}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{tabularx}
 \usepackage{titlesec}
 \titlelabel{\thetitle.\quad}
 \usepackage{cite}
+\usepackage{tabu}
+\graphicspath{{./}}
+\usepackage{booktabs}% http://ctan.org/pkg/booktabs
+\newcommand{\tabitem}{\textbullet~~}
+
+\usepackage[parfill]{parskip}
+
 
 
 \renewcommand\thesection{\arabic{section}}
@@ -25,7 +40,7 @@
 \title{\Large{\textbf{AR Sandbox for Construction Planning \\
                       Traffic Simulation Feature Update \\ 
                       \large{Design Document}}} \\
-                      \vspace{15pt}
+                      \vspace{5pt}
                       \small{Prepared for Dr. Joseph Louis \\
                       Oregon State University \\
                       School of Civil and Construction Engineering}\\
@@ -39,7 +54,19 @@
 
 % SECTION TITLE
 \maketitle
-\vspace{100pt}
+\vspace{30pt}
+\begin{center}
+\begin{tabular}{@{}p{.5in}p{4in}@{}}
+Approved: & \hrulefill \\
+& \hspace{10em} \\
+Date: & \hrulefill \\
+& \hspace{10em} \\
+& Joseph Louis, Ph.D.\\
+& Assistant Professor of Civil and Construction Engineering \\
+& Oregon State University \\
+\end{tabular}
+\end{center}
+\vspace{50pt}
 
 % SECTION ABSTRACT
 \begin{abstract}
@@ -50,6 +77,45 @@
 \clearpage
 \newpage
 
+% SECTION CHANGELOG
+\section{\textbf{Change Log}}
+\renewcommand{\arraystretch}{4}
+\begin{center}
+    \begin{tabular}{|p{4cm}|p{6cm}|p{6cm}|}
+        \hline
+        \textbf{\large Section} & \textbf{\large Original} & \textbf{\large New} \tabularnewline
+        \hline
+        \textbf{Scope} & 
+        \tabitem Original scope too broad, very unspecific. & 
+        \tabitem Updated scope to include specific features and components. \tabularnewline
+        \hline
+        \textbf{Glossary} & 
+        \tabitem The definition for markers specified the use of markers for placing objects in the scene. \newline
+        \tabitem The definition for virtual buttons was incorrect. &
+        \tabitem Changed the definition of markers to be more generic.  \newline
+        \tabitem Corrected the definition for virtual buttons. \tabularnewline
+        \hline
+        \textbf{Data Design} & 
+        \tabitem Road networks data defined incorrectly. &  
+        \tabitem Updated to reflect better understanding of SUMO's network tools. \tabularnewline
+        \hline
+        \textbf{Component Diagram} & 
+        \tabitem Road network data explained incorrectly. \newline
+        \tabitem Road network creation explained incorrectly. \newline
+        \tabitem Included subsection for Scene Creation Mode. & 
+        \tabitem Updated description. \newline
+        \tabitem Updated description. \newline
+        \tabitem Removed subsection for Scene Creation Mode. \tabularnewline
+        \hline
+        \textbf{Virtual Buttons} & 
+        \tabitem The description of the operation of virtual buttons was incorrect. \newline
+        \tabitem Included a bullet point for "loading new markers and models into the system" with virtual buttons. & 
+        \tabitem Corrected the description of the operation of virtual buttons.  \newline
+        \tabitem Removed the bullet point for "loading new markers and models into the system" with virtual buttons. \tabularnewline
+        \hline
+    \end{tabular}
+\end{center}
+\newpage
 
 % SECTION INTRODUCTION
 \section{Introduction}
@@ -58,7 +124,7 @@
         
     \subsection{Scope}
         The system currently contains several modules for performing various tasks within the AR Sandbox. These modules include a cut-and-fill mode for calculating earth moving requirements for large transportation projects, a topographical mode for displaying current sand height information within the sandbox, and a design mode for projecting and editing sections of roadway.\\
-        The proposed upgrade will add modules giving users the ability to create full road networks and place scene items without the need for a keyboard or mouse. These scenes will create the imagery projected in the AR Sandbox and form a digital infrastructure on which trafﬁc simulations can be run.
+        The proposed upgrade will add modules giving users the ability to create full road networks and run traffic simulations in the AR Sandbox. The traffic simulations and old modes of operation will be built and re-designed respectively for user interactions with Vuforia Augmented Reality. Markers, which are distinguishable by Vuforia, will be used to indicate the type of operation the user want to perform.
         
     \subsection{Context}
     \begin{center}
@@ -81,12 +147,11 @@
         
         \item \textbf{Heightmap:} An image in which each pixel stores its displacement, or "height," from the ground.
         
-        \item {\textbf{Markers:} Markers are physical objects that a user can place and move within in the AR Sandbox. Markers represent a real-world object that can be added to the current AR Sandbox scene such as a building or road. A marker's purpose is essentially to signal the system to project the specified object's image at the marker's location.}   
+        \item {\textbf{Markers:} Markers are physical objects that a user can place and move within in the AR Sandbox. Image recognition will allow markers to interact with the system in various ways.}   
         
         \item \textbf{Mass-Haul Diagram:} A diagram used to determine the most efficient way of moving earth in order to create the desired topology. 
         
         \item \textbf{Mass-Haul Simulation:} Excavation simulation; amounts of earth (dirt, rock, etc.) that must be moved, removed or brought into a location in order to create an acceptable terrain for a project.
-
         
         \item {\textbf{Projection:} The image cast on the sand's surface by the projector.}
         
@@ -112,7 +177,7 @@
         
         \item \textbf{Traffic Control Devices:} Devices used to control traffic patterns of vehicles and pedestrians alike. Examples include: Stop Lights, Yield Signs, Crosswalks, and Construction Zones, among others.
         
-        \item {\textbf{Virtual Buttons:} Virtual buttons are digital objects rendered in an AR scene that can be interacted with by touching the location in the scene where the button is being rendered.} 
+        \item {\textbf{Virtual Buttons:} Virtual buttons are digital objects that can be attached to markers. They are interacted with by touching the corresponding location on the marker.} 
         
         \item \textbf{Virtual Camera:} A component of a virtual scene that determines from which perspective the scene is viewed.
         
@@ -129,7 +194,7 @@
      \subsection{Three-Dimensional Models}
         The AR Sandbox will have a collection of pre-built, three-dimensional models that will be called upon during scene creation. These models will be purchased from the Unity Asset Store. Special models may need to be created with Blender if there is a need that cannot be filled by the Asset Store.
     \subsection{Road Network}
-        New road networks will be generated through Unity and converted into a SUMO-compatible format. These networks will be generated to fit markers placed within the sandbox. 
+        New road networks will be generated with SUMO then converted into a 3D models for display in Unity. Each road network will have a scene associated with it. 
     
 % SECTION COMPONENT DESIGN
 \section{Component Design}
@@ -152,9 +217,6 @@
         \subsubsection{Height Look-up}
             The height look-up component will handle requests for height data from a heightmap. A heightmap stores three-dimensional data in a two-dimensional format. Height look-up converts this two-dimensional data to a three-dimensional data format that can be used in Unity and other three-dimensional software.
        
-        \subsubsection{Scene Creation Mode}
-            Scene creation mode will use a collection of three-dimensional models, Vuforia, and Unity to build scenes that will be displayed in the AR Sandbox and used in traffic simulations. While in scene creation mode a user can place markers in the AR Sandbox. Vuforia will track the markers and convert them into three-dimensional models from the database of models available. Then, the position and orientation of the marker will be translated into the Unity game engine in order to add the object to the current scene. Object introduction into a Unity scene will be processed by scripts and game play features available in the game engine.
-       
         \subsubsection{Object Recognition API}
             Object recognition will be achieved using the Vuforia SDK. Images to be recognized will be saved in Vuforia's Target Manager. Any images in the Target Manager can then be used to create markers that are recognizable to Vuforia. Once an image is saved in the Target Manager, an Image Target can be created within the Unity Editor. Image Targets can be connected to game objects whose locations are based on the locations of the corresponding Image Targets and which can otherwise be used like any other game object.
        
@@ -162,7 +224,7 @@
             The vertex and fragment shaders are responsible for applying colored elevation data onto a terrain mesh. Shaders use height data from the heightmap to determine the color of the mesh at each point. Depending on the current mode of operation, standard elevation heights or differences in height may be rendered. When loading a saved terrain, the shaders will depict the difference between the sand in the AR Sandbox and the height data from the saved terrain. In normal operation the shaders will just display the difference between various points in the AR Sandbox.
        
         \subsubsection{Traffic Simulation Mode}
-            The traffic simulation mode will use a Road Network Generator, a Traffic Simulator, and a Road Network Editor in conjunction to perform traffic simulations. The simulations will include Mesoscopic and Microscopic simulations defined anout .  
+            The traffic simulation mode will load and run a created road network. The objects that describe a scene such as roads, vehicles, and buildings will be built as 3D objects and placed on a terrain sized appropriately for the network. As the simulation runs various functions will be available for the user call using Vuforia markers. For instance a user will be able to add and remove work zones on roads, interact with traffic lights, and change simulation parameters such as displaying Mesoscopic and Microscopic simulations (see glossary).  
         
         \subsubsection{Traffic Simulator}
             Traffic simulation will be achieved using the Simulation of Urban Mobility software suite (SUMO) running as a background process. Road networks will be fed into SUMO after they have been generated. When a simulation mode has been selected, the simulation will send output display data to an XML file. The Unity application will then read that XML data and update car positions accordingly.
@@ -191,14 +253,13 @@
         Users will interact with the AR Sandbox primarily using physical markers. Markers will consist of flat objects with two-dimensional images representing different objects in the scene. Specifically, one marker will represent traffic lights, one marker will represent a stop sign, and one marker will represent a construction zone. Users will be able to place these markers into the sandbox in order to add the corresponding arbitrary object to the scene.
         
     \subsection{Virtual Buttons}
-        Menu navigation will be accomplished using virtual buttons. Like markers, virtual buttons allow for physical interaction with digital objects. Unlike markers, virtual buttons exist as a constant component of the scene and cannot be moved or altered; they can only be turned on or off. With virtual buttons, users will be able to navigate menus in a familiar way, but without needing to use a mouse. This menu navigation will be necessary for:
+        Menu navigation will be accomplished using virtual buttons. Like markers, virtual buttons allow for physical interaction with digital objects. Virtual buttons are attached to markers and can be interacted with by touching the correct part of the image that makes up the marker. With virtual buttons, users will be able to navigate menus in a familiar way, but without needing to use a mouse. This menu navigation will be necessary for:
         \begin{itemize}
             \item Selecting system modes
             \item Changing mode-specific settings
             \item Calibrating the display area
             \item Simulation interactions
             \item Saving and loading scenes
-            \item Loading new markers and models into the system 
         \end{itemize}
 
 %SECTION APPENDICES
