@@ -1,0 +1,207 @@
+\documentclass[IEEEtran]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{graphicx}
+
+\graphicspath{ {./images/} }
+\bibliographystyle{IEEEtran}
+
+\title{Tech Review}
+
+\author{Group 56: Augmented Reality Sandbox\\Jonah Spencer\\Traffic Simulation Integration}
+
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+    The purpose of the AR Sandbox is educational, with the intent to be used as means to visualize large scale construction projects. The AR Sandbox offers a new and unique way for students to conceptualize the topics they learn in class with real-time feedback supported by various augmented reality modules. The focus of the project is to upgrade the current Augmented Reality Sandbox at Oregon State University. The improvements will include: general refinements to user experience, implementing a traffic simulation feature, and adding interactive objects to the virtual world through the sandbox with real-world markers.\\ \\
+    This paper will explore sand variants as well as traffic simulators and various projector technologies that may be used. 
+\end{abstract}
+
+\newpage
+\tableofcontents
+\clearpage
+\newpage
+
+
+\section*{Definitions}
+\begin{itemize}[leftmargin=*,label={}]
+    \item \textbf{AR:} (Augmented Reality) is a technology which melds the real-world and the virtual world by understanding aspects of the real world and superimposing virtual images onto the real-world. 
+    \item \textbf{Simulators:} in the context of this paper, are software that use mathematical models to provide a realistic imitation of real-world behaviors.  
+    \item \textbf{Microscopic Simulations:} are driver-centric simulation models that have individual agents (drivers) making decisions based only on information a particular agent has.
+    \item \textbf{Macroscopic Simulations:} are based on mathematical models that are derived from multiple microscopic simulations and real-world flow patterns.
+    \item \textbf{Mesoscopic Simulations:} are based on a simplified model compared to microscopic simulations. Despite the that individual vehicles are still simulated in mesoscopic simulation, their behaviour is based on a car-following model which can be solved efficiently using an  event-based approach. They are slightly less simplified models than Macroscopic simulations.
+    \item \textbf{ARSandbox:} (augmented reality sandbox) is a sandbox with a depth sensor, camera, and projector mounted above it. The software for the box uses the terrain of the sandbox and performs functions with that terrain. The most common application of an ARSandbox is to project a topographical map on to the sand. 
+    \item \textbf{Unity:} a game engine. The current implementation of the AR sandbox is entirely in Unity. 
+    \item \textbf{Unity Asset:} pre-made software built in the Unity Game engine. They are easily imported into an Unity project. These assets can be free or sold by 3rd parties.
+    \item \textbf{Angle of repose:} The steepest angle at which a sloping surface of a loose material is stable. In this paper, it will refer to the angle at which sand is stable. 
+    \item \textbf{OpenStreetMap: } is a website that hosts user-created and maintained street information that includes traffic-control devices and other information useful for traffic simulations.
+\end{itemize}
+
+\clearpage
+\newpage
+
+
+\section{Sand: }
+\label{sec:sand}
+\subsection{Conclusion}
+While researching sand, it was found that there is no choice in what sand the project uses. Any sand, other than filtered, cleaned sand, contains known carcinogens; they are not rated as safe to use in a sandbox in the United States. Due to this, we will be using filtered, cleaned sand. To help with the shallow angle of repose of dry play sand, we will experiment with using water to allow users to make more intricate shapes. 
+
+\section{Traffic Simulator: }
+\label{sec:traffic-simulator}
+The primary goal of this capstone project is to add a traffic simulator module to the sandbox to be used in-classroom to demonstrate traffic flow patterns given various traffic control devices and road conditions. As such, the Traffic simulator used in the project will integrate will need to be robust, full-featured, and accurate. 
+
+\subsection{Requirements}
+ The simulation software will require the following traits:
+\begin{itemize}
+    \item Is realistic enough to be used for both research and teaching. 
+    \item Can perform both microscopic and macroscopic simulations.
+    \item Can change parameters and add traffic control devices dynamically.
+    \item Is able to integrate into Unity.
+\end{itemize}
+The ideal simulator will also have the following: 
+\begin{itemize}
+    \item Can be added to an open-sourced project.
+    \item Has the ability to use 3D mapping data to influence simulations.
+    \item Contains a current implementation written in a language that can be added into a Unity application as a Unity script.
+\end{itemize}
+
+\subsection{Methods}
+\par To get the best simulator for the AR Sandbox project, this paper will address suggestions from industry professionals, target users, as well as independent research into lesser-known solutions. 
+\par According to various civil engineering professors (the target users) and engineering contacts at the Oregon Department of Transportation (ODOT), the "Simulation of Urban Mobility" (SUMO) is widely trusted and supported. Professors approved the system because it was well maintained, efficient at large-scale simulations, and was highly customizable. One professor also mentioned OpenTrafficSim (OTS) as a possible secondary solution, but cautioned he had never personally used it. 
+\par Along with recommendations from industry professionals, this section will look at 
+lesser-known simulators and Unity Assets that may work for the AR Sandbox. After researching multiple solutions through the Unity store and through GitHub, both "Road \& Traffic System (RTS)" and "iTS - Intelligent Traffic System" stood out as easy-to-implement, agent-driven systems. While iTS focuses on realism for simulators, RTS focuses on ease of implementation. For the AR Sandbox, iTS would be a better selection than RTS. 
+
+\subsection{OpenTrafficSim (OTS)}
+\par OpenTrafficSim is an open-sourced traffic simulator based on a combination of micro, macro, and meta simulation technologies. OTS has been developed by Delft University of Technology in the Netherlands. This simulator has been referenced in peer-reviewed research papers such as Contextualize Agent Interactions by Combining Communication and Physical Dimensions in the Environment\cite{10.1007/978-3-319-18944-4_9}. 
+\par The simulator uses a mix of microscopic, macroscopic, and metascopic (more accurate but less efficient than microscopic) simulations to create a realistic simulation in an efficient, accurate way. The project can specify what version to use and what output to get (be in individual drivers, or general traffic flow patterns.)
+\par However, the system does not have an easy way to change parameters dynamically; yet the simulation could be reloaded quickly enough to make this viable. A possible solution would be to fake a dynamic change by saving the current state of cars, and placing those cars back on the simulator after the new terrain is loaded. Unfortunately, that could limit the size of simulations as this process is not truly dynamic.
+\par In addition to the run-time stretching longer, the development and maintenance of this simulator may be problematic - OTS is written in Java, and would have to be converted into a Unity-compatible .dll before using it in our application. That is a complicated, albeit doable, solution.\cite{5}
+\par Along with the real-time simulations, OTS brings us the ability to create after-action reports for the simulations natively. This capability can help professors and researchers analyze data and find things they may have missed during the live demonstration
+
+\subsection{Intelligent Traffic System (iTS)}
+\par Intelligent Traffic System is a Unity asset from the Unity Asset store. It is marketed toward game developers, but is loosely based on real-world traffic patterns.\cite{10}
+\par This simulation tool performs microscopic simulations based on road systems dynamically. These driver-agents, however, are not based on researched traffic patterns. Instead, the driver-agents are based on desirable AI characteristics for games with the lowest overhead  possible. Without guaranteed quality of simulation, we cannot ensure it will be good-enough for a classroom experience.
+\par In addition to simulation quality and realism, one of the project requirements is performing macroscopic simulations. Unfortunately, iTS does not natively support macroscopic simulations. Instead, the project would need to implement its own macroscopic solution, or bring in another asset to complete that simulation for us. That solution would cause more uncertainty and time in the development cycle as the project moves forward. 
+\par iTS is, however, able to efficiently handle dynamic scene changes with built-in support for an automated city/infrastructure builder. This builder dynamically creates/alters environments and includes many pre-built assets including traffic-control simulators.
+\par the Intelligent Traffic System, being built in Unity, means the integration into the Unity AR Sandbox application would be exceedingly easy. With a few drag-and-drops, the simulator would be up and running. Unfortunately, with the asset being sold in the Unity Store, this AR Sandbox project cannot include any source or .dll in the open-sourced program. This limitation presents issues when reaching out to acquire buy-in from other universities; because to edit and build this application, a developer would need to purchase the iTS and integrate the iTS themselves.
+
+\subsection{Simulation of Urban Mobility (SUMO)}
+\par SUMO is a popular Open-Sourced traffic simulator that has been used often, and well in  It was created by the German Institute of Transportation Services, and is used by the United States Department of Transportation and many researchers in the realm of traffic flow.\cite{2}\cite{6}
+\par SUMO is realistic enough for multiple international agencies to use.\cite{6} As such, SUMO will also be realistic for classroom use. Along with the ability to use all the simulation types together, specifying which simulation model (mesocopic or microscopic) to use creates possibilities for professors to demonstrate the various models in a live, visual way.
+\par While SUMO does not have a specifically macroscopic mode, the mesoscopic simulations provided by SUMO can be readily used for the sandbox. With a mesoscopic simulation, we are essentially performing a simulation that is more efficient but in lower detail than microscopic simulation, but has higher-detail but lower-efficiency as compared with macroscopic simulations.\cite{7}
+\par Along with being able to vary the simulation, the project can perform dynamic scene changes in traffic control devices, which is an integral feature for the traffic simulator our client has requested. This dynamic switching can only efficiently be done while using microscopic simulations; however, the entire scene will not need to be reloaded when changing a scene in mesoscopic mode; the simulation will just need to  run again.   
+\par When it comes to integrating SUMO into a Unity application, there are similar problems to that of the OpenTrafficSim. Being written in C++, using it in a C\# (Unity) application would be easier than using a Java application\cite{article}. In addition, there are multiple community members, like GitHub user Andrew-Stebel\cite{8}, that have implemented SUMO into Unity already. Their documentation and source code is Open-Sourced.
+\par Along with the mesoscopic and microscopic simulations, SUMO has a massive library of plug-ins that can lead to future colleges creating features, and expanding/improving the Traffic Simulation feature we will implement. One such possible feature is SUMO's ability to take in OpenStreetMap information, allowing a user to import real-world street map data and perform simulations on these road systems. 
+
+\subsection{Traffic Simulator Conclusion}
+\par Overall the project has several good options in terms of simulators, but not without their drawbacks. The Intelligent Traffic simulator, while easy to integrate into the application, is not realistic enough, and does not have a macroscopic simulation/equivalent to use. For that reason, as well as the lack of open-source support, iTS is not a possible solution. The OpenTrafficSim and SUMO, on the other hand, have all the features the project requires (and more.) OTS has a larger international following, and because of that, has a more expansive feature set. Although OTSs simulation features are more expansive, they are easier to implement, and ultimately the dynamic parameters of SUMO make it a more compelling choice. 
+\par Thus, I suggest using SUMO for our traffic simulator.
+
+\section{Projector}
+Along with software, this project explores various hardware to improve the current implementation. Currently the AR Sandbox has a projector mounted with zip-ties to the beam. This projector, while small and inexpensive, has major issues with lack of light-output, too much heat-output, and a low resolution display. 
+\subsection{Requirements}
+To be viable, the projector will have the following traits: 
+\begin{itemize}
+    \item Is able to mount vertically.
+    \item Is durable enough to handle long periods of operation and resist sand. 
+    \item Produces enough light to be seen in a classroom setting with half the lights on. (~750 ANSI Lumens)
+    \item Does not create a hazard for burns as the projector continues to produce light. 
+    \item Take HDMI as an input. 
+\end{itemize}
+An ideal projector will have the following traits:  
+\begin{itemize}
+    \item Produces enough light to project in daylight.
+    \item Costs less than \$500.
+    \item Is able to electronically adjust its display angle. 
+    \item Has a 1920 x 1080p resolution. 
+\end{itemize}
+\subsection{Methods}
+This section will discuss projector technologies. Initially, this paper looked at: LCD, LED, Laser, and DLP projector technologies. During the initial research, DLP projectors were ruled out as too fragile without meaningful improvements as compared with LCD technologies. While working as an IT professional for the past two years, I have personal experience in projector review and testing for a fortune 500 company. This section uses both sources from the internet as well as my own knowledge and experience in projector testing.  
+
+\subsection{LCD Projectors}
+\par LCD Projectors are the most common form of house/consumer projectors on the market due to the initial price of entry.\cite{1} Due to LCD popularity, there are multitudes of accessories and mounting options. As such, finding parts for building a custom mounting solution is feasible. For instance, the Epson PowerLight series have original-equipment-manufacturer (OEM) mounting options designed for vertical mounting (ceiling and floor.) LCD bulbs are also the standard when it comes to brightness of bulbs - the brightness of mid-tier LCD projectors ranges from 1,200 to 3,200 Lumens - which is more than enough to project on sub-optimal projection surfaces like sand. 
+\par There are also some disadvantages to using LCD lights. For example, the average lamp-life is around 5,000 - 10,000 hours in optimal conditions\cite{1}; with dust, limited cleaning, and being vertically mounted, the projector will not be in optimal conditions. Heat output of LCD projectors is also non-optimal. The LCD bulb, within minutes, can heat up enough that bumping the bulb can burn flesh and hair. The high-heat could be a  major hazard when the bulb is directly above participants' heads.  
+\subsubsection{LCD Projector options:}
+\begin{itemize}
+    \item \textbf{ViewSonic PA503S: (\$299.99)}
+    \begin{itemize}
+        \item \textbf{Pros: } The ViewSonic PA503S is designed to be used in conference rooms with dimmed-light - producing 3,200 Lumens with a contrast ratio of 22,000:1. It can easily be viewed in half-lit classrooms at OSU. The lamp-life, under ideal circumstances, is 15,000 hours - making it particularly long-lasting for the LCD category. 
+        \item \textbf{Cons: } The brightness and lamp-life come at the cost of resolution. Being 800x600, the resolution will be a blocker as the average terrain map we produce is a higher resolution. 
+    \end{itemize}
+    \item \textbf{iRULU P5: (\$120 - \$200)}
+    \begin{itemize}
+        \item \textbf{Pros: } The P5 is a consumer-focused budget projector and can be found fluctuating in price on Amazon for as low as \$120. The projector's resolution is 1280x768p, making the native aspect ratio perfect for the Sandbox and for the AR Sandbox application. 
+        \item \textbf{Cons: } The p5 is not particularly durable and many users have complained of early bulb burn-outs.
+    \end{itemize}
+    \item \textbf{Epson VS355: (\$479.99)}
+    \begin{itemize}
+        \item \textbf{Pros: } The VS355 has a  resolution of 1280x800, and has excellent reviews of its durability. The projector also produces 3300 Lumens with 1 15,000:1 contrast ratio.
+        \item \textbf{Cons: } The main issue the VS355 has is that, for nearing the \$500 budget, it does not have 1920x1080p resolution. 
+    \end{itemize}
+\end{itemize}
+
+\subsection{LED Projectors}
+\par LED technology has the advantage of being overall lighter than LCD projects due to lighter bulbs and a less intensive power supply unit. This means, if we use a mid-sized LED projector, the project could utilize a relatively inexpensive GoPro mounting solution to hold a projector above the sandbox. As well as being light, they have the advantage of high-efficiency (HE) bulbs. Bulb life of LEDs are around 20,000 hours +/- 5,000 hours.\cite{3} HE bulbs, are highly efficient, so they create much less heat on the outer lens. Thus, they are non-hazardous to touch. This lower heat allows for more tolerance to dust blocking the cooling process. 
+\par LED technology also has its disadvantages in terms of price and brightness. The bulbs are the mid-tier price-wise in comparison to other lighting, however, they are about twice as expensive for a comparable projector. They are also about a third as bright, 500-1,200 Lumens as a comparable LCD projector. In the context of the ARSandbox, the contrast and color accuracy benefits of the LED are not nearly as important as brightness. 
+\subsubsection{LED Projector options, using MSRP:}
+\begin{itemize}
+    \item \textbf{LG PH550 Minibeam: (\$399.99)}
+    \begin{itemize}
+        \item \textbf{Pros: } The PH550 Minibeam is small and can be mounted on a trail camera mount. This mounting option would be very stable, durable, and easy to adjust. The bulb life is rated at 30,000 hours, making it above average for the bulb life. As well as bulb life, the projectors lens is smaller and safe to the touch after two hours of use. 
+        \item \textbf{Cons: } The main issue with the PH550 Minibeam is the light output - maxing out at 550 Lumens. While the contrast ratio is 100,000:1, 550 Lumens is not enough to be seen well in a classroom setting. More than half the lights would need to be off. 
+    \end{itemize}
+     \item \textbf{Optoma ML750ST: (\$389.99)}
+    \begin{itemize}
+        \item \textbf{Pros: } The ML750ST has up to a 1920x1080p resolution, making it the ideal projector resolution for our output. It also has the threads for a trail camera mount. 
+        \item \textbf{Cons: } The light output of the ML750ST is only 700 Lumens with 20,000:1 contrast ratio; while 20\% brighter than the Minibeam, the lower contrast ratio and just under 750 Lumen output make the projector less compelling compared to brighter projectors. 
+    \end{itemize}
+    \item \textbf{LG P1000 Minibeam: (\$699.99)}
+    \begin{itemize}
+        \item \textbf{Pros: } The p1000 Minibeam has all the benefits of the P550 Minibeam with a light output of 1000 Lumens. 
+        \item \textbf{Cons: } The main issue with the P1000 Minibeam is the price. Being \$200 over budget, the projector would be a stretch to sell to our customer. 
+    \end{itemize}
+\end{itemize}
+
+\subsection{Laser Projectors}
+\par Around 2015, laser projector technology has become popular in consumer markets.\cite{1} While LCD and LED projector technologies use lamps that emit bright white light and filter out the unwanted light to create images, laser projectors directly emit discrete red, green, and blue beams of light that allow laser projectors to be far more efficient than even LED projectors.\cite{4} These projectors' 'lamp' life is around 20,000 to 40,000 hours\cite{1} and have models that can project up to 6,000 to 25,000 Lumens. This form of projector would be extremely bright, and could potentially make the ARSandbox usable in daylight.   
+\par While the lamp life is impressive, a laser is not replaceable. Once the laser is dead, the whole mechanism is dead.\cite{4} On top of that, the price is anywhere from five to twenty times as expensive as LCD projectors. Furthermore, lasers can be  challenging to mount vertically, and would require a custom-built mount.  
+\subsubsection{Laser Projector options, using MSRP:}
+\begin{itemize}
+    \item \textbf{Casio XJ-F210WN (\$899.99}
+    \begin{itemize}
+        \item \textbf{Pros: }The XJ is the cheapest of the laser projectors, and produces large light while having an ideal resolution.  
+        \item \textbf{Cons: }The XJ, while it is a Laser projector, only produces 3,500 Lumens. This is not a significantly better light output than LCD projectors.
+    \end{itemize}
+    \item \textbf{Viewsonic LS810 \$2599.99}
+    \begin{itemize}
+        \item \textbf{Pros: } The LS810 produces 5200 Lumens with a 100,000:1 contrast ratio. This would be bright and visible in classrooms with all the lights on, and even in indirect sunlight. 
+        \item \textbf{Cons: } The LS810 Costs \$2600. That is over five times the budget, and is only an option if the sandbox will be used in brighter areas. 
+    \end{itemize}
+    \item \textbf{BenQ LU9715 (>\$5000}
+    \begin{itemize}
+        \item \textbf{Pros: } The LU9715 produces a whopping 8000 Lumens with a 100,000:1 contrast ratio. In direct sunlight, the sandbox would be able to be used. 
+        \item \textbf{Cons: } The LU9715 costs 10x the budget, and the 8000 Lumen output could blind someone fast if they looked directly into the light. 
+    \end{itemize}
+\end{itemize}
+
+\subsection{Projector Conclusion}
+\par In terms of projector requirements, safety is the top priority. However, the light needs to be bright enough to complete the project, even if it lasts for a short term. Indeed, 1,200 Lumens is bright enough if half the lights in a typical classroom are off, to clearly see the projections on the sandbox, so any projector will work in terms of brightness. As for heat, the bulb needs to be at a safe level, and not anyone's hair on fire if they accidentally bump into the bulb. Thus, a LCD projector is unfit for this project. That leaves the LED and Laser projector technologies - the major difference being price and performance. Currently, they both have lamp lives around 20,000+ hours; however, the LED bulb can be replaced when it burns out whereas the laser projector would have to  be replaced entirely. The advantages of the laser projector are not necessary. 
+\par Looking at specific projectors, we can first rule out the laser projectors for their price; we do not need to project in such bright places at this time.  
+\par Comparing LCD projectors, we can see the ViewSonic PA503S stand out. As the mid-priced option, it combines a high Lumen output with a good contrast ratio and costs only \$300.
+\par For LED projectors, the Optoma ML750ST stands out at the winner in its category. It both has a 1920x1080p resolution and produces just under our required 750 Lumen output. From testing with a ML750ST projector in classrooms at OSU, the projector will be bright enough.
+\par While comparing the ViewSonic PA503S with the Optoma ML750ST, we essentially have the question of comparing higher Lumen output at a lower cost vs. a higher resolution and better mounting options with smaller Lumen output at a higher cost. In the end, the resolution bump and mounting options of the ML750ST outweigh the benefits of the light output. I suggest the ML750ST.
+
+\newpage
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

@@ -3,6 +3,7 @@
     Properties
     {
         _MainTex ("MainTex", 2D) = "white" {}
+		_Occupancy ("Occupancy", Float) = -1.0
 	}
 		SubShader
 	{
@@ -12,7 +13,7 @@
 		Pass
 		{
 			CGPROGRAM
-			
+
 			#pragma vertex vert
 			#pragma fragment frag
 			#pragma geometry geom
@@ -21,6 +22,8 @@
 			#pragma multi_compile_fog
 
 			#include "UnityCG.cginc"	
+
+			uniform float _Occupancy;
 
             struct appdata
             {
@@ -118,8 +121,15 @@
 
             fixed4 frag (g2f i) : SV_Target
             {
+				fixed4 col;
                 // sample the texture
-				fixed4 col = tex2D(_MainTex, i.uv);
+				if (_Occupancy >= 0.0f) {
+					 col = lerp(fixed4(1.0f,0.0f,0.0f,1.0f), fixed4(0.0f, 0.0f, 1.0f, 1.0f), _Occupancy);
+				}
+				else {
+					col = tex2D(_MainTex, i.uv);
+				}
+				
                 // apply fog
                 UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
