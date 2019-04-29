@@ -42,6 +42,7 @@ public class TraciController : MonoBehaviour
     /// Flag to determine if the road color should be set
     /// </summary>
     public bool OccupancyVisual;
+    private bool VisualsSwitched;
 
     /// <summary>
     /// Flag to determine if car positions should be shown.
@@ -67,6 +68,7 @@ public class TraciController : MonoBehaviour
         Cars_GO = GameObject.Find("Cars");
         OccupancyVisual = false;
         CarVisual = true;
+        VisualsSwitched = false;
     }
     
     /// <summary>
@@ -348,13 +350,6 @@ public class TraciController : MonoBehaviour
         {
             Cars_GO.transform.position = (Vector3)e.Responses.ToArray()[0];
         }
-        else
-        {
-            SphereCollider car = Cars_GO.AddComponent(typeof(SphereCollider)) as SphereCollider;
-            car.tag = e.ObjecId;
-            Traci.Types.Position3D pos = (Traci.Types.Position3D)e.Responses.ToArray()[0];
-            car.transform.position = new Vector3((float)pos.X, 0, (float)pos.Y);
-        }
     }
 
     /// <summary>
@@ -367,22 +362,33 @@ public class TraciController : MonoBehaviour
         {
             if (OccupancyVisual)
             {
-                edge.RoadList.ForEach(e => {
-                    e.Occupancy = (float)Client.Edge.GetLastStepOccupancy(e.Id).Content;
-                    try
+                
+                Transform e = GameObject.Find("Edges").transform;
+
+                if (e != null)
+                {
+                    foreach (Transform child in e)
                     {
-                        GameObject edge = GameObject.Find(e.Id.ToString());
-                        if (edge != null)
+                        float o = (float)Client.Lane.GetLastStepOccupancy(child.gameObject.name).Content;
+                        if (o > 0.4f)
                         {
-                            edge.GetComponent<LineRenderer>().material.SetFloat("_Occupancy", 1.0f);
+                            child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/High_Occupancy_Material", typeof(Material)) as Material;
+                        }
+                        else if (o > 0.2f)
+                        {
+                            child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Medium_Occupancy_Material", typeof(Material)) as Material;
+                        }
+                        else
+                        {
+                            child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Low_Occupancy_Material", typeof(Material)) as Material;
                         }
                     }
-                    catch (Exception x)
-                    {
-                        UnityEngine.Debug.LogException(x);
-                    }
+                }
                     
-                });
+                foreach (Transform child in Cars_GO.transform){
+                    GameObject.Destroy(child.gameObject);
+                }
+                 
             }
             if (CarVisual)
             {

@@ -28,6 +28,16 @@ public class UserController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            GameObject TC = GameObject.Find("Traci_Controller");
+            if (TC != null)
+            {
+                TC.GetComponent<TraciController>().OccupancyVisual = !TC.GetComponent<TraciController>().OccupancyVisual;
+                TC.GetComponent<TraciController>().CarVisual = !TC.GetComponent<TraciController>().CarVisual;
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.M))
         {
             if (Canvas.gameObject.activeSelf)
