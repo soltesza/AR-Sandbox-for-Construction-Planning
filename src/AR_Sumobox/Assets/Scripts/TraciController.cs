@@ -362,7 +362,10 @@ public class TraciController : MonoBehaviour
         {
             if (OccupancyVisual)
             {
-                
+                foreach (Transform child in Cars_GO.transform){
+                    GameObject.Destroy(child.gameObject);
+                }
+
                 Transform e = GameObject.Find("Edges").transform;
 
                 if (e != null)
@@ -370,11 +373,15 @@ public class TraciController : MonoBehaviour
                     foreach (Transform child in e)
                     {
                         float o = (float)Client.Lane.GetLastStepOccupancy(child.gameObject.name).Content;
-                        if (o > 0.4f)
+                        if (o >= 0.8f)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/High_Occupancy_Material", typeof(Material)) as Material;
                         }
-                        else if (o > 0.2f)
+                        else if (o >= 0.6f)
+                        {
+                            child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Medium_High_Occupancy_Material", typeof(Material)) as Material;
+                        }
+                        else if (o >= 0.4f)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Medium_Occupancy_Material", typeof(Material)) as Material;
                         }
@@ -384,32 +391,33 @@ public class TraciController : MonoBehaviour
                         }
                     }
                 }
-                    
-                foreach (Transform child in Cars_GO.transform){
-                    GameObject.Destroy(child.gameObject);
-                }
-                 
+ 
             }
             if (CarVisual)
             {
-                // Get all the car ids we need to keep track of. 
-                Traci.TraCIResponse<List<String>> CarIds = Client.Vehicle.GetIdList();
+                if (Client != null)
+                {
+                    Cars_GO = GameObject.Find("Cars");
+                    // Get all the car ids we need to keep track of. 
+                    Traci.TraCIResponse<List<String>> CarIds = Client.Vehicle.GetIdList();
 
-                CarIds.Content.ForEach(carId => {
-                    Traci.Types.Position3D pos = Client.Vehicle.GetPosition3D(carId).Content;
-                    Transform CarTransform = Cars_GO.transform.Find(carId);
-                    if (CarTransform != null)
-                    {
-                        CarTransform.position = new Vector3((float)pos.X, 0, (float)pos.Y);
-                    }
-                    else
-                    {
-                        GameObject car = GameObject.CreatePrimitive(PrimitiveType.Cube);
-                        car.name = carId;
-                        car.transform.parent = Cars_GO.transform;
-                        car.transform.position = new Vector3((float)pos.X, 1, (float)pos.Y);
-                    }
-                });
+                    CarIds.Content.ForEach(carId => {
+                        Traci.Types.Position3D pos = Client.Vehicle.GetPosition3D(carId).Content;
+                        Transform CarTransform = Cars_GO.transform.Find(carId);
+                        if (CarTransform != null)
+                        {
+                            CarTransform.position = new Vector3((float)pos.X, 0.0f, (float)pos.Y);
+                        }
+                        else
+                        {
+                            GameObject car = GameObject.Instantiate(Resources.Load("Prefabs/Vehicle", typeof(GameObject)) as GameObject, new Vector3((float)pos.X, 0, (float)pos.Y),Quaternion.identity, Cars_GO.transform);
+                            car.name = carId;
+                            //car.transform.parent = Cars_GO.transform;
+                            //car.transform.position = new Vector3((float)pos.X, 1, (float)pos.Y);
+                        }
+                    });
+                }
+                
             }
 
             Elapsedtime += Time.deltaTime;
