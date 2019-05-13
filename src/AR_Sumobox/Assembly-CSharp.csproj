@@ -71,6 +71,7 @@
     <Compile Include="Assets\Scripts\Structure.cs" />
     <Compile Include="Assets\Scripts\SumoCreator.cs" />
     <Compile Include="Assets\Scripts\TraciController.cs" />
+    <Compile Include="Assets\Scripts\TrafficLight.cs" />
     <Compile Include="Assets\Scripts\Triangulator.cs" />
     <Compile Include="Assets\Scripts\UserController.cs" />
     <None Include="Assets\Vuforia\Shaders\ColoredLines.shader" />

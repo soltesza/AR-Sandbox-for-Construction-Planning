@@ -44,6 +44,7 @@ public class TraciController : MonoBehaviour
     public bool OccupancyVisual;
     private bool VisualsSwitched;
 
+    private bool TrafficLightsLoaded;
     /// <summary>
     /// Flag to determine if car positions should be shown.
     /// </summary>
@@ -69,6 +70,7 @@ public class TraciController : MonoBehaviour
         OccupancyVisual = false;
         CarVisual = true;
         VisualsSwitched = false;
+        TrafficLightsLoaded = false;
     }
     
     /// <summary>
@@ -96,20 +98,6 @@ public class TraciController : MonoBehaviour
             await Client.ConnectAsync(HostName, Port);
             Subscribe();
             Client.Control.SimStep();
-            Junction junction = FindObjectOfType<Junction>();
-            while (true)
-            {
-                if (junction.Built)
-                {
-                    foreach (var j in junction.Junction_List)
-                    {
-                        UnityEngine.Debug.Log(j.Type);
-                    }
-                    string trafficLightID = junction.Junction_List.First(e => e.Type == "traffic_light").Id;
-                    DefaultProgram = GetProgram(trafficLightID);
-                    break;
-                }
-            }
             
             return Client;
         }
@@ -294,6 +282,7 @@ public class TraciController : MonoBehaviour
     public void ToggleMesoscopic()
     {
         OccupancyVisual = !OccupancyVisual;
+        CarVisual = !CarVisual;
         VisualsSwitched = true;
     }
 
@@ -361,14 +350,23 @@ public class TraciController : MonoBehaviour
     {
         if (Client != null)
         {
+            if (!TrafficLightsLoaded)
+            {
+                GameObject.Find("TrafficLights").GetComponent<TrafficLight>().Get_Traffic_Lights();
+                TrafficLightsLoaded = true;
+            }
             if (OccupancyVisual)
             {
-                foreach (Transform child in Cars_GO.transform){
-                    GameObject.Destroy(child.gameObject);
+                if (VisualsSwitched)
+                {
+                    foreach (Transform child in Cars_GO.transform)
+                    {
+                        GameObject.Destroy(child.gameObject);
+                    }
+                    VisualsSwitched = false;
                 }
 
                 Transform e = GameObject.Find("Edges").transform;
-
                 if (e != null)
                 {
                     foreach (Transform child in e)
@@ -392,7 +390,6 @@ public class TraciController : MonoBehaviour
                         }
                     }
                 }
- 
             }
             if (CarVisual)
             {
@@ -405,6 +402,7 @@ public class TraciController : MonoBehaviour
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Road_Material", typeof(Material)) as Material;
                         }
+                        VisualsSwitched = false;
                     }
 
                     Cars_GO = GameObject.Find("Cars");
