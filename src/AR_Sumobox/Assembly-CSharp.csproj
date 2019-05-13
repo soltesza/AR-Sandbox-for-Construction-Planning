@@ -84,10 +84,9 @@
     <None Include="Assets\Vuforia\Shaders\DepthMask.shader" />
     <None Include="Assets\Vuforia\Databases\Emulator\VuforiaEmulator.xml" />
     <None Include="Assets\Vuforia\Shaders\ClippingMask.shader" />
-    <None Include="Assets\Resources\Shaders\ConcreteShader.shader" />
     <None Include="Assets\Vuforia\Shaders\BrightTexture.shader" />
-    <None Include="Assets\Vuforia\Shaders\DepthContour.shader" />
     <None Include="Assets\Resources\Shaders\RoadColorShader.shader" />
+    <None Include="Assets\Vuforia\Shaders\DepthContour.shader" />
     <None Include="Assets\Vuforia\Shaders\Text3D.shader" />
     <None Include="Assets\StreamingAssets\Vuforia\db1.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">

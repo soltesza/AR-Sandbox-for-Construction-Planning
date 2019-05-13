@@ -73,7 +73,7 @@ public class Junction : MonoBehaviour
     /// <summary>
     /// Build an Intersection.
     /// </summary>
-    public void BuildJunction(Intersection inter)
+    public void BuildJunction(Intersection inter, bool flat)
     {
         // String points to floats
         if (inter.Shape == null)
@@ -93,10 +93,18 @@ public class Junction : MonoBehaviour
             // Get Meshfilter and create a new mesh
             GameObject chunk = new GameObject();
             chunk.name = inter.Id;
-
             
             chunk.AddComponent<MeshRenderer>();
-            Material m = new Material(Road_Shader);
+            Material m;
+            if (flat)
+            {
+                m = new Material(Resources.Load("Materials/Road_Material")as Material);
+            }
+            else
+            {
+                m = new Material(Road_Shader);
+            }
+            
             chunk.GetComponent<MeshRenderer>().material = m;
             Mesh mesh = new Mesh();
 
@@ -149,7 +157,7 @@ public class Junction : MonoBehaviour
     {
         foreach (Intersection i in Junction_List)
         {
-            BuildJunction(i);
+            BuildJunction(i, true);
         }
 
         Built = true;

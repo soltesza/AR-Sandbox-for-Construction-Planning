@@ -294,6 +294,7 @@ public class TraciController : MonoBehaviour
     public void ToggleMesoscopic()
     {
         OccupancyVisual = !OccupancyVisual;
+        VisualsSwitched = true;
     }
 
 
@@ -397,6 +398,15 @@ public class TraciController : MonoBehaviour
             {
                 if (Client != null)
                 {
+                    if (VisualsSwitched)
+                    {
+                        Transform e = GameObject.Find("Edges").transform;
+                        foreach (Transform child in e)
+                        {
+                            child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Road_Material", typeof(Material)) as Material;
+                        }
+                    }
+
                     Cars_GO = GameObject.Find("Cars");
                     // Get all the car ids we need to keep track of. 
                     Traci.TraCIResponse<List<String>> CarIds = Client.Vehicle.GetIdList();
@@ -412,8 +422,8 @@ public class TraciController : MonoBehaviour
                         {
                             GameObject car = GameObject.Instantiate(Resources.Load("Prefabs/Vehicle", typeof(GameObject)) as GameObject, new Vector3((float)pos.X, 0, (float)pos.Y),Quaternion.identity, Cars_GO.transform);
                             car.name = carId;
-                            //car.transform.parent = Cars_GO.transform;
-                            //car.transform.position = new Vector3((float)pos.X, 1, (float)pos.Y);
+                            car.transform.parent = Cars_GO.transform;
+                            car.transform.position = new Vector3((float)pos.X, 1, (float)pos.Y);
                         }
                     });
                 }
