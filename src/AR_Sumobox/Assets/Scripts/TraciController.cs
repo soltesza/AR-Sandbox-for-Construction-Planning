@@ -403,6 +403,7 @@ public class TraciController : MonoBehaviour
 
                     CarIds.Content.ForEach(carId => {
                         Traci.Types.Position3D pos = Client.Vehicle.GetPosition3D(carId).Content;
+                        float rot = (float)Client.Vehicle.GetAngle(carId).Content;
                         Transform CarTransform = Cars_GO.transform.Find(carId);
                         if (CarTransform != null)
                         {
@@ -410,10 +411,12 @@ public class TraciController : MonoBehaviour
                         }
                         else
                         {
-                            GameObject car = GameObject.Instantiate(Resources.Load("Prefabs/Vehicle", typeof(GameObject)) as GameObject, new Vector3((float)pos.X, 0, (float)pos.Y),Quaternion.identity, Cars_GO.transform);
+                            //GameObject car = GameObject.Instantiate(Resources.Load("Prefabs/Vehicle", typeof(GameObject)) as GameObject, new Vector3((float)pos.X, 0, (float)pos.Y), Quaternion.identity, Cars_GO.transform);
+                            GameObject car = GameObject.CreatePrimitive(PrimitiveType.Cube);
                             car.name = carId;
-                            //car.transform.parent = Cars_GO.transform;
-                            //car.transform.position = new Vector3((float)pos.X, 1, (float)pos.Y);
+                            car.transform.position = new Vector3((float)pos.X, 1, (float)pos.Y);
+                            car.transform.parent = Cars_GO.transform;
+                            
                         }
                     });
                 }

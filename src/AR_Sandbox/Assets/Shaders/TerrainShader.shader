@@ -5,10 +5,11 @@
 		//_MainTex ("Texture", 2D) = "white" {}
 
 		_Color0("Color0", Color) = (1., 0., 0.)
-		_Color1("Color1", Color) = (1., 1., 0.)
-		_Color2("Color2", Color) = (0., 1., 0.)
-		_Color3("Color3", Color) = (0., 1., 1.)
+		_Color1("Color1", Color) = (0., 1., 0.)
+		_Color2("Color2", Color) = (1., 1., 0.)
+		_Color3("Color3", Color) = (0., 1., 0.)
 		_Color4("Color4", Color) = (0., 0., 1.)
+		_Color5("Color5", Color) = (0., 1., 1.)
 		_ColorB("ColorB", Color) = (0., 0., 0.)
 	}
 		SubShader
@@ -33,6 +34,7 @@
 			float4 _Color2;
 			float4 _Color3;
 			float4 _Color4;
+			float4 _Color5;
 			float4 _ColorB; 
 
 
@@ -55,32 +57,6 @@
 		    half4 frag(vertOutput input) : COLOR {
 				float4 output;
 				//color coded heights
-				//float y = input.wpos_y * 5;
-    //            
-    //            if (y <= 0) {
-    //                output = _Color0;
-    //            }
-				//else if (y <= 1) {
-				//	output = lerp(_Color0, _Color1, frac(y));	//blend between colors 0 and 1
-				//}
-				//else if (y <= 2) {
-				//	if (y <= 1.05) output = lerp(_ColorB, _ColorB, frac(y));
-    //                else if (y >= 1.5 && y <= 1.55) output = lerp(_ColorB, _ColorB, frac(y));
-				//	else output = lerp(_Color1, _Color2, frac(y));	//blend between colors 1 and 2
-				//}
-				//else if (y <= 3) {
-				//	if (y <= 2.05) output = lerp(_ColorB, _ColorB, frac(y));
-    //                else if (y >= 2.5 && y <= 2.55) output = lerp(_ColorB, _ColorB, frac(y));
-				//	else output = lerp(_Color2, _Color3, frac(y));	//blend between colors 2 and 3
-				//}
-				//else  if (y <= 4) {
-				//	if (y <= 3.05) output = lerp(_ColorB, _ColorB, frac(y));
-    //                else if (y >= 3.5 && y <= 3.55) output = lerp(_ColorB, _ColorB, frac(y));
-				//	else output = lerp(_Color3, _Color4, frac(y));	//blend between colors 3 and 4
-				//}
-    //            else {
-    //                output = _Color4;
-    //            }
 				float y = input.wpos_y;
 				bool contourline = false;
 				float f = frac(input.wpos_y * 20.0f);
@@ -101,7 +77,7 @@
 				else if (y >= 0.5f) {
 					output = lerp(_Color1, _Color2, frac(y));
 				}
-				else if (y >= 0.3f){
+				else if (y >= 0.3f) {
 					output = lerp(_Color2, _Color3, frac(y));
 				}
 				else {

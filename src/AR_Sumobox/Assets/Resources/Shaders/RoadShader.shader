@@ -123,8 +123,8 @@
             {
 				fixed4 col;
                 // sample the texture
-				if (_Occupancy >= 0.0f) {
-					 col = lerp(fixed4(1.0f,0.0f,0.0f,1.0f), fixed4(0.0f, 0.0f, 1.0f, 1.0f), _Occupancy);
+				if (_Occupancy > 0.0f) {
+					 col = lerp(fixed4(1.0f,0.1f,0.1f,1.0f), fixed4(0.1f, 0.1f, 1.0f, 1.0f), _Occupancy);
 				}
 				else {
 					col = tex2D(_MainTex, i.uv);
