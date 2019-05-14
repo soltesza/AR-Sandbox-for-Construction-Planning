@@ -36,7 +36,7 @@ public class Structure : MonoBehaviour
     /// <summary>
     /// The parking lot shader.
     /// </summary>
-    public Shader Concrete_Shader;
+    public Shader Road_Shader;
     /// <summary>
     /// The building extrusion shader.
     /// </summary>
@@ -107,7 +107,6 @@ public class Structure : MonoBehaviour
             if (p.Type.Contains("building"))
             {
                 building = true;
-                //m = Resources.Load("Materials/Concrete_Material", typeof(Material)) as Material;
                 m = new Material(Building_Shader);
                 System.Random rnd = new System.Random();
                 int bc = rnd.Next(1, 4) - 1;
@@ -115,7 +114,7 @@ public class Structure : MonoBehaviour
             }
             else
             {
-                m = Resources.Load("Materials/Concrete_Material", typeof(Material)) as Material;
+                m = new Material(Resources.Load("Materials/Road_Material") as Material);
                 List<float> color;
                 if (p.Color != null)
                 {

@@ -60,7 +60,6 @@ public class Edge : MonoBehaviour
     /// </summary>    
     public List<Road> RoadList;
     public Shader Road_Shader;
-    public Shader Concrete_Shader;
     /// <summary>
     /// The width to make lanes in meters.
     /// </summary>
@@ -126,25 +125,11 @@ public class Edge : MonoBehaviour
         LineRenderer LR = newShape.AddComponent<LineRenderer>();
         if (flat)
         {
-            if (type == "Road")
-            {
-                LR.material = Resources.Load("Materials/Road_Material", typeof(Material)) as Material;
-            }
-            else
-            {
-                LR.material = Resources.Load("Materials/Concrete_Material", typeof(Material)) as Material;
-            }
+            LR.material = Resources.Load("Materials/Road_Material", typeof(Material)) as Material;   
         }
         else
         {
-            if (type == "Road")
-            {
-                LR.material = new Material(Road_Shader);
-            }
-            else
-            {
-                LR.material = new Material(Concrete_Shader);
-            }
+            LR.material = new Material(Road_Shader);
         }
         LR.useWorldSpace = true;
         LR.textureMode = LineTextureMode.Tile;
@@ -181,7 +166,6 @@ public class Edge : MonoBehaviour
         {
             m = Resources.Load("Materials/Road_Material", typeof(Material)) as Material;
         }
-        
         
         mr.material = m;
         Mesh mesh = new Mesh();
@@ -229,36 +213,6 @@ public class Edge : MonoBehaviour
     {
         foreach(Road road in RoadList)
         {
-            if (road.Shape != null && road.Function != "internal")
-            {
-                string rtype;
-                List<float> rs = ShapeStringToFloatList(road.Shape);
-                List<Vector3> rsv = new List<Vector3>();
-                for(int i = 0; i < rs.Count; i+=2)
-                {
-                    rsv.Add(new Vector3(rs[i], 0.1f,rs[i + 1]));
-                }
-
-                if (road.Type != null)
-                {
-                    if (road.Type.Contains("pedestrian"))
-                    {
-                        //rtype = "Other";
-                        rtype = "Road";
-                    }
-                    else
-                    {
-                        rtype = "Road";
-                    }
-                }
-                else
-                {
-                    rtype = "Road";
-                }
-                //BuildShapeLR(rsv, road.Id, rtype, LANEWIDTH, true);
-                //BuildShapeMesh(rsv, road.Id, rtype, LANEWIDTH);
-            }
-
            if(road.Function != "internal")
             {
                 foreach (Lane lane in road.Lanes)
@@ -281,8 +235,7 @@ public class Edge : MonoBehaviour
                             }
                             else
                             {
-                                //ltype = "Other";
-                                ltype = "Road";
+                                ltype = "Other";
                             }
                         }
                         else
