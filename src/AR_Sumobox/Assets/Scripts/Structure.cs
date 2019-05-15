@@ -45,7 +45,7 @@ public class Structure : MonoBehaviour
     /// Some extra colors for polygons.
     /// </summary>
     private Color[] BuildingColors = new Color[4];
-    private string[] BuildingTextures = new string[4];
+    private string[] BuildingTextures = new string[17];
 
     /// <summary>
     /// Clear all current simulation polygon data.
@@ -84,10 +84,24 @@ public class Structure : MonoBehaviour
         BuildingColors[1] = new Color(102.0f / 255.0f, 51.0f / 255.0f, 0.0f / 255.0f, 1.0f);
         BuildingColors[2] = new Color(153.0f / 255.0f, 153.0f / 255.0f, 102.0f / 255.0f, 1.0f);
         BuildingColors[3] = new Color(153.0f / 255.0f, 51.0f / 255.0f, 0.0f / 255.0f, 1.0f);
-        BuildingTextures[0] = "Textures/RedBrick";
-        BuildingTextures[1] = "Textures/WhiteBrick";
-        BuildingTextures[2] = "Textures/Siding";
-        BuildingTextures[3] = "Textures/Stucco";
+        BuildingTextures[0] = "Textures/fac_01";
+        BuildingTextures[1] = "Textures/fac_02";
+        BuildingTextures[2] = "Textures/fac_03";
+        BuildingTextures[3] = "Textures/fac_04";
+        BuildingTextures[4] = "Textures/fac_05";
+        BuildingTextures[5] = "Textures/fac_06";
+        BuildingTextures[6] = "Textures/fac_07";
+        BuildingTextures[7] = "Textures/fac_01_t";
+        BuildingTextures[8] = "Textures/fac_02_t";
+        BuildingTextures[9] = "Textures/fac_03_t";
+        BuildingTextures[10] = "Textures/fac_04_t";
+        BuildingTextures[11] = "Textures/fac_05_t";
+        BuildingTextures[12] = "Textures/fac_06_t";
+        BuildingTextures[13] = "Textures/fac_07_t";
+        BuildingTextures[14] = "Textures/fac_08_t";
+        BuildingTextures[15] = "Textures/fac_01_w";
+        BuildingTextures[16] = "Textures/fac_02_w";
+        BuildingTextures[17] = "Textures/fac_03_w";
     }
 
     // Update is called once per frame
@@ -101,9 +115,9 @@ public class Structure : MonoBehaviour
     /// </summary>
     public void Build()
     {
+        int bt = 0;
         foreach (Poly p in Polys)
         {
-            int bt = 0;
             bool building = false;
             GameObject chunk = new GameObject();
             chunk.name = p.Id;
@@ -115,8 +129,8 @@ public class Structure : MonoBehaviour
                 building = true;
                 m = new Material(Building_Shader);
                 m.mainTexture = Resources.Load(BuildingTextures[bt]) as Texture2D;
-                bt++;
-                if (bt > 3)
+                bt += 1;
+                if (bt > 17)
                 {
                     bt = 0;
                 }
