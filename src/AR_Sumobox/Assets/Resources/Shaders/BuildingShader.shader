@@ -75,37 +75,24 @@
 				v2p.uv = input[2].uv;
 				v2p.worldPos.y -= 30.0f;
 
-				// Bottom
-				tristream.Append(v0);
-				tristream.Append(v1);
-				tristream.Append(v2);
-				tristream.RestartStrip();
-
 				// Top
 				tristream.Append(v0p);
 				tristream.Append(v1p);
 				tristream.Append(v2p);
+				tristream.RestartStrip();
+
+				// Bottom
+				tristream.Append(v0);
+				tristream.Append(v1);
+				tristream.Append(v2);
 				//tristream.RestartStrip();
-
+				
 				// F
-				tristream.Append(v2);
-				tristream.Append(v2p);
-				tristream.Append(v0p);
+				v0.uv = float2(0.0f, 0.0f);
+				v0p.uv = float2(0.0f, 1.0f);
+				v1p.uv = float2(1.0f, 1.0f);
+				v1.uv = float2(1.0f, 0.0f);
 
-				tristream.Append(v0p);
-				tristream.Append(v0);
-				tristream.Append(v2);
-
-				// F
-				tristream.Append(v1);
-				tristream.Append(v1p);
-				tristream.Append(v2p);
-
-				tristream.Append(v2p);
-				tristream.Append(v2);
-				tristream.Append(v1);
-
-				// F
 				tristream.Append(v0);
 				tristream.Append(v0p);
 				tristream.Append(v1p);
@@ -113,6 +100,34 @@
 				tristream.Append(v1p);
 				tristream.Append(v1);
 				tristream.Append(v0);
+				//tristream.RestartStrip();
+				// F
+				v1.uv = float2(1.0f, 0.0f);
+				v1p.uv = float2(1.0f, 1.0f);
+				v2p.uv = float2(0.0f, 1.0f);
+				v2.uv = float2(0.0f, 0.0f);
+
+				tristream.Append(v1);
+				tristream.Append(v1p);
+				tristream.Append(v2p);
+
+				tristream.Append(v2p);
+				tristream.Append(v2);
+				tristream.Append(v1);
+				//tristream.RestartStrip();
+				// F
+				v1.uv = float2(0.0f, 0.0f);
+				v1p.uv = float2(0.0f, 1.0f);
+				v0p.uv = float2(1.0f, 1.0f);
+				v0.uv = float2(1.0f, 0.0f);
+
+				tristream.Append(v2);
+				tristream.Append(v2p);
+				tristream.Append(v0p);
+
+				tristream.Append(v0p);
+				tristream.Append(v0);
+				tristream.Append(v2);
 				tristream.RestartStrip();
 			}
 

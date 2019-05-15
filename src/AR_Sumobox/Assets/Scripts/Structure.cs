@@ -45,6 +45,7 @@ public class Structure : MonoBehaviour
     /// Some extra colors for polygons.
     /// </summary>
     private Color[] BuildingColors = new Color[4];
+    private string[] BuildingTextures = new string[4];
 
     /// <summary>
     /// Clear all current simulation polygon data.
@@ -83,6 +84,10 @@ public class Structure : MonoBehaviour
         BuildingColors[1] = new Color(102.0f / 255.0f, 51.0f / 255.0f, 0.0f / 255.0f, 1.0f);
         BuildingColors[2] = new Color(153.0f / 255.0f, 153.0f / 255.0f, 102.0f / 255.0f, 1.0f);
         BuildingColors[3] = new Color(153.0f / 255.0f, 51.0f / 255.0f, 0.0f / 255.0f, 1.0f);
+        BuildingTextures[0] = "Textures/RedBrick";
+        BuildingTextures[1] = "Textures/WhiteBrick";
+        BuildingTextures[2] = "Textures/Siding";
+        BuildingTextures[3] = "Textures/Stucco";
     }
 
     // Update is called once per frame
@@ -98,6 +103,7 @@ public class Structure : MonoBehaviour
     {
         foreach (Poly p in Polys)
         {
+            int bt = 0;
             bool building = false;
             GameObject chunk = new GameObject();
             chunk.name = p.Id;
@@ -108,9 +114,12 @@ public class Structure : MonoBehaviour
             {
                 building = true;
                 m = new Material(Building_Shader);
-                System.Random rnd = new System.Random();
-                int bc = rnd.Next(1, 4) - 1;
-                m.color = BuildingColors[bc];
+                m.mainTexture = Resources.Load(BuildingTextures[bt]) as Texture2D;
+                bt++;
+                if (bt > 3)
+                {
+                    bt = 0;
+                }
             }
             else
             {
@@ -150,17 +159,18 @@ public class Structure : MonoBehaviour
                 
             }
 
-            Vector3[] norms = new Vector3[vecs.Count];
-            for (int k = 0; k < vecs.Count; k++)
-            {
-                norms[k] = Vector3.up;
-            }
+            //Vector3[] norms = new Vector3[vecs.Count];
+            //for (int k = 0; k < vecs.Count; k++)
+            //{
+             //   norms[k] = -Vector3.up;
+           // }
 
             Mesh mesh = new Mesh();
             mesh.vertices = verts;
             mesh.triangles = indices;
-            mesh.normals = norms;
+            mesh.RecalculateNormals();
             mesh.RecalculateBounds();
+            mesh.RecalculateTangents();
             MeshFilter mf = chunk.AddComponent<MeshFilter>();
             mf.mesh = mesh;
             chunk.transform.parent = Structures_GO.transform;
