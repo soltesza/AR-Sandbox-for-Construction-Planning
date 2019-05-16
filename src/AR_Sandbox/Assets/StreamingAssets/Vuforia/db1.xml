@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
-    <ImageTarget name="vb-change-mode" size="920.000000 410.000000" />
+    <ImageTarget name="vb-change-view" size="410.000000 410.000000" />
+    <ImageTarget name="vb-change-mode-sm" size="860.000000 410.000000" />
+    <ImageTarget name="vb-networks" size="675.000000 410.000000" />
     <ImageTarget name="qrcode4" size="410.000000 410.000000" />
     <ImageTarget name="qrcode3" size="410.000000 410.000000" />
     <ImageTarget name="qrcode2" size="410.000000 410.000000" />
     <ImageTarget name="qrcode1" size="410.000000 410.000000" />
-    <ImageTarget name="marker_2" size="1.000000 1.000000" />
   </Tracking>
 </QCARConfig>
