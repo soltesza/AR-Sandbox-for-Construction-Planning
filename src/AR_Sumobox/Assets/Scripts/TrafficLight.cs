@@ -34,11 +34,17 @@ public class TrafficLight : MonoBehaviour
         if (the_client != null)
         {
             List<string> tl_ids = the_client.TrafficLight.GetIdList().Content;
+            if (tl_ids == null)
+            {
+                return;
+            }
             foreach (string id in tl_ids)
             {
                 Traffic_Light tl = new Traffic_Light();
                 tl.Id = id;
                 tl.ControlledLanes = the_client.TrafficLight.GetControlledLanes(id).Content;
+                //List<List<string>> l = the_client.TrafficLight.GetControlledLinks(id).Content.Links;
+                
                 tl.Program = the_client.TrafficLight.GetCurrentProgram(id).Content;
                 tl.PhaseDuration = (float)the_client.TrafficLight.GetPhaseDuration(id).Content;
                 TL_List.Add(tl);

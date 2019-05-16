@@ -290,19 +290,19 @@ public class TraciController : MonoBehaviour
     /// <summary>
     /// Sets a junction's stop light to the "off-blinking" phase to cause all vehicles to yeild
     /// </summary>
-    /// <param name="juntionId">The id of the stop light/junction that will be converted</param>
-    public void SetStopSignJunction(string juntionId)
+    /// <param name="trafficLightId">The id of the stop light/junction that will be converted</param>
+    public void SetStopSignJunction(string trafficLightId)
     {
-        Client.TrafficLight.SetProgram(juntionId, "o");
+        Client.TrafficLight.SetProgram(trafficLightId, "o");
     }
 
     /// <summary>
     /// Sets a junction's stop light to the default phase to cause all vehicles to yeild
     /// </summary>
-    /// <param name="junctionId">The id of the stop light/junction that will be converted</param>
-    public void SetTrafficLightJunction(string junctionId)
+    /// <param name="trafficLightId">The id of the stop light/junction that will be converted</param>
+    public void SetTrafficLightJunction(string trafficLightId)
     {
-        Client.TrafficLight.SetProgram(junctionId, DefaultProgram);
+        Client.TrafficLight.SetProgram(trafficLightId, DefaultProgram);
     }
 
     /// <summary>
@@ -412,17 +412,31 @@ public class TraciController : MonoBehaviour
                     CarIds.Content.ForEach(carId => {
                         Traci.Types.Position3D pos = Client.Vehicle.GetPosition3D(carId).Content;
                         float rot = (float)Client.Vehicle.GetAngle(carId).Content;
+                        //Client.Vehicle.GetVehicleClass(carId).Content.Contains("bus");
                         Transform CarTransform = Cars_GO.transform.Find(carId);
                         if (CarTransform != null)
                         {
-                            CarTransform.position = new Vector3((float)pos.X, 0.0f, (float)pos.Y);
+                            if (pos == null)
+                            {
+                                GameObject.Destroy(GameObject.Find(carId));
+                            }
+                            else
+                            {
+                                CarTransform.position = new Vector3((float)pos.X, 0.0f, (float)pos.Y);
+                                //if (CarTransform.rotation.y != rot)
+                                //{
+                                //    CarTransform.Rotate(0.0f, rot, 0.0f);    
+                                //}
+                                CarTransform.localEulerAngles = new Vector3(0, rot - 90.0f, 0);
+                            }
+                            
                         }
                         else
                         {
-                            GameObject car = GameObject.Instantiate(Resources.Load("Prefabs/Vehicle", typeof(GameObject)) as GameObject, new Vector3((float)pos.X, 0, (float)pos.Y),Quaternion.identity, Cars_GO.transform);
+                            GameObject car = GameObject.Instantiate(Resources.Load("Prefabs/Vehicle", typeof(GameObject)) as GameObject, new Vector3((float)pos.X, 0.0f, (float)pos.Y), new Quaternion(0.0f, 0.0f, 0.0f, 1.0f), Cars_GO.transform);
                             car.name = carId;
                             car.transform.parent = Cars_GO.transform;
-                            car.transform.position = new Vector3((float)pos.X, 1, (float)pos.Y);
+                            car.transform.position = new Vector3((float)pos.X, 0.0f, (float)pos.Y);
                         }
                     });
                 }

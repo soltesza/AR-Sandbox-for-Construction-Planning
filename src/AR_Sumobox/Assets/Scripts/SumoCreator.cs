@@ -127,6 +127,10 @@ public class SumoCreator : MonoBehaviour
                 {
                     theJunction.Y = junction.Attributes.GetNamedItem("y").Value;
                 }
+                if (junction.Attributes["incLanes"] != null)
+                {
+                    theJunction.IncomingLanes = junction.Attributes.GetNamedItem("incLanes").Value;
+                }
                 if (junction.Attributes["shape"] != null)
                 {
                     theJunction.Shape = junction.Attributes.GetNamedItem("shape").Value;
