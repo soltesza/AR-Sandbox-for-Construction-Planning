@@ -372,28 +372,58 @@ public class TraciController : MonoBehaviour
                 {
                     foreach (Transform child in e)
                     {
-                        float o = (float)Client.Lane.GetLastStepOccupancy(child.gameObject.name).Content;
-                        if (o >= 0.9f)
+                        //float o = (float)Client.Lane.GetLastStepOccupancy(child.gameObject.name).Content;
+                        //if (o >= 0.9f)
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_7", typeof(Material)) as Material;
+                        //}
+                        //else if (o >= 0.8f)
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_6", typeof(Material)) as Material;
+                        //}
+                        //else if (o >= 0.5f)
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_5", typeof(Material)) as Material;
+                        //}
+                        //else if (o >= 0.1f)
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_4", typeof(Material)) as Material;
+                        //}
+                        //else if (o >= 0.01f)
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_3", typeof(Material)) as Material;
+                        //}
+                        //else if (o >= 0.001f)
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_2", typeof(Material)) as Material;
+                        //}
+                        //else
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_1", typeof(Material)) as Material;
+                        //}
+                        
+                        int o = Client.Lane.GetLastStepVehicleNumber(child.gameObject.name).Content;
+                        if (o >= 10)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_7", typeof(Material)) as Material;
                         }
-                        else if (o >= 0.8f)
+                        else if (o >= 5)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_6", typeof(Material)) as Material;
                         }
-                        else if (o >= 0.5f)
+                        else if (o >= 4)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_5", typeof(Material)) as Material;
                         }
-                        else if (o >= 0.1f)
+                        else if (o >= 3)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_4", typeof(Material)) as Material;
                         }
-                        else if (o >= 0.01f)
+                        else if (o >= 2)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_3", typeof(Material)) as Material;
                         }
-                        else if (o >= 0.001f)
+                        else if (o >= 1)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_2", typeof(Material)) as Material;
                         }
