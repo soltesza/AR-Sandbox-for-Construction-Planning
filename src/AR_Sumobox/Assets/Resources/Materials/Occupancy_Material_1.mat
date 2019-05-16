@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Medium_Occupancy_Material
+  m_Name: Occupancy_Material_1
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 2
@@ -60,8 +60,8 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _GlossMapScale: 0.85
-    - _Glossiness: 0.69
+    - _GlossMapScale: 0.65
+    - _Glossiness: 0.65
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
@@ -73,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 1, b: 0.17619658, a: 1}
-    - _EmissionColor: {r: 0.02349341, g: 1, b: 0, a: 1}
+    - _Color: {r: 0, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 1, b: 1, a: 1}

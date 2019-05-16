@@ -45,7 +45,7 @@ public class Structure : MonoBehaviour
     /// Some extra colors for polygons.
     /// </summary>
     private Color[] BuildingColors = new Color[4];
-    private string[] BuildingTextures = new string[17];
+    private string[] BuildingTextures = new string[18];
 
     /// <summary>
     /// Clear all current simulation polygon data.
