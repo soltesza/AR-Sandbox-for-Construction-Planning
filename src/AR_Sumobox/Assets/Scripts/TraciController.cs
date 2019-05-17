@@ -359,7 +359,7 @@ public class TraciController : MonoBehaviour
             {
                 if (VisualsSwitched)
                 {
-                    GameObject.Find("Occupancy_Legend").SetActive(true);
+                    //GameObject.Find("Occupancy_Legend").SetActive(true);
                     foreach (Transform child in Cars_GO.transform)
                     {
                         GameObject.Destroy(child.gameObject);
@@ -372,58 +372,28 @@ public class TraciController : MonoBehaviour
                 {
                     foreach (Transform child in e)
                     {
-                        //float o = (float)Client.Lane.GetLastStepOccupancy(child.gameObject.name).Content;
-                        //if (o >= 0.9f)
-                        //{
-                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_7", typeof(Material)) as Material;
-                        //}
-                        //else if (o >= 0.8f)
-                        //{
-                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_6", typeof(Material)) as Material;
-                        //}
-                        //else if (o >= 0.5f)
-                        //{
-                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_5", typeof(Material)) as Material;
-                        //}
-                        //else if (o >= 0.1f)
-                        //{
-                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_4", typeof(Material)) as Material;
-                        //}
-                        //else if (o >= 0.01f)
-                        //{
-                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_3", typeof(Material)) as Material;
-                        //}
-                        //else if (o >= 0.001f)
-                        //{
-                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_2", typeof(Material)) as Material;
-                        //}
-                        //else
-                        //{
-                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_1", typeof(Material)) as Material;
-                        //}
-                        
-                        int o = Client.Lane.GetLastStepVehicleNumber(child.gameObject.name).Content;
-                        if (o >= 10)
+                        float o = (float)Client.Lane.GetLastStepOccupancy(child.gameObject.name).Content;
+                        if (o >= 0.9f)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_7", typeof(Material)) as Material;
                         }
-                        else if (o >= 5)
+                        else if (o >= 0.8f)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_6", typeof(Material)) as Material;
                         }
-                        else if (o >= 4)
+                        else if (o >= 0.5f)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_5", typeof(Material)) as Material;
                         }
-                        else if (o >= 3)
+                        else if (o >= 0.1f)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_4", typeof(Material)) as Material;
                         }
-                        else if (o >= 2)
+                        else if (o >= 0.01f)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_3", typeof(Material)) as Material;
                         }
-                        else if (o >= 1)
+                        else if (o >= 0.001f)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_2", typeof(Material)) as Material;
                         }
@@ -431,8 +401,47 @@ public class TraciController : MonoBehaviour
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_1", typeof(Material)) as Material;
                         }
+
+                        //int o = Client.Lane.GetLastStepVehicleNumber(child.gameObject.name).Content;
+                        //if (o >= 10)
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_7", typeof(Material)) as Material;
+                        //}
+                        //else if (o >= 5)
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_6", typeof(Material)) as Material;
+                        //}
+                        //else if (o >= 4)
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_5", typeof(Material)) as Material;
+                        //}
+                        //else if (o >= 3)
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_4", typeof(Material)) as Material;
+                        //}
+                        //else if (o >= 2)
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_3", typeof(Material)) as Material;
+                        //}
+                        //else if (o >= 1)
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_2", typeof(Material)) as Material;
+                        //}
+                        //else
+                        //{
+                        //    child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_1", typeof(Material)) as Material;
+                        //}
                     }
                 }
+
+                    Transform j = GameObject.Find("Junctions").transform;
+                    if (j != null)
+                    {
+                        foreach (Transform child in j)
+                        { 
+                            child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Occupancy_Material_2", typeof(Material)) as Material;
+                        }
+                    }
             }
             if (CarVisual)
             {
@@ -440,13 +449,21 @@ public class TraciController : MonoBehaviour
                 {
                     if (VisualsSwitched)
                     {
-                        GameObject.Find("Occupancy_Legend").SetActive(false);
+                        //GameObject.Find("Occupancy_Legend").SetActive(false);
                         Transform e = GameObject.Find("Edges").transform;
                         foreach (Transform child in e)
                         {
                             child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Road_Material", typeof(Material)) as Material;
                         }
                         VisualsSwitched = false;
+                        Transform j = GameObject.Find("Junctions").transform;
+                        if (j != null)
+                        {
+                            foreach (Transform child in j)
+                            {
+                                child.gameObject.GetComponent<Renderer>().material = Resources.Load("Materials/Road_Material", typeof(Material)) as Material;
+                            }
+                        }
                     }
 
                     Cars_GO = GameObject.Find("Cars");
@@ -478,6 +495,35 @@ public class TraciController : MonoBehaviour
                         else
                         {
                             GameObject car = GameObject.Instantiate(Resources.Load("Prefabs/Vehicle", typeof(GameObject)) as GameObject, new Vector3((float)pos.X, 0.0f, (float)pos.Y), new Quaternion(0.0f, 0.0f, 0.0f, 1.0f), Cars_GO.transform);
+                           
+                            if(carId.Contains("bus")){
+                                 car.transform.Find("Bus").gameObject.SetActive(true);
+                                car.transform.Find("Car").gameObject.SetActive(false);
+                            }
+                            else if (carId.Contains("moto"))
+                            {
+                                car.transform.Find("Motorcycle").gameObject.SetActive(true);
+                                car.transform.Find("Car").gameObject.SetActive(false);
+
+                            }
+                            else if (carId.Contains("truck"))
+                            {
+                                car.transform.Find("BoxTruck").gameObject.SetActive(true);
+                                car.transform.Find("Car").gameObject.SetActive(false);
+
+                            }
+                            else if (carId.Contains("bicycle"))
+                            {
+                                car.transform.Find("Bicycle").gameObject.SetActive(true);
+                                car.transform.Find("Car").gameObject.SetActive(false);
+
+                            }
+                            else if (carId.Contains("ped"))
+                            {
+                                car.transform.Find("Pedestrian").gameObject.SetActive(true);
+                                car.transform.Find("Car").gameObject.SetActive(false);
+                            }
+                            
                             car.name = carId;
                             car.transform.parent = Cars_GO.transform;
                             car.transform.position = new Vector3((float)pos.X, 0.0f, (float)pos.Y);

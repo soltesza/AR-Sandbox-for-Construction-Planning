@@ -282,7 +282,7 @@ public class SumoCreator : MonoBehaviour
     /// </summary>
     public void GenerateOsmNetwork()
     {
-        Main_Camera.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
+        Main_Camera.GetComponentInChildren<Canvas>()?.gameObject?.SetActive(false);
         try
         {
             Process p = new Process();
