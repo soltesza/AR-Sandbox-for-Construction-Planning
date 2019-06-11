@@ -1,0 +1,223 @@
+.TH "TraciController" 3 "Mon Jun 10 2019" "Version 2.0" "AR Sandbox for OSU Civil Construction Engineering" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TraciController \- Traci Controller class manages a running simulation by communicating with a Sumo process\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBRemoveWorkZoneOnLane\fP (string roadId, string laneId)"
+.br
+.RI "Removes the construction zone attribute for a defined lane in the given road, and updates the simulation in SUMO\&. "
+.ti -1c
+.RI "void \fBRemoveWorkZoneEntireRoad\fP (string roadId)"
+.br
+.RI "Removes the construction zone attribute from every lane in the road, and updates the simulation accordingly in SUMO\&. "
+.ti -1c
+.RI "void \fBSetWorkZoneEntireRoad\fP (string roadId)"
+.br
+.RI "Sets the construction zone attribute for every lane in the road, and updates the simulation accordingly in SUMO\&. "
+.ti -1c
+.RI "void \fBSetWorkZoneOneLane\fP (string roadId, string laneId)"
+.br
+.RI "Sets the construction zone attribute for a defined lane in the given road, and updates the simulation in SUMO\&. "
+.ti -1c
+.RI "void \fBToggleMesoscopic\fP ()"
+.br
+.RI "Flips the Occupancy Visual to simulate a mesoscopic view\&. "
+.ti -1c
+.RI "void \fBSetStopSignJunction\fP (string trafficLightId)"
+.br
+.RI "Sets a junction's stop light to the 'off-blinking' phase to cause all vehicles to yeild "
+.ti -1c
+.RI "void \fBSetTrafficLightJunction\fP (string trafficLightId)"
+.br
+.RI "Sets a junction's stop light to the default phase to cause all vehicles to yeild "
+.ti -1c
+.RI "void \fBSubscribe\fP ()"
+.br
+.RI "Subscribes to all vehicles in the simulation "
+.ti -1c
+.RI "void \fBOnVehicleUpdate\fP (object sender, Traci\&.Types\&.SubscriptionEventArgs e)"
+.br
+.RI "Event handler to handle a car update event "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "GameObject \fBCars_GO\fP"
+.br
+.RI "The Car main Game Object "
+.ti -1c
+.RI "float \fBspeed\fP = 2\&.0f"
+.br
+.RI "The simulation speed\&. "
+.ti -1c
+.RI "Traci\&.TraCIClient \fBClient\fP"
+.br
+.RI "The Traci client\&. "
+.ti -1c
+.RI "String \fBHostName\fP"
+.br
+.RI "The hostname of the computer for remote connections\&. "
+.ti -1c
+.RI "int \fBPort\fP"
+.br
+.RI "The post of the computer for remote connections\&. "
+.ti -1c
+.RI "String \fBConfigFile\fP"
+.br
+.RI "The current simulation config file\&. "
+.ti -1c
+.RI "bool \fBOccupancyVisual\fP"
+.br
+.RI "Flag to determine if the road color should be set "
+.ti -1c
+.RI "bool \fBCarVisual\fP"
+.br
+.RI "Flag to determine if car positions should be shown\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Traci Controller class manages a running simulation by communicating with a Sumo process\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void TraciController\&.OnVehicleUpdate (object sender, Traci\&.Types\&.SubscriptionEventArgs e)"
+
+.PP
+Event handler to handle a car update event 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsender\fP The client
+.br
+\fIe\fP The event args
+.RE
+.PP
+
+.SS "void TraciController\&.RemoveWorkZoneEntireRoad (string roadId)"
+
+.PP
+Removes the construction zone attribute from every lane in the road, and updates the simulation accordingly in SUMO\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroadId\fP The ID of the road to update 
+.RE
+.PP
+
+.SS "void TraciController\&.RemoveWorkZoneOnLane (string roadId, string laneId)"
+
+.PP
+Removes the construction zone attribute for a defined lane in the given road, and updates the simulation in SUMO\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroadId\fP The ID of the road to which the lane belongs
+.br
+\fIlaneId\fP The lane Id as specified in the SUMO network file
+.RE
+.PP
+
+.SS "void TraciController\&.SetStopSignJunction (string trafficLightId)"
+
+.PP
+Sets a junction's stop light to the 'off-blinking' phase to cause all vehicles to yeild 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrafficLightId\fP The id of the stop light/junction that will be converted
+.RE
+.PP
+
+.SS "void TraciController\&.SetTrafficLightJunction (string trafficLightId)"
+
+.PP
+Sets a junction's stop light to the default phase to cause all vehicles to yeild 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrafficLightId\fP The id of the stop light/junction that will be converted
+.RE
+.PP
+
+.SS "void TraciController\&.SetWorkZoneEntireRoad (string roadId)"
+
+.PP
+Sets the construction zone attribute for every lane in the road, and updates the simulation accordingly in SUMO\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroadId\fP The ID of the road to update
+.RE
+.PP
+
+.SS "void TraciController\&.SetWorkZoneOneLane (string roadId, string laneId)"
+
+.PP
+Sets the construction zone attribute for a defined lane in the given road, and updates the simulation in SUMO\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroadId\fP The ID of the road to which the lane belongs
+.br
+\fIlaneId\fP The lane Id as specified in the SUMO network file
+.RE
+.PP
+
+.SS "void TraciController\&.Subscribe ()"
+
+.PP
+Subscribes to all vehicles in the simulation 
+.SS "void TraciController\&.ToggleMesoscopic ()"
+
+.PP
+Flips the Occupancy Visual to simulate a mesoscopic view\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "GameObject TraciController\&.Cars_GO"
+
+.PP
+The Car main Game Object 
+.SS "bool TraciController\&.CarVisual"
+
+.PP
+Flag to determine if car positions should be shown\&. 
+.SS "Traci\&.TraCIClient TraciController\&.Client"
+
+.PP
+The Traci client\&. 
+.SS "String TraciController\&.ConfigFile"
+
+.PP
+The current simulation config file\&. 
+.SS "String TraciController\&.HostName"
+
+.PP
+The hostname of the computer for remote connections\&. 
+.SS "bool TraciController\&.OccupancyVisual"
+
+.PP
+Flag to determine if the road color should be set 
+.SS "int TraciController\&.Port"
+
+.PP
+The post of the computer for remote connections\&. 
+.SS "float TraciController\&.speed = 2\&.0f"
+
+.PP
+The simulation speed\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AR Sandbox for OSU Civil Construction Engineering from the source code\&.

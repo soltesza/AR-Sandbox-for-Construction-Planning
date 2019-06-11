@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 6e7efadb2884dcd4e95b8bace50bff3b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Terrain_Shader: {fileID: 4800000, guid: f11204064cc7d244c8b00e755c6cbfa8, type: 3}
+  - Main_Camera: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

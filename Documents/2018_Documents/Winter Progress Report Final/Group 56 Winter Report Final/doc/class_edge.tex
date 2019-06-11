@@ -1,0 +1,89 @@
+\hypertarget{class_edge}{}\section{Edge Class Reference}
+\label{class_edge}\index{Edge@{Edge}}
+
+
+The \mbox{\hyperlink{class_edge}{Edge}} class stores Network \mbox{\hyperlink{struct_road}{Road}} and \mbox{\hyperlink{struct_lane}{Lane}} information and builds roads (Edges) for S\+U\+MO networks.  
+
+
+Inheritance diagram for Edge\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_edge}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_edge_a2ec64470c2a869696dfba6b5fdd9cf0b}{Clear\+Data}} ()
+\begin{DoxyCompactList}\small\item\em Clear all saved Network \mbox{\hyperlink{struct_road}{Road}} Data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_edge_af671777176dc831d8a08e49f032fc763}{Build\+Edges}} ()
+\begin{DoxyCompactList}\small\item\em Parses the \mbox{\hyperlink{struct_road}{Road}} list and builds all valid Roads \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{struct_road}{Road}} $>$ \mbox{\hyperlink{class_edge_ada376fd8a81711e44ab425c32a85e844}{Road\+List}}
+\begin{DoxyCompactList}\small\item\em The list of the Networks roads. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_edge_a63c171b9e0912dcc3c03e85881a64b42}\label{class_edge_a63c171b9e0912dcc3c03e85881a64b42}} 
+Shader {\bfseries Road\+\_\+\+Shader}
+\item 
+\mbox{\Hypertarget{class_edge_a7e2a2b475f5e13684ec383eb5a78f8b4}\label{class_edge_a7e2a2b475f5e13684ec383eb5a78f8b4}} 
+Shader {\bfseries Concrete\+\_\+\+Shader}
+\item 
+float \mbox{\hyperlink{class_edge_abce1274185524bbf90f49b8214130fd1}{L\+A\+N\+E\+W\+I\+D\+TH}} = 3.\+4f
+\begin{DoxyCompactList}\small\item\em The width to make lanes in meters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \mbox{\hyperlink{class_edge}{Edge}} class stores Network \mbox{\hyperlink{struct_road}{Road}} and \mbox{\hyperlink{struct_lane}{Lane}} information and builds roads (Edges) for S\+U\+MO networks. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_edge_af671777176dc831d8a08e49f032fc763}\label{class_edge_af671777176dc831d8a08e49f032fc763}} 
+\index{Edge@{Edge}!BuildEdges@{BuildEdges}}
+\index{BuildEdges@{BuildEdges}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{BuildEdges()}{BuildEdges()}}
+{\footnotesize\ttfamily void Edge.\+Build\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Parses the \mbox{\hyperlink{struct_road}{Road}} list and builds all valid Roads 
+
+\mbox{\Hypertarget{class_edge_a2ec64470c2a869696dfba6b5fdd9cf0b}\label{class_edge_a2ec64470c2a869696dfba6b5fdd9cf0b}} 
+\index{Edge@{Edge}!ClearData@{ClearData}}
+\index{ClearData@{ClearData}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{ClearData()}{ClearData()}}
+{\footnotesize\ttfamily void Edge.\+Clear\+Data (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clear all saved Network \mbox{\hyperlink{struct_road}{Road}} Data. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_edge_abce1274185524bbf90f49b8214130fd1}\label{class_edge_abce1274185524bbf90f49b8214130fd1}} 
+\index{Edge@{Edge}!LANEWIDTH@{LANEWIDTH}}
+\index{LANEWIDTH@{LANEWIDTH}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{LANEWIDTH}{LANEWIDTH}}
+{\footnotesize\ttfamily float Edge.\+L\+A\+N\+E\+W\+I\+D\+TH = 3.\+4f}
+
+
+
+The width to make lanes in meters. 
+
+\mbox{\Hypertarget{class_edge_ada376fd8a81711e44ab425c32a85e844}\label{class_edge_ada376fd8a81711e44ab425c32a85e844}} 
+\index{Edge@{Edge}!RoadList@{RoadList}}
+\index{RoadList@{RoadList}!Edge@{Edge}}
+\subsubsection{\texorpdfstring{RoadList}{RoadList}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{struct_road}{Road}}$>$ Edge.\+Road\+List}
+
+
+
+The list of the Networks roads. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+A\+R\+\_\+\+Sumobox/\+Assets/\+Scripts/Edge.\+cs\end{DoxyCompactItemize}

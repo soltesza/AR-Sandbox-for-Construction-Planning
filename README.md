@@ -4,6 +4,10 @@ The AR sandbox is meant to augment a physical sandbox with additional informatio
 
 **NOTE: This project requires a Kinect V2 sensor to operate.**
 
+# SEE HERE FOR THE UPDATED INSTALL GUIDE FOR TRAFFIC SIMULATION FEATURES
+
+https://github.com/spencjon/AR-Sandbox-for-OSU-Civil-Construction-Engineering/blob/master/Documents/2018_Documents/ARSandbox%20Traffic%20Simulation%20Install%20Guide/ARSandbox_Traffic_Simulation_Install_Guide.pdf
+
 # Installation
 
 This project requires the Unity game engine and the Microsoft Kinect SDK to operate. After installing Unity and the Kinect SDK, run the Unity editor. Open a new project, and navigate to the src directory in the local GitHub repository. Unity should recognize the AR_Sandbox directory contained in the src directory as a Unity project. After opening the project, the program can be run in the editor by pressing the play button, or as an executable by navigating to **File > Build & Run** or pressing **CTRL + B**.

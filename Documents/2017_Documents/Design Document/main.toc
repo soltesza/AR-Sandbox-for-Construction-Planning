@@ -1,0 +1,35 @@
+\contentsline {section}{\numberline {1}Introduction}{3}
+\contentsline {subsection}{\numberline {1.1}Purpose}{3}
+\contentsline {subsection}{\numberline {1.2}Scope}{3}
+\contentsline {subsection}{\numberline {1.3}Glossary}{3}
+\contentsline {section}{\numberline {2}System Overview}{3}
+\contentsline {subsection}{\numberline {2.1}System Components}{4}
+\contentsline {subsection}{\numberline {2.2}System Modes}{4}
+\contentsline {subsubsection}{\numberline {2.2.1}Calibration Mode}{4}
+\contentsline {subsubsection}{\numberline {2.2.2}Depth Mode}{5}
+\contentsline {subsubsection}{\numberline {2.2.3}Design Mode}{5}
+\contentsline {subsubsection}{\numberline {2.2.4}Cut \& Fill Mode}{5}
+\contentsline {section}{\numberline {3}System Architecture}{5}
+\contentsline {subsection}{\numberline {3.1}Architectural Design}{5}
+\contentsline {subsubsection}{\numberline {3.1.1}Depth Sensor API}{6}
+\contentsline {subsubsection}{\numberline {3.1.2}Geometry Interpreter}{7}
+\contentsline {subsubsection}{\numberline {3.1.3}Height Lookup}{7}
+\contentsline {subsubsection}{\numberline {3.1.4}Adjust Calibration}{7}
+\contentsline {subsubsection}{\numberline {3.1.5}Calculate Cut/Fill}{7}
+\contentsline {subsubsection}{\numberline {3.1.6}Display Depth}{7}
+\contentsline {subsubsection}{\numberline {3.1.7}Vertex/Fragment Shader}{7}
+\contentsline {subsubsection}{\numberline {3.1.8}User Interface}{7}
+\contentsline {subsubsection}{\numberline {3.1.9}Renderer}{7}
+\contentsline {subsection}{\numberline {3.2}Design Rationale}{8}
+\contentsline {section}{\numberline {4}Physical Architecture}{8}
+\contentsline {subsection}{\numberline {4.1}Architectural Design}{8}
+\contentsline {subsubsection}{\numberline {4.1.1}Depth Sensor}{9}
+\contentsline {subsubsection}{\numberline {4.1.2}Projector}{9}
+\contentsline {subsubsection}{\numberline {4.1.3}Computer Terminal}{9}
+\contentsline {subsection}{\numberline {4.2}Design Rationale}{9}
+\contentsline {section}{\numberline {5}Data Design}{9}
+\contentsline {subsection}{\numberline {5.1}Data Description}{9}
+\contentsline {subsection}{\numberline {5.2}Data Dictionary}{10}
+\contentsline {subsubsection}{\numberline {5.2.1}Heightmap}{10}
+\contentsline {subsubsection}{\numberline {5.2.2}Terrain Mesh}{10}
+\contentsline {section}{References}{11}

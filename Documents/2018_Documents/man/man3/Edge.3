@@ -1,0 +1,67 @@
+.TH "Edge" 3 "Mon Jun 10 2019" "Version 2.0" "AR Sandbox for OSU Civil Construction Engineering" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Edge \- The \fBEdge\fP class stores Network \fBRoad\fP and \fBLane\fP information and builds roads (Edges) for SUMO networks\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBClearData\fP ()"
+.br
+.RI "Clear all saved Network \fBRoad\fP Data\&. "
+.ti -1c
+.RI "void \fBBuildEdges\fP ()"
+.br
+.RI "Parses the \fBRoad\fP list and builds all valid Roads "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "List< \fBRoad\fP > \fBRoadList\fP"
+.br
+.RI "The list of the Networks roads\&. "
+.ti -1c
+.RI "Shader \fBRoad_Shader\fP"
+.br
+.ti -1c
+.RI "float \fBLANEWIDTH\fP = 3\&.4f"
+.br
+.RI "The width to make lanes in meters\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The \fBEdge\fP class stores Network \fBRoad\fP and \fBLane\fP information and builds roads (Edges) for SUMO networks\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void Edge\&.BuildEdges ()"
+
+.PP
+Parses the \fBRoad\fP list and builds all valid Roads 
+.SS "void Edge\&.ClearData ()"
+
+.PP
+Clear all saved Network \fBRoad\fP Data\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "float Edge\&.LANEWIDTH = 3\&.4f"
+
+.PP
+The width to make lanes in meters\&. 
+.SS "List<\fBRoad\fP> Edge\&.RoadList"
+
+.PP
+The list of the Networks roads\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AR Sandbox for OSU Civil Construction Engineering from the source code\&.

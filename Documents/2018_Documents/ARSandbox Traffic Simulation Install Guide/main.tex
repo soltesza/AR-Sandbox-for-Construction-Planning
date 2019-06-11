@@ -1,0 +1,69 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+
+\title{ARSandbox Traffic Simulation Install Guide}
+\author{Team 56}
+\date{April 2019}
+
+\begin{document}
+
+\maketitle
+
+\section{System Requirements}
+    \begin{itemize}
+        \item Microsoft Kinect V2 Sensor.
+        \item 1080p Webcam.
+        \item A mini short-throw projector.
+        \item Intel Core I7 or equivalent processor.
+        \item 8+ GB RAM.
+        \item GTX 1080 Graphics Card (Other cards may likely work, but are untested).
+        \item An elevated sandbox with approximately 200 lbs. of play sand and an overhead mount for the projector, webcam and Kinect. 
+    \end{itemize}
+    
+\section{Install Unity}
+\begin{itemize}
+    \item Go to url{https://unity3d.com/get-unity/download} and download Unity version 2018.3.12.
+    \item Execute the downloaded installer and follow the instructions given.
+    \begin{itemize}
+        \item During installation, ensure that the “Vuforia Augmented Reality Support” option is enabled.
+    \end{itemize}
+\end{itemize}
+
+\section{Install SUMO}
+\begin{itemize}
+    \item Go to \url{https://sumo.dlr.de/wiki/Installing#Windows} and download the 64 bit Windows installer.
+    \item Execute the installer and follow the instructions.
+    \begin{itemize}
+        \item When prompted, select “C:\textbackslash Sumo\textbackslash” as the installation location
+        \item Follow the websites instructions to add SUMO to the PATH on your computer and add the environment variable SUMO\_HOME. For more information or help please visit the following webpage. \url{https://sumo.dlr.de/wiki/Basics/Basic_Computer_Skills}
+    \end{itemize}
+    
+\end{itemize}
+
+\section{Clone the repository}
+    \begin{itemize}
+        \item  \url{https://github.com/spencjon/AR-Sandbox-for-OSU-Civil-Construction-Engineering.git}
+    \end{itemize}
+
+\section{Open one of the two scenes in Unity}
+\begin{itemize}
+    \item For Traffic Simulation mode, open \textbackslash src\textbackslash AR\_Sumobox\textbackslash Assets\textbackslash Scenes\textbackslash SampleScene.unity
+    \item For Depth, Design, and Cut \& Fill modes, open \textbackslash src\textbackslash AR\_Sandbox\textbackslash Assets\textbackslash Scenes\textbackslash Sandbox.unity
+\end{itemize}
+
+\section{Ensure Vuforia is enabled}
+\begin{itemize}
+    \item Open File > Build Settings
+    \item Select “Player Settings”
+    \item Expand “XR Settings”
+    \item Make sure that “Vuforia Augmented Reality” is checked
+    \item If the checkbox is not available, do the following:
+        \begin{itemize}
+            \item Click “Vuforia Augmented Reality” under “XR Support Installers”
+            \item Run the program that is downloaded and follow the instructions (you will need to close Unity to finish the installation)
+            \item Reopen the scene in Unity
+        \end{itemize}
+\end{itemize}
+\end{document}

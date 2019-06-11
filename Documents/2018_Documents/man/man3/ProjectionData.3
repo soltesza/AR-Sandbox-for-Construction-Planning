@@ -1,0 +1,114 @@
+.TH "ProjectionData" 3 "Mon Jun 10 2019" "Version 2.0" "AR Sandbox for OSU Civil Construction Engineering" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ProjectionData \- Projection Data class stores and creates a simulation networks terrain\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBSetProjectionData\fP (XmlDocument xml)"
+.br
+.RI "Get the bounds of the current network as a pair of points in 2-Space "
+.ti -1c
+.RI "List< float > \fBShapeStringToFloatList\fP (string shape)"
+.br
+.RI "Sumo shape sting to List of floats point order is x1, y1, x2, y2, \&.\&.\&.\&. "
+.ti -1c
+.RI "void \fBBuildTerrain\fP ()"
+.br
+.RI "Adds a Terrain_Plane to the scene the size of the network and sets the camera to the center of the plane\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "Shader \fBTerrain_Shader\fP"
+.br
+.RI "The Projection Data Terrain Shader\&. "
+.ti -1c
+.RI "Camera \fBMain_Camera\fP"
+.br
+.RI "A handle to the main camera\&. "
+.ti -1c
+.RI "string \fBoffset\fP"
+.br
+.RI "The offset for network projections\&. "
+.ti -1c
+.RI "string \fBoriginalBounds\fP"
+.br
+.RI "The networks original bounds Lat/Lon "
+.ti -1c
+.RI "string \fBprojectedBounds\fP"
+.br
+.RI "The networks projected bound\&. Cartesian "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Projection Data class stores and creates a simulation networks terrain\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void ProjectionData\&.BuildTerrain ()"
+
+.PP
+Adds a Terrain_Plane to the scene the size of the network and sets the camera to the center of the plane\&. 
+.SS "void ProjectionData\&.SetProjectionData (XmlDocument xml)"
+
+.PP
+Get the bounds of the current network as a pair of points in 2-Space 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIxml\fP The xml file with the projection data\&.
+.RE
+.PP
+
+.SS "List<float> ProjectionData\&.ShapeStringToFloatList (string shape)"
+
+.PP
+Sumo shape sting to List of floats point order is x1, y1, x2, y2, \&.\&.\&.\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIshape\fP A Sumo formatted shape string\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "Camera ProjectionData\&.Main_Camera"
+
+.PP
+A handle to the main camera\&. 
+.SS "string ProjectionData\&.offset"
+
+.PP
+The offset for network projections\&. 
+.SS "string ProjectionData\&.originalBounds"
+
+.PP
+The networks original bounds Lat/Lon 
+.SS "string ProjectionData\&.projectedBounds"
+
+.PP
+The networks projected bound\&. Cartesian 
+.SS "Shader ProjectionData\&.Terrain_Shader"
+
+.PP
+The Projection Data Terrain Shader\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AR Sandbox for OSU Civil Construction Engineering from the source code\&.

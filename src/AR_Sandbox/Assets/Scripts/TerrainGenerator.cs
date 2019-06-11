@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Windows;
 using Windows.Kinect;
+using System;
 
 [RequireComponent(typeof(Mesh))]
 public class TerrainGenerator : MonoBehaviour {
@@ -95,18 +97,24 @@ public class TerrainGenerator : MonoBehaviour {
 	//update the terrain mesh with height data from Kinect sensor
 	public void UpdateMesh() {
 		ushort[] heightData = manager.GetData ();
-
+        Texture2D img = new Texture2D(frameWidth, frameHeight,TextureFormat.RGB24, false);
+        
 		spacing = scale / frameHeight;
 
 		if (useSensor) {
 			// Populate vertex array using sensor data
 			for (int i = 0; i < frameHeight / downsampleSize; i++) {
 				for (int j = 0; j < frameWidth / downsampleSize; j++) {
-					ushort y = heightData [j * downsampleSize + frameWidth * i * downsampleSize];		// Get Y value from Kinect height data
+                    
+                    ushort y = heightData [j * downsampleSize + frameWidth * i * downsampleSize];		// Get Y value from Kinect height data
 					float yNorm = ((float)y - maxHeight) / (minHeight - maxHeight); 					// Normalize height	
 					vertices [j + frameWidth / downsampleSize * i] = new Vector3 (j * spacing, yNorm * magnitude, i * spacing);
-				}
+                
+                }
 			}
+            byte[] b = img.EncodeToPNG();
+            File.WriteAllBytes(Application.dataPath + "/Resources/terrainSave.png", b);
+            
 		} else {
 			// Populate vertex array using placeholder heightmap for debugging
 			for (int i = 0; i < frameHeight / downsampleSize; i++) {

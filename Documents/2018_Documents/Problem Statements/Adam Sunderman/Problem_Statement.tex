@@ -1,0 +1,35 @@
+\documentclass[letterpaper, 10pt, onecolumn, draftclsnofoot]{IEEEtran}
+\usepackage{titling}                      
+\usepackage{geometry}
+\geometry{margin=.75in}
+\renewcommand{\familydefault}{\rmdefault}
+
+\title{Problem Statement for Marker Based AR Sandbox Improvements}
+\author{Adam Sunderman\\Senior Software Engineering Project\\Fall 2018}
+\date{10/11/2018}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+This paper describes proposed changes to a currently operating augmented reality (AR) sandbox located at Oregon State University. AR sandboxes have been developed all over the country for both educational and entertainment purposes. The basic concept behind an AR sandbox is simple. The unit is comprised of a physical box of sand, a video projector, a depth sensor, and a computer. As users interact with the AR sandbox and shape the sand within they will also manipulate in various ways images projected on the sand. Most often these images are topographic and elevation maps displayed over the sand. Our changes will add new functionality to the Oregon State University AR sandbox in the form of a new marker-based system for adding various interactive elements to a sandbox.\\
+\end{abstract}
+\newpage
+
+\section{Problem Description}
+Currently Oregon State University’s Civil Engineering students have a working augmented reality (AR) sandbox usable for exploring large scale construction projects related to transportation. The AR sandbox uses a video projector in combination with depth sensor to give students and educators visual feedback on the currently modeled projects terrain elevations. In real-time the distance of the depth sensor to the sand is computed at various points and translated to an elevation color. The computed color, in a gradient between blue (low) and red (high), is then projected on a per-pixel basis to the appropriate regions of the sandbox. The AR sandbox also allows users to create, place and edit sections of road and highway. These road models are projected on the sand along with elevation color. In this manner, the user can quickly visualize how the construction of a roadway at the modeled location will impact the land around it.\\
+The problem for our team is to add Marker functionality to the sandbox. Markers would be physical objects placed in the sandbox that are uniquely identifiable by current or additional hardware. The Markers will signal the system to project images of arbitrary objects, such as buildings, into the sandbox. Additionally, Markers will be used in traffic simulations in the future and therefor will need to store data that can be used to interact with a running simulation. These data sets could contain a wide range information and will often be specific to object types. For example, a building marker might store occupancy and zoning information while a traffic light marker could store data related to its cycle times or estimated hourly pedestrian traffic.\\  
+
+\section{Proposed Solution}
+The first step to adding markers to the AR sandbox will be to find a suitable way of processing them into the computer system. The client has shown examples of non-functional markers using common QR codes. The problem with these examples is that a suitable QR code takes up too much space in the sandbox and ruins the projected image. The possible solutions at this point are temporary markers that are removed after being scanned into the scene or maybe another type of sensory system that is smaller.\\
+Next, we will need to develop a library of models that can be visually projected when a marker is placed in the sandbox. Many of these models can be generic, but there will likely be the need to design some functions to procedurally generate others. For example, if a user wanted to model a specific building it would be important to at least have the correct footprint displayed.\\
+Last, we will need to develop a marker/model database. This database will need to store the relevant information on how a marker relates to a model and specific data on its characteristics. This can be used to save information for later use by reloading models using a marker. This could additionally introduce a parent/child feature to the marker system where one marker could load multiple models and their data.\\
+Time permitting, we will also attempt to put together a basic traffic simulation that integrates the markers with the already existing road creation system. This simulation would show the impact to a road when a new marker is added to the sandbox. The simulation would show changes in traffic in relation to objects and give designers a much better understanding of the impacts a project could have on the surrounding areas.\\ 
+
+\section{Performance Metrics}
+To ensure that we meet client expectations and deliver a suitable product we will need to meet several concrete requirements.\\
+First, we need to deliver a programable and expandable marker system that can support a wide variety of marker types.\\
+Second, we need to deliver a system capable of translating markers into proper models that can be displayed on the surface of the sand.\\ 
+Third, we need to deliver a database system that can easily be managed by users to reload, store and create new marker/model relationships and characteristics.\\
+Lastly, we should try as hard as we can to provide the client with a basic traffic simulation using the new marker system. Time will be a factor in the quality of the simulation, but it should at least showcase some of the possibilities that markers provide when used in conjunction with programmed simulations.\\
+Though it’s still early in the project and expectations may change, if we deliver the above functionality it’s likely the client will be pleased.\\
+\end{document}

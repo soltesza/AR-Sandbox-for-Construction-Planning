@@ -1,0 +1,279 @@
+\hypertarget{class_traci_controller}{}\section{Traci\+Controller Class Reference}
+\label{class_traci_controller}\index{TraciController@{TraciController}}
+
+
+Traci Controller class manages a running simulation by communicating with a Sumo process.  
+
+
+Inheritance diagram for Traci\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_traci_controller_af8e5c5fefc5582cd12aeaca1b0663ac4}{Remove\+Work\+Zone\+On\+Lane}} (string road\+Id, string lane\+Id)
+\begin{DoxyCompactList}\small\item\em Removes the construction zone attribute for a defined lane in the given road, and updates the simulation in S\+U\+MO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_a9678133938b5cf28566121ab6672dc34}{Remove\+Work\+Zone\+Entire\+Road}} (string road\+Id)
+\begin{DoxyCompactList}\small\item\em Removes the construction zone attribute from every lane in the road, and updates the simulation accordingly in S\+U\+MO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_ae16a322e3cb2b298a8f52ceaa6661171}{Set\+Work\+Zone\+Entire\+Road}} (string road\+Id)
+\begin{DoxyCompactList}\small\item\em Sets the construction zone attribute for every lane in the road, and updates the simulation accordingly in S\+U\+MO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_a5cb4324d12175bb8007433226d988561}{Set\+Work\+Zone\+One\+Lane}} (string road\+Id, string lane\+Id)
+\begin{DoxyCompactList}\small\item\em Sets the construction zone attribute for a defined lane in the given road, and updates the simulation in S\+U\+MO. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_a14b200d6e8bf71d6ae2391801b6eb51a}{Toggle\+Mesoscopic}} ()
+\begin{DoxyCompactList}\small\item\em Flips the Occupancy Visual to simulate a mesoscopic view. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_a033fdbe17b1d457bc59de0c2cdbe13ac}{Set\+Stop\+Sign\+Junction}} (string traffic\+Light\+Id)
+\begin{DoxyCompactList}\small\item\em Sets a junction\textquotesingle{}s stop light to the \char`\"{}off-\/blinking\char`\"{} phase to cause all vehicles to yeild \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_a058ad2eec9a474491fd1549c5b269e25}{Set\+Traffic\+Light\+Junction}} (string traffic\+Light\+Id)
+\begin{DoxyCompactList}\small\item\em Sets a junction\textquotesingle{}s stop light to the default phase to cause all vehicles to yeild \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_aacc5a9530481fe986ee9329f07e4eccd}{Subscribe}} ()
+\begin{DoxyCompactList}\small\item\em Subscribes to all vehicles in the simulation \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_traci_controller_ae059ca6ccc3a8ce34a4d133de3d5fade}{On\+Vehicle\+Update}} (object sender, Traci.\+Types.\+Subscription\+Event\+Args e)
+\begin{DoxyCompactList}\small\item\em Event handler to handle a car update event \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Game\+Object \mbox{\hyperlink{class_traci_controller_a29b2da0a754eabda5002fad9b07213c6}{Cars\+\_\+\+GO}}
+\begin{DoxyCompactList}\small\item\em The Car main Game Object \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_traci_controller_abc82770640e1620b43607ad292e97f4e}{speed}} = 2.\+0f
+\begin{DoxyCompactList}\small\item\em The simulation speed. \end{DoxyCompactList}\item 
+Traci.\+Tra\+C\+I\+Client \mbox{\hyperlink{class_traci_controller_a2ad927f803db7f58f36623b8c7e4cbf8}{Client}}
+\begin{DoxyCompactList}\small\item\em The Traci client. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{class_traci_controller_aed0a2042d258363ec5726b8b7c9e40b3}{Host\+Name}}
+\begin{DoxyCompactList}\small\item\em The hostname of the computer for remote connections. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_traci_controller_a480600f51cbbd8506fbdca8fd3179cb3}{Port}}
+\begin{DoxyCompactList}\small\item\em The post of the computer for remote connections. \end{DoxyCompactList}\item 
+String \mbox{\hyperlink{class_traci_controller_a333aa35fec78296dc265107576c8dcda}{Config\+File}}
+\begin{DoxyCompactList}\small\item\em The current simulation config file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_traci_controller_ad0ad2e07d2af2be66e30233cf39e7d88}{Occupancy\+Visual}}
+\begin{DoxyCompactList}\small\item\em Flag to determine if the road color should be set \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_traci_controller_a0e5d2ec61d361d163647ed1eac5cbeca}{Car\+Visual}}
+\begin{DoxyCompactList}\small\item\em Flag to determine if car positions should be shown. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Traci Controller class manages a running simulation by communicating with a Sumo process. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_traci_controller_ae059ca6ccc3a8ce34a4d133de3d5fade}\label{class_traci_controller_ae059ca6ccc3a8ce34a4d133de3d5fade}} 
+\index{TraciController@{TraciController}!OnVehicleUpdate@{OnVehicleUpdate}}
+\index{OnVehicleUpdate@{OnVehicleUpdate}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{OnVehicleUpdate()}{OnVehicleUpdate()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+On\+Vehicle\+Update (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{Traci.\+Types.\+Subscription\+Event\+Args}]{e }\end{DoxyParamCaption})}
+
+
+
+Event handler to handle a car update event 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & The client\\
+\hline
+{\em e} & The event args\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_traci_controller_a9678133938b5cf28566121ab6672dc34}\label{class_traci_controller_a9678133938b5cf28566121ab6672dc34}} 
+\index{TraciController@{TraciController}!RemoveWorkZoneEntireRoad@{RemoveWorkZoneEntireRoad}}
+\index{RemoveWorkZoneEntireRoad@{RemoveWorkZoneEntireRoad}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{RemoveWorkZoneEntireRoad()}{RemoveWorkZoneEntireRoad()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Remove\+Work\+Zone\+Entire\+Road (\begin{DoxyParamCaption}\item[{string}]{road\+Id }\end{DoxyParamCaption})}
+
+
+
+Removes the construction zone attribute from every lane in the road, and updates the simulation accordingly in S\+U\+MO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em road\+Id} & The ID of the road to update \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_traci_controller_af8e5c5fefc5582cd12aeaca1b0663ac4}\label{class_traci_controller_af8e5c5fefc5582cd12aeaca1b0663ac4}} 
+\index{TraciController@{TraciController}!RemoveWorkZoneOnLane@{RemoveWorkZoneOnLane}}
+\index{RemoveWorkZoneOnLane@{RemoveWorkZoneOnLane}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{RemoveWorkZoneOnLane()}{RemoveWorkZoneOnLane()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Remove\+Work\+Zone\+On\+Lane (\begin{DoxyParamCaption}\item[{string}]{road\+Id,  }\item[{string}]{lane\+Id }\end{DoxyParamCaption})}
+
+
+
+Removes the construction zone attribute for a defined lane in the given road, and updates the simulation in S\+U\+MO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em road\+Id} & The ID of the road to which the lane belongs\\
+\hline
+{\em lane\+Id} & The lane Id as specified in the S\+U\+MO network file\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_traci_controller_a033fdbe17b1d457bc59de0c2cdbe13ac}\label{class_traci_controller_a033fdbe17b1d457bc59de0c2cdbe13ac}} 
+\index{TraciController@{TraciController}!SetStopSignJunction@{SetStopSignJunction}}
+\index{SetStopSignJunction@{SetStopSignJunction}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{SetStopSignJunction()}{SetStopSignJunction()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Set\+Stop\+Sign\+Junction (\begin{DoxyParamCaption}\item[{string}]{traffic\+Light\+Id }\end{DoxyParamCaption})}
+
+
+
+Sets a junction\textquotesingle{}s stop light to the \char`\"{}off-\/blinking\char`\"{} phase to cause all vehicles to yeild 
+
+
+\begin{DoxyParams}{Parameters}
+{\em traffic\+Light\+Id} & The id of the stop light/junction that will be converted\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_traci_controller_a058ad2eec9a474491fd1549c5b269e25}\label{class_traci_controller_a058ad2eec9a474491fd1549c5b269e25}} 
+\index{TraciController@{TraciController}!SetTrafficLightJunction@{SetTrafficLightJunction}}
+\index{SetTrafficLightJunction@{SetTrafficLightJunction}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{SetTrafficLightJunction()}{SetTrafficLightJunction()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Set\+Traffic\+Light\+Junction (\begin{DoxyParamCaption}\item[{string}]{traffic\+Light\+Id }\end{DoxyParamCaption})}
+
+
+
+Sets a junction\textquotesingle{}s stop light to the default phase to cause all vehicles to yeild 
+
+
+\begin{DoxyParams}{Parameters}
+{\em traffic\+Light\+Id} & The id of the stop light/junction that will be converted\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_traci_controller_ae16a322e3cb2b298a8f52ceaa6661171}\label{class_traci_controller_ae16a322e3cb2b298a8f52ceaa6661171}} 
+\index{TraciController@{TraciController}!SetWorkZoneEntireRoad@{SetWorkZoneEntireRoad}}
+\index{SetWorkZoneEntireRoad@{SetWorkZoneEntireRoad}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{SetWorkZoneEntireRoad()}{SetWorkZoneEntireRoad()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Set\+Work\+Zone\+Entire\+Road (\begin{DoxyParamCaption}\item[{string}]{road\+Id }\end{DoxyParamCaption})}
+
+
+
+Sets the construction zone attribute for every lane in the road, and updates the simulation accordingly in S\+U\+MO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em road\+Id} & The ID of the road to update\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_traci_controller_a5cb4324d12175bb8007433226d988561}\label{class_traci_controller_a5cb4324d12175bb8007433226d988561}} 
+\index{TraciController@{TraciController}!SetWorkZoneOneLane@{SetWorkZoneOneLane}}
+\index{SetWorkZoneOneLane@{SetWorkZoneOneLane}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{SetWorkZoneOneLane()}{SetWorkZoneOneLane()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Set\+Work\+Zone\+One\+Lane (\begin{DoxyParamCaption}\item[{string}]{road\+Id,  }\item[{string}]{lane\+Id }\end{DoxyParamCaption})}
+
+
+
+Sets the construction zone attribute for a defined lane in the given road, and updates the simulation in S\+U\+MO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em road\+Id} & The ID of the road to which the lane belongs\\
+\hline
+{\em lane\+Id} & The lane Id as specified in the S\+U\+MO network file\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_traci_controller_aacc5a9530481fe986ee9329f07e4eccd}\label{class_traci_controller_aacc5a9530481fe986ee9329f07e4eccd}} 
+\index{TraciController@{TraciController}!Subscribe@{Subscribe}}
+\index{Subscribe@{Subscribe}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{Subscribe()}{Subscribe()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Subscribe (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Subscribes to all vehicles in the simulation 
+
+\mbox{\Hypertarget{class_traci_controller_a14b200d6e8bf71d6ae2391801b6eb51a}\label{class_traci_controller_a14b200d6e8bf71d6ae2391801b6eb51a}} 
+\index{TraciController@{TraciController}!ToggleMesoscopic@{ToggleMesoscopic}}
+\index{ToggleMesoscopic@{ToggleMesoscopic}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{ToggleMesoscopic()}{ToggleMesoscopic()}}
+{\footnotesize\ttfamily void Traci\+Controller.\+Toggle\+Mesoscopic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Flips the Occupancy Visual to simulate a mesoscopic view. 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_traci_controller_a29b2da0a754eabda5002fad9b07213c6}\label{class_traci_controller_a29b2da0a754eabda5002fad9b07213c6}} 
+\index{TraciController@{TraciController}!Cars\_GO@{Cars\_GO}}
+\index{Cars\_GO@{Cars\_GO}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{Cars\_GO}{Cars\_GO}}
+{\footnotesize\ttfamily Game\+Object Traci\+Controller.\+Cars\+\_\+\+GO}
+
+
+
+The Car main Game Object 
+
+\mbox{\Hypertarget{class_traci_controller_a0e5d2ec61d361d163647ed1eac5cbeca}\label{class_traci_controller_a0e5d2ec61d361d163647ed1eac5cbeca}} 
+\index{TraciController@{TraciController}!CarVisual@{CarVisual}}
+\index{CarVisual@{CarVisual}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{CarVisual}{CarVisual}}
+{\footnotesize\ttfamily bool Traci\+Controller.\+Car\+Visual}
+
+
+
+Flag to determine if car positions should be shown. 
+
+\mbox{\Hypertarget{class_traci_controller_a2ad927f803db7f58f36623b8c7e4cbf8}\label{class_traci_controller_a2ad927f803db7f58f36623b8c7e4cbf8}} 
+\index{TraciController@{TraciController}!Client@{Client}}
+\index{Client@{Client}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{Client}{Client}}
+{\footnotesize\ttfamily Traci.\+Tra\+C\+I\+Client Traci\+Controller.\+Client}
+
+
+
+The Traci client. 
+
+\mbox{\Hypertarget{class_traci_controller_a333aa35fec78296dc265107576c8dcda}\label{class_traci_controller_a333aa35fec78296dc265107576c8dcda}} 
+\index{TraciController@{TraciController}!ConfigFile@{ConfigFile}}
+\index{ConfigFile@{ConfigFile}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{ConfigFile}{ConfigFile}}
+{\footnotesize\ttfamily String Traci\+Controller.\+Config\+File}
+
+
+
+The current simulation config file. 
+
+\mbox{\Hypertarget{class_traci_controller_aed0a2042d258363ec5726b8b7c9e40b3}\label{class_traci_controller_aed0a2042d258363ec5726b8b7c9e40b3}} 
+\index{TraciController@{TraciController}!HostName@{HostName}}
+\index{HostName@{HostName}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{HostName}{HostName}}
+{\footnotesize\ttfamily String Traci\+Controller.\+Host\+Name}
+
+
+
+The hostname of the computer for remote connections. 
+
+\mbox{\Hypertarget{class_traci_controller_ad0ad2e07d2af2be66e30233cf39e7d88}\label{class_traci_controller_ad0ad2e07d2af2be66e30233cf39e7d88}} 
+\index{TraciController@{TraciController}!OccupancyVisual@{OccupancyVisual}}
+\index{OccupancyVisual@{OccupancyVisual}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{OccupancyVisual}{OccupancyVisual}}
+{\footnotesize\ttfamily bool Traci\+Controller.\+Occupancy\+Visual}
+
+
+
+Flag to determine if the road color should be set 
+
+\mbox{\Hypertarget{class_traci_controller_a480600f51cbbd8506fbdca8fd3179cb3}\label{class_traci_controller_a480600f51cbbd8506fbdca8fd3179cb3}} 
+\index{TraciController@{TraciController}!Port@{Port}}
+\index{Port@{Port}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{Port}{Port}}
+{\footnotesize\ttfamily int Traci\+Controller.\+Port}
+
+
+
+The post of the computer for remote connections. 
+
+\mbox{\Hypertarget{class_traci_controller_abc82770640e1620b43607ad292e97f4e}\label{class_traci_controller_abc82770640e1620b43607ad292e97f4e}} 
+\index{TraciController@{TraciController}!speed@{speed}}
+\index{speed@{speed}!TraciController@{TraciController}}
+\subsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily float Traci\+Controller.\+speed = 2.\+0f}
+
+
+
+The simulation speed. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Documents/\+Git\+Hub/\+A\+R-\/\+Sandbox-\/for-\/\+Construction-\/\+Planning/src/\+A\+R\+\_\+\+Sumobox/\+Assets/\+Scripts/Traci\+Controller.\+cs\end{DoxyCompactItemize}
