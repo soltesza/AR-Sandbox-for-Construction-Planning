@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['cleardata',['ClearData',['../class_edge.html#a2ec64470c2a869696dfba6b5fdd9cf0b',1,'Edge.ClearData()'],['../class_junction.html#a57e3c911fbcf14d45b861fcce0d717aa',1,'Junction.ClearData()'],['../class_structure.html#a403435d05e2eec3c6ede0d842ad67b53',1,'Structure.ClearData()']]]
+  ['build',['Build',['../class_structure.html#a8603f9a973205d3dcaf81710fa79158d',1,'Structure']]],
+  ['buildedges',['BuildEdges',['../class_edge.html#af671777176dc831d8a08e49f032fc763',1,'Edge']]],
+  ['buildjunction',['BuildJunction',['../class_junction.html#ac628e043d2e35c8323d819f26dc3e0f8',1,'Junction']]],
+  ['buildterrain',['BuildTerrain',['../class_projection_data.html#a7e00204c97b5c3c3e603e2ab55b4793a',1,'ProjectionData']]]
 ];

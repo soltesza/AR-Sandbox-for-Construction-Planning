@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['build',['Build',['../class_structure.html#a8603f9a973205d3dcaf81710fa79158d',1,'Structure']]],
-  ['buildedges',['BuildEdges',['../class_edge.html#af671777176dc831d8a08e49f032fc763',1,'Edge']]],
-  ['buildjunction',['BuildJunction',['../class_junction.html#a8cff04b2726c9aab876bf0434cf477db',1,'Junction']]],
-  ['buildterrain',['BuildTerrain',['../class_projection_data.html#a7e00204c97b5c3c3e603e2ab55b4793a',1,'ProjectionData']]]
+  ['addtriggerarea',['AddTriggerArea',['../class_marker_action.html#a61235131a5158547a0ae7ddab7ef8c02',1,'MarkerAction.AddTriggerArea(Vector3 triggerPosition)'],['../class_marker_action.html#ac27e22f8368b62f303cee146b800b40a',1,'MarkerAction.AddTriggerArea(Bounds triggerArea)']]],
+  ['addtriggerareas',['AddTriggerAreas',['../class_marker_action.html#a68156ef1048821f016d27211cf46422f',1,'MarkerAction.AddTriggerAreas(IEnumerable&lt; Vector3 &gt; triggerPositions)'],['../class_marker_action.html#aaec6622e06d2c62418117d1d4a4c1d70',1,'MarkerAction.AddTriggerAreas(IEnumerable&lt; Bounds &gt; triggerAreas)']]]
 ];

@@ -1,0 +1,125 @@
+.TH "MarkerAction" 3 "Mon Jun 10 2019" "Version 2.0" "AR Sandbox for OSU Civil Construction Engineering" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MarkerAction \- Used to provide functionality to a marker\&. This script should only be attached to an Image Target\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour, and ITrackableEventHandler\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBOnTrackableStateChanged\fP (TrackableBehaviour\&.Status previousStatus, TrackableBehaviour\&.Status newStatus)"
+.br
+.RI "Invoked by Vuforia whenever the status of an Image Target changes\&. This lets us know whether or not the marker is being tracked\&. "
+.ti -1c
+.RI "void \fBAddTriggerArea\fP (Vector3 triggerPosition)"
+.br
+.RI "Adds a point to the list of areas that trigger the event\&. "
+.ti -1c
+.RI "void \fBAddTriggerArea\fP (Bounds triggerArea)"
+.br
+.RI "Adds a Bounds to the list of areas that trigger the event\&. "
+.ti -1c
+.RI "void \fBAddTriggerAreas\fP (IEnumerable< Vector3 > triggerPositions)"
+.br
+.RI "Adds multiple points to the list of areas that trigger the event\&. "
+.ti -1c
+.RI "void \fBAddTriggerAreas\fP (IEnumerable< Bounds > triggerAreas)"
+.br
+.RI "Adds multiple Bounds to the list of areas that trigger the event\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBIntEvent\fP \fBatPositionEvent\fP"
+.br
+.ti -1c
+.RI "float \fBtimeForTrigger\fP"
+.br
+.ti -1c
+.RI "float \fBxYTolerance\fP"
+.br
+.ti -1c
+.RI "Transform \fBmainCameraTransform\fP"
+.br
+.ti -1c
+.RI "float \fBARCameraHeight\fP"
+.br
+.ti -1c
+.RI "bool \fBrotateCamera\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Used to provide functionality to a marker\&. This script should only be attached to an Image Target\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void MarkerAction\&.AddTriggerArea (Vector3 triggerPosition)"
+
+.PP
+Adds a point to the list of areas that trigger the event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItriggerPosition\fP The point to add as a trigger\&.
+.RE
+.PP
+
+.SS "void MarkerAction\&.AddTriggerArea (Bounds triggerArea)"
+
+.PP
+Adds a Bounds to the list of areas that trigger the event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItriggerArea\fP The area to add as a trigger\&.
+.RE
+.PP
+
+.SS "void MarkerAction\&.AddTriggerAreas (IEnumerable< Vector3 > triggerPositions)"
+
+.PP
+Adds multiple points to the list of areas that trigger the event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItriggerPositions\fP The points to add as triggers\&.
+.RE
+.PP
+
+.SS "void MarkerAction\&.AddTriggerAreas (IEnumerable< Bounds > triggerAreas)"
+
+.PP
+Adds multiple Bounds to the list of areas that trigger the event\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItriggerAreas\fP The areas to add as triggers\&.
+.RE
+.PP
+
+.SS "void MarkerAction\&.OnTrackableStateChanged (TrackableBehaviour\&.Status previousStatus, TrackableBehaviour\&.Status newStatus)"
+
+.PP
+Invoked by Vuforia whenever the status of an Image Target changes\&. This lets us know whether or not the marker is being tracked\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpreviousStatus\fP The previous status of the Image Target
+.br
+\fInewStatus\fP The current status of the Image Target
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AR Sandbox for OSU Civil Construction Engineering from the source code\&.

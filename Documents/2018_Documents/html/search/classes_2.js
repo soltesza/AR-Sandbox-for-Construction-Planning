@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lane',['Lane',['../struct_lane.html',1,'']]]
+  ['junction',['Junction',['../class_junction.html',1,'']]]
 ];

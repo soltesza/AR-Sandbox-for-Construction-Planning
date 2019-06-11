@@ -5,10 +5,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>AR Sandbox: Junction Class Reference</title>
+<title>AR Sandbox for OSU Civil Construction Engineering: Junction Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,8 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Terrain.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">AR Sandbox
+   <div id="projectname">AR Sandbox for OSU Civil Construction Engineering
+   &#160;<span id="projectnumber">2.0</span>
    </div>
   </td>
  </tr>
@@ -45,6 +55,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_junction.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,7 +86,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -69,6 +95,9 @@ $(function() {
 <div class="title">Junction Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><a class="el" href="class_junction.html" title="Junction class represents road network intersection.">Junction</a> class represents road network intersection.  
+ <a href="class_junction.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for Junction:</div>
 <div class="dyncontent">
@@ -79,32 +108,32 @@ Inheritance diagram for Junction:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a57e3c911fbcf14d45b861fcce0d717aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_junction.html#a57e3c911fbcf14d45b861fcce0d717aa">ClearData</a> ()</td></tr>
+<tr class="memdesc:a57e3c911fbcf14d45b861fcce0d717aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear all current simulation data.  <a href="#a57e3c911fbcf14d45b861fcce0d717aa">More...</a><br /></td></tr>
 <tr class="separator:a57e3c911fbcf14d45b861fcce0d717aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cff04b2726c9aab876bf0434cf477db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_junction.html#a8cff04b2726c9aab876bf0434cf477db">BuildJunction</a> ()</td></tr>
-<tr class="separator:a8cff04b2726c9aab876bf0434cf477db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac628e043d2e35c8323d819f26dc3e0f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_junction.html#ac628e043d2e35c8323d819f26dc3e0f8">BuildJunction</a> (<a class="el" href="struct_intersection.html">Intersection</a> inter, bool flat)</td></tr>
+<tr class="memdesc:ac628e043d2e35c8323d819f26dc3e0f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build an <a class="el" href="struct_intersection.html">Intersection</a>.  <a href="#ac628e043d2e35c8323d819f26dc3e0f8">More...</a><br /></td></tr>
+<tr class="separator:ac628e043d2e35c8323d819f26dc3e0f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fa76c252910d5fb58192c91ed7a16f8"><td class="memItemLeft" align="right" valign="top"><a id="a8fa76c252910d5fb58192c91ed7a16f8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>Build</b> ()</td></tr>
+<tr class="separator:a8fa76c252910d5fb58192c91ed7a16f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aafa4fcc8f658991b53226b5d262e9879"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_junction.html#aafa4fcc8f658991b53226b5d262e9879">Id</a></td></tr>
-<tr class="separator:aafa4fcc8f658991b53226b5d262e9879"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d9b7a5a824a2be15cc132b807886c90"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_junction.html#a5d9b7a5a824a2be15cc132b807886c90">Name</a></td></tr>
-<tr class="separator:a5d9b7a5a824a2be15cc132b807886c90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f0e7e043c53f34c9e486d2a97102b06"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_junction.html#a5f0e7e043c53f34c9e486d2a97102b06">Type</a></td></tr>
-<tr class="separator:a5f0e7e043c53f34c9e486d2a97102b06"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1db3486037f1c48bf7e8dfc840554d59"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_junction.html#a1db3486037f1c48bf7e8dfc840554d59">X</a></td></tr>
-<tr class="separator:a1db3486037f1c48bf7e8dfc840554d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7261805525d4563e5c476a69ae09ca1e"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_junction.html#a7261805525d4563e5c476a69ae09ca1e">Y</a></td></tr>
-<tr class="separator:a7261805525d4563e5c476a69ae09ca1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac63e779f04e8ee963533e32bafe3074d"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_junction.html#ac63e779f04e8ee963533e32bafe3074d">IncomingLanes</a></td></tr>
-<tr class="separator:ac63e779f04e8ee963533e32bafe3074d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadf670a8d23f2bd1ac299d8c919b628c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_junction.html#aadf670a8d23f2bd1ac299d8c919b628c">InternalLanes</a></td></tr>
-<tr class="separator:aadf670a8d23f2bd1ac299d8c919b628c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08e99228991573794a51ecde746c165a"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_junction.html#a08e99228991573794a51ecde746c165a">Shape</a></td></tr>
-<tr class="separator:a08e99228991573794a51ecde746c165a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a743d19d85f9339788d583823e1d5560d"><td class="memItemLeft" align="right" valign="top"><a id="a743d19d85f9339788d583823e1d5560d"></a>
+Shader&#160;</td><td class="memItemRight" valign="bottom"><b>Road_Shader</b></td></tr>
+<tr class="separator:a743d19d85f9339788d583823e1d5560d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bae80cbbf75fd7f785165894ecf3d1e"><td class="memItemLeft" align="right" valign="top"><a id="a9bae80cbbf75fd7f785165894ecf3d1e"></a>
+List&lt; <a class="el" href="struct_intersection.html">Intersection</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Junction_List</b></td></tr>
+<tr class="separator:a9bae80cbbf75fd7f785165894ecf3d1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3ca7b1f5b4d5a1a212ec4ec5f85e842"><td class="memItemLeft" align="right" valign="top"><a id="af3ca7b1f5b4d5a1a212ec4ec5f85e842"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>Built</b></td></tr>
+<tr class="separator:af3ca7b1f5b4d5a1a212ec4ec5f85e842"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a8cff04b2726c9aab876bf0434cf477db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8cff04b2726c9aab876bf0434cf477db">&#9670;&nbsp;</a></span>BuildJunction()</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p><a class="el" href="class_junction.html" title="Junction class represents road network intersection.">Junction</a> class represents road network intersection. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac628e043d2e35c8323d819f26dc3e0f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac628e043d2e35c8323d819f26dc3e0f8">&#9670;&nbsp;</a></span>BuildJunction()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -112,11 +141,24 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Junction.BuildJunction </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="el" href="struct_intersection.html">Intersection</a>&#160;</td>
+          <td class="paramname"><em>inter</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>flat</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Build an <a class="el" href="struct_intersection.html">Intersection</a>. </p>
 
 </div>
 </div>
@@ -135,130 +177,23 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="aafa4fcc8f658991b53226b5d262e9879"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafa4fcc8f658991b53226b5d262e9879">&#9670;&nbsp;</a></span>Id</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Junction.Id</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ac63e779f04e8ee963533e32bafe3074d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac63e779f04e8ee963533e32bafe3074d">&#9670;&nbsp;</a></span>IncomingLanes</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Junction.IncomingLanes</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aadf670a8d23f2bd1ac299d8c919b628c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aadf670a8d23f2bd1ac299d8c919b628c">&#9670;&nbsp;</a></span>InternalLanes</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Junction.InternalLanes</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5d9b7a5a824a2be15cc132b807886c90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d9b7a5a824a2be15cc132b807886c90">&#9670;&nbsp;</a></span>Name</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Junction.Name</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a08e99228991573794a51ecde746c165a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08e99228991573794a51ecde746c165a">&#9670;&nbsp;</a></span>Shape</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Junction.Shape</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5f0e7e043c53f34c9e486d2a97102b06"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f0e7e043c53f34c9e486d2a97102b06">&#9670;&nbsp;</a></span>Type</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Junction.Type</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1db3486037f1c48bf7e8dfc840554d59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1db3486037f1c48bf7e8dfc840554d59">&#9670;&nbsp;</a></span>X</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Junction.X</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a7261805525d4563e5c476a69ae09ca1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7261805525d4563e5c476a69ae09ca1e">&#9670;&nbsp;</a></span>Y</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string Junction.Y</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Clear all current simulation data. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/sunde/Documents/GitHub/AR-Sandbox-for-Construction-Planning/src/AR_Sumobox/Assets/Scripts/<a class="el" href="_junction_8cs.html">Junction.cs</a></li>
+<li>C:/Users/sunde/Documents/GitHub/AR-Sandbox-for-Construction-Planning/src/AR_Sumobox/Assets/Scripts/Junction.cs</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_junction.html">Junction</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
 </body>
 </html>

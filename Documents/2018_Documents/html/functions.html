@@ -5,10 +5,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>AR Sandbox: Class Members</title>
+<title>AR Sandbox for OSU Civil Construction Engineering: Class Members</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,8 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Terrain.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">AR Sandbox
+   <div id="projectname">AR Sandbox for OSU Civil Construction Engineering
+   &#160;<span id="projectnumber">2.0</span>
    </div>
   </td>
  </tr>
@@ -46,6 +56,22 @@ $(function() {
 /* @license-end */</script>
 <div id="main-nav"></div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('functions.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -61,11 +87,14 @@ $(function() {
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all class members with links to the classes they belong to:</div>
+<div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
 
 <h3><a id="index_a"></a>- a -</h3><ul>
-<li>Allow
-: <a class="el" href="struct_lane.html#ab19a5c96f899b49f87d1eff3135c0adc">Lane</a>
+<li>AddTriggerArea()
+: <a class="el" href="class_marker_action.html#a61235131a5158547a0ae7ddab7ef8c02">MarkerAction</a>
+</li>
+<li>AddTriggerAreas()
+: <a class="el" href="class_marker_action.html#a68156ef1048821f016d27211cf46422f">MarkerAction</a>
 </li>
 </ul>
 
@@ -77,8 +106,11 @@ $(function() {
 <li>BuildEdges()
 : <a class="el" href="class_edge.html#af671777176dc831d8a08e49f032fc763">Edge</a>
 </li>
+<li>Building_Shader
+: <a class="el" href="class_structure.html#aa06a0148d5f248e9a906266898dc79d4">Structure</a>
+</li>
 <li>BuildJunction()
-: <a class="el" href="class_junction.html#a8cff04b2726c9aab876bf0434cf477db">Junction</a>
+: <a class="el" href="class_junction.html#ac628e043d2e35c8323d819f26dc3e0f8">Junction</a>
 </li>
 <li>BuildTerrain()
 : <a class="el" href="class_projection_data.html#a7e00204c97b5c3c3e603e2ab55b4793a">ProjectionData</a>
@@ -87,30 +119,22 @@ $(function() {
 
 
 <h3><a id="index_c"></a>- c -</h3><ul>
-<li>Canvas
-: <a class="el" href="class_user_controller.html#aba96ac433b3eeabe947cc96102a89bb6">UserController</a>
+<li>Cars_GO
+: <a class="el" href="class_traci_controller.html#a29b2da0a754eabda5002fad9b07213c6">TraciController</a>
+</li>
+<li>CarVisual
+: <a class="el" href="class_traci_controller.html#a0e5d2ec61d361d163647ed1eac5cbeca">TraciController</a>
 </li>
 <li>ClearData()
 : <a class="el" href="class_edge.html#a2ec64470c2a869696dfba6b5fdd9cf0b">Edge</a>
 , <a class="el" href="class_junction.html#a57e3c911fbcf14d45b861fcce0d717aa">Junction</a>
 , <a class="el" href="class_structure.html#a403435d05e2eec3c6ede0d842ad67b53">Structure</a>
 </li>
-<li>Color
-: <a class="el" href="struct_poly.html#a405ea9c676cb3b5b128ad5da14cdebb9">Poly</a>
+<li>Client
+: <a class="el" href="class_traci_controller.html#a2ad927f803db7f58f36623b8c7e4cbf8">TraciController</a>
 </li>
-</ul>
-
-
-<h3><a id="index_d"></a>- d -</h3><ul>
-<li>Disallow
-: <a class="el" href="struct_lane.html#abfc5ae609a31c334e79084078accc5bb">Lane</a>
-</li>
-</ul>
-
-
-<h3><a id="index_f"></a>- f -</h3><ul>
-<li>From
-: <a class="el" href="struct_road.html#a49e37b6d3aa49a7dd10d2a44c7499902">Road</a>
+<li>ConfigFile
+: <a class="el" href="class_traci_controller.html#a333aa35fec78296dc265107576c8dcda">TraciController</a>
 </li>
 </ul>
 
@@ -122,31 +146,16 @@ $(function() {
 </ul>
 
 
-<h3><a id="index_i"></a>- i -</h3><ul>
-<li>Id
-: <a class="el" href="class_junction.html#aafa4fcc8f658991b53226b5d262e9879">Junction</a>
-, <a class="el" href="struct_lane.html#acbdc5958cd211b068b8224ae061f97e2">Lane</a>
-, <a class="el" href="struct_poly.html#a09c8abd39a08fde749f6fd274ecaf8b4">Poly</a>
-, <a class="el" href="struct_road.html#a6678afc1976c8a4f31df86f477405d88">Road</a>
-</li>
-<li>IncomingLanes
-: <a class="el" href="class_junction.html#ac63e779f04e8ee963533e32bafe3074d">Junction</a>
-</li>
-<li>Index
-: <a class="el" href="struct_lane.html#acddc0106ab6d4a87667f22d10e730b24">Lane</a>
-</li>
-<li>InternalLanes
-: <a class="el" href="class_junction.html#aadf670a8d23f2bd1ac299d8c919b628c">Junction</a>
+<h3><a id="index_h"></a>- h -</h3><ul>
+<li>HostName
+: <a class="el" href="class_traci_controller.html#aed0a2042d258363ec5726b8b7c9e40b3">TraciController</a>
 </li>
 </ul>
 
 
 <h3><a id="index_l"></a>- l -</h3><ul>
-<li>Lanes
-: <a class="el" href="struct_road.html#a459591805ac1a1bb0b94930ffb3ba95e">Road</a>
-</li>
-<li>Length
-: <a class="el" href="struct_lane.html#ad110d82fdf4ae25a68d0455a7f7e5a6a">Lane</a>
+<li>LANEWIDTH
+: <a class="el" href="class_edge.html#abce1274185524bbf90f49b8214130fd1">Edge</a>
 </li>
 <li>LoadNetwork()
 : <a class="el" href="class_sumo_creator.html#a6fd91bdf15a05d7fc2b27b9e56a07042">SumoCreator</a>
@@ -156,22 +165,23 @@ $(function() {
 
 <h3><a id="index_m"></a>- m -</h3><ul>
 <li>Main_Camera
-: <a class="el" href="class_user_controller.html#a154397b4fa32f210f7c3a4f522e675a3">UserController</a>
-</li>
-</ul>
-
-
-<h3><a id="index_n"></a>- n -</h3><ul>
-<li>Name
-: <a class="el" href="class_junction.html#a5d9b7a5a824a2be15cc132b807886c90">Junction</a>
-, <a class="el" href="struct_road.html#aefebfb290f424176b269f6a3cf7e9dd5">Road</a>
+: <a class="el" href="class_projection_data.html#adbd2a4f3f7ecfcc6bf1acf3e7c959ccb">ProjectionData</a>
 </li>
 </ul>
 
 
 <h3><a id="index_o"></a>- o -</h3><ul>
+<li>OccupancyVisual
+: <a class="el" href="class_traci_controller.html#ad0ad2e07d2af2be66e30233cf39e7d88">TraciController</a>
+</li>
 <li>offset
 : <a class="el" href="class_projection_data.html#ace4939a5999be0db36408c5373d2b363">ProjectionData</a>
+</li>
+<li>OnTrackableStateChanged()
+: <a class="el" href="class_marker_action.html#a28c986679a514fd744617cf0916e7662">MarkerAction</a>
+</li>
+<li>OnVehicleUpdate()
+: <a class="el" href="class_traci_controller.html#ae059ca6ccc3a8ce34a4d133de3d5fade">TraciController</a>
 </li>
 <li>originalBounds
 : <a class="el" href="class_projection_data.html#ad006eaf3925882dc6039d65ae17de5c0">ProjectionData</a>
@@ -183,6 +193,9 @@ $(function() {
 <li>Polys
 : <a class="el" href="class_structure.html#a45d7defe9341ce74797d6fd86a6ed45f">Structure</a>
 </li>
+<li>Port
+: <a class="el" href="class_traci_controller.html#a480600f51cbbd8506fbdca8fd3179cb3">TraciController</a>
+</li>
 <li>projectedBounds
 : <a class="el" href="class_projection_data.html#aa8e9a11cb798f79b76f73d508d5c4f99">ProjectionData</a>
 </li>
@@ -190,11 +203,20 @@ $(function() {
 
 
 <h3><a id="index_r"></a>- r -</h3><ul>
-<li>RoadList_Neg
-: <a class="el" href="class_edge.html#a9cc07bfa20e817e4fee0dfd92342b02b">Edge</a>
+<li>RemoveWorkZone()
+: <a class="el" href="class_marker_set_work_zone.html#a5837be3e42404f7b224c4b6db403700e">MarkerSetWorkZone</a>
 </li>
-<li>RoadList_Pos
-: <a class="el" href="class_edge.html#a5a53bd2ac1ca49c7ec7747a8a48a3d77">Edge</a>
+<li>RemoveWorkZoneEntireRoad()
+: <a class="el" href="class_traci_controller.html#a9678133938b5cf28566121ab6672dc34">TraciController</a>
+</li>
+<li>RemoveWorkZoneOnLane()
+: <a class="el" href="class_traci_controller.html#af8e5c5fefc5582cd12aeaca1b0663ac4">TraciController</a>
+</li>
+<li>Road_Shader
+: <a class="el" href="class_structure.html#a782bbfbf7bbb02c511a9f90e29c3e152">Structure</a>
+</li>
+<li>RoadList
+: <a class="el" href="class_edge.html#ada376fd8a81711e44ab425c32a85e844">Edge</a>
 </li>
 </ul>
 
@@ -203,61 +225,53 @@ $(function() {
 <li>SetProjectionData()
 : <a class="el" href="class_projection_data.html#aa1a7f30d0e2d0dd4a964581d6307e3bb">ProjectionData</a>
 </li>
-<li>Shape
-: <a class="el" href="class_junction.html#a08e99228991573794a51ecde746c165a">Junction</a>
-, <a class="el" href="struct_lane.html#aa0ac1e2360a777f4396a71b9199937a6">Lane</a>
-, <a class="el" href="struct_poly.html#a592622ff86e90d1f6b8c9f99595aaead">Poly</a>
-, <a class="el" href="struct_road.html#a1a9a5739d0ce86eb2c72c346a0f7ad1f">Road</a>
+<li>SetStopSignJunction()
+: <a class="el" href="class_traci_controller.html#a033fdbe17b1d457bc59de0c2cdbe13ac">TraciController</a>
+</li>
+<li>SetTrafficLightJunction()
+: <a class="el" href="class_traci_controller.html#a058ad2eec9a474491fd1549c5b269e25">TraciController</a>
+</li>
+<li>SetWorkZone()
+: <a class="el" href="class_marker_set_work_zone.html#ab68a05bfd9dfa2a2de396731e88dba4d">MarkerSetWorkZone</a>
+</li>
+<li>SetWorkZoneEntireRoad()
+: <a class="el" href="class_traci_controller.html#ae16a322e3cb2b298a8f52ceaa6661171">TraciController</a>
+</li>
+<li>SetWorkZoneOneLane()
+: <a class="el" href="class_traci_controller.html#a5cb4324d12175bb8007433226d988561">TraciController</a>
 </li>
 <li>ShapeStringToFloatList()
 : <a class="el" href="class_projection_data.html#a9ff12ad53d0ef919479b5cc7168ac59c">ProjectionData</a>
 </li>
-<li>Speed
-: <a class="el" href="struct_lane.html#a4375dbdaa87f046849dee7a17613f06a">Lane</a>
-</li>
 <li>speed
-: <a class="el" href="class_user_controller.html#a1fbf0acd74af79aee3ba6928fed0f18a">UserController</a>
+: <a class="el" href="class_traci_controller.html#abc82770640e1620b43607ad292e97f4e">TraciController</a>
+</li>
+<li>Subscribe()
+: <a class="el" href="class_traci_controller.html#aacc5a9530481fe986ee9329f07e4eccd">TraciController</a>
 </li>
 </ul>
 
 
 <h3><a id="index_t"></a>- t -</h3><ul>
-<li>To
-: <a class="el" href="struct_road.html#a12c9445b64ab9ad9b8474f869105410e">Road</a>
+<li>Terrain_Shader
+: <a class="el" href="class_projection_data.html#ab853560889dd0c25033de418ab53b478">ProjectionData</a>
 </li>
-<li>Type
-: <a class="el" href="class_junction.html#a5f0e7e043c53f34c9e486d2a97102b06">Junction</a>
-, <a class="el" href="struct_poly.html#a287ce0d3159149957debdf570ee58f8c">Poly</a>
-, <a class="el" href="struct_road.html#a29142c7b40b1588fdf2c65edc622882e">Road</a>
+<li>ToggleMesoscopic()
+: <a class="el" href="class_traci_controller.html#a14b200d6e8bf71d6ae2391801b6eb51a">TraciController</a>
 </li>
-</ul>
-
-
-<h3><a id="index_w"></a>- w -</h3><ul>
-<li>Width
-: <a class="el" href="struct_lane.html#a0115df56f933800acad86a08ad5d844c">Lane</a>
-</li>
-</ul>
-
-
-<h3><a id="index_x"></a>- x -</h3><ul>
-<li>X
-: <a class="el" href="class_junction.html#a1db3486037f1c48bf7e8dfc840554d59">Junction</a>
-</li>
-</ul>
-
-
-<h3><a id="index_y"></a>- y -</h3><ul>
-<li>Y
-: <a class="el" href="class_junction.html#a7261805525d4563e5c476a69ae09ca1e">Junction</a>
+<li>ToggleWorkZone()
+: <a class="el" href="class_marker_set_work_zone.html#a97b266550460ab718ded641db864704c">MarkerSetWorkZone</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
 </body>
 </html>

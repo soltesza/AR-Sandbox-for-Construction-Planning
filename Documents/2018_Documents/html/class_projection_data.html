@@ -5,10 +5,18 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>AR Sandbox: ProjectionData Class Reference</title>
+<title>AR Sandbox for OSU Civil Construction Engineering: ProjectionData Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -20,8 +28,10 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="Terrain.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">AR Sandbox
+   <div id="projectname">AR Sandbox for OSU Civil Construction Engineering
+   &#160;<span id="projectnumber">2.0</span>
    </div>
   </td>
  </tr>
@@ -45,6 +55,23 @@ $(function() {
 });
 /* @license-end */</script>
 <div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_projection_data.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -59,7 +86,6 @@ $(function() {
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
@@ -69,6 +95,9 @@ $(function() {
 <div class="title">ProjectionData Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Projection Data class stores and creates a simulation networks terrain.  
+ <a href="class_projection_data.html#details">More...</a></p>
 <div class="dynheader">
 Inheritance diagram for ProjectionData:</div>
 <div class="dyncontent">
@@ -79,22 +108,36 @@ Inheritance diagram for ProjectionData:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa1a7f30d0e2d0dd4a964581d6307e3bb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projection_data.html#aa1a7f30d0e2d0dd4a964581d6307e3bb">SetProjectionData</a> (XmlDocument xml)</td></tr>
+<tr class="memdesc:aa1a7f30d0e2d0dd4a964581d6307e3bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the bounds of the current network as a pair of points in 2-Space  <a href="#aa1a7f30d0e2d0dd4a964581d6307e3bb">More...</a><br /></td></tr>
 <tr class="separator:aa1a7f30d0e2d0dd4a964581d6307e3bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ff12ad53d0ef919479b5cc7168ac59c"><td class="memItemLeft" align="right" valign="top">List&lt; float &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projection_data.html#a9ff12ad53d0ef919479b5cc7168ac59c">ShapeStringToFloatList</a> (string shape)</td></tr>
+<tr class="memdesc:a9ff12ad53d0ef919479b5cc7168ac59c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sumo shape sting to List of floats point order is x1, y1, x2, y2, ....  <a href="#a9ff12ad53d0ef919479b5cc7168ac59c">More...</a><br /></td></tr>
 <tr class="separator:a9ff12ad53d0ef919479b5cc7168ac59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e00204c97b5c3c3e603e2ab55b4793a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projection_data.html#a7e00204c97b5c3c3e603e2ab55b4793a">BuildTerrain</a> ()</td></tr>
+<tr class="memdesc:a7e00204c97b5c3c3e603e2ab55b4793a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a Terrain_Plane to the scene the size of the network and sets the camera to the center of the plane.  <a href="#a7e00204c97b5c3c3e603e2ab55b4793a">More...</a><br /></td></tr>
 <tr class="separator:a7e00204c97b5c3c3e603e2ab55b4793a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
+<tr class="memitem:ab853560889dd0c25033de418ab53b478"><td class="memItemLeft" align="right" valign="top">Shader&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projection_data.html#ab853560889dd0c25033de418ab53b478">Terrain_Shader</a></td></tr>
+<tr class="memdesc:ab853560889dd0c25033de418ab53b478"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Projection Data Terrain Shader.  <a href="#ab853560889dd0c25033de418ab53b478">More...</a><br /></td></tr>
+<tr class="separator:ab853560889dd0c25033de418ab53b478"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbd2a4f3f7ecfcc6bf1acf3e7c959ccb"><td class="memItemLeft" align="right" valign="top">Camera&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projection_data.html#adbd2a4f3f7ecfcc6bf1acf3e7c959ccb">Main_Camera</a></td></tr>
+<tr class="memdesc:adbd2a4f3f7ecfcc6bf1acf3e7c959ccb"><td class="mdescLeft">&#160;</td><td class="mdescRight">A handle to the main camera.  <a href="#adbd2a4f3f7ecfcc6bf1acf3e7c959ccb">More...</a><br /></td></tr>
+<tr class="separator:adbd2a4f3f7ecfcc6bf1acf3e7c959ccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace4939a5999be0db36408c5373d2b363"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projection_data.html#ace4939a5999be0db36408c5373d2b363">offset</a></td></tr>
+<tr class="memdesc:ace4939a5999be0db36408c5373d2b363"><td class="mdescLeft">&#160;</td><td class="mdescRight">The offset for network projections.  <a href="#ace4939a5999be0db36408c5373d2b363">More...</a><br /></td></tr>
 <tr class="separator:ace4939a5999be0db36408c5373d2b363"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad006eaf3925882dc6039d65ae17de5c0"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projection_data.html#ad006eaf3925882dc6039d65ae17de5c0">originalBounds</a></td></tr>
+<tr class="memdesc:ad006eaf3925882dc6039d65ae17de5c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The networks original bounds Lat/Lon  <a href="#ad006eaf3925882dc6039d65ae17de5c0">More...</a><br /></td></tr>
 <tr class="separator:ad006eaf3925882dc6039d65ae17de5c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa8e9a11cb798f79b76f73d508d5c4f99"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_projection_data.html#aa8e9a11cb798f79b76f73d508d5c4f99">projectedBounds</a></td></tr>
+<tr class="memdesc:aa8e9a11cb798f79b76f73d508d5c4f99"><td class="mdescLeft">&#160;</td><td class="mdescRight">The networks projected bound. Cartesian  <a href="#aa8e9a11cb798f79b76f73d508d5c4f99">More...</a><br /></td></tr>
 <tr class="separator:aa8e9a11cb798f79b76f73d508d5c4f99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Projection Data class stores and creates a simulation networks terrain. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7e00204c97b5c3c3e603e2ab55b4793a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e00204c97b5c3c3e603e2ab55b4793a">&#9670;&nbsp;</a></span>BuildTerrain()</h2>
 
@@ -109,6 +152,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Adds a Terrain_Plane to the scene the size of the network and sets the camera to the center of the plane. </p>
 
 </div>
 </div>
@@ -128,6 +173,14 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get the bounds of the current network as a pair of points in 2-Space </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">xml</td><td>The xml file with the projection data.</td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="a9ff12ad53d0ef919479b5cc7168ac59c"></a>
@@ -146,9 +199,34 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Sumo shape sting to List of floats point order is x1, y1, x2, y2, .... </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">shape</td><td>A Sumo formatted shape string.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="adbd2a4f3f7ecfcc6bf1acf3e7c959ccb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbd2a4f3f7ecfcc6bf1acf3e7c959ccb">&#9670;&nbsp;</a></span>Main_Camera</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Camera ProjectionData.Main_Camera</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>A handle to the main camera. </p>
+
+</div>
+</div>
 <a id="ace4939a5999be0db36408c5373d2b363"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ace4939a5999be0db36408c5373d2b363">&#9670;&nbsp;</a></span>offset</h2>
 
@@ -160,6 +238,8 @@ Public Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>The offset for network projections. </p>
 
 </div>
 </div>
@@ -175,6 +255,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The networks original bounds Lat/Lon </p>
+
 </div>
 </div>
 <a id="aa8e9a11cb798f79b76f73d508d5c4f99"></a>
@@ -189,17 +271,39 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>The networks projected bound. Cartesian </p>
+
+</div>
+</div>
+<a id="ab853560889dd0c25033de418ab53b478"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab853560889dd0c25033de418ab53b478">&#9670;&nbsp;</a></span>Terrain_Shader</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Shader ProjectionData.Terrain_Shader</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The Projection Data Terrain Shader. </p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>C:/Users/sunde/Documents/GitHub/AR-Sandbox-for-Construction-Planning/src/AR_Sumobox/Assets/Scripts/<a class="el" href="_projection_data_8cs.html">ProjectionData.cs</a></li>
+<li>C:/Users/sunde/Documents/GitHub/AR-Sandbox-for-Construction-Planning/src/AR_Sumobox/Assets/Scripts/ProjectionData.cs</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.15
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_projection_data.html">ProjectionData</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.15 </li>
+  </ul>
+</div>
 </body>
 </html>

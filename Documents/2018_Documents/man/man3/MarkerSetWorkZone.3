@@ -1,0 +1,91 @@
+.TH "MarkerSetWorkZone" 3 "Mon Jun 10 2019" "Version 2.0" "AR Sandbox for OSU Civil Construction Engineering" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MarkerSetWorkZone \- Allows a marker to set a lane as a work zone\&. This script should only be attached to an Image Target with a \fBMarkerAction\fP component  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBToggleWorkZone\fP (int laneIndex)"
+.br
+.RI "Called by \fBMarkerAction\fP when the event is triggered\&. Creates a work zone at the given road if it is not already set as a work zone\&. Removes a work zone from the given road if it is currently set as a work zone\&. "
+.ti -1c
+.RI "void \fBSetWorkZone\fP (GameObject lane, string roadId)"
+.br
+.RI "Creates a work zone for a given road\&. "
+.ti -1c
+.RI "void \fBRemoveWorkZone\fP (GameObject lane, string roadId)"
+.br
+.RI "Removes a work zone from a given road "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "GameObject \fBlanesParentObject\fP"
+.br
+.ti -1c
+.RI "Material \fBroadMaterial\fP"
+.br
+.ti -1c
+.RI "Material \fBworkZoneMaterial\fP"
+.br
+.ti -1c
+.RI "\fBTraciController\fP \fBtraciController\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Allows a marker to set a lane as a work zone\&. This script should only be attached to an Image Target with a \fBMarkerAction\fP component 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void MarkerSetWorkZone\&.RemoveWorkZone (GameObject lane, string roadId)"
+
+.PP
+Removes a work zone from a given road 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIroadStruct\fP The \fBRoad\fP struct holding the road's information
+.br
+\fIroadId\fP The road's game object
+.RE
+.PP
+
+.SS "void MarkerSetWorkZone\&.SetWorkZone (GameObject lane, string roadId)"
+
+.PP
+Creates a work zone for a given road\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlaneStruct\fP The \fBRoad\fP struct holding the road's information
+.br
+\fIroadId\fP The road's game object
+.RE
+.PP
+
+.SS "void MarkerSetWorkZone\&.ToggleWorkZone (int laneIndex)"
+
+.PP
+Called by \fBMarkerAction\fP when the event is triggered\&. Creates a work zone at the given road if it is not already set as a work zone\&. Removes a work zone from the given road if it is currently set as a work zone\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlaneIndex\fP The list index for the road\&. This index should be the same between this script and \fBMarkerAction\fP\&.
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AR Sandbox for OSU Civil Construction Engineering from the source code\&.

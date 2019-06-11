@@ -1,8 +1,14 @@
 var searchData=
 [
-  ['poly',['Poly',['../struct_poly.html',1,'']]],
-  ['polys',['Polys',['../class_structure.html#a45d7defe9341ce74797d6fd86a6ed45f',1,'Structure']]],
-  ['projectedbounds',['projectedBounds',['../class_projection_data.html#aa8e9a11cb798f79b76f73d508d5c4f99',1,'ProjectionData']]],
-  ['projectiondata',['ProjectionData',['../class_projection_data.html',1,'']]],
-  ['projectiondata_2ecs',['ProjectionData.cs',['../_projection_data_8cs.html',1,'']]]
+  ['setprojectiondata',['SetProjectionData',['../class_projection_data.html#aa1a7f30d0e2d0dd4a964581d6307e3bb',1,'ProjectionData']]],
+  ['setstopsignjunction',['SetStopSignJunction',['../class_traci_controller.html#a033fdbe17b1d457bc59de0c2cdbe13ac',1,'TraciController']]],
+  ['settrafficlightjunction',['SetTrafficLightJunction',['../class_traci_controller.html#a058ad2eec9a474491fd1549c5b269e25',1,'TraciController']]],
+  ['setworkzone',['SetWorkZone',['../class_marker_set_work_zone.html#ab68a05bfd9dfa2a2de396731e88dba4d',1,'MarkerSetWorkZone']]],
+  ['setworkzoneentireroad',['SetWorkZoneEntireRoad',['../class_traci_controller.html#ae16a322e3cb2b298a8f52ceaa6661171',1,'TraciController']]],
+  ['setworkzoneonelane',['SetWorkZoneOneLane',['../class_traci_controller.html#a5cb4324d12175bb8007433226d988561',1,'TraciController']]],
+  ['shapestringtofloatlist',['ShapeStringToFloatList',['../class_projection_data.html#a9ff12ad53d0ef919479b5cc7168ac59c',1,'ProjectionData']]],
+  ['speed',['speed',['../class_traci_controller.html#abc82770640e1620b43607ad292e97f4e',1,'TraciController']]],
+  ['structure',['Structure',['../class_structure.html',1,'']]],
+  ['subscribe',['Subscribe',['../class_traci_controller.html#aacc5a9530481fe986ee9329f07e4eccd',1,'TraciController']]],
+  ['sumocreator',['SumoCreator',['../class_sumo_creator.html',1,'']]]
 ];

@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['id',['Id',['../class_junction.html#aafa4fcc8f658991b53226b5d262e9879',1,'Junction']]],
-  ['incominglanes',['IncomingLanes',['../class_junction.html#ac63e779f04e8ee963533e32bafe3074d',1,'Junction']]],
-  ['internallanes',['InternalLanes',['../class_junction.html#aadf670a8d23f2bd1ac299d8c919b628c',1,'Junction']]]
+  ['cars_5fgo',['Cars_GO',['../class_traci_controller.html#a29b2da0a754eabda5002fad9b07213c6',1,'TraciController']]],
+  ['carvisual',['CarVisual',['../class_traci_controller.html#a0e5d2ec61d361d163647ed1eac5cbeca',1,'TraciController']]],
+  ['client',['Client',['../class_traci_controller.html#a2ad927f803db7f58f36623b8c7e4cbf8',1,'TraciController']]],
+  ['configfile',['ConfigFile',['../class_traci_controller.html#a333aa35fec78296dc265107576c8dcda',1,'TraciController']]]
 ];

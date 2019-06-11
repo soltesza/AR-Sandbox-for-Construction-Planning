@@ -1,0 +1,42 @@
+.TH "SumoCreator" 3 "Mon Jun 10 2019" "Version 2.0" "AR Sandbox for OSU Civil Construction Engineering" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SumoCreator \- \fBSumoCreator\fP class is used for creating Open Street Map networks with SUMO's OSM Web Wizard and reading SUMO generated files that describe a networks logic and layout\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits MonoBehaviour\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBGenerateOsmNetwork\fP ()"
+.br
+.RI "Open the OSMWebWizard to build a real world road network\&. The user will save the new network to a zipfile when done\&. The processes remain open so the user can build multiple network at once\&. "
+.ti -1c
+.RI "void \fBLoadNetwork\fP ()"
+.br
+.RI "Go through all network description files and build the network into Unity\&. Most files will be passed over but there are some handles left for upgrades\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBSumoCreator\fP class is used for creating Open Street Map networks with SUMO's OSM Web Wizard and reading SUMO generated files that describe a networks logic and layout\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void SumoCreator\&.GenerateOsmNetwork ()"
+
+.PP
+Open the OSMWebWizard to build a real world road network\&. The user will save the new network to a zipfile when done\&. The processes remain open so the user can build multiple network at once\&. 
+.SS "void SumoCreator\&.LoadNetwork ()"
+
+.PP
+Go through all network description files and build the network into Unity\&. Most files will be passed over but there are some handles left for upgrades\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for AR Sandbox for OSU Civil Construction Engineering from the source code\&.
