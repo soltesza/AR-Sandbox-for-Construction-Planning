@@ -1,0 +1,143 @@
+\hypertarget{class_projection_data}{}\section{Projection\+Data Class Reference}
+\label{class_projection_data}\index{ProjectionData@{ProjectionData}}
+
+
+Projection Data class stores and creates a simulation networks terrain.  
+
+
+Inheritance diagram for Projection\+Data\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_projection_data_aa1a7f30d0e2d0dd4a964581d6307e3bb}{Set\+Projection\+Data}} (Xml\+Document xml)
+\begin{DoxyCompactList}\small\item\em Get the bounds of the current network as a pair of points in 2-\/Space \end{DoxyCompactList}\item 
+List$<$ float $>$ \mbox{\hyperlink{class_projection_data_a9ff12ad53d0ef919479b5cc7168ac59c}{Shape\+String\+To\+Float\+List}} (string shape)
+\begin{DoxyCompactList}\small\item\em Sumo shape sting to List of floats point order is x1, y1, x2, y2, .... \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_projection_data_a7e00204c97b5c3c3e603e2ab55b4793a}{Build\+Terrain}} ()
+\begin{DoxyCompactList}\small\item\em Adds a Terrain\+\_\+\+Plane to the scene the size of the network and sets the camera to the center of the plane. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Shader \mbox{\hyperlink{class_projection_data_ab853560889dd0c25033de418ab53b478}{Terrain\+\_\+\+Shader}}
+\begin{DoxyCompactList}\small\item\em The Projection Data Terrain Shader. \end{DoxyCompactList}\item 
+Camera \mbox{\hyperlink{class_projection_data_adbd2a4f3f7ecfcc6bf1acf3e7c959ccb}{Main\+\_\+\+Camera}}
+\begin{DoxyCompactList}\small\item\em A handle to the main camera. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_projection_data_ace4939a5999be0db36408c5373d2b363}{offset}}
+\begin{DoxyCompactList}\small\item\em The offset for network projections. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_projection_data_ad006eaf3925882dc6039d65ae17de5c0}{original\+Bounds}}
+\begin{DoxyCompactList}\small\item\em The networks original bounds Lat/\+Lon \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_projection_data_aa8e9a11cb798f79b76f73d508d5c4f99}{projected\+Bounds}}
+\begin{DoxyCompactList}\small\item\em The networks projected bound. Cartesian \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Projection Data class stores and creates a simulation networks terrain. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_projection_data_a7e00204c97b5c3c3e603e2ab55b4793a}\label{class_projection_data_a7e00204c97b5c3c3e603e2ab55b4793a}} 
+\index{ProjectionData@{ProjectionData}!BuildTerrain@{BuildTerrain}}
+\index{BuildTerrain@{BuildTerrain}!ProjectionData@{ProjectionData}}
+\subsubsection{\texorpdfstring{BuildTerrain()}{BuildTerrain()}}
+{\footnotesize\ttfamily void Projection\+Data.\+Build\+Terrain (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Adds a Terrain\+\_\+\+Plane to the scene the size of the network and sets the camera to the center of the plane. 
+
+\mbox{\Hypertarget{class_projection_data_aa1a7f30d0e2d0dd4a964581d6307e3bb}\label{class_projection_data_aa1a7f30d0e2d0dd4a964581d6307e3bb}} 
+\index{ProjectionData@{ProjectionData}!SetProjectionData@{SetProjectionData}}
+\index{SetProjectionData@{SetProjectionData}!ProjectionData@{ProjectionData}}
+\subsubsection{\texorpdfstring{SetProjectionData()}{SetProjectionData()}}
+{\footnotesize\ttfamily void Projection\+Data.\+Set\+Projection\+Data (\begin{DoxyParamCaption}\item[{Xml\+Document}]{xml }\end{DoxyParamCaption})}
+
+
+
+Get the bounds of the current network as a pair of points in 2-\/Space 
+
+
+\begin{DoxyParams}{Parameters}
+{\em xml} & The xml file with the projection data.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_projection_data_a9ff12ad53d0ef919479b5cc7168ac59c}\label{class_projection_data_a9ff12ad53d0ef919479b5cc7168ac59c}} 
+\index{ProjectionData@{ProjectionData}!ShapeStringToFloatList@{ShapeStringToFloatList}}
+\index{ShapeStringToFloatList@{ShapeStringToFloatList}!ProjectionData@{ProjectionData}}
+\subsubsection{\texorpdfstring{ShapeStringToFloatList()}{ShapeStringToFloatList()}}
+{\footnotesize\ttfamily List$<$float$>$ Projection\+Data.\+Shape\+String\+To\+Float\+List (\begin{DoxyParamCaption}\item[{string}]{shape }\end{DoxyParamCaption})}
+
+
+
+Sumo shape sting to List of floats point order is x1, y1, x2, y2, .... 
+
+
+\begin{DoxyParams}{Parameters}
+{\em shape} & A Sumo formatted shape string.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_projection_data_adbd2a4f3f7ecfcc6bf1acf3e7c959ccb}\label{class_projection_data_adbd2a4f3f7ecfcc6bf1acf3e7c959ccb}} 
+\index{ProjectionData@{ProjectionData}!Main\_Camera@{Main\_Camera}}
+\index{Main\_Camera@{Main\_Camera}!ProjectionData@{ProjectionData}}
+\subsubsection{\texorpdfstring{Main\_Camera}{Main\_Camera}}
+{\footnotesize\ttfamily Camera Projection\+Data.\+Main\+\_\+\+Camera}
+
+
+
+A handle to the main camera. 
+
+\mbox{\Hypertarget{class_projection_data_ace4939a5999be0db36408c5373d2b363}\label{class_projection_data_ace4939a5999be0db36408c5373d2b363}} 
+\index{ProjectionData@{ProjectionData}!offset@{offset}}
+\index{offset@{offset}!ProjectionData@{ProjectionData}}
+\subsubsection{\texorpdfstring{offset}{offset}}
+{\footnotesize\ttfamily string Projection\+Data.\+offset}
+
+
+
+The offset for network projections. 
+
+\mbox{\Hypertarget{class_projection_data_ad006eaf3925882dc6039d65ae17de5c0}\label{class_projection_data_ad006eaf3925882dc6039d65ae17de5c0}} 
+\index{ProjectionData@{ProjectionData}!originalBounds@{originalBounds}}
+\index{originalBounds@{originalBounds}!ProjectionData@{ProjectionData}}
+\subsubsection{\texorpdfstring{originalBounds}{originalBounds}}
+{\footnotesize\ttfamily string Projection\+Data.\+original\+Bounds}
+
+
+
+The networks original bounds Lat/\+Lon 
+
+\mbox{\Hypertarget{class_projection_data_aa8e9a11cb798f79b76f73d508d5c4f99}\label{class_projection_data_aa8e9a11cb798f79b76f73d508d5c4f99}} 
+\index{ProjectionData@{ProjectionData}!projectedBounds@{projectedBounds}}
+\index{projectedBounds@{projectedBounds}!ProjectionData@{ProjectionData}}
+\subsubsection{\texorpdfstring{projectedBounds}{projectedBounds}}
+{\footnotesize\ttfamily string Projection\+Data.\+projected\+Bounds}
+
+
+
+The networks projected bound. Cartesian 
+
+\mbox{\Hypertarget{class_projection_data_ab853560889dd0c25033de418ab53b478}\label{class_projection_data_ab853560889dd0c25033de418ab53b478}} 
+\index{ProjectionData@{ProjectionData}!Terrain\_Shader@{Terrain\_Shader}}
+\index{Terrain\_Shader@{Terrain\_Shader}!ProjectionData@{ProjectionData}}
+\subsubsection{\texorpdfstring{Terrain\_Shader}{Terrain\_Shader}}
+{\footnotesize\ttfamily Shader Projection\+Data.\+Terrain\+\_\+\+Shader}
+
+
+
+The Projection Data Terrain Shader. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Documents/\+Git\+Hub/\+A\+R-\/\+Sandbox-\/for-\/\+Construction-\/\+Planning/src/\+A\+R\+\_\+\+Sumobox/\+Assets/\+Scripts/Projection\+Data.\+cs\end{DoxyCompactItemize}

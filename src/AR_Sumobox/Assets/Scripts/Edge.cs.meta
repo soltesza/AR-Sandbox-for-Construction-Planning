@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: e2e7b10a5edaffa45a6276061a661c5d
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - Road_Shader: {fileID: 4800000, guid: d8c373d7e9b0ef742bd5fcdbff60cd10, type: 3}
+  - Concrete_Shader: {fileID: 4800000, guid: 7316e13cfd892514eab5117863cac74f, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

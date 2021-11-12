@@ -1,0 +1,98 @@
+\hypertarget{class_marker_set_work_zone}{}\section{Marker\+Set\+Work\+Zone Class Reference}
+\label{class_marker_set_work_zone}\index{MarkerSetWorkZone@{MarkerSetWorkZone}}
+
+
+Allows a marker to set a lane as a work zone. This script should only be attached to an Image Target with a \mbox{\hyperlink{class_marker_action}{Marker\+Action}} component  
+
+
+Inheritance diagram for Marker\+Set\+Work\+Zone\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_marker_set_work_zone_a97b266550460ab718ded641db864704c}{Toggle\+Work\+Zone}} (int lane\+Index)
+\begin{DoxyCompactList}\small\item\em Called by \mbox{\hyperlink{class_marker_action}{Marker\+Action}} when the event is triggered. Creates a work zone at the given road if it is not already set as a work zone. Removes a work zone from the given road if it is currently set as a work zone. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_marker_set_work_zone_ab68a05bfd9dfa2a2de396731e88dba4d}{Set\+Work\+Zone}} (Game\+Object lane, string road\+Id)
+\begin{DoxyCompactList}\small\item\em Creates a work zone for a given road. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_marker_set_work_zone_a5837be3e42404f7b224c4b6db403700e}{Remove\+Work\+Zone}} (Game\+Object lane, string road\+Id)
+\begin{DoxyCompactList}\small\item\em Removes a work zone from a given road \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_marker_set_work_zone_a089c81ea1e5862a2805ee245fda657b8}\label{class_marker_set_work_zone_a089c81ea1e5862a2805ee245fda657b8}} 
+Game\+Object {\bfseries lanes\+Parent\+Object}
+\item 
+\mbox{\Hypertarget{class_marker_set_work_zone_adf38e479deec47dd3a3cf31d7128cf05}\label{class_marker_set_work_zone_adf38e479deec47dd3a3cf31d7128cf05}} 
+Material {\bfseries road\+Material}
+\item 
+\mbox{\Hypertarget{class_marker_set_work_zone_a2356c67a9d2a70d64054998b113b3f93}\label{class_marker_set_work_zone_a2356c67a9d2a70d64054998b113b3f93}} 
+Material {\bfseries work\+Zone\+Material}
+\item 
+\mbox{\Hypertarget{class_marker_set_work_zone_a1948c5a10f441ce2c64f01431cac4723}\label{class_marker_set_work_zone_a1948c5a10f441ce2c64f01431cac4723}} 
+\mbox{\hyperlink{class_traci_controller}{Traci\+Controller}} {\bfseries traci\+Controller}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Allows a marker to set a lane as a work zone. This script should only be attached to an Image Target with a \mbox{\hyperlink{class_marker_action}{Marker\+Action}} component 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_marker_set_work_zone_a5837be3e42404f7b224c4b6db403700e}\label{class_marker_set_work_zone_a5837be3e42404f7b224c4b6db403700e}} 
+\index{MarkerSetWorkZone@{MarkerSetWorkZone}!RemoveWorkZone@{RemoveWorkZone}}
+\index{RemoveWorkZone@{RemoveWorkZone}!MarkerSetWorkZone@{MarkerSetWorkZone}}
+\subsubsection{\texorpdfstring{RemoveWorkZone()}{RemoveWorkZone()}}
+{\footnotesize\ttfamily void Marker\+Set\+Work\+Zone.\+Remove\+Work\+Zone (\begin{DoxyParamCaption}\item[{Game\+Object}]{lane,  }\item[{string}]{road\+Id }\end{DoxyParamCaption})}
+
+
+
+Removes a work zone from a given road 
+
+
+\begin{DoxyParams}{Parameters}
+{\em road\+Struct} & The \mbox{\hyperlink{struct_road}{Road}} struct holding the road\textquotesingle{}s information\\
+\hline
+{\em road\+Id} & The road\textquotesingle{}s game object\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_marker_set_work_zone_ab68a05bfd9dfa2a2de396731e88dba4d}\label{class_marker_set_work_zone_ab68a05bfd9dfa2a2de396731e88dba4d}} 
+\index{MarkerSetWorkZone@{MarkerSetWorkZone}!SetWorkZone@{SetWorkZone}}
+\index{SetWorkZone@{SetWorkZone}!MarkerSetWorkZone@{MarkerSetWorkZone}}
+\subsubsection{\texorpdfstring{SetWorkZone()}{SetWorkZone()}}
+{\footnotesize\ttfamily void Marker\+Set\+Work\+Zone.\+Set\+Work\+Zone (\begin{DoxyParamCaption}\item[{Game\+Object}]{lane,  }\item[{string}]{road\+Id }\end{DoxyParamCaption})}
+
+
+
+Creates a work zone for a given road. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lane\+Struct} & The \mbox{\hyperlink{struct_road}{Road}} struct holding the road\textquotesingle{}s information\\
+\hline
+{\em road\+Id} & The road\textquotesingle{}s game object\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_marker_set_work_zone_a97b266550460ab718ded641db864704c}\label{class_marker_set_work_zone_a97b266550460ab718ded641db864704c}} 
+\index{MarkerSetWorkZone@{MarkerSetWorkZone}!ToggleWorkZone@{ToggleWorkZone}}
+\index{ToggleWorkZone@{ToggleWorkZone}!MarkerSetWorkZone@{MarkerSetWorkZone}}
+\subsubsection{\texorpdfstring{ToggleWorkZone()}{ToggleWorkZone()}}
+{\footnotesize\ttfamily void Marker\+Set\+Work\+Zone.\+Toggle\+Work\+Zone (\begin{DoxyParamCaption}\item[{int}]{lane\+Index }\end{DoxyParamCaption})}
+
+
+
+Called by \mbox{\hyperlink{class_marker_action}{Marker\+Action}} when the event is triggered. Creates a work zone at the given road if it is not already set as a work zone. Removes a work zone from the given road if it is currently set as a work zone. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lane\+Index} & The list index for the road. This index should be the same between this script and \mbox{\hyperlink{class_marker_action}{Marker\+Action}}.\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Documents/\+Git\+Hub/\+A\+R-\/\+Sandbox-\/for-\/\+Construction-\/\+Planning/src/\+A\+R\+\_\+\+Sumobox/\+Assets/\+Scripts/\+Markers/Marker\+Set\+Work\+Zone.\+cs\end{DoxyCompactItemize}

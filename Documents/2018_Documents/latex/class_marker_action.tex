@@ -1,0 +1,136 @@
+\hypertarget{class_marker_action}{}\section{Marker\+Action Class Reference}
+\label{class_marker_action}\index{MarkerAction@{MarkerAction}}
+
+
+Used to provide functionality to a marker. This script should only be attached to an Image Target.  
+
+
+Inheritance diagram for Marker\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_marker_action_a28c986679a514fd744617cf0916e7662}{On\+Trackable\+State\+Changed}} (Trackable\+Behaviour.\+Status previous\+Status, Trackable\+Behaviour.\+Status new\+Status)
+\begin{DoxyCompactList}\small\item\em Invoked by Vuforia whenever the status of an Image Target changes. This lets us know whether or not the marker is being tracked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_marker_action_a61235131a5158547a0ae7ddab7ef8c02}{Add\+Trigger\+Area}} (Vector3 trigger\+Position)
+\begin{DoxyCompactList}\small\item\em Adds a point to the list of areas that trigger the event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_marker_action_ac27e22f8368b62f303cee146b800b40a}{Add\+Trigger\+Area}} (Bounds trigger\+Area)
+\begin{DoxyCompactList}\small\item\em Adds a Bounds to the list of areas that trigger the event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_marker_action_a68156ef1048821f016d27211cf46422f}{Add\+Trigger\+Areas}} (I\+Enumerable$<$ Vector3 $>$ trigger\+Positions)
+\begin{DoxyCompactList}\small\item\em Adds multiple points to the list of areas that trigger the event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_marker_action_aaec6622e06d2c62418117d1d4a4c1d70}{Add\+Trigger\+Areas}} (I\+Enumerable$<$ Bounds $>$ trigger\+Areas)
+\begin{DoxyCompactList}\small\item\em Adds multiple Bounds to the list of areas that trigger the event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_marker_action_ab06b954c640d0e6db4dd30c85d03de0a}\label{class_marker_action_ab06b954c640d0e6db4dd30c85d03de0a}} 
+\mbox{\hyperlink{class_int_event}{Int\+Event}} {\bfseries at\+Position\+Event}
+\item 
+\mbox{\Hypertarget{class_marker_action_ab6478658ec4034e2d3187f523f2e765c}\label{class_marker_action_ab6478658ec4034e2d3187f523f2e765c}} 
+float {\bfseries time\+For\+Trigger}
+\item 
+\mbox{\Hypertarget{class_marker_action_a0cb3a870d312e9a7fbb3499d3ee144c7}\label{class_marker_action_a0cb3a870d312e9a7fbb3499d3ee144c7}} 
+float {\bfseries x\+Y\+Tolerance}
+\item 
+\mbox{\Hypertarget{class_marker_action_a2211829235e941c857a3b5307226ff23}\label{class_marker_action_a2211829235e941c857a3b5307226ff23}} 
+Transform {\bfseries main\+Camera\+Transform}
+\item 
+\mbox{\Hypertarget{class_marker_action_a2660414d0939bac7e1da2dcb5b7d54bf}\label{class_marker_action_a2660414d0939bac7e1da2dcb5b7d54bf}} 
+float {\bfseries A\+R\+Camera\+Height}
+\item 
+\mbox{\Hypertarget{class_marker_action_a466823d974af6c6beee73a740fb2a9c2}\label{class_marker_action_a466823d974af6c6beee73a740fb2a9c2}} 
+bool {\bfseries rotate\+Camera}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Used to provide functionality to a marker. This script should only be attached to an Image Target. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_marker_action_a61235131a5158547a0ae7ddab7ef8c02}\label{class_marker_action_a61235131a5158547a0ae7ddab7ef8c02}} 
+\index{MarkerAction@{MarkerAction}!AddTriggerArea@{AddTriggerArea}}
+\index{AddTriggerArea@{AddTriggerArea}!MarkerAction@{MarkerAction}}
+\subsubsection{\texorpdfstring{AddTriggerArea()}{AddTriggerArea()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Marker\+Action.\+Add\+Trigger\+Area (\begin{DoxyParamCaption}\item[{Vector3}]{trigger\+Position }\end{DoxyParamCaption})}
+
+
+
+Adds a point to the list of areas that trigger the event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger\+Position} & The point to add as a trigger.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_marker_action_ac27e22f8368b62f303cee146b800b40a}\label{class_marker_action_ac27e22f8368b62f303cee146b800b40a}} 
+\index{MarkerAction@{MarkerAction}!AddTriggerArea@{AddTriggerArea}}
+\index{AddTriggerArea@{AddTriggerArea}!MarkerAction@{MarkerAction}}
+\subsubsection{\texorpdfstring{AddTriggerArea()}{AddTriggerArea()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Marker\+Action.\+Add\+Trigger\+Area (\begin{DoxyParamCaption}\item[{Bounds}]{trigger\+Area }\end{DoxyParamCaption})}
+
+
+
+Adds a Bounds to the list of areas that trigger the event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger\+Area} & The area to add as a trigger.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_marker_action_a68156ef1048821f016d27211cf46422f}\label{class_marker_action_a68156ef1048821f016d27211cf46422f}} 
+\index{MarkerAction@{MarkerAction}!AddTriggerAreas@{AddTriggerAreas}}
+\index{AddTriggerAreas@{AddTriggerAreas}!MarkerAction@{MarkerAction}}
+\subsubsection{\texorpdfstring{AddTriggerAreas()}{AddTriggerAreas()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Marker\+Action.\+Add\+Trigger\+Areas (\begin{DoxyParamCaption}\item[{I\+Enumerable$<$ Vector3 $>$}]{trigger\+Positions }\end{DoxyParamCaption})}
+
+
+
+Adds multiple points to the list of areas that trigger the event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger\+Positions} & The points to add as triggers.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_marker_action_aaec6622e06d2c62418117d1d4a4c1d70}\label{class_marker_action_aaec6622e06d2c62418117d1d4a4c1d70}} 
+\index{MarkerAction@{MarkerAction}!AddTriggerAreas@{AddTriggerAreas}}
+\index{AddTriggerAreas@{AddTriggerAreas}!MarkerAction@{MarkerAction}}
+\subsubsection{\texorpdfstring{AddTriggerAreas()}{AddTriggerAreas()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Marker\+Action.\+Add\+Trigger\+Areas (\begin{DoxyParamCaption}\item[{I\+Enumerable$<$ Bounds $>$}]{trigger\+Areas }\end{DoxyParamCaption})}
+
+
+
+Adds multiple Bounds to the list of areas that trigger the event. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em trigger\+Areas} & The areas to add as triggers.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_marker_action_a28c986679a514fd744617cf0916e7662}\label{class_marker_action_a28c986679a514fd744617cf0916e7662}} 
+\index{MarkerAction@{MarkerAction}!OnTrackableStateChanged@{OnTrackableStateChanged}}
+\index{OnTrackableStateChanged@{OnTrackableStateChanged}!MarkerAction@{MarkerAction}}
+\subsubsection{\texorpdfstring{OnTrackableStateChanged()}{OnTrackableStateChanged()}}
+{\footnotesize\ttfamily void Marker\+Action.\+On\+Trackable\+State\+Changed (\begin{DoxyParamCaption}\item[{Trackable\+Behaviour.\+Status}]{previous\+Status,  }\item[{Trackable\+Behaviour.\+Status}]{new\+Status }\end{DoxyParamCaption})}
+
+
+
+Invoked by Vuforia whenever the status of an Image Target changes. This lets us know whether or not the marker is being tracked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em previous\+Status} & The previous status of the Image Target\\
+\hline
+{\em new\+Status} & The current status of the Image Target\\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+Documents/\+Git\+Hub/\+A\+R-\/\+Sandbox-\/for-\/\+Construction-\/\+Planning/src/\+A\+R\+\_\+\+Sumobox/\+Assets/\+Scripts/\+Markers/Marker\+Action.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,69 @@
+\documentclass[10pt,draftclsnofoot,onecolumn]{IEEEtran}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage{enumitem}
+
+
+
+\title{Problem Statement:\\Augmented Reality Sandbox}
+\author{Jonah Spencer \\ CS461 : Senior Capstone \\ Fall, 2018}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+\section*{Abstract}
+\begin{flushleft}
+       \qquad Augmented reality sandboxes (ARSandbox) have become very popular in recent years with topographical and water flows simulated using the physical sand in these sandboxes. Currently, Oregon State University (OSU) has their own version of an ARSandbox that is based in a game engine. They would like their own ARSandbox to be used by universities across the nation. To that end, the OSU College of Civil and Construction Engineering (CCE) need their Augmented Reality Sandbox to have the following features:
+       \begin{itemize}
+           \item Traffic Simulation
+           \item Detecting objects in the sandbox, and spawning their correlated objects in Unity into the sandbox
+           \item Polish \& Bug Fixing
+           \subitem Easier Setup
+           \subitem Easier Calibration
+           \subitem Better Topological Accuracy
+       \end{itemize}
+       Our approach will be similar to game design. We will first get a solid base to start from, then begin adding features for use. 
+\end{flushleft}       
+\begin{flushleft}
+    \qquad We will use C\# and Unity, along with Vuforia, SUMO, and the already completed sandbox source code from last year's sandbox team. 
+\end{flushleft}
+
+\newpage
+\section{Problem}
+\begin{flushleft}
+    \qquad Currently, the college of Civil and Construction Engineering's (CCE) Augmented Reality Sandbox (ARSandbox) is incomplete. The main issue with the system is the lack of functionality in a classroom setting. Civil professors need to be able to use this as a traffic simulation environment that can be changed in real time and so traffic flow patterns can be visualized by students in a  more real way. Another problem is interacting with the sandbox; professors would like to use real world objects and place them in the sandbox (model dams, lights, stop signs, etc...) and have  them interact with simulations in those areas. Those features are the main purpose for this project, but problems still arise with the current implementation of the software. The software is hard to set up, the calibration for the depth sensor is nearly non-existent, and the system is not very accurate. We will need to increase usability by both creating modules and polishing the current software.
+\end{flushleft}
+
+
+\section{Solution/Tools \& Methods}
+\begin{flushleft}
+    \qquad For our primary goal, creating a traffic simulation for use in the classroom, we will be expanding upon a mesh created by previously designed software. On this mesh, we will impose pre-made road patterns, then run analysis of this road network with a pre-made traffic simulator. As for  the traffic simulator, more research will need to be done; however, from my current research, we can ran an instance of SUMO (simulation of urban mobility) in the background, and use TraCI to feed in a height map with roads, car starting locations, and other features, and to then get back car locations. We can then simulate this in Unity and project a top-down view of this simulation onto the sandbox. We can also, using SUMO, do a macroscopic simulation and then use TraCI to get back traffic delays of certain areas like Google maps' red-lines on roads with possible delays. 
+\end{flushleft}
+\begin{flushleft}
+    \qquad For our secondary goal, using real-world markers that relate to in-scene assets, we will research into either using Vuforia object recognition, Kinect object recognition, as well as using printed QR codes and the effectiveness of the Kinect camera to read these. These objects, when recognized and placed in the sandbox, will match an asset pre-defined in Unity, and will spawn a "pregen" of said object where the marker is  placed. Functionality of spawning vs. moving is yet to be determined. Any UI created for will need to be flushed out/tested to ensure it is a usable interface. 
+\end{flushleft}
+\begin{flushleft}
+    \qquad For our tertiary goal, bug fixing and polish, we will focus on making calibration and setting up of a the system as easy as possible. When we have marker recognition working, we may use projected markers to define the boundaries of the space. Along with length and depth, we will automate the depth settings using the Kinect's depth sensing of markers placed and using the Pythagorean Theorem on x, y, and z location of each marker. 
+\end{flushleft}
+\newpage
+
+\section{Performance Metrics/Criteria}
+\begin{flushleft}
+    \qquad No acceptance criteria has been set as we have only had one short meeting with our client. The following are possible, and yet-to-be set acceptance criteria. 
+\end{flushleft}
+\begin{flushleft}
+    \qquad For our primary goal, the traffic simulator, the acceptance criteria will include having a  working traffic simulation, and using the topology of the sandbox that is then projected onto the sand. This traffic simulation will need to be added to the menu as a mode, and needs to be able to start up the back-end and middle-ware code on it's own as to avoid lengthy, finicky setup. This simulation will need to take in pre-generated road maps, project those roads onto the 3d mesh of the sandbox, and feed that into the traffic simulator so accurate simulations may occur. 
+\end{flushleft}
+
+\begin{flushleft}
+    \qquad Our secondary goal, to detect objects in the real world and display them in the scene, will be more straight forward to define. A user will need to be able to place a predefined object into the sandbox, and have a virtual, pre-generated model of that object appear in the sandbox.
+\end{flushleft}
+
+\begin{flushleft}
+    \qquad  With the tertiary goal, we should be able to accept that once an operator has a projector aligned correctly with a sandbox, the software should be able to self-calibrate and fill the sandbox. As well, the topographic colors that currently are displayed should be accurate to within an inch and should have a delay of no more than 0.5 seconds in between lines being drawn.
+\end{flushleft}
+
+\end{document}

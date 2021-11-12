@@ -42,24 +42,32 @@ public class TerrainManager : MonoBehaviour {
 			renderer.material.SetColor ("_Color2", new Color32(153, 153, 153, 255));
 			renderer.material.SetColor ("_Color3", new Color32(204, 204, 204, 255));
 			renderer.material.SetColor ("_Color4", new Color32(255, 255, 255, 255));
+			renderer.material.SetColor ("_ColorB", Color.black);
+			
 		} else if (theme == TerrainTheme.mountain) {
 			renderer.material.SetColor ("_Color0", new Color32(39, 101, 152, 255));
 			renderer.material.SetColor ("_Color1", new Color32(100, 143, 52, 255));
 			renderer.material.SetColor ("_Color2", new Color32(88, 87, 84, 255));
 			renderer.material.SetColor ("_Color3", new Color32(150, 150, 150, 255));
 			renderer.material.SetColor ("_Color4", new Color32(255, 255, 255, 255));
+			renderer.material.SetColor ("_ColorB", Color.black);
+			
 		} else if (theme == TerrainTheme.desert) {
 			renderer.material.SetColor ("_Color0", new Color32(229, 227, 180, 255));
 			renderer.material.SetColor ("_Color1", new Color32(197, 189, 88, 255));
 			renderer.material.SetColor ("_Color2", new Color32(143, 98, 69, 255));
 			renderer.material.SetColor ("_Color3", new Color32(189, 135, 86, 255));
 			renderer.material.SetColor ("_Color4", new Color32(203, 200, 171, 255));
+			renderer.material.SetColor ("_ColorB", Color.black);
+
 		} else {
 			renderer.material.SetColor ("_Color0", Color.red);
 			renderer.material.SetColor ("_Color1", Color.yellow);
 			renderer.material.SetColor ("_Color2", Color.green);
 			renderer.material.SetColor ("_Color3", Color.cyan);
 			renderer.material.SetColor ("_Color4", Color.blue);
+			renderer.material.SetColor ("_ColorB", Color.black);
+
 		}
 	}
 
@@ -77,7 +85,7 @@ public class TerrainManager : MonoBehaviour {
 	}
 		
 	public void SetMaxTerrainHeight(float maxHeight) {
-		terrainGenerator.maxHeight = maxHeight;
+        terrainGenerator.maxHeight = maxHeight;
 	}
 
 	public float GetMaxTerrainHeight() {
